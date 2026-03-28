@@ -70,7 +70,7 @@ export default function AboutPage() {
               "Field Operations Lead"
             ].map((role) => (
               <div key={role} className="card px-8 py-8">
-                <div className="h-16 w-16 rounded-full bg-surface-container" />
+                <div className="h-16 w-16 bg-surface-container" />
                 <h3 className="mt-5 font-display text-title-md font-medium text-on-surface">{role}</h3>
                 <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
                   Short bio placeholder and relevant experience.

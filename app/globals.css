@@ -14,87 +14,198 @@ body {
   @apply bg-surface text-on-surface font-sans antialiased;
 }
 
+/* All headings use Manrope — tight tracking, architectural authority */
 h1, h2, h3, h4 {
   @apply font-display text-on-surface;
 }
 
-/* ─── Layout ─── */
+/* ─── Layout ──────────────────────────────────────────────────────────── */
 
 .section-padding {
   @apply px-6 py-16 sm:px-10 lg:px-16;
 }
 
-/* ─── Cards ─── */
+/* ─── Cards ───────────────────────────────────────────────────────────── */
+/* 0px radius — "The Industrial Architect." Sharp, structural permanence. */
+/* Depth via tonal layering: surface-container-lowest on surface-container-low. */
 
-/* No border, no dividers. Depth through tone + ambient shadow. */
 .card {
-  @apply rounded-xl bg-surface-container-lowest shadow-ambient transition-shadow duration-300 ease-out hover:shadow-float;
-  will-change: transform;
+  @apply bg-surface-container-lowest transition-colors duration-150;
+  /* No border-radius. No drop-shadow. Depth is tonal, not spatial. */
 }
 
-/* ─── Badges / Eyebrows ─── */
+.card:hover {
+  @apply bg-white;
+}
+
+/* ─── Badges / Labels ─────────────────────────────────────────────────── */
+/* ALL CAPS + tracked spacing — mimics serial numbers on industrial equipment */
 
 .badge {
-  @apply inline-flex items-center gap-2 rounded-full bg-surface-container px-3 py-1 font-label text-label-md font-medium text-primary;
+  @apply inline-flex items-center gap-2 bg-surface-container px-3 py-1
+    font-sans text-label-sm font-medium uppercase tracking-[0.05em] text-primary;
 }
 
-/* ─── Links ─── */
+/* ─── Links ───────────────────────────────────────────────────────────── */
 
-/* Underline appears only on hover — never a standing decoration */
 .link-underline {
   @apply relative inline-flex items-center font-medium text-primary;
 }
 
 .link-underline::after {
   content: "";
-  @apply absolute -bottom-px left-0 h-[2px] w-full origin-left scale-x-0 bg-primary transition-transform duration-200 ease-out;
+  /* 0.5px hairline — "razor-thin Precision" */
+  @apply absolute -bottom-px left-0 w-full origin-left scale-x-0 bg-primary
+    transition-transform duration-150;
+  height: 0.5px;
 }
 
 .link-underline:hover::after {
   @apply scale-x-100;
 }
 
-/* ─── Glassmorphism ─── */
+/* ─── Glassmorphism ───────────────────────────────────────────────────── */
+/* surface_container at 80% opacity + 20px backdrop-blur = high-tech lens */
 
-/* For floating overlays: modals, tooltips, CTA panels */
 .glass-panel {
-  @apply rounded-2xl bg-surface-container-lowest/80 shadow-float backdrop-blur-[20px];
+  @apply bg-surface-container-lowest/80 shadow-float backdrop-blur-[20px];
+  /* 0px radius — sharp-edged glass panel */
 }
 
-/* ─── Input fields ─── */
+/* ─── Buttons ─────────────────────────────────────────────────────────── */
+/* 0px radius across all variants. Linear 150ms fades, no bounce. */
 
-/* No four-sided box. Surface tonal background + 2px bottom stroke only. */
+/* Primary: Solid primary, 0.5px gold "Precision" bottom line */
+.btn-primary {
+  background-color: #002E35;
+  color: #ffffff;
+  /* 0.5px tertiary (gold) bottom border — "Gold Precision" signature */
+  box-shadow: inset 0 -0.5px 0 0 #D4AF37;
+  transition: background-color 150ms linear;
+}
+.btn-primary:hover {
+  background-color: #003F4A;
+}
+
+/* Secondary: Ghost, 0.5px outline hairline */
+.btn-secondary {
+  background: transparent;
+  color: #191C1D;
+  border: 0.5px solid #6B7C80;
+  transition: background-color 150ms linear;
+}
+.btn-secondary:hover {
+  background-color: #F2F4F4;
+}
+
+/* ─── Input fields ────────────────────────────────────────────────────── */
+/* Bottom-line only. No four-sided box. Blueprint precision. */
+
 .input-field {
-  @apply w-full rounded-md border-0 border-b-2 border-outline-variant bg-surface-container-low
-    px-3 py-2.5 font-sans text-title-sm text-on-surface outline-none transition-all duration-200
-    placeholder:text-on-surface-variant/60;
+  width: 100%;
+  background-color: #F2F4F4;
+  border: none;
+  border-bottom: 0.5px solid #BEC8CA;
+  border-radius: 0;
+  padding: 0.625rem 0.75rem;
+  font-family: var(--font-inter);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: #191C1D;
+  outline: none;
+  transition: border-color 150ms linear;
+}
+
+.input-field::placeholder {
+  color: #6B7C80;
 }
 
 .input-field:focus {
-  @apply border-primary shadow-[0_0_0_4px_rgba(167,238,252,0.28)];
+  border-bottom-color: #002E35;
+  /* Double the line weight on focus for clear "active field" state */
+  box-shadow: 0 1px 0 0 #002E35;
 }
 
-/* ─── Status chip ─── */
+/* select inherits base styling */
+.input-field option {
+  background: #ffffff;
+}
+
+/* ─── Status chips ────────────────────────────────────────────────────── */
 
 .status-chip {
-  @apply inline-flex items-center gap-2 rounded-full bg-surface-container px-3 py-1 font-label text-label-md font-medium text-on-surface-variant;
+  @apply inline-flex items-center gap-2 bg-surface-container px-3 py-1
+    font-sans text-label-sm font-medium uppercase tracking-[0.05em] text-on-surface-variant;
 }
 
-/* ─── AI Specialised Components ─── */
-
-/* The "Sense-Line": pulsing 1px vertical tertiary-fixed gradient */
-.sense-line {
-  @apply relative w-px overflow-hidden;
-  background: linear-gradient(180deg, transparent 0%, #eae3bf 50%, transparent 100%);
-  animation: sense-pulse 3s ease-in-out infinite;
+/* The AI Chip: primary_container fill + gold left-border (high-value AI insight) */
+.ai-chip {
+  background-color: #003F4A;
+  color: #ffffff;
+  border-left: 0.5px solid #D4AF37;
+  @apply inline-flex items-center gap-2 px-3 py-1
+    font-sans text-label-sm font-medium uppercase tracking-[0.05em];
 }
 
-/* Data callouts: muted gold label for confidence scores / sensor health */
+/* ─── Data callouts ───────────────────────────────────────────────────── */
+/* Gold used sparingly — critical metadata / confidence scores */
+
 .data-callout {
-  @apply font-label text-label-sm font-medium uppercase tracking-widest text-tertiary;
+  @apply font-sans text-label-sm font-medium uppercase tracking-[0.05em] text-tertiary;
 }
 
-/* ─── Hero animations ─── */
+/* ─── Film grain texture ──────────────────────────────────────────────── */
+/* Applied to secondary (navy) and primary_container backgrounds.        */
+/* Mimics high-end physical materials, reduces digital banding.          */
+
+.grain {
+  position: relative;
+}
+
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* SVG fractal noise at 2-3% opacity */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23grain)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Grid overlay ────────────────────────────────────────────────────── */
+/* 24px blueprint grid at 5% — "under construction by an expert hand"    */
+
+.grid-overlay {
+  position: relative;
+}
+
+.grid-overlay::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right,  rgba(190, 200, 202, 0.08) 0.5px, transparent 0.5px),
+    linear-gradient(to bottom, rgba(190, 200, 202, 0.08) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ensure hero content sits above the grid */
+.grid-overlay > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Hairline utility ────────────────────────────────────────────────── */
+/* 0.5px — blueprint precision, never 1px solid box borders             */
+
+.hairline-b { border-bottom: 0.5px solid #BEC8CA; }
+.hairline-t { border-top:    0.5px solid #BEC8CA; }
+.hairline    { border:        0.5px solid #BEC8CA; }
+
+/* ─── Hero animations ─────────────────────────────────────────────────── */
 
 .hero-reveal {
   opacity: 0;
@@ -107,11 +218,9 @@ h1, h2, h3, h4 {
 .hero-reveal.delay-3 { animation-delay: 0.3s; }
 .hero-reveal.delay-4 { animation-delay: 0.4s; }
 
-/* ─── Contour lines (hero ambient SVG) ─── */
+/* ─── Contour lines ───────────────────────────────────────────────────── */
 
-.ambient-contours {
-  opacity: 0.6;
-}
+.ambient-contours { opacity: 0.55; }
 
 .contour-line {
   stroke-dasharray: 12 18;
@@ -122,10 +231,9 @@ h1, h2, h3, h4 {
 .contour-line.delay-1 { animation-delay: 3s; }
 .contour-line.delay-2 { animation-delay: 6s; }
 
-/* ─── Hero Pyramid ─── */
-/* Scale factor 3.2× from logomark spec (bottom pill 90→288px)       */
-/* Dot ∅44px · 45px gap · pills h=64px r=32px · 26px gaps            */
-/* Widths: top 134px · mid 224px · bot 288px                          */
+/* ─── Hero Pyramid ────────────────────────────────────────────────────── */
+/* Sharp-edged blocks — "stacked schematics" / blueprint panels          */
+/* Scale factor 3.2× from logomark spec (bottom 90→288px)               */
 
 .pyramid-stack {
   --pyramid-progress: 1;
@@ -133,7 +241,6 @@ h1, h2, h3, h4 {
   height: 340px;
 }
 
-/* Shared block transform — same formula drives dot + pills */
 .pyramid-block,
 .pyramid-dot {
   @apply absolute left-1/2;
@@ -143,53 +250,57 @@ h1, h2, h3, h4 {
 }
 
 .pyramid-block {
-  @apply flex items-center justify-center shadow-ambient;
+  @apply flex items-center justify-center;
+  /* rx=10 scaled 3.2× → 32px = half the 64px block height = perfect pill */
   border-radius: 32px;
+  box-shadow: none;
 }
 
-/* Dot — primary teal solid */
+/* Dot stays circular — it's a dot, not a corner */
 .pyramid-dot {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  background: #00464f;
+  background: #002E35;
   top: 0;
 }
 
-/* Intelligence layer: muted gold */
+/* Intelligence layer — muted gold (tertiary palette) */
 .pyramid-top {
-  @apply text-on-surface;
+  color: #191C1D;
   width: 134px;
   height: 64px;
-  background: linear-gradient(135deg, rgba(234, 227, 191, 0.98), rgba(92, 84, 51, 0.55));
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25), rgba(212, 175, 55, 0.08));
+  /* 0.5px gold left-border — AI Chip aesthetic */
+  border-left: 0.5px solid #D4AF37;
   top: 89px;
 }
 
-/* Telemetry layer: petrol teal */
+/* Telemetry layer — deep petrol teal */
 .pyramid-middle {
-  @apply text-on-primary;
+  color: #ffffff;
   width: 224px;
   height: 64px;
-  background: linear-gradient(135deg, rgba(0, 70, 79, 0.92), rgba(0, 95, 107, 0.70));
+  background: linear-gradient(135deg, rgba(0, 46, 53, 0.95), rgba(0, 63, 74, 0.80));
   top: 179px;
 }
 
-/* Sensing layer: dark-to-teal */
+/* Sensing layer — deep navy-to-teal */
 .pyramid-bottom {
-  @apply text-on-primary;
+  color: #ffffff;
   width: 288px;
   height: 64px;
-  background: linear-gradient(135deg, rgba(25, 28, 29, 0.96), rgba(0, 70, 79, 0.80));
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(0, 46, 53, 0.85));
   top: 269px;
 }
 
 .pyramid-block-content {
-  @apply flex items-center gap-2 font-label text-label-sm font-medium uppercase tracking-[0.16em];
+  @apply flex items-center gap-2 font-sans text-label-sm font-medium uppercase tracking-[0.05em];
   opacity: var(--pyramid-progress);
   transition: opacity 0.5s ease;
 }
 
-/* ─── Data-flow animations ─── */
+/* ─── Data-flow animations ────────────────────────────────────────────── */
 
 .data-flow path {
   stroke-dasharray: 6 10;
@@ -197,63 +308,30 @@ h1, h2, h3, h4 {
   animation: flow-dash 8s linear infinite;
 }
 
-.arch-flow path {
-  stroke-dasharray: 10 14;
-  stroke-dashoffset: 0;
-  animation: flow-dash 10s linear infinite;
-}
-
 .icon-animate {
-  @apply transition-transform duration-300 ease-out;
+  @apply transition-transform duration-150 ease-out;
 }
 
 .card:hover .icon-animate {
-  transform: translateY(-2px) scale(1.02);
+  transform: translateY(-2px);
 }
 
-/* ─── Keyframes ─── */
+/* ─── Keyframes ───────────────────────────────────────────────────────── */
 
-@keyframes flow-dash {
-  to { stroke-dashoffset: -220; }
-}
+@keyframes flow-dash    { to { stroke-dashoffset: -220; } }
+@keyframes contour-drift{ to { stroke-dashoffset: -320; } }
+@keyframes hero-reveal  { to { opacity: 1; transform: translateY(0); } }
 
-@keyframes contour-drift {
-  to { stroke-dashoffset: -320; }
-}
-
-@keyframes hero-reveal {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes sense-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
-}
-
-/* ─── Reduced motion ─── */
+/* ─── Reduced motion ──────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
-  .contour-line,
-  .hero-reveal,
-  .data-flow path,
-  .arch-flow path,
-  .sense-line {
-    animation: none;
-  }
+  .contour-line, .hero-reveal, .data-flow path { animation: none; }
 
-  .pyramid-block,
-  .pyramid-dot {
+  .pyramid-block, .pyramid-dot {
     transition: none;
     transform: translateX(-50%);
   }
 
-  .pyramid-block-content {
-    opacity: 1;
-    transition: none;
-  }
-
-  .card,
-  .icon-animate {
-    transition: none;
-  }
+  .pyramid-block-content { opacity: 1; transition: none; }
+  .card, .icon-animate   { transition: none; }
 }

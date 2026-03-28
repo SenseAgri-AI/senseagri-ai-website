@@ -92,7 +92,7 @@ export default function PricingPage() {
             subtitle="Choose the level of intelligence and automation your team needs today."
           />
           {/* No border-based table. Tonal rows replace dividers. */}
-          <div className="mt-10 overflow-x-auto rounded-xl bg-surface-container-lowest shadow-ambient">
+          <div className="mt-10 overflow-x-auto bg-surface-container-lowest shadow-ambient">
             <table className="min-w-full text-sm">
               <thead>
                 <tr className="bg-surface-container">

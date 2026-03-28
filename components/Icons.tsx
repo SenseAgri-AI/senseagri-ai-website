@@ -5,10 +5,11 @@ type IconProps = {
   children?: ReactNode;
 };
 
+// Sharp container — 0px radius, tonal fill
 export function IconWrapper({ className, children }: IconProps) {
   return (
     <span
-      className={`inline-flex h-11 w-11 items-center justify-center rounded-xl bg-surface-container text-primary ${
+      className={`inline-flex h-11 w-11 items-center justify-center bg-surface-container text-primary ${
         className ?? ""
       }`}
     >

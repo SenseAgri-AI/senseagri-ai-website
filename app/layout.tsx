@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Inter, Manrope, Space_Grotesk } from "next/font/google";
+import { Inter, Manrope } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
@@ -16,13 +16,7 @@ const inter = Inter({
 const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
-  weight: ["400", "500", "600"]
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-space-grotesk",
-  weight: ["400", "500"]
+  weight: ["400", "500", "600", "700"]
 });
 
 export const metadata: Metadata = {
@@ -45,14 +39,12 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [siteConfig.ogImage]
   },
-  icons: {
-    icon: "/favicon.svg"
-  }
+  icons: { icon: "/favicon.svg" }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body>
         <Analytics />
         <div className="min-h-screen bg-surface">

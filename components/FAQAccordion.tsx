@@ -15,16 +15,18 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    // No dividers. Alternating tonal backgrounds create grouping without lines.
-    <div className="space-y-1.5">
+    // No dividers, no rounded corners. Tonal rows + 0.5px gold left-border on active.
+    <div className="space-y-1">
       {items.map((item, index) => {
         const isOpen = openIndex === index;
 
         return (
           <div
             key={item.question}
-            className={`rounded-xl px-8 py-5 transition-colors duration-200 ${
-              isOpen ? "bg-surface-container-lowest shadow-ambient" : "bg-surface-container-low"
+            className={`px-8 py-5 transition-colors duration-150 ${
+              isOpen
+                ? "bg-surface-container-lowest border-l-[0.5px] border-tertiary"
+                : "bg-surface-container-low"
             }`}
           >
             <button
@@ -36,7 +38,8 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
               <span className="font-display text-title-sm font-medium text-on-surface">
                 {item.question}
               </span>
-              <span className="font-label text-label-md text-outline-variant">
+              {/* Gold accent on active toggle */}
+              <span className={`font-sans text-label-md ${isOpen ? "text-tertiary" : "text-outline-variant"}`}>
                 {isOpen ? "−" : "+"}
               </span>
             </button>

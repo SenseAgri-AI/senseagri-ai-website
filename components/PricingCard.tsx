@@ -14,8 +14,8 @@ export default function PricingCard({
   highlight?: boolean;
 }) {
   return (
-    // Highlighted card: subtle primary teal tint on the card top edge, no ring border
-    <div className={`card flex h-full flex-col px-8 py-8 ${highlight ? "border-t-2 border-primary" : ""}`}>
+    // Highlighted card: 0.5px gold left-border — AI Chip aesthetic, not a thick top accent
+    <div className={`card flex h-full flex-col px-8 py-8 ${highlight ? "border-l-[0.5px] border-tertiary" : ""}`}>
       <div className="flex items-center justify-between gap-3">
         <h3 className="font-display text-title-md font-medium text-on-surface">{title}</h3>
         {highlight ? <span className="badge">Most chosen</span> : null}

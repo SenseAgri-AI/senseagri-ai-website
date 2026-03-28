@@ -18,11 +18,13 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    // Tonal separation from page — no border line, just a slightly deeper surface
-    <header className="sticky top-0 z-40 bg-surface-container-low/90 backdrop-blur-[20px]">
+    // Sharp-edged navbar — tonal separation, no border line
+    // 0.5px hairline at bottom instead of drop shadow
+    <header className="sticky top-0 z-40 bg-surface-container-low/90 backdrop-blur-[20px] hairline-b">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-surface-container-lowest shadow-ambient">
+          {/* Sharp container — 0px radius, tonal background */}
+          <span className="flex h-9 w-9 items-center justify-center bg-surface-container-lowest shadow-ambient">
             <LogoMark className="h-7 w-7" />
           </span>
           <span className="font-display text-title-sm font-medium text-on-surface">
@@ -46,9 +48,10 @@ export default function Navbar() {
           <Button href="/contact">Book a Pilot Call</Button>
         </div>
 
+        {/* Sharp menu button — 0px radius */}
         <button
           type="button"
-          className="inline-flex items-center justify-center rounded-md bg-surface-container-high px-3 py-1.5 font-sans text-label-md font-medium text-on-surface md:hidden"
+          className="inline-flex items-center justify-center bg-surface-container-high px-3 py-1.5 font-sans text-label-md font-medium text-on-surface md:hidden"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -58,7 +61,7 @@ export default function Navbar() {
       </div>
 
       {open ? (
-        <div id="mobile-menu" className="bg-surface-container-low">
+        <div id="mobile-menu" className="bg-surface-container-low hairline-t">
           <div className="mx-auto flex max-w-6xl flex-col gap-3 px-6 py-4 sm:px-10">
             {navLinks.map((link) => (
               <Link

@@ -73,7 +73,7 @@ export default function HowItWorksPage() {
             </div>
           </div>
           <div className="card p-4">
-            <div className="overflow-hidden rounded-lg bg-surface-container">
+            <div className="overflow-hidden bg-surface-container">
               <img
                 src="/demo-app.gif"
                 alt="SenseAgri AI demo dashboard preview"
@@ -144,7 +144,7 @@ export default function HowItWorksPage() {
               "Incident escalation workflows",
               "Structured data retention"
             ].map((item) => (
-              <div key={item} className="rounded-xl bg-surface-container px-6 py-4 font-sans text-title-sm text-on-surface-variant">
+              <div key={item} className="bg-surface-container px-6 py-4 font-sans text-title-sm text-on-surface-variant">
                 {item}
               </div>
             ))}

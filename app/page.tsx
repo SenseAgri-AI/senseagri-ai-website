@@ -70,48 +70,45 @@ export default function HomePage() {
   return (
     <div>
       {/* ─── Hero ─── */}
-      <section className="section-padding bg-hero-glow relative flex min-h-[70vh] items-center overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <svg
-            className="ambient-contours h-full w-full"
-            viewBox="0 0 1200 640"
-            fill="none"
-            preserveAspectRatio="xMidYMid slice"
-            aria-hidden="true"
-          >
-            <defs>
-              <linearGradient id="contour-grad" x1="0" y1="0" x2="1200" y2="0">
-                <stop offset="0%" stopColor="#00464f" stopOpacity="0.04" />
-                <stop offset="50%" stopColor="#005f6b" stopOpacity="0.38" />
-                <stop offset="100%" stopColor="#a7eefc" stopOpacity="0.10" />
-              </linearGradient>
-            </defs>
-            <path
-              className="contour-line"
-              d="M-50 160C180 100 360 220 600 160C840 100 980 210 1250 130"
-              stroke="url(#contour-grad)"
-              strokeWidth="1.2"
-            />
-            <path
-              className="contour-line delay-1"
-              d="M-40 300C220 240 420 340 680 300C940 260 1020 320 1250 280"
-              stroke="url(#contour-grad)"
-              strokeWidth="1.4"
-            />
-            <path
-              className="contour-line delay-2"
-              d="M-30 450C200 390 420 500 700 440C960 385 1080 470 1250 420"
-              stroke="url(#contour-grad)"
-              strokeWidth="1"
-            />
-          </svg>
-        </div>
-        <div className="relative mx-auto max-w-4xl">
-          <div className="space-y-8">
-            <h1 className="hero-reveal font-display text-display-sm font-medium text-on-surface sm:text-display-md">
+      <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-surface px-6 py-12 sm:px-10 lg:px-16">
+        {/* Video anchored to the right so the teal fills the right half */}
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ objectPosition: "10% center" }}
+          src="/Create_a_high-definition_anima_Kling_O3_08830.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+
+        {/* Opaque-left → transparent-right gradient — text side stays clean, video reveals fully on the right */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(248,250,250,1) 0%, rgba(248,250,250,0.97) 30%, rgba(248,250,250,0.7) 50%, rgba(248,250,250,0.15) 70%, transparent 88%)"
+          }}
+        />
+
+        {/* Blueprint grid — subtle, only reads on the lighter left */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(190,200,202,0.08) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(190,200,202,0.08) 0.5px, transparent 0.5px)",
+            backgroundSize: "24px 24px"
+          }}
+        />
+
+        {/* Content — left column, compact */}
+        <div className="relative z-10 w-full">
+          <div className="max-w-lg space-y-6">
+            <h1 className="hero-reveal font-display text-display-sm font-medium text-on-surface">
               AI + IoT for measurable poultry farm performance.
             </h1>
-            <p className="hero-reveal delay-1 max-w-2xl font-sans text-base text-on-surface-variant sm:text-lg">
+            <p className="hero-reveal delay-1 max-w-sm font-sans text-title-sm text-on-surface-variant">
               Real-time telemetry, welfare monitoring, and decision support built for South African poultry operations.
             </p>
             <div className="hero-reveal delay-2 flex flex-wrap gap-3">
@@ -120,7 +117,8 @@ export default function HomePage() {
                 See How It Works
               </Button>
             </div>
-            <div className="hero-reveal delay-3 flex justify-center sm:justify-start">
+            {/* Pyramid scaled down to 75% */}
+            <div className="hero-reveal delay-3 origin-left scale-75">
               <HeroPyramid />
             </div>
           </div>
@@ -134,10 +132,10 @@ export default function HomePage() {
             Built for South African farms
           </p>
           <div className="grid gap-3 font-sans text-title-sm text-on-surface-variant sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-xl bg-surface-container p-4">Agripak (placeholder)</div>
-            <div className="rounded-xl bg-surface-container p-4">LNX (placeholder)</div>
-            <div className="rounded-xl bg-surface-container p-4">PoultryCo (placeholder)</div>
-            <div className="rounded-xl bg-surface-container p-4">VitaFeed (placeholder)</div>
+            <div className="bg-surface-container p-4">Agripak (placeholder)</div>
+            <div className="bg-surface-container p-4">LNX (placeholder)</div>
+            <div className="bg-surface-container p-4">PoultryCo (placeholder)</div>
+            <div className="bg-surface-container p-4">VitaFeed (placeholder)</div>
           </div>
         </div>
       </section>
@@ -161,7 +159,7 @@ export default function HomePage() {
               "Labor constraints",
               "Delayed response to anomalies"
             ].map((item) => (
-              <div key={item} className="rounded-xl bg-surface-container-low px-5 py-4 font-sans text-title-sm text-on-surface-variant">
+              <div key={item} className="bg-surface-container-low px-5 py-4 font-sans text-title-sm text-on-surface-variant">
                 {item}
               </div>
             ))}
