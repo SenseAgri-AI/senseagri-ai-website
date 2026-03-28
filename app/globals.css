@@ -123,38 +123,64 @@ h1, h2, h3, h4 {
 .contour-line.delay-2 { animation-delay: 6s; }
 
 /* ─── Hero Pyramid ─── */
+/* Scale factor 3.2× from logomark spec (bottom pill 90→288px)       */
+/* Dot ∅44px · 45px gap · pills h=64px r=32px · 26px gaps            */
+/* Widths: top 134px · mid 224px · bot 288px                          */
 
 .pyramid-stack {
   --pyramid-progress: 1;
-  @apply relative h-48 w-72;
+  @apply relative w-72;
+  height: 340px;
 }
 
-.pyramid-block {
-  @apply absolute left-1/2 flex items-center justify-center rounded-[20px] shadow-ambient;
+/* Shared block transform — same formula drives dot + pills */
+.pyramid-block,
+.pyramid-dot {
+  @apply absolute left-1/2;
   transform: translateX(calc(-50% + (1 - var(--pyramid-progress)) * var(--shift)))
     translateY(calc((1 - var(--pyramid-progress)) * var(--lift)));
   transition: transform 0.8s ease;
 }
 
-/* Intelligence layer: muted gold (tertiary palette) */
-.pyramid-top {
-  @apply h-12 w-40 text-on-surface;
-  background: linear-gradient(135deg, rgba(234, 227, 191, 0.98), rgba(92, 84, 51, 0.55));
+.pyramid-block {
+  @apply flex items-center justify-center shadow-ambient;
+  border-radius: 32px;
+}
+
+/* Dot — primary teal solid */
+.pyramid-dot {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #00464f;
   top: 0;
 }
 
-/* Telemetry layer: petrol teal (primary palette) */
-.pyramid-middle {
-  @apply h-14 w-52 text-on-primary;
-  background: linear-gradient(135deg, rgba(0, 70, 79, 0.92), rgba(0, 95, 107, 0.70));
-  top: 54px;
+/* Intelligence layer: muted gold */
+.pyramid-top {
+  @apply text-on-surface;
+  width: 134px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(234, 227, 191, 0.98), rgba(92, 84, 51, 0.55));
+  top: 89px;
 }
 
-/* Sensing layer: deep dark-to-teal */
+/* Telemetry layer: petrol teal */
+.pyramid-middle {
+  @apply text-on-primary;
+  width: 224px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(0, 70, 79, 0.92), rgba(0, 95, 107, 0.70));
+  top: 179px;
+}
+
+/* Sensing layer: dark-to-teal */
 .pyramid-bottom {
-  @apply h-16 w-72 text-on-primary;
+  @apply text-on-primary;
+  width: 288px;
+  height: 64px;
   background: linear-gradient(135deg, rgba(25, 28, 29, 0.96), rgba(0, 70, 79, 0.80));
-  top: 116px;
+  top: 269px;
 }
 
 .pyramid-block-content {
@@ -215,7 +241,8 @@ h1, h2, h3, h4 {
     animation: none;
   }
 
-  .pyramid-block {
+  .pyramid-block,
+  .pyramid-dot {
     transition: none;
     transform: translateX(-50%);
   }
