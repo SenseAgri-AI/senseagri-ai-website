@@ -52,10 +52,10 @@ export default function HeroPyramid() {
   return (
     <div ref={containerRef} className="pyramid-stack" aria-hidden="true">
 
-      {/* Dot — top of the mark, descends from above */}
+      {/* Dot — slides in from the right */}
       <div
         className="pyramid-dot"
-        style={{ "--shift": "0px", "--lift": "-80px" } as StyleWithVar}
+        style={{ "--shift": "160px", "--lift": "0px" } as StyleWithVar}
       />
 
       {/* Top pill — Intelligence (muted gold) */}
