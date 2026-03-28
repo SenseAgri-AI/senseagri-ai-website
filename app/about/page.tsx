@@ -40,23 +40,23 @@ export default function AboutPage() {
       </section>
 
       <section className="section-padding">
-        <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1fr_1fr]">
-          <div className="card p-6">
-            <h3 className="text-xl font-semibold text-charcoal-900">Mission</h3>
-            <p className="mt-4 text-sm text-charcoal-600">
+        <div className="mx-auto max-w-6xl grid gap-6 lg:grid-cols-[1fr_1fr]">
+          <div className="card px-8 py-8">
+            <h3 className="font-display text-title-lg font-medium text-on-surface">Mission</h3>
+            <p className="mt-4 font-sans text-title-sm text-on-surface-variant">
               Deliver IoT + AI decision support that helps poultry farms improve welfare, reduce losses, and protect margins.
             </p>
           </div>
-          <div className="card p-6">
-            <h3 className="text-xl font-semibold text-charcoal-900">South African focus</h3>
-            <p className="mt-4 text-sm text-charcoal-600">
+          <div className="card px-8 py-8">
+            <h3 className="font-display text-title-lg font-medium text-on-surface">South African focus</h3>
+            <p className="mt-4 font-sans text-title-sm text-on-surface-variant">
               We design for load shedding, rural connectivity, and the operational realities of local farms and integrators.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-forest-50">
+      <section className="section-padding bg-surface-container-low">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Team"
@@ -69,10 +69,12 @@ export default function AboutPage() {
               "Head of Data & AI",
               "Field Operations Lead"
             ].map((role) => (
-              <div key={role} className="card p-6">
-                <div className="h-16 w-16 rounded-full bg-forest-100" />
-                <h3 className="mt-4 text-lg font-semibold text-charcoal-900">{role}</h3>
-                <p className="mt-2 text-sm text-charcoal-600">Short bio placeholder and relevant experience.</p>
+              <div key={role} className="card px-8 py-8">
+                <div className="h-16 w-16 rounded-full bg-surface-container" />
+                <h3 className="mt-5 font-display text-title-md font-medium text-on-surface">{role}</h3>
+                <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
+                  Short bio placeholder and relevant experience.
+                </p>
               </div>
             ))}
           </div>
@@ -86,11 +88,11 @@ export default function AboutPage() {
             title="What guides the product and partnership."
             subtitle="We prioritize practical outcomes and long-term trust with farm teams."
           />
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
             {values.map((value) => (
-              <div key={value.title} className="card p-6">
-                <h3 className="text-lg font-semibold text-charcoal-900">{value.title}</h3>
-                <p className="mt-2 text-sm text-charcoal-600">{value.desc}</p>
+              <div key={value.title} className="card px-8 py-7">
+                <h3 className="font-display text-title-md font-medium text-on-surface">{value.title}</h3>
+                <p className="mt-2 font-sans text-title-sm text-on-surface-variant">{value.desc}</p>
               </div>
             ))}
           </div>

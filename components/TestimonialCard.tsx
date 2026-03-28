@@ -10,11 +10,11 @@ export default function TestimonialCard({
   company: string;
 }) {
   return (
-    <div className="card flex h-full flex-col gap-5 p-6">
-      <p className="text-sm text-charcoal-700">“{quote}”</p>
+    <div className="card flex h-full flex-col gap-6 px-8 py-8">
+      <p className="font-sans text-title-sm text-on-surface-variant">"{quote}"</p>
       <div>
-        <p className="text-sm font-semibold text-charcoal-900">{name}</p>
-        <p className="text-xs text-charcoal-500">
+        <p className="font-display text-title-sm font-medium text-on-surface">{name}</p>
+        <p className="mt-1 font-label text-label-md text-outline-variant">
           {role} · {company}
         </p>
       </div>

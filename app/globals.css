@@ -11,51 +11,106 @@
 }
 
 body {
-  @apply bg-offwhite text-charcoal-800 font-sans antialiased;
+  @apply bg-surface text-on-surface font-sans antialiased;
 }
 
 h1, h2, h3, h4 {
-  @apply font-sans text-charcoal-900;
+  @apply font-display text-on-surface;
 }
+
+/* ─── Layout ─── */
 
 .section-padding {
   @apply px-6 py-16 sm:px-10 lg:px-16;
 }
 
+/* ─── Cards ─── */
+
+/* No border, no dividers. Depth through tone + ambient shadow. */
 .card {
-  @apply rounded-2xl border border-charcoal-100 bg-forest-50 shadow-soft transition-transform duration-300 ease-out hover:-translate-y-1 hover:shadow-glow;
+  @apply rounded-xl bg-surface-container-lowest shadow-ambient transition-shadow duration-300 ease-out hover:shadow-float;
   will-change: transform;
 }
 
+/* ─── Badges / Eyebrows ─── */
+
 .badge {
-  @apply inline-flex items-center gap-2 rounded-full border border-forest-200 bg-forest-50 px-3 py-1 text-xs font-semibold text-forest-700;
+  @apply inline-flex items-center gap-2 rounded-full bg-surface-container px-3 py-1 font-label text-label-md font-medium text-primary;
 }
 
+/* ─── Links ─── */
+
+/* Underline appears only on hover — never a standing decoration */
 .link-underline {
-  @apply relative inline-flex items-center font-semibold text-forest-700;
+  @apply relative inline-flex items-center font-medium text-primary;
 }
 
 .link-underline::after {
   content: "";
-  @apply absolute -bottom-1 left-0 h-px w-full bg-forest-400;
+  @apply absolute -bottom-px left-0 h-[2px] w-full origin-left scale-x-0 bg-primary transition-transform duration-200 ease-out;
 }
 
-.gradient-border {
-  background: linear-gradient(135deg, rgba(53, 90, 58, 0.4), rgba(224, 106, 45, 0.3));
-  padding: 1px;
-  border-radius: 999px;
+.link-underline:hover::after {
+  @apply scale-x-100;
 }
 
+/* ─── Glassmorphism ─── */
+
+/* For floating overlays: modals, tooltips, CTA panels */
 .glass-panel {
-  @apply rounded-3xl border border-charcoal-100 bg-offwhite/80 shadow-glow backdrop-blur;
+  @apply rounded-2xl bg-surface-container-lowest/80 shadow-float backdrop-blur-[20px];
 }
+
+/* ─── Input fields ─── */
+
+/* No four-sided box. Surface tonal background + 2px bottom stroke only. */
+.input-field {
+  @apply w-full rounded-md border-0 border-b-2 border-outline-variant bg-surface-container-low
+    px-3 py-2.5 font-sans text-title-sm text-on-surface outline-none transition-all duration-200
+    placeholder:text-on-surface-variant/60;
+}
+
+.input-field:focus {
+  @apply border-primary shadow-[0_0_0_4px_rgba(167,238,252,0.28)];
+}
+
+/* ─── Status chip ─── */
 
 .status-chip {
-  @apply inline-flex items-center gap-2 rounded-full border border-charcoal-200 bg-offwhite/80 px-3 py-1 text-xs font-semibold text-charcoal-600;
+  @apply inline-flex items-center gap-2 rounded-full bg-surface-container px-3 py-1 font-label text-label-md font-medium text-on-surface-variant;
 }
 
+/* ─── AI Specialised Components ─── */
+
+/* The "Sense-Line": pulsing 1px vertical tertiary-fixed gradient */
+.sense-line {
+  @apply relative w-px overflow-hidden;
+  background: linear-gradient(180deg, transparent 0%, #eae3bf 50%, transparent 100%);
+  animation: sense-pulse 3s ease-in-out infinite;
+}
+
+/* Data callouts: muted gold label for confidence scores / sensor health */
+.data-callout {
+  @apply font-label text-label-sm font-medium uppercase tracking-widest text-tertiary;
+}
+
+/* ─── Hero animations ─── */
+
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: hero-reveal 0.9s ease-out forwards;
+}
+
+.hero-reveal.delay-1 { animation-delay: 0.1s; }
+.hero-reveal.delay-2 { animation-delay: 0.2s; }
+.hero-reveal.delay-3 { animation-delay: 0.3s; }
+.hero-reveal.delay-4 { animation-delay: 0.4s; }
+
+/* ─── Contour lines (hero ambient SVG) ─── */
+
 .ambient-contours {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
 .contour-line {
@@ -64,35 +119,10 @@ h1, h2, h3, h4 {
   animation: contour-drift 20s linear infinite;
 }
 
-.contour-line.delay-1 {
-  animation-delay: 3s;
-}
+.contour-line.delay-1 { animation-delay: 3s; }
+.contour-line.delay-2 { animation-delay: 6s; }
 
-.contour-line.delay-2 {
-  animation-delay: 6s;
-}
-
-.hero-reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  animation: hero-reveal 0.9s ease-out forwards;
-}
-
-.hero-reveal.delay-1 {
-  animation-delay: 0.1s;
-}
-
-.hero-reveal.delay-2 {
-  animation-delay: 0.2s;
-}
-
-.hero-reveal.delay-3 {
-  animation-delay: 0.3s;
-}
-
-.hero-reveal.delay-4 {
-  animation-delay: 0.4s;
-}
+/* ─── Hero Pyramid ─── */
 
 .pyramid-stack {
   --pyramid-progress: 1;
@@ -100,38 +130,40 @@ h1, h2, h3, h4 {
 }
 
 .pyramid-block {
-  @apply absolute left-1/2 flex items-center justify-center rounded-[26px] border border-charcoal-100 shadow-soft;
+  @apply absolute left-1/2 flex items-center justify-center rounded-[20px] shadow-ambient;
   transform: translateX(calc(-50% + (1 - var(--pyramid-progress)) * var(--shift)))
     translateY(calc((1 - var(--pyramid-progress)) * var(--lift)));
   transition: transform 0.8s ease;
 }
 
+/* Intelligence layer: muted gold (tertiary palette) */
 .pyramid-top {
-  @apply h-12 w-40;
-  background: linear-gradient(135deg, rgba(224, 106, 45, 0.95), rgba(224, 106, 45, 0.65));
+  @apply h-12 w-40 text-on-surface;
+  background: linear-gradient(135deg, rgba(234, 227, 191, 0.98), rgba(92, 84, 51, 0.55));
   top: 0;
-  @apply text-charcoal-900;
 }
 
+/* Telemetry layer: petrol teal (primary palette) */
 .pyramid-middle {
-  @apply h-14 w-52;
-  background: linear-gradient(135deg, rgba(111, 143, 115, 0.85), rgba(53, 90, 58, 0.6));
+  @apply h-14 w-52 text-on-primary;
+  background: linear-gradient(135deg, rgba(0, 70, 79, 0.92), rgba(0, 95, 107, 0.70));
   top: 54px;
-  @apply text-offwhite;
 }
 
+/* Sensing layer: deep dark-to-teal */
 .pyramid-bottom {
-  @apply h-16 w-72;
-  background: linear-gradient(135deg, rgba(47, 74, 47, 0.9), rgba(47, 74, 47, 0.65));
+  @apply h-16 w-72 text-on-primary;
+  background: linear-gradient(135deg, rgba(25, 28, 29, 0.96), rgba(0, 70, 79, 0.80));
   top: 116px;
-  @apply text-offwhite;
 }
 
 .pyramid-block-content {
-  @apply flex items-center gap-2 text-[12px] font-semibold uppercase tracking-[0.18em];
+  @apply flex items-center gap-2 font-label text-label-sm font-medium uppercase tracking-[0.16em];
   opacity: var(--pyramid-progress);
   transition: opacity 0.5s ease;
 }
+
+/* ─── Data-flow animations ─── */
 
 .data-flow path {
   stroke-dasharray: 6 10;
@@ -153,30 +185,33 @@ h1, h2, h3, h4 {
   transform: translateY(-2px) scale(1.02);
 }
 
+/* ─── Keyframes ─── */
+
 @keyframes flow-dash {
-  to {
-    stroke-dashoffset: -220;
-  }
+  to { stroke-dashoffset: -220; }
 }
 
 @keyframes contour-drift {
-  to {
-    stroke-dashoffset: -320;
-  }
+  to { stroke-dashoffset: -320; }
 }
 
 @keyframes hero-reveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  to { opacity: 1; transform: translateY(0); }
 }
+
+@keyframes sense-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ─── Reduced motion ─── */
 
 @media (prefers-reduced-motion: reduce) {
   .contour-line,
   .hero-reveal,
   .data-flow path,
-  .arch-flow path {
+  .arch-flow path,
+  .sense-line {
     animation: none;
   }
 

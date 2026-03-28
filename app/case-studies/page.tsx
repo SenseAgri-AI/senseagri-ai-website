@@ -48,18 +48,21 @@ export default function CaseStudiesPage() {
       <section className="section-padding">
         <div className="mx-auto max-w-6xl grid gap-6 md:grid-cols-3">
           {caseStudies.map((item) => (
-            <div key={item.location} className="card flex h-full flex-col p-6">
-              <p className="text-xs font-semibold text-charcoal-500">{item.location}</p>
-              <h3 className="mt-3 text-lg font-semibold text-charcoal-900">{item.farmType}</h3>
-              <div className="mt-4 space-y-3 text-sm text-charcoal-600">
+            <div key={item.location} className="card flex h-full flex-col px-8 py-8">
+              <p className="data-callout">{item.location}</p>
+              <h3 className="mt-3 font-display text-title-md font-medium text-on-surface">{item.farmType}</h3>
+              <div className="mt-5 space-y-4 font-sans text-title-sm text-on-surface-variant">
                 <p>
-                  <span className="font-semibold text-charcoal-800">Problem:</span> {item.problem}
+                  <span className="font-medium text-on-surface">Problem:</span>{" "}
+                  {item.problem}
                 </p>
                 <p>
-                  <span className="font-semibold text-charcoal-800">Deployment:</span> {item.deployment}
+                  <span className="font-medium text-on-surface">Deployment:</span>{" "}
+                  {item.deployment}
                 </p>
                 <p>
-                  <span className="font-semibold text-charcoal-800">Outcome:</span> {item.outcome}
+                  <span className="font-medium text-on-surface">Outcome:</span>{" "}
+                  {item.outcome}
                 </p>
               </div>
             </div>
@@ -67,17 +70,21 @@ export default function CaseStudiesPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-forest-50">
-        <div className="mx-auto max-w-6xl card p-8 md:flex md:items-center md:justify-between">
-          <div>
-            <h3 className="text-2xl font-semibold text-charcoal-900">Interested in becoming a pilot site?</h3>
-            <p className="mt-3 text-sm text-charcoal-600">
-              We onboard a small number of farms each quarter to keep pilots high-touch and measurable.
-            </p>
+      <section className="section-padding bg-surface-container-low">
+        <div className="mx-auto max-w-6xl">
+          <div className="card px-10 py-10 md:flex md:items-center md:justify-between md:gap-10">
+            <div>
+              <h3 className="font-display text-display-sm font-medium text-on-surface">
+                Interested in becoming a pilot site?
+              </h3>
+              <p className="mt-3 font-sans text-title-sm text-on-surface-variant">
+                We onboard a small number of farms each quarter to keep pilots high-touch and measurable.
+              </p>
+            </div>
+            <div className="mt-6 shrink-0 md:mt-0">
+              <Button href="/contact">Register pilot interest</Button>
+            </div>
           </div>
-          <Button href="/contact" className="mt-6 md:mt-0">
-            Register pilot interest
-          </Button>
         </div>
       </section>
     </div>

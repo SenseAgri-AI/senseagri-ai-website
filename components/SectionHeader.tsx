@@ -15,10 +15,15 @@ export default function SectionHeader({
 
   return (
     <div className={`max-w-3xl ${alignment}`}>
-      {eyebrow ? <p className="badge mb-4">{eyebrow}</p> : null}
-      <h2 className="text-3xl font-light sm:text-4xl">{title}</h2>
+      {eyebrow ? (
+        <p className="badge mb-5">{eyebrow}</p>
+      ) : null}
+      {/* Manrope display font, font-medium — size creates hierarchy, not weight */}
+      <h2 className="font-display text-display-sm font-medium text-on-surface sm:text-display-md">
+        {title}
+      </h2>
       {subtitle ? (
-        <p className="mt-4 text-base text-charcoal-600 sm:text-lg">
+        <p className="mt-4 font-sans text-title-sm text-on-surface-variant sm:text-base">
           {subtitle}
         </p>
       ) : null}

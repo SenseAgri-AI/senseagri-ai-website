@@ -2,12 +2,16 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forest-400 focus-visible:ring-offset-2 focus-visible:ring-offset-offwhite";
+  "inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 font-sans text-title-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-surface";
 
 const variants = {
-  primary: "bg-forest-700 text-offwhite hover:bg-forest-600",
-  secondary: "bg-forest-50 text-forest-700 ring-1 ring-forest-200 hover:bg-forest-100",
-  ghost: "text-forest-700 hover:bg-forest-50"
+  // 135° gradient: primary → primary-container. No border.
+  primary: "bg-btn-primary text-on-primary hover:opacity-90",
+  // Tonal fill. No border.
+  secondary: "bg-surface-container-high text-on-surface hover:bg-surface-container-highest",
+  // Text-only. 2px underline visible on hover only.
+  ghost:
+    "relative text-primary after:absolute after:-bottom-px after:left-0 after:h-[2px] after:w-full after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-200 hover:after:scale-x-100"
 };
 
 type ButtonProps = {

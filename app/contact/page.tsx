@@ -24,23 +24,23 @@ export default function ContactPage() {
 
       <section className="section-padding">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="card p-6">
-            <h3 className="text-xl font-semibold text-charcoal-900">Start the conversation</h3>
-            <p className="mt-2 text-sm text-charcoal-600">
+          <div className="card px-10 py-10">
+            <h3 className="font-display text-title-lg font-medium text-on-surface">Start the conversation</h3>
+            <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
               Fields marked with * are required. We use this to scope a pilot that fits your operation.
             </p>
-            <div className="mt-6">
+            <div className="mt-8">
               <ContactForm />
             </div>
           </div>
           <div className="space-y-6">
-            <div className="card p-6">
-              <h3 className="text-xl font-semibold text-charcoal-900">Book a call</h3>
-              <p className="mt-2 text-sm text-charcoal-600">
+            <div className="card px-8 py-8">
+              <h3 className="font-display text-title-md font-medium text-on-surface">Book a call</h3>
+              <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
                 Add your scheduling link below. Replace with your calendar URL.
               </p>
               <a
-                className="link-underline mt-4"
+                className="link-underline mt-5 inline-flex"
                 href="https://cal.com/placeholder"
                 target="_blank"
                 rel="noreferrer"
@@ -48,10 +48,12 @@ export default function ContactPage() {
                 Schedule a time (placeholder)
               </a>
             </div>
-            <div className="card p-6">
-              <h3 className="text-xl font-semibold text-charcoal-900">Contact details</h3>
-              <p className="mt-2 text-sm text-charcoal-600">Replace with your current contact details.</p>
-              <div className="mt-4 space-y-2 text-sm text-charcoal-600">
+            <div className="card px-8 py-8">
+              <h3 className="font-display text-title-md font-medium text-on-surface">Contact details</h3>
+              <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
+                Replace with your current contact details.
+              </p>
+              <div className="mt-5 space-y-2.5 font-sans text-title-sm text-on-surface-variant">
                 <p>Email: {siteConfig.links.email}</p>
                 <p>Phone: {siteConfig.links.phone}</p>
                 <p>Address: {siteConfig.links.address}</p>

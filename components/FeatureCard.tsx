@@ -11,11 +11,12 @@ export default function FeatureCard({
   icon: ReactNode;
 }) {
   return (
-    <div className="card group flex h-full flex-col gap-4 p-6">
+    // Asymmetric padding: 2rem top/bottom, 2.75rem sides — bespoke editorial feel
+    <div className="card group flex h-full flex-col gap-5 px-11 py-8">
       <IconWrapper className="icon-animate">{icon}</IconWrapper>
       <div>
-        <h3 className="text-lg font-semibold text-charcoal-900">{title}</h3>
-        <p className="mt-2 text-sm text-charcoal-600">{description}</p>
+        <h3 className="font-display text-title-md font-medium text-on-surface">{title}</h3>
+        <p className="mt-2 font-sans text-title-sm text-on-surface-variant">{description}</p>
       </div>
     </div>
   );

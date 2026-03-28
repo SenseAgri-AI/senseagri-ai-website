@@ -14,17 +14,18 @@ export default function PricingCard({
   highlight?: boolean;
 }) {
   return (
-    <div className={`card flex h-full flex-col p-6 ${highlight ? "ring-2 ring-forest-500" : ""}`}>
-      <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-charcoal-900">{title}</h3>
+    // Highlighted card: subtle primary teal tint on the card top edge, no ring border
+    <div className={`card flex h-full flex-col px-8 py-8 ${highlight ? "border-t-2 border-primary" : ""}`}>
+      <div className="flex items-center justify-between gap-3">
+        <h3 className="font-display text-title-md font-medium text-on-surface">{title}</h3>
         {highlight ? <span className="badge">Most chosen</span> : null}
       </div>
-      <p className="mt-3 text-2xl font-semibold text-charcoal-900">{price}</p>
-      <p className="mt-2 text-sm text-charcoal-600">{description}</p>
-      <ul className="mt-5 space-y-2 text-sm text-charcoal-600">
+      <p className="mt-4 font-display text-display-sm font-medium text-on-surface">{price}</p>
+      <p className="mt-2 font-sans text-title-sm text-on-surface-variant">{description}</p>
+      <ul className="mt-6 space-y-3 font-sans text-title-sm text-on-surface-variant">
         {features.map((feature) => (
-          <li key={feature} className="flex items-start gap-2">
-            <CheckIcon className="mt-0.5 h-4 w-4 text-forest-600" />
+          <li key={feature} className="flex items-start gap-2.5">
+            <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
             <span>{feature}</span>
           </li>
         ))}

@@ -64,7 +64,7 @@ export default function SolutionPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-forest-50">
+      <section className="section-padding bg-surface-container-low">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Data pipeline"
@@ -86,14 +86,14 @@ export default function SolutionPage() {
                 desc: "Buffered data syncs to analytics dashboards and weekly reports."
               }
             ].map((item, index) => (
-              <div key={item.title} className="card p-6">
-                <p className="text-xs font-semibold text-charcoal-500">Stage {index + 1}</p>
-                <h3 className="mt-3 text-lg font-semibold text-charcoal-900">{item.title}</h3>
-                <p className="mt-2 text-sm text-charcoal-600">{item.desc}</p>
+              <div key={item.title} className="card px-8 py-8">
+                <p className="data-callout">Stage {index + 1}</p>
+                <h3 className="mt-3 font-display text-title-md font-medium text-on-surface">{item.title}</h3>
+                <p className="mt-2 font-sans text-title-sm text-on-surface-variant">{item.desc}</p>
               </div>
             ))}
           </div>
-          <div className="mt-6 flex flex-wrap items-center gap-3 text-xs text-charcoal-500">
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <span className="badge">Offline buffering</span>
             <span className="badge">Encrypted transport</span>
             <span className="badge">Role-based access</span>
@@ -109,9 +109,9 @@ export default function SolutionPage() {
             subtitle="Each pilot kit is sized for your house layout and connectivity requirements."
           />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            <div className="card p-6">
-              <h3 className="text-lg font-semibold text-charcoal-900">Included hardware</h3>
-              <ul className="mt-4 space-y-2 text-sm text-charcoal-600">
+            <div className="card px-8 py-8">
+              <h3 className="font-display text-title-md font-medium text-on-surface">Included hardware</h3>
+              <ul className="mt-5 space-y-3 font-sans text-title-sm text-on-surface-variant">
                 <li>LoRaWAN gateway (placeholder brand)</li>
                 <li>Environmental sensors (temp, humidity, optional NH3/CO2)</li>
                 <li>PoE cameras for activity tracking</li>
@@ -119,9 +119,9 @@ export default function SolutionPage() {
                 <li>Mounting kits, cabling, and setup</li>
               </ul>
             </div>
-            <div className="card p-6">
-              <h3 className="text-lg font-semibold text-charcoal-900">Operations deliverables</h3>
-              <ul className="mt-4 space-y-2 text-sm text-charcoal-600">
+            <div className="card px-8 py-8">
+              <h3 className="font-display text-title-md font-medium text-on-surface">Operations deliverables</h3>
+              <ul className="mt-5 space-y-3 font-sans text-title-sm text-on-surface-variant">
                 <li>Daily alert coverage and response timeline</li>
                 <li>Weekly performance report and recommendations</li>
                 <li>Benchmarking against historical cycles</li>

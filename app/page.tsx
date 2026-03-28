@@ -69,6 +69,7 @@ const faqs = [
 export default function HomePage() {
   return (
     <div>
+      {/* ─── Hero ─── */}
       <section className="section-padding bg-hero-glow relative flex min-h-[70vh] items-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <svg
@@ -79,38 +80,38 @@ export default function HomePage() {
             aria-hidden="true"
           >
             <defs>
-              <linearGradient id="contour-line" x1="0" y1="0" x2="1200" y2="0">
-                <stop offset="0%" stopColor="#2F4A2F" stopOpacity="0.05" />
-                <stop offset="50%" stopColor="#6F8F73" stopOpacity="0.45" />
-                <stop offset="100%" stopColor="#E06A2D" stopOpacity="0.12" />
+              <linearGradient id="contour-grad" x1="0" y1="0" x2="1200" y2="0">
+                <stop offset="0%" stopColor="#00464f" stopOpacity="0.04" />
+                <stop offset="50%" stopColor="#005f6b" stopOpacity="0.38" />
+                <stop offset="100%" stopColor="#a7eefc" stopOpacity="0.10" />
               </linearGradient>
             </defs>
             <path
               className="contour-line"
               d="M-50 160C180 100 360 220 600 160C840 100 980 210 1250 130"
-              stroke="url(#contour-line)"
+              stroke="url(#contour-grad)"
               strokeWidth="1.2"
             />
             <path
               className="contour-line delay-1"
               d="M-40 300C220 240 420 340 680 300C940 260 1020 320 1250 280"
-              stroke="url(#contour-line)"
+              stroke="url(#contour-grad)"
               strokeWidth="1.4"
             />
             <path
               className="contour-line delay-2"
               d="M-30 450C200 390 420 500 700 440C960 385 1080 470 1250 420"
-              stroke="url(#contour-line)"
+              stroke="url(#contour-grad)"
               strokeWidth="1"
             />
           </svg>
         </div>
         <div className="relative mx-auto max-w-4xl">
           <div className="space-y-8">
-            <h1 className="hero-reveal text-4xl font-light sm:text-6xl">
+            <h1 className="hero-reveal font-display text-display-sm font-medium text-on-surface sm:text-display-md">
               AI + IoT for measurable poultry farm performance.
             </h1>
-            <p className="hero-reveal delay-1 max-w-2xl text-base text-charcoal-600 sm:text-lg">
+            <p className="hero-reveal delay-1 max-w-2xl font-sans text-base text-on-surface-variant sm:text-lg">
               Real-time telemetry, welfare monitoring, and decision support built for South African poultry operations.
             </p>
             <div className="hero-reveal delay-2 flex flex-wrap gap-3">
@@ -126,28 +127,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-padding">
+      {/* ─── Partners ─── */}
+      <section className="section-padding bg-surface-container-low">
         <div className="mx-auto flex max-w-6xl flex-col gap-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-charcoal-400">
+          <p className="font-label text-label-md font-medium uppercase tracking-[0.3em] text-outline-variant">
             Built for South African farms
           </p>
-          <div className="grid gap-3 text-sm text-charcoal-500 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-xl border border-charcoal-100 bg-forest-50 p-4">Agripak (placeholder)</div>
-            <div className="rounded-xl border border-charcoal-100 bg-forest-50 p-4">LNX (placeholder)</div>
-            <div className="rounded-xl border border-charcoal-100 bg-forest-50 p-4">PoultryCo (placeholder)</div>
-            <div className="rounded-xl border border-charcoal-100 bg-forest-50 p-4">VitaFeed (placeholder)</div>
+          <div className="grid gap-3 font-sans text-title-sm text-on-surface-variant sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-xl bg-surface-container p-4">Agripak (placeholder)</div>
+            <div className="rounded-xl bg-surface-container p-4">LNX (placeholder)</div>
+            <div className="rounded-xl bg-surface-container p-4">PoultryCo (placeholder)</div>
+            <div className="rounded-xl bg-surface-container p-4">VitaFeed (placeholder)</div>
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-section-fade">
+      {/* ─── Problem ─── */}
+      <section className="section-padding">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <SectionHeader
             eyebrow="The operational reality"
             title="The cost of small issues adds up fast."
             subtitle="Feed price volatility, temperature swings, power outages, and labor pressure all stack up. Without continuous visibility, farms absorb the losses."
           />
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2">
             {[
               "Feed cost inefficiency",
               "Mortality spikes",
@@ -158,7 +161,7 @@ export default function HomePage() {
               "Labor constraints",
               "Delayed response to anomalies"
             ].map((item) => (
-              <div key={item} className="card p-4 text-sm text-charcoal-700">
+              <div key={item} className="rounded-xl bg-surface-container-low px-5 py-4 font-sans text-title-sm text-on-surface-variant">
                 {item}
               </div>
             ))}
@@ -166,7 +169,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-padding">
+      {/* ─── Solution pillars ─── */}
+      <section className="section-padding bg-surface-container-low">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Solution pillars"
@@ -193,14 +197,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-padding bg-forest-50">
+      {/* ─── Outcomes ─── */}
+      <section className="section-padding">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Measured outcomes"
             title="Operational gains you can quantify."
             subtitle="Our pilots focus on tangible KPIs within 30 days so you can validate ROI before scaling."
           />
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {[
               "Reduce mortality",
               "Improve FCR",
@@ -208,7 +213,7 @@ export default function HomePage() {
               "Lower energy waste",
               "Compliance-ready reporting"
             ].map((item) => (
-              <div key={item} className="card p-4 text-center text-sm font-semibold text-charcoal-800">
+              <div key={item} className="card px-5 py-6 text-center font-sans text-title-sm font-medium text-on-surface">
                 {item}
               </div>
             ))}
@@ -216,7 +221,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-padding">
+      {/* ─── Process ─── */}
+      <section className="section-padding bg-surface-container-low">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Closed-loop workflow"
@@ -231,10 +237,10 @@ export default function HomePage() {
               "Recommend",
               "Verify"
             ].map((step, index) => (
-              <div key={step} className="card p-4">
-                <p className="text-xs font-semibold text-charcoal-500">Step {index + 1}</p>
-                <p className="mt-2 text-sm font-semibold text-charcoal-900">{step}</p>
-                <p className="mt-2 text-xs text-charcoal-600">
+              <div key={step} className="card px-6 py-6">
+                <p className="data-callout">Step {index + 1}</p>
+                <p className="mt-2 font-display text-title-sm font-medium text-on-surface">{step}</p>
+                <p className="mt-2 font-sans text-label-md text-on-surface-variant">
                   {index === 0 && "Hardware setup and baseline capture."}
                   {index === 1 && "Threshold tuning with your team."}
                   {index === 2 && "Live telemetry and anomaly tracking."}
@@ -247,7 +253,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-padding bg-forest-50">
+      {/* ─── Modules ─── */}
+      <section className="section-padding">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Modules"
@@ -289,7 +296,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-padding">
+      {/* ─── Testimonials ─── */}
+      <section className="section-padding bg-surface-container-low">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="Pilot stories"
@@ -316,13 +324,16 @@ export default function HomePage() {
               company="Regional Agribusiness"
             />
           </div>
-          <div className="mt-8 text-sm text-charcoal-600">
-            Pilot program available now. <Link className="link-underline" href="/contact">Book a call</Link> to reserve a slot.
+          <div className="mt-8 font-sans text-title-sm text-on-surface-variant">
+            Pilot program available now.{" "}
+            <Link className="link-underline" href="/contact">Book a call</Link>
+            {" "}to reserve a slot.
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-forest-50">
+      {/* ─── FAQ ─── */}
+      <section className="section-padding">
         <div className="mx-auto max-w-6xl">
           <SectionHeader
             eyebrow="FAQ"

@@ -17,11 +17,12 @@ export default function CTASection({
 }) {
   return (
     <section className="section-padding">
-      <div className="glass-panel px-6 py-10 sm:px-10">
-        <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
+      {/* Glassmorphism: surface-container-lowest at 80% opacity, backdrop-blur 20px */}
+      <div className="glass-panel px-10 py-12 sm:px-16">
+        <div className="flex flex-col items-start gap-8 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
-            <h2 className="text-3xl font-light sm:text-4xl">{title}</h2>
-            <p className="mt-3 text-sm text-charcoal-600 sm:text-base">
+            <h2 className="font-display text-display-sm font-medium text-on-surface">{title}</h2>
+            <p className="mt-3 font-sans text-title-sm text-on-surface-variant sm:text-base">
               {subtitle}
             </p>
           </div>
