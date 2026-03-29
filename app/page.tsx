@@ -1,21 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Button from "@/components/Button";
-import CTASection from "@/components/CTASection";
-import FeatureCard from "@/components/FeatureCard";
+import SolutionScroll from "@/components/SolutionScroll";
+import OutcomesSection from "@/components/OutcomesSection";
 import FAQAccordion from "@/components/FAQAccordion";
-import HeroPyramid from "@/components/HeroPyramid";
 import SectionHeader from "@/components/SectionHeader";
 import TestimonialCard from "@/components/TestimonialCard";
-import {
-  AlertIcon,
-  BoltIcon,
-  CameraIcon,
-  ChartIcon,
-  CloudIcon,
-  LeafIcon,
-  SignalIcon
-} from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -70,8 +59,8 @@ export default function HomePage() {
   return (
     <div>
       {/* ─── Hero ─── */}
-      <section className="relative flex min-h-[60vh] items-center overflow-hidden bg-surface px-6 py-12 sm:px-10 lg:px-16">
-        {/* Video anchored to the right so the teal fills the right half */}
+      <section className="relative flex min-h-[75vh] items-center overflow-hidden bg-surface px-6 py-16 sm:px-10 lg:px-16">
+        {/* Full-bleed video — no gradient, video is the background */}
         <video
           className="absolute inset-0 h-full w-full object-cover"
           style={{ objectPosition: "10% center" }}
@@ -83,216 +72,109 @@ export default function HomePage() {
           aria-hidden="true"
         />
 
-        {/* Opaque-left → transparent-right gradient — text side stays clean, video reveals fully on the right */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(248,250,250,1) 0%, rgba(248,250,250,0.97) 30%, rgba(248,250,250,0.7) 50%, rgba(248,250,250,0.15) 70%, transparent 88%)"
-          }}
-        />
+        {/* Dark veil — just enough to keep text legible without washing out the video */}
+        <div className="absolute inset-0 pointer-events-none bg-secondary/40" />
 
-        {/* Blueprint grid — subtle, only reads on the lighter left */}
+        {/* Blueprint grid */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(190,200,202,0.08) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(190,200,202,0.08) 0.5px, transparent 0.5px)",
+              "linear-gradient(to right, rgba(42,142,154,0.07) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(42,142,154,0.07) 0.5px, transparent 0.5px)",
             backgroundSize: "24px 24px"
           }}
         />
 
-        {/* Content — left column, compact */}
+        {/* Content */}
         <div className="relative z-10 w-full">
-          <div className="max-w-lg space-y-6">
-            <h1 className="hero-reveal font-display text-display-sm font-medium text-on-surface">
-              AI + IoT for measurable poultry farm performance.
+          <div className="max-w-xl space-y-7">
+
+            <div className="hero-reveal inline-flex items-center gap-2 border-l-2 border-tertiary bg-primary/80 px-3 py-1 backdrop-blur-sm">
+              <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-white">
+                Digital Husbandry · Precision AI
+              </span>
+            </div>
+
+            <h1 className="hero-reveal delay-1 font-display font-extrabold leading-[0.92] tracking-tighter text-white"
+              style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}>
+              Farm intelligence.<br />
+              <span className="text-tertiary">Measurable</span> outcomes.
             </h1>
-            <p className="hero-reveal delay-1 max-w-sm font-sans text-title-sm text-on-surface-variant">
+
+            <p className="hero-reveal delay-2 max-w-sm font-sans text-title-sm text-white/70">
               Real-time telemetry, welfare monitoring, and decision support built for South African poultry operations.
             </p>
-            <div className="hero-reveal delay-2 flex flex-wrap gap-3">
-              <Button href="/contact">Book a Pilot Call</Button>
-              <Button href="/how-it-works" variant="secondary">
+
+            <div className="hero-reveal delay-3 flex flex-wrap gap-3">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center px-5 py-2.5 bg-white font-sans text-title-sm font-medium text-primary transition-colors duration-150 hover:bg-surface-container-low"
+                style={{ boxShadow: "inset 0 -0.5px 0 0 #D4AF37" }}
+              >
+                Book a Pilot Call
+              </a>
+              <a
+                href="/how-it-works"
+                className="inline-flex items-center justify-center px-5 py-2.5 font-sans text-title-sm font-medium text-white transition-colors duration-150 hover:bg-white/10"
+                style={{ border: "0.5px solid rgba(255,255,255,0.5)" }}
+              >
                 See How It Works
-              </Button>
+              </a>
             </div>
-            {/* Pyramid scaled down to 75% */}
-            <div className="hero-reveal delay-3 origin-left scale-75">
-              <HeroPyramid />
-            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ─── Partners ─── */}
-      <section className="section-padding bg-surface-container-low">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6">
-          <p className="font-label text-label-md font-medium uppercase tracking-[0.3em] text-outline-variant">
-            Built for South African farms
-          </p>
-          <div className="grid gap-3 font-sans text-title-sm text-on-surface-variant sm:grid-cols-2 lg:grid-cols-4">
-            <div className="bg-surface-container p-4">Agripak (placeholder)</div>
-            <div className="bg-surface-container p-4">LNX (placeholder)</div>
-            <div className="bg-surface-container p-4">PoultryCo (placeholder)</div>
-            <div className="bg-surface-container p-4">VitaFeed (placeholder)</div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Problem ─── */}
-      <section className="section-padding">
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-          <SectionHeader
-            eyebrow="The operational reality"
-            title="The cost of small issues adds up fast."
-            subtitle="Feed price volatility, temperature swings, power outages, and labor pressure all stack up. Without continuous visibility, farms absorb the losses."
-          />
-          <div className="grid gap-3 sm:grid-cols-2">
-            {[
-              "Feed cost inefficiency",
-              "Mortality spikes",
-              "Welfare compliance pressure",
-              "Power outages and load shedding",
-              "Temperature and humidity swings",
-              "Biosecurity blind spots",
-              "Labor constraints",
-              "Delayed response to anomalies"
-            ].map((item) => (
-              <div key={item} className="bg-surface-container-low px-5 py-4 font-sans text-title-sm text-on-surface-variant">
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Solution pillars ─── */}
-      <section className="section-padding bg-surface-container-low">
+      {/* ─── Statement ─── */}
+      <section className="section-padding bg-surface">
         <div className="mx-auto max-w-6xl">
-          <SectionHeader
-            eyebrow="Solution pillars"
-            title="From sensing to decision support in one platform."
-            subtitle="A resilient stack that captures the right signals, processes them on-site, and turns them into actions you can verify."
-          />
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            <FeatureCard
-              title="Sensing & Monitoring"
-              description="LoRaWAN gateways, environmental sensors, and camera feeds capture continuous barn conditions and welfare indicators."
-              icon={<SignalIcon className="h-6 w-6" />}
-            />
-            <FeatureCard
-              title="Edge AI & Alerts"
-              description="Jetson-based processing delivers fast anomaly detection and resilient alerts even during connectivity gaps."
-              icon={<AlertIcon className="h-6 w-6" />}
-            />
-            <FeatureCard
-              title="Decision Support"
-              description="Dashboards, benchmarking, and what-if simulations guide farm teams to the next best action."
-              icon={<ChartIcon className="h-6 w-6" />}
-            />
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+
+            {/* Left — text + chicken */}
+            <div>
+              <span className="inline-flex items-center gap-2 border-l-2 border-tertiary bg-surface-container px-3 py-1 mb-8">
+                <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-primary">
+                  AI Operating System · Poultry Intelligence
+                </span>
+              </span>
+
+              <h2
+                className="font-display font-extrabold tracking-tighter text-primary"
+                style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", lineHeight: "1.0" }}
+              >
+                Stop guessing.<br />
+                <span className="text-primary-light">Control your farm.</span>
+              </h2>
+
+              <p className="mt-6 font-sans text-title-sm leading-relaxed text-on-surface-variant">
+                A state-of-the-art husbandry AI operating system built for South African poultry — giving you complete visibility to perform consistently, scale confidently, and compound gains across every house.
+              </p>
+
+            </div>
+
+            {/* Right — chicken */}
+            <div className="flex items-center justify-center">
+              <video
+                src="/Animated_Chicken_Pecking_Ground.mp4"
+                autoPlay
+                muted
+                loop
+                playsInline
+                aria-hidden="true"
+                className="w-full max-w-lg object-contain mix-blend-multiply"
+              />
+            </div>
+
           </div>
         </div>
       </section>
+
+      {/* ─── Solution pillars — sticky scroll ─── */}
+      <SolutionScroll />
 
       {/* ─── Outcomes ─── */}
-      <section className="section-padding">
-        <div className="mx-auto max-w-6xl">
-          <SectionHeader
-            eyebrow="Measured outcomes"
-            title="Operational gains you can quantify."
-            subtitle="Our pilots focus on tangible KPIs within 30 days so you can validate ROI before scaling."
-          />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {[
-              "Reduce mortality",
-              "Improve FCR",
-              "Early disease signals",
-              "Lower energy waste",
-              "Compliance-ready reporting"
-            ].map((item) => (
-              <div key={item} className="card px-5 py-6 text-center font-sans text-title-sm font-medium text-on-surface">
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Process ─── */}
-      <section className="section-padding bg-surface-container-low">
-        <div className="mx-auto max-w-6xl">
-          <SectionHeader
-            eyebrow="Closed-loop workflow"
-            title="Install, calibrate, and verify improvements."
-            subtitle="We keep pilots focused and transparent, with shared milestones and farm team involvement."
-          />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {[
-              "Install",
-              "Calibrate",
-              "Monitor",
-              "Recommend",
-              "Verify"
-            ].map((step, index) => (
-              <div key={step} className="card px-6 py-6">
-                <p className="data-callout">Step {index + 1}</p>
-                <p className="mt-2 font-display text-title-sm font-medium text-on-surface">{step}</p>
-                <p className="mt-2 font-sans text-label-md text-on-surface-variant">
-                  {index === 0 && "Hardware setup and baseline capture."}
-                  {index === 1 && "Threshold tuning with your team."}
-                  {index === 2 && "Live telemetry and anomaly tracking."}
-                  {index === 3 && "Actionable insights and next steps."}
-                  {index === 4 && "ROI review and scale plan."}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Modules ─── */}
-      <section className="section-padding">
-        <div className="mx-auto max-w-6xl">
-          <SectionHeader
-            eyebrow="Modules"
-            title="Focused product modules for poultry teams."
-            subtitle="Each module can stand alone or combine for full decision intelligence."
-          />
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            <FeatureCard
-              title="Environmental Monitoring"
-              description="Temperature, humidity, and optional NH3/CO2 sensors with barn-level trends."
-              icon={<LeafIcon className="h-6 w-6" />}
-            />
-            <FeatureCard
-              title="Water & Feed Signals"
-              description="Detect flow deviations and consumption drops before they become losses."
-              icon={<CloudIcon className="h-6 w-6" />}
-            />
-            <FeatureCard
-              title="Computer Vision"
-              description="Camera-based counting, activity scoring, and welfare anomaly detection."
-              icon={<CameraIcon className="h-6 w-6" />}
-            />
-            <FeatureCard
-              title="Alerts & Incident Timeline"
-              description="Structured incident tracking keeps teams aligned on response and outcomes."
-              icon={<AlertIcon className="h-6 w-6" />}
-            />
-            <FeatureCard
-              title="Farm Dashboard"
-              description="Multi-house overview with benchmarking and weekly summaries."
-              icon={<ChartIcon className="h-6 w-6" />}
-            />
-            <FeatureCard
-              title="Weekly ROI Report"
-              description="Action list plus financial impact estimates and compliance-ready exports."
-              icon={<BoltIcon className="h-6 w-6" />}
-            />
-          </div>
-        </div>
-      </section>
+      <OutcomesSection />
 
       {/* ─── Testimonials ─── */}
       <section className="section-padding bg-surface-container-low">
@@ -344,14 +226,80 @@ export default function HomePage() {
         </div>
       </section>
 
-      <CTASection
-        title="Start with a 30-day pilot."
-        subtitle="Get a focused deployment, shared KPIs, and a clear ROI review so you can decide on the next phase with confidence."
-        primaryHref="/contact"
-        primaryLabel="Start a Pilot"
-        secondaryHref="/how-it-works"
-        secondaryLabel="See the process"
-      />
+      {/* ─── Dark CTA breakout ─── */}
+      <section className="grain relative overflow-hidden bg-secondary py-24 px-6 sm:px-10 lg:px-16">
+        {/* Blueprint grid at low opacity */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(42,142,154,0.07) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(42,142,154,0.07) 0.5px, transparent 0.5px)",
+            backgroundSize: "24px 24px"
+          }}
+        />
+
+        {/* Subtle teal radial glow top-left */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse at 10% 50%, rgba(0,46,53,0.6) 0%, transparent 60%)"
+          }}
+        />
+
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
+          <span className="inline-flex items-center gap-2 border-l-2 border-tertiary bg-primary px-3 py-1 mb-8">
+            <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-white">
+              30-Day Pilot Programme
+            </span>
+          </span>
+
+          <h2
+            className="font-display font-extrabold tracking-tighter text-white"
+            style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)", lineHeight: "0.95" }}
+          >
+            Start measuring.<br />
+            <span className="text-tertiary">Stop guessing.</span>
+          </h2>
+
+          <p className="mx-auto mt-6 max-w-xl font-sans text-title-sm leading-relaxed text-white/60">
+            A focused deployment with shared KPIs and a clear ROI review — so you can decide on the next phase with full confidence.
+          </p>
+
+          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            {/* Primary — white + gold bottom border */}
+            <a
+              href="/contact"
+              className="inline-flex items-center justify-center px-10 py-4 bg-white font-sans text-xs font-bold uppercase tracking-[0.12em] text-primary transition-colors duration-150 hover:bg-surface-container-low"
+              style={{ boxShadow: "inset 0 -2px 0 0 #D4AF37" }}
+            >
+              Start a Pilot
+            </a>
+            {/* Ghost — white hairline outline */}
+            <a
+              href="/how-it-works"
+              className="inline-flex items-center justify-center px-10 py-4 font-sans text-xs font-bold uppercase tracking-[0.12em] text-white transition-colors duration-150 hover:bg-white/5"
+              style={{ border: "0.5px solid rgba(255,255,255,0.35)" }}
+            >
+              See How It Works
+            </a>
+          </div>
+
+          {/* Stats row */}
+          <div className="mt-14 flex flex-wrap justify-center gap-x-12 gap-y-4 border-t pt-10" style={{ borderColor: "rgba(255,255,255,0.1)" }}>
+            {[
+              { value: "2-Day",  label: "Install" },
+              { value: "30-Day", label: "Pilot" },
+              { value: "100%",   label: "Edge-Resilient" },
+              { value: "99.9%",  label: "Uptime" },
+            ].map(({ value, label }) => (
+              <div key={label} className="flex items-baseline gap-2">
+                <span className="font-display text-2xl font-extrabold tracking-tighter text-white">{value}</span>
+                <span className="font-sans text-[10px] font-bold uppercase tracking-[0.1em] text-white/40">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

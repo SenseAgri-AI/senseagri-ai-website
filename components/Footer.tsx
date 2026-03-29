@@ -19,7 +19,7 @@ export default function Footer() {
         <div>
           <div className="flex items-center gap-3">
             {/* Sharp logo container in navy context */}
-            <span className="flex h-9 w-9 items-center justify-center bg-primary">
+            <span className="flex h-9 w-9 items-center justify-center bg-secondary-container">
               <LogoMark className="h-7 w-7" />
             </span>
             <span className="font-display text-title-sm font-medium text-on-secondary">
