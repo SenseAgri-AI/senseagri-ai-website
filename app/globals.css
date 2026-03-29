@@ -42,7 +42,7 @@ h1, h2, h3, h4 {
 /* ALL CAPS + tracked spacing — mimics serial numbers on industrial equipment */
 
 .badge {
-  @apply inline-flex items-center gap-2 bg-surface-container px-3 py-1
+  @apply inline-flex items-center gap-2 rounded-sm bg-surface-container px-3 py-1
     font-sans text-label-sm font-medium uppercase tracking-[0.05em] text-primary;
 }
 
@@ -218,6 +218,29 @@ h1, h2, h3, h4 {
 .hero-reveal.delay-3 { animation-delay: 0.3s; }
 .hero-reveal.delay-4 { animation-delay: 0.4s; }
 
+.tag-reveal {
+  opacity: 0;
+  transform: translateX(24px);
+  animation: tag-reveal 0.7s ease-out forwards;
+}
+
+/* ─── PEF Chart animations ─────────────────────────────────────────────── */
+
+.pef-line-draw {
+  stroke-dasharray: 580;
+  stroke-dashoffset: 580;
+  animation: pef-draw 2.6s ease-out forwards;
+}
+
+.pef-area-fade {
+  opacity: 0;
+  animation: pef-fade 0.7s ease-out 2.4s forwards;
+}
+.tag-reveal.delay-1 { animation-delay: 0.55s; }
+.tag-reveal.delay-2 { animation-delay: 0.7s; }
+.tag-reveal.delay-3 { animation-delay: 0.85s; }
+.tag-reveal.delay-4 { animation-delay: 1.0s; }
+
 /* ─── Contour lines ───────────────────────────────────────────────────── */
 
 .ambient-contours { opacity: 0.55; }
@@ -321,11 +344,15 @@ h1, h2, h3, h4 {
 @keyframes flow-dash    { to { stroke-dashoffset: -220; } }
 @keyframes contour-drift{ to { stroke-dashoffset: -320; } }
 @keyframes hero-reveal  { to { opacity: 1; transform: translateY(0); } }
+@keyframes tag-reveal   { to { opacity: 1; transform: translateX(0); } }
+@keyframes pef-draw     { to { stroke-dashoffset: 0; } }
+@keyframes pef-fade     { to { opacity: 1; } }
 
 /* ─── Reduced motion ──────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
-  .contour-line, .hero-reveal, .data-flow path { animation: none; }
+  .contour-line, .hero-reveal, .tag-reveal, .data-flow path { animation: none; }
+  .tag-reveal { opacity: 1; transform: translateX(0); }
 
   .pyramid-block, .pyramid-dot {
     transition: none;
