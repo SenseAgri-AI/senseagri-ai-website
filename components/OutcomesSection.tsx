@@ -1,6 +1,9 @@
-// Gold "AIOS" outcomes section — sense → understand → control convergence infographic
-// + PEF going UP chart on dark navy panel
+"use client";
 
+// Gold "AIOS" outcomes section — sense → understand → control convergence infographic
+// + PEF going UP chart on dark navy panel with scroll-driven animation
+
+import { useEffect, useRef, useState } from "react";
 import { CameraIcon, HeartIcon, LeafIcon, ShieldIcon, SoundIcon } from "@/components/Icons";
 import LogoMark from "@/components/LogoMark";
 
@@ -12,11 +15,36 @@ const inputs = [
   { label: "Welfare\nIndex", Icon: HeartIcon },
 ];
 
-const pefLine =
-  "M 20,148 C 50,152 80,156 110,158 C 135,160 150,161 170,158 C 190,152 210,128 238,100 C 262,75 290,48 320,32 C 345,19 365,15 385,14";
-const pefArea = pefLine + " L 385,168 L 20,168 Z";
+// Line split at x=170 (Day 14 — AIOS deployed)
+const staticLine = "M 20,148 C 50,152 80,156 110,158 C 135,160 150,161 170,158";
+const dynamicLine = "M 170,158 C 190,152 210,128 238,100 C 262,75 290,48 320,32 C 345,19 365,15 385,14";
+
+// Area under the static baseline (Day 1–14)
+const staticArea = staticLine + " L 170,168 L 20,168 Z";
+// Area under the rising segment (Day 14–42) — revealed by clip
+const dynamicArea = dynamicLine + " L 385,168 L 170,168 Z";
 
 export default function OutcomesSection() {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = panelRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.35 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  // Clip rect width: 0 = retracted to Day 14, 215 = fully revealed to Day 42
+  const clipWidth = inView ? 215 : 0;
+  const clipTransition = inView
+    ? "width 1.8s cubic-bezier(0.4, 0, 0.2, 1)"
+    : "width 0.6s ease-in";
+
   return (
     <section
       className="grain relative overflow-hidden"
@@ -40,13 +68,11 @@ export default function OutcomesSection() {
         }}
       />
 
-
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 sm:px-10 lg:px-16">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-stretch">
 
           {/* ── Left: text + convergence ── */}
           <div>
-
             <h2
               className="font-display font-extrabold tracking-tighter text-primary"
               style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", lineHeight: "1.0" }}
@@ -61,7 +87,6 @@ export default function OutcomesSection() {
 
             {/* ── Convergence infographic ── */}
             <div className="mt-12">
-              {/* Layer label */}
               <p className="mb-3 font-sans text-[9px] font-bold uppercase tracking-[0.15em] text-primary/50">
                 Sense
               </p>
@@ -82,7 +107,7 @@ export default function OutcomesSection() {
                 ))}
               </div>
 
-              {/* Connecting lines — converge to the gold dot at top of logo */}
+              {/* Connecting lines */}
               <svg viewBox="0 0 500 60" fill="none" className="w-full" style={{ height: "60px" }}>
                 {[50, 150, 250, 350, 450].map((x) => (
                   <line
@@ -102,11 +127,9 @@ export default function OutcomesSection() {
                     />
                   </line>
                 ))}
-                {/* Small convergence dot — marks the top of the logo */}
                 <circle cx="250" cy="60" r="3" fill="#002E35" fillOpacity="0.4" />
               </svg>
 
-              {/* Logo only — no box, lines lead to the gold dot */}
               <div className="flex flex-col items-center gap-3">
                 <LogoMark className="h-16 w-16" dotColor="rgba(255,255,255,0.95)" />
                 <p className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-primary/70">
@@ -116,8 +139,9 @@ export default function OutcomesSection() {
             </div>
           </div>
 
-          {/* ── Right: PEF going UP on dark panel ── */}
+          {/* ── Right: PEF chart — scroll-animated ── */}
           <div
+            ref={panelRef}
             className="grain flex flex-col p-8"
             style={{ background: "#0F172A", border: "0.5px solid rgba(212,175,55,0.3)" }}
           >
@@ -135,7 +159,11 @@ export default function OutcomesSection() {
 
             <svg viewBox="0 0 400 185" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full flex-1" style={{ minHeight: "200px" }}>
               <defs>
-                <linearGradient id="pef-up-stroke" x1="20" y1="0" x2="385" y2="0" gradientUnits="userSpaceOnUse">
+                <linearGradient id="pef-up-stroke-static" x1="20" y1="0" x2="170" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%"   stopColor="#D4AF37" stopOpacity="0.3" />
+                  <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.5" />
+                </linearGradient>
+                <linearGradient id="pef-up-stroke-dynamic" x1="170" y1="0" x2="385" y2="0" gradientUnits="userSpaceOnUse">
                   <stop offset="0%"   stopColor="#D4AF37" stopOpacity="0.5" />
                   <stop offset="100%" stopColor="#D4AF37" />
                 </linearGradient>
@@ -143,6 +171,17 @@ export default function OutcomesSection() {
                   <stop offset="0%"   stopColor="#D4AF37" stopOpacity="0.35" />
                   <stop offset="100%" stopColor="#D4AF37" stopOpacity="0.04" />
                 </linearGradient>
+                {/* Clip path for the animated rising segment */}
+                <clipPath id="pef-rise-clip">
+                  <rect
+                    x="170" y="0"
+                    height="200"
+                    style={{
+                      width: clipWidth,
+                      transition: clipTransition,
+                    }}
+                  />
+                </clipPath>
               </defs>
 
               {/* Grid lines */}
@@ -162,21 +201,25 @@ export default function OutcomesSection() {
               <line x1="170" y1="158" x2="170" y2="24" stroke="#D4AF37" strokeWidth="0.5" strokeDasharray="3 4" strokeOpacity="0.6" />
               <text x="172" y="21" fontSize="7" fill="#D4AF37" fontFamily="Inter, sans-serif" opacity="0.8">AIOS deployed</text>
 
-              {/* Area */}
-              <path d={pefArea} fill="url(#pef-up-area)" className="pef-area-fade" />
+              {/* Static baseline area (Day 1–14) — always visible */}
+              <path d={staticArea} fill="url(#pef-up-area)" />
 
-              {/* Line */}
-              <path d={pefLine} stroke="url(#pef-up-stroke)" strokeWidth="2"
-                strokeLinecap="round" className="pef-line-draw" />
+              {/* Static baseline line (Day 1–14) — always visible */}
+              <path d={staticLine} stroke="url(#pef-up-stroke-static)" strokeWidth="2" strokeLinecap="round" />
 
-              {/* Start dot */}
-              <circle cx="20" cy="148" r="3" fill="#6B7C80" className="pef-area-fade" />
-              <text x="26" y="145" fontSize="8" fill="#6B7C80" fontFamily="Inter, sans-serif" className="pef-area-fade">PEF 65</text>
+              {/* Dynamic rising segment — revealed by scroll */}
+              <g clipPath="url(#pef-rise-clip)">
+                <path d={dynamicArea} fill="url(#pef-up-area)" />
+                <path d={dynamicLine} stroke="url(#pef-up-stroke-dynamic)" strokeWidth="2" strokeLinecap="round" />
+                {/* End dot — gold */}
+                <circle cx="385" cy="14" r="4" fill="#D4AF37" />
+                <circle cx="385" cy="14" r="8" fill="#D4AF37" fillOpacity="0.15" />
+                <text x="377" y="7" fontSize="8" fill="#D4AF37" fontWeight="bold" fontFamily="Inter, sans-serif" textAnchor="end">PEF 92</text>
+              </g>
 
-              {/* End dot — gold */}
-              <circle cx="385" cy="14" r="4" fill="#D4AF37" className="pef-area-fade" />
-              <circle cx="385" cy="14" r="8" fill="#D4AF37" fillOpacity="0.15" className="pef-area-fade" />
-              <text x="377" y="7" fontSize="8" fill="#D4AF37" fontWeight="bold" fontFamily="Inter, sans-serif" textAnchor="end" className="pef-area-fade">PEF 92</text>
+              {/* Start dot — always visible */}
+              <circle cx="20" cy="148" r="3" fill="#6B7C80" />
+              <text x="26" y="145" fontSize="8" fill="#6B7C80" fontFamily="Inter, sans-serif">PEF 65</text>
 
               {/* X labels */}
               <text x="20"  y="180" fontSize="7" fill="#6B7C80" textAnchor="middle" fontFamily="Inter, sans-serif">Day 1</text>
