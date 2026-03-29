@@ -60,27 +60,31 @@ export default function HomePage() {
     <div>
       {/* ─── Hero ─── */}
       <section className="relative flex min-h-[75vh] items-center overflow-hidden bg-surface px-6 py-16 sm:px-10 lg:px-16">
-        {/* Full-bleed video — no gradient, video is the background */}
-        <video
+        {/* Full-bleed hero image */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           className="absolute inset-0 h-full w-full object-cover"
-          style={{ objectPosition: "10% center" }}
-          src="/Create_a_high-definition_anima_Kling_O3_08830.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
+          style={{ objectPosition: "60% center" }}
+          src="/Gemini_Generated_Image_e0s5hge0s5hge0s5 (1).png"
+          alt=""
           aria-hidden="true"
         />
 
-        {/* Dark veil — just enough to keep text legible without washing out the video */}
-        <div className="absolute inset-0 pointer-events-none bg-secondary/40" />
+        {/* Left-to-right gradient veil — keeps text legible, reveals image on the right */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to right, rgba(248,250,250,0.92) 0%, rgba(248,250,250,0.75) 35%, rgba(248,250,250,0.3) 60%, transparent 100%)"
+          }}
+        />
 
         {/* Blueprint grid */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(42,142,154,0.07) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(42,142,154,0.07) 0.5px, transparent 0.5px)",
+              "linear-gradient(to right, rgba(0,46,53,0.05) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(0,46,53,0.05) 0.5px, transparent 0.5px)",
             backgroundSize: "24px 24px"
           }}
         />
@@ -89,34 +93,35 @@ export default function HomePage() {
         <div className="relative z-10 w-full">
           <div className="max-w-xl space-y-7">
 
-            <div className="hero-reveal inline-flex items-center gap-2 border-l-2 border-tertiary bg-primary/80 px-3 py-1 backdrop-blur-sm">
-              <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-white">
+            <div className="hero-reveal inline-flex items-center gap-2 border-l-2 border-tertiary px-3 py-1"
+                 style={{ background: "rgba(0,46,53,0.08)" }}>
+              <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-primary">
                 Digital Husbandry · Precision AI
               </span>
             </div>
 
-            <h1 className="hero-reveal delay-1 font-display font-extrabold leading-[0.92] tracking-tighter text-white"
+            <h1 className="hero-reveal delay-1 font-display font-extrabold leading-[0.92] tracking-tighter text-primary"
               style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}>
               Farm intelligence.<br />
-              <span className="text-tertiary">Measurable</span> outcomes.
+              <span className="text-primary-light">Measurable</span> outcomes.
             </h1>
 
-            <p className="hero-reveal delay-2 max-w-sm font-sans text-title-sm text-white/70">
+            <p className="hero-reveal delay-2 max-w-sm font-sans text-title-sm text-on-surface-variant">
               Real-time telemetry, welfare monitoring, and decision support built for South African poultry operations.
             </p>
 
             <div className="hero-reveal delay-3 flex flex-wrap gap-3">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center px-5 py-2.5 bg-white font-sans text-title-sm font-medium text-primary transition-colors duration-150 hover:bg-surface-container-low"
+                className="inline-flex items-center justify-center px-5 py-2.5 bg-primary font-sans text-title-sm font-medium text-white transition-colors duration-150 hover:bg-primary-container"
                 style={{ boxShadow: "inset 0 -0.5px 0 0 #D4AF37" }}
               >
                 Book a Pilot Call
               </a>
               <a
                 href="/how-it-works"
-                className="inline-flex items-center justify-center px-5 py-2.5 font-sans text-title-sm font-medium text-white transition-colors duration-150 hover:bg-white/10"
-                style={{ border: "0.5px solid rgba(255,255,255,0.5)" }}
+                className="inline-flex items-center justify-center px-5 py-2.5 font-sans text-title-sm font-medium text-primary transition-colors duration-150 hover:bg-primary/5"
+                style={{ border: "0.5px solid rgba(0,46,53,0.4)" }}
               >
                 See How It Works
               </a>
@@ -168,6 +173,38 @@ export default function HomePage() {
 
           </div>
         </div>
+      </section>
+
+      {/* ─── Cinematic video break ─── */}
+      {/* Full-viewport section — video plays in background as user scrolls through */}
+      <section className="relative h-screen overflow-hidden">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/Create_a_high-definition_anima_Kling_O3_08830.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+        {/* Subtle top + bottom fade so the section blends into neighbours */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(248,250,250,1) 0%, transparent 18%, transparent 82%, rgba(248,250,250,1) 100%)"
+          }}
+        />
+        {/* Dim veil + blueprint grid */}
+        <div className="absolute inset-0 pointer-events-none bg-secondary/25" />
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(42,142,154,0.07) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(42,142,154,0.07) 0.5px, transparent 0.5px)",
+            backgroundSize: "24px 24px"
+          }}
+        />
       </section>
 
       {/* ─── Solution pillars — sticky scroll ─── */}
