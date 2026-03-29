@@ -40,14 +40,6 @@ export default function OutcomesSection() {
         }}
       />
 
-      {/* Top + bottom edge fade — softens the transition into neighbouring sections */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(to bottom, rgba(242,244,244,0.85) 0%, transparent 10%, transparent 90%, rgba(242,244,244,0.85) 100%)"
-        }}
-      />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 sm:px-10 lg:px-16">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-end">
