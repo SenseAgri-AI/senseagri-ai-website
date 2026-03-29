@@ -42,7 +42,7 @@ h1, h2, h3, h4 {
 /* ALL CAPS + tracked spacing — mimics serial numbers on industrial equipment */
 
 .badge {
-  @apply inline-flex items-center gap-2 bg-surface-container px-3 py-1
+  @apply inline-flex items-center gap-2 rounded-sm bg-surface-container px-3 py-1
     font-sans text-label-sm font-medium uppercase tracking-[0.05em] text-primary;
 }
 

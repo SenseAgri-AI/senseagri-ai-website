@@ -131,7 +131,7 @@ export default function HomePage() {
 
             {/* Left — text + chicken */}
             <div>
-              <span className="inline-flex items-center gap-2 border-l-2 border-tertiary bg-surface-container px-3 py-1 mb-8">
+              <span className="inline-flex items-center gap-2 rounded-sm border-l-2 border-tertiary bg-surface-container px-3 py-1 mb-8">
                 <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-primary">
                   AI Operating System · Poultry Intelligence
                 </span>
@@ -277,7 +277,7 @@ export default function HomePage() {
         />
 
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <span className="inline-flex items-center gap-2 border-l-2 border-tertiary bg-primary px-3 py-1 mb-8">
+          <span className="inline-flex items-center gap-2 rounded-sm border-l-2 border-tertiary bg-primary px-3 py-1 mb-8">
             <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-white">
               30-Day Pilot Programme
             </span>
