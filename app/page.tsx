@@ -70,12 +70,12 @@ export default function HomePage() {
           aria-hidden="true"
         />
 
-        {/* Left-to-right gradient veil — keeps text legible, reveals image on the right */}
+        {/* Petrol teal wash — strong on the left for white text, dissolves into the image on the right */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(to right, rgba(248,250,250,0.92) 0%, rgba(248,250,250,0.75) 35%, rgba(248,250,250,0.3) 60%, transparent 100%)"
+              "linear-gradient(to right, rgba(0,46,53,0.88) 0%, rgba(0,46,53,0.72) 30%, rgba(0,46,53,0.35) 58%, rgba(0,46,53,0.05) 80%, transparent 100%)"
           }}
         />
 
@@ -84,7 +84,7 @@ export default function HomePage() {
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(0,46,53,0.05) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(0,46,53,0.05) 0.5px, transparent 0.5px)",
+              "linear-gradient(to right, rgba(42,142,154,0.07) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(42,142,154,0.07) 0.5px, transparent 0.5px)",
             backgroundSize: "24px 24px"
           }}
         />
@@ -93,28 +93,28 @@ export default function HomePage() {
         <div className="relative z-10 w-full">
           <div className="max-w-xl space-y-7">
 
-            <h1 className="hero-reveal delay-1 font-display font-extrabold leading-[0.92] tracking-tighter text-primary"
+            <h1 className="hero-reveal delay-1 font-display font-extrabold leading-[0.92] tracking-tighter text-white"
               style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}>
               Farm intelligence.<br />
-              <span className="text-primary-light">Measurable</span> outcomes.
+              <span className="text-tertiary">Measurable</span> outcomes.
             </h1>
 
-            <p className="hero-reveal delay-2 max-w-sm font-sans text-title-sm text-on-surface-variant">
+            <p className="hero-reveal delay-2 max-w-sm font-sans text-title-sm text-white/70">
               Real-time telemetry, welfare monitoring, and decision support built for South African poultry operations.
             </p>
 
             <div className="hero-reveal delay-3 flex flex-wrap gap-3">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center px-5 py-2.5 bg-primary font-sans text-title-sm font-medium text-white transition-colors duration-150 hover:bg-primary-container"
+                className="inline-flex items-center justify-center px-5 py-2.5 bg-white font-sans text-title-sm font-medium text-primary transition-colors duration-150 hover:bg-surface-container-low"
                 style={{ boxShadow: "inset 0 -0.5px 0 0 #D4AF37" }}
               >
                 Book a Pilot Call
               </a>
               <a
                 href="/how-it-works"
-                className="inline-flex items-center justify-center px-5 py-2.5 font-sans text-title-sm font-medium text-primary transition-colors duration-150 hover:bg-primary/5"
-                style={{ border: "0.5px solid rgba(0,46,53,0.4)" }}
+                className="inline-flex items-center justify-center px-5 py-2.5 font-sans text-title-sm font-medium text-white transition-colors duration-150 hover:bg-white/10"
+                style={{ border: "0.5px solid rgba(255,255,255,0.45)" }}
               >
                 See How It Works
               </a>
