@@ -41,7 +41,7 @@ export default function OutcomesSection() {
       />
 
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-10 sm:px-10 lg:px-16">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 sm:px-10 lg:px-16">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-end">
 
           {/* ── Left: text + convergence ── */}
