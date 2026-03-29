@@ -42,7 +42,7 @@ export default function OutcomesSection() {
 
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-16 sm:px-10 lg:px-16">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-end">
+        <div className="grid gap-16 lg:grid-cols-2 lg:items-stretch">
 
           {/* ── Left: text + convergence ── */}
           <div>
@@ -118,7 +118,7 @@ export default function OutcomesSection() {
 
           {/* ── Right: PEF going UP on dark panel ── */}
           <div
-            className="grain p-8"
+            className="grain flex flex-col p-8"
             style={{ background: "#0F172A", border: "0.5px solid rgba(212,175,55,0.3)" }}
           >
             <div className="mb-4 flex items-center justify-between">
@@ -133,7 +133,7 @@ export default function OutcomesSection() {
               </div>
             </div>
 
-            <svg viewBox="0 0 400 185" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
+            <svg viewBox="0 0 400 185" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full flex-1" style={{ minHeight: "200px" }}>
               <defs>
                 <linearGradient id="pef-up-stroke" x1="20" y1="0" x2="385" y2="0" gradientUnits="userSpaceOnUse">
                   <stop offset="0%"   stopColor="#D4AF37" stopOpacity="0.5" />
