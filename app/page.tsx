@@ -93,13 +93,6 @@ export default function HomePage() {
         <div className="relative z-10 w-full">
           <div className="max-w-xl space-y-7">
 
-            <div className="hero-reveal inline-flex items-center gap-2 border-l-2 border-tertiary px-3 py-1"
-                 style={{ background: "rgba(0,46,53,0.08)" }}>
-              <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-primary">
-                Digital Husbandry · Precision AI
-              </span>
-            </div>
-
             <h1 className="hero-reveal delay-1 font-display font-extrabold leading-[0.92] tracking-tighter text-primary"
               style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}>
               Farm intelligence.<br />
