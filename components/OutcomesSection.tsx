@@ -46,15 +46,6 @@ export default function OutcomesSection() {
 
           {/* ── Left: text + convergence ── */}
           <div>
-            {/* Badge */}
-            <span
-              className="inline-flex items-center gap-2 rounded-sm px-3 py-1 mb-8"
-              style={{ borderLeft: "2px solid #002E35", background: "rgba(0,46,53,0.12)" }}
-            >
-              <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-primary">
-                AIOS · Unified Farm Intelligence
-              </span>
-            </span>
 
             <h2
               className="font-display font-extrabold tracking-tighter text-primary"
