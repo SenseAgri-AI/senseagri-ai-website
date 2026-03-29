@@ -59,7 +59,7 @@ export default function HomePage() {
   return (
     <div>
       {/* ─── Hero ─── */}
-      <section className="relative flex min-h-[75vh] items-center overflow-hidden bg-surface px-6 py-16 sm:px-10 lg:px-16">
+      <section className="relative flex min-h-screen items-center overflow-hidden bg-surface px-6 py-16 sm:px-10 lg:px-16">
         {/* Full-bleed hero image */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
