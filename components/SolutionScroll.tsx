@@ -27,7 +27,7 @@ const modules = [
     bg: "#002E35",
     accent: "#D4AF37",
     fromLeft: false,
-    image: "/images.jpeg",
+    image: "/image.jpeg",
     imageAlt: "Edge AI compute board",
   },
   {
