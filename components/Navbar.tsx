@@ -23,14 +23,19 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-[20px] hairline-b">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5 sm:px-10">
 
-        {/* Brand — ALL CAPS, extrabold, tight tracking */}
+        {/* Brand — mark + wordmark + tagline */}
         <Link href="/" className="flex items-center gap-3">
           <span className="flex h-8 w-8 items-center justify-center bg-secondary">
             <LogoMark className="h-6 w-6" />
           </span>
-          <span className="font-display text-sm font-extrabold tracking-[-0.02em] text-primary uppercase">
-            SenseAgri AI
-          </span>
+          <div className="flex flex-col leading-none">
+            <span className="font-display text-sm font-extrabold tracking-[-0.02em] text-primary uppercase">
+              SenseAgri AI
+            </span>
+            <span className="mt-0.5 font-sans text-[8px] font-bold uppercase tracking-[0.15em] text-tertiary">
+              Every signal. Every decision.
+            </span>
+          </div>
         </Link>
 
         {/* Desktop nav — ALL CAPS labels, gold underline on active */}
@@ -42,7 +47,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`relative font-display text-[11px] font-bold uppercase tracking-[0.08em] transition-colors duration-150 py-1
-                  ${active ? "text-primary" : "text-on-surface-variant hover:text-primary"}`}
+                  ${active ? "text-tertiary" : "text-on-surface-variant hover:text-primary"}`}
               >
                 {link.label}
                 {/* Gold 0.5px bottom line on active */}

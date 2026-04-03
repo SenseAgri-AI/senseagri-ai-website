@@ -22,7 +22,7 @@ export default function Footer() {
             <span className="flex h-9 w-9 items-center justify-center bg-secondary-container">
               <LogoMark className="h-7 w-7" />
             </span>
-            <span className="font-display text-title-sm font-medium text-on-secondary">
+            <span className="font-display text-title-sm font-extrabold uppercase tracking-[-0.02em] text-on-secondary">
               SenseAgri AI
             </span>
           </div>
@@ -72,9 +72,9 @@ export default function Footer() {
           <p className="font-sans text-label-sm text-on-secondary-variant">
             © {new Date().getFullYear()} SenseAgri AI. All rights reserved.
           </p>
-          {/* Gold accent — "Pathfinder" mark, < 5% usage */}
-          <p className="font-sans text-label-sm text-tertiary">
-            Decision Intelligence
+          {/* Brand tagline */}
+          <p className="font-sans text-label-sm font-bold uppercase tracking-[0.15em] text-tertiary">
+            Every signal. Every decision.
           </p>
         </div>
       </div>

@@ -20,7 +20,7 @@ export default function PricingCard({
         <h3 className="font-display text-title-md font-medium text-on-surface">{title}</h3>
         {highlight ? <span className="badge">Most chosen</span> : null}
       </div>
-      <p className="mt-4 font-display text-display-sm font-medium text-on-surface">{price}</p>
+      <p className="mt-4 font-display text-display-sm font-extrabold tracking-tight text-tertiary">{price}</p>
       <p className="mt-2 font-sans text-title-sm text-on-surface-variant">{description}</p>
       <ul className="mt-6 space-y-3 font-sans text-title-sm text-on-surface-variant">
         {features.map((feature) => (

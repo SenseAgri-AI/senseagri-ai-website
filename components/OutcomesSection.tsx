@@ -96,7 +96,7 @@ export default function OutcomesSection() {
                 {inputs.map(({ label, Icon }) => (
                   <div
                     key={label}
-                    className="flex flex-col items-center gap-2 rounded-sm p-3"
+                    className="flex flex-col items-center gap-2 p-3"
                     style={{ background: "rgba(0,46,53,0.12)", border: "0.5px solid rgba(0,46,53,0.2)" }}
                   >
                     <Icon className="h-5 w-5 text-primary" />
