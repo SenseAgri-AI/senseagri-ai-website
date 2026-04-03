@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LogoMark from "@/components/LogoMark";
+import HeroSlideshow from "@/components/HeroSlideshow";
 import { SignalIcon, BoltIcon, ChartIcon, ShieldIcon, LeafIcon, HeartIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -67,22 +68,15 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative flex min-h-[92vh] items-end overflow-hidden">
 
-        {/* Background image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ objectPosition: "60% center" }}
-          src="/Gemini_Generated_Image_e0s5hge0s5hge0s5 (1).png"
-          alt=""
-          aria-hidden="true"
-        />
+        {/* Slideshow background */}
+        <HeroSlideshow />
 
         {/* Strong dark overlay — text always wins */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "linear-gradient(160deg, rgba(0,46,53,0.97) 0%, rgba(0,46,53,0.88) 40%, rgba(0,46,53,0.55) 70%, rgba(0,46,53,0.3) 100%)"
+              "linear-gradient(to right, rgba(0,46,53,0.97) 0%, rgba(0,46,53,0.9) 35%, rgba(0,46,53,0.55) 65%, rgba(0,46,53,0.25) 85%, transparent 100%)"
           }}
         />
 
