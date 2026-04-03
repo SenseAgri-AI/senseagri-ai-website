@@ -8,19 +8,11 @@ const slides = [
     position: "60% center",
   },
   {
-    src: "/hero_slides/360_F_528807014_DPuGpXzv0cVC4XOulzvgzOkyXvSXAdqd.jpg",
-    position: "center 40%",
-  },
-  {
-    src: "/hero_slides/AdobeStock_526484580-1024x683.webp",
-    position: "center center",
+    src: "/hero_slides/53d341dc-b57d-42ac-8463-c4bc48a167de.jpg",
+    position: "center 35%",
   },
   {
     src: "/hero_slides/fresh-eggs-being-held-at-a-poultry-farm-ready-for-distribution-and-sale-photo (1).jpeg",
-    position: "center center",
-  },
-  {
-    src: "/hero_slides/telem.png",
     position: "center center",
   },
 ];
@@ -57,6 +49,12 @@ export default function HeroSlideshow() {
           }}
         />
       ))}
+
+      {/* Permanent base dark layer — ensures text always wins on light images */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "rgba(0,20,25,0.45)", zIndex: 2 }}
+      />
 
       {/* Dot indicators — bottom right, above overlay */}
       <div
