@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LogoMark from "@/components/LogoMark";
+import HeroSlideshow from "@/components/HeroSlideshow";
 import { SignalIcon, BoltIcon, ChartIcon, ShieldIcon, LeafIcon, HeartIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
@@ -67,15 +68,8 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section className="relative flex min-h-[92vh] items-end overflow-hidden">
 
-        {/* Background image */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ objectPosition: "60% center" }}
-          src="/Gemini_Generated_Image_e0s5hge0s5hge0s5 (1).png"
-          alt=""
-          aria-hidden="true"
-        />
+        {/* Slideshow background */}
+        <HeroSlideshow />
 
         {/* Strong dark overlay — text always wins */}
         <div
