@@ -72,9 +72,9 @@ export default function Footer() {
           <p className="font-sans text-label-sm text-on-secondary-variant">
             © {new Date().getFullYear()} SenseAgri AI. All rights reserved.
           </p>
-          {/* Gold accent — "Pathfinder" mark, < 5% usage */}
-          <p className="font-sans text-label-sm text-tertiary">
-            Decision Intelligence
+          {/* Brand tagline */}
+          <p className="font-sans text-label-sm font-bold uppercase tracking-[0.15em] text-tertiary">
+            Every signal. Every decision.
           </p>
         </div>
       </div>

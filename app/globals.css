@@ -38,6 +38,18 @@ h1, h2, h3, h4 {
   @apply bg-white;
 }
 
+/* Pillar card: gold top-border slides in on hover */
+.pillar-card {
+  @apply bg-surface-container-lowest;
+  border-top: 2px solid transparent;
+  transition: background-color 150ms linear, border-color 150ms linear;
+}
+
+.pillar-card:hover {
+  @apply bg-white;
+  border-top-color: #D4AF37;
+}
+
 /* Feature card: gold left-border slides in on hover */
 .feature-card {
   @apply bg-surface-container-lowest transition-colors duration-150;
