@@ -12,7 +12,7 @@ export default function FeatureCard({
 }) {
   return (
     // Asymmetric padding: 2rem top/bottom, 2.75rem sides — bespoke editorial feel
-    <div className="card group flex h-full flex-col gap-5 px-11 py-8">
+    <div className="feature-card group flex h-full flex-col gap-5 px-8 py-8">
       <IconWrapper className="icon-animate">{icon}</IconWrapper>
       <div>
         <h3 className="font-display text-title-md font-medium text-on-surface">{title}</h3>

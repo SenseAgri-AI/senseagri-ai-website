@@ -42,7 +42,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`relative font-display text-[11px] font-bold uppercase tracking-[0.08em] transition-colors duration-150 py-1
-                  ${active ? "text-primary" : "text-on-surface-variant hover:text-primary"}`}
+                  ${active ? "text-tertiary" : "text-on-surface-variant hover:text-primary"}`}
               >
                 {link.label}
                 {/* Gold 0.5px bottom line on active */}

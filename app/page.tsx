@@ -93,6 +93,18 @@ export default function HomePage() {
         <div className="relative z-10 w-full">
           <div className="max-w-xl space-y-7">
 
+            {/* Hero eyebrow */}
+            <div className="hero-reveal">
+              <span
+                className="inline-flex items-center gap-2 px-3 py-1"
+                style={{ borderLeft: "2px solid #D4AF37", background: "rgba(212,175,55,0.12)" }}
+              >
+                <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-tertiary">
+                  IoT · Edge AI · Decision Support
+                </span>
+              </span>
+            </div>
+
             <h1 className="hero-reveal delay-1 font-display font-extrabold leading-[0.92] tracking-tighter text-white"
               style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}>
               Farm intelligence.<br />
@@ -131,7 +143,7 @@ export default function HomePage() {
 
             {/* Left — text + chicken */}
             <div>
-              <span className="inline-flex items-center gap-2 rounded-sm border-l-2 border-tertiary bg-surface-container px-3 py-1 mb-8">
+              <span className="inline-flex items-center gap-2 border-l-2 border-tertiary bg-surface-container px-3 py-1 mb-8">
                 <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-primary">
                   AI Operating System · Poultry Intelligence
                 </span>
@@ -277,7 +289,7 @@ export default function HomePage() {
         />
 
         <div className="relative z-10 mx-auto max-w-4xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-sm border-l-2 border-tertiary bg-primary px-3 py-1 mb-8">
+          <span className="inline-flex items-center gap-2 border-l-2 border-tertiary bg-primary px-3 py-1 mb-8">
             <span className="font-sans text-[10px] font-bold uppercase tracking-[0.12em] text-white">
               30-Day Pilot Programme
             </span>
@@ -323,7 +335,7 @@ export default function HomePage() {
               { value: "99.9%",  label: "Uptime" },
             ].map(({ value, label }) => (
               <div key={label} className="flex items-baseline gap-2">
-                <span className="font-display text-2xl font-extrabold tracking-tighter text-white">{value}</span>
+                <span className="font-display text-2xl font-extrabold tracking-tighter text-tertiary">{value}</span>
                 <span className="font-sans text-[10px] font-bold uppercase tracking-[0.1em] text-white/40">{label}</span>
               </div>
             ))}

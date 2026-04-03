@@ -16,7 +16,7 @@ export default function SectionHeader({
   return (
     <div className={`max-w-3xl ${alignment}`}>
       {eyebrow ? (
-        <p className="badge mb-5">{eyebrow}</p>
+        <p className="badge mb-6">{eyebrow}</p>
       ) : null}
       {/* Manrope display font, font-medium — size creates hierarchy, not weight */}
       <h2 className="font-display text-display-sm font-medium text-on-surface sm:text-display-md">

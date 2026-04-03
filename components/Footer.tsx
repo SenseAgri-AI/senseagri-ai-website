@@ -22,7 +22,7 @@ export default function Footer() {
             <span className="flex h-9 w-9 items-center justify-center bg-secondary-container">
               <LogoMark className="h-7 w-7" />
             </span>
-            <span className="font-display text-title-sm font-medium text-on-secondary">
+            <span className="font-display text-title-sm font-extrabold uppercase tracking-[-0.02em] text-on-secondary">
               SenseAgri AI
             </span>
           </div>
