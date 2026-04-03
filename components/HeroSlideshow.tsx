@@ -12,6 +12,10 @@ const slides = [
     position: "center 35%",
   },
   {
+    src: "/hero_slides/AdobeStock_526484580-1024x683.webp",
+    position: "center 40%",
+  },
+  {
     src: "/hero_slides/fresh-eggs-being-held-at-a-poultry-farm-ready-for-distribution-and-sale-photo (1).jpeg",
     position: "center center",
   },
