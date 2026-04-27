@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import LogoMark from "@/components/LogoMark";
 import HeroSlideshow from "@/components/HeroSlideshow";
-import { SignalIcon, BoltIcon, ChartIcon, ShieldIcon, LeafIcon, HeartIcon } from "@/components/Icons";
+import { SignalIcon, BoltIcon, ChartIcon, ShieldIcon, LeafIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -19,44 +19,42 @@ const NAVY = "#0F172A";
 const pillars = [
   {
     id: "01",
-    label: "Sense",
-    headline: "Full-spectrum barn visibility.",
-    body: "LoRaWAN sensors and cameras stream temperature, humidity, flock sound, and welfare indicators — from every house, 24 hours a day.",
+    label: "SignalGuard",
+    headline: "24-hour barn monitoring.",
+    body: "LoRaWAN sensors and cameras stream temperature, humidity, flock sound, and welfare indicators — from every house, around the clock.",
     Icon: SignalIcon,
     chips: ["Environmental sensors", "Vision tracking", "Sound monitoring"],
   },
   {
     id: "02",
-    label: "Alert",
-    headline: "AI that never sleeps.",
-    body: "Edge AI detects anomalies instantly and pushes actionable alerts to your team — even during load shedding, with zero cloud dependency.",
-    Icon: BoltIcon,
-    chips: ["Edge-resilient", "Instant alerts", "Offline-capable"],
+    label: "Dashboard",
+    headline: "Have all your info at your fingertips.",
+    body: "One unified view of your entire operation. Every barn, every metric, every alert — organised and accessible wherever you are.",
+    Icon: ChartIcon,
+    chips: ["Unified data platform", "Personalised alerts", "Anywhere access"],
   },
   {
     id: "03",
-    label: "Decide",
-    headline: "Decisions backed by data.",
-    body: "Dashboards, benchmarking, and weekly ROI reports translate every signal into your next best action — verified against your own farm baseline.",
-    Icon: ChartIcon,
-    chips: ["ROI reporting", "Benchmarking", "What-if simulations"],
+    label: "LayerSense",
+    headline: "Your farming partner.",
+    body: "Our first-of-its-kind AI learns your farm's baseline and surfaces the decisions that matter — so you act before losses happen.",
+    Icon: ShieldIcon,
+    chips: ["Causal AI", "Farm-specific baseline", "Proactive insights"],
   },
 ];
 
 // ─── Proof stats ──────────────────────────────────────────────────────────────
 const stats = [
-  { value: "+41%", label: "Poultry Efficiency Factor lift", sub: "30-day pilot result" },
-  { value: "3.1%", label: "Mortality reduction", sub: "Western Cape broiler farm" },
-  { value: "14d",  label: "To first measurable impact", sub: "After sensor deployment" },
-  { value: "2d",   label: "Install and go-live", sub: "Pilot kit, per house" },
+  { value: "+2%",  label: "FCR improvement", sub: "Pilot result" },
+  { value: "−20%", label: "Mortality reduction", sub: "Pilot result" },
 ];
 
 // ─── What's included ─────────────────────────────────────────────────────────
 const included = [
-  { Icon: LeafIcon,   text: "Environmental sensors — temp, humidity, optional NH₃/CO₂" },
-  { Icon: ShieldIcon, text: "Edge AI compute (Jetson-based) — local, load-shedding resilient" },
-  { Icon: HeartIcon,  text: "PoE cameras — welfare and activity tracking" },
-  { Icon: ChartIcon,  text: "Dashboard, alerts, and weekly ROI report" },
+  { Icon: LeafIcon,   text: "Full environmental monitoring" },
+  { Icon: ChartIcon,  text: "Unified data platform — keeping all your data together and aligned" },
+  { Icon: BoltIcon,   text: "Personalised dashboard and alerts" },
+  { Icon: ShieldIcon, text: "Our first-of-its-kind artificial intelligence system" },
 ];
 
 export default function HomePage() {
@@ -111,8 +109,8 @@ export default function HomePage() {
               className="hero-reveal delay-1 font-display font-extrabold tracking-tighter text-white"
               style={{ fontSize: "clamp(2.6rem, 5.5vw, 5.2rem)", lineHeight: "0.95", maxWidth: "14ch" }}
             >
-              Know every barn.<br />
-              <span style={{ color: GOLD }}>Reduce every loss.</span>
+              Know Your Flock.<br />
+              <span style={{ color: GOLD }}>Know Your Farm.</span>
             </h1>
 
             {/* Sub */}
@@ -135,34 +133,33 @@ export default function HomePage() {
               </a>
               <a
                 href="/solution"
-                className="inline-flex items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-white transition-colors duration-150 hover:bg-white/8"
-                style={{ border: "0.5px solid rgba(255,255,255,0.35)" }}
+                className="inline-flex items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-white transition-colors duration-150 hover:bg-white/10"
+                style={{ border: "1.5px solid rgba(255,255,255,0.75)" }}
               >
                 See the Platform →
               </a>
             </div>
 
-            {/* Stats strip */}
-            <div
-              className="hero-reveal delay-4 mt-12 flex flex-wrap gap-x-10 gap-y-3 pt-8"
-              style={{ borderTop: "0.5px solid rgba(255,255,255,0.12)" }}
-            >
-              {[
-                { v: "2-Day",   l: "Install" },
-                { v: "14 Days", l: "To First Impact" },
-                { v: "100%",    l: "Edge-Resilient" },
-                { v: "30-Day",  l: "Pilot Programme" },
-              ].map(({ v, l }) => (
-                <div key={l} className="flex items-baseline gap-2">
-                  <span className="font-display text-xl font-extrabold tracking-tight" style={{ color: GOLD }}>{v}</span>
-                  <span className="font-sans text-[9px] font-bold uppercase tracking-[0.1em] text-white/40">{l}</span>
-                </div>
-              ))}
-            </div>
-
           </div>
         </div>
       </section>
+
+      {/* Stats strip — below hero for readability */}
+      <div className="bg-primary px-6 py-5 sm:px-10 lg:px-16">
+        <div className="mx-auto max-w-6xl flex flex-wrap gap-x-10 gap-y-3">
+          {[
+            { v: "2-Day",   l: "Install" },
+            { v: "14 Days", l: "To First Impact" },
+            { v: "100%",    l: "Edge-Resilient" },
+            { v: "6 Months", l: "Free Pilot" },
+          ].map(({ v, l }) => (
+            <div key={l} className="flex items-baseline gap-2">
+              <span className="font-display text-xl font-extrabold tracking-tight" style={{ color: GOLD }}>{v}</span>
+              <span className="font-sans text-[9px] font-bold uppercase tracking-[0.1em] text-white/50">{l}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* ═══════════════════════════════════════════════════════════════════
           PILLARS — Sense · Alert · Decide
@@ -292,7 +289,7 @@ export default function HomePage() {
           </div>
 
           {/* Stats grid */}
-          <div className="grid gap-px sm:grid-cols-2 lg:grid-cols-4" style={{ background: "rgba(255,255,255,0.06)" }}>
+          <div className="grid gap-0 sm:grid-cols-2">
             {stats.map(({ value, label, sub }) => (
               <div
                 key={label}
@@ -341,26 +338,25 @@ export default function HomePage() {
               style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
             >
               <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
-                30-Day Pilot
+                Our Pilot Program
               </span>
             </span>
             <h2
               className="font-display font-extrabold tracking-tighter text-primary"
               style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)", lineHeight: "1.05" }}
             >
-              Everything you need.<br />
-              <span className="text-primary-light">Nothing you don't.</span>
+              Join for Free.
             </h2>
             <p className="mt-5 font-sans text-sm leading-relaxed text-on-surface-variant">
-              We install, configure, and run the pilot with shared KPIs. You get full visibility into
-              the data and a clear ROI review at day 30 — so you decide on the next phase with confidence.
+              We install, configure, and run our program on your farm, giving you full access.
+              Creating trust before needing any commitment.
             </p>
             <a
               href="/contact"
               className="mt-8 inline-flex items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-white transition-colors duration-150 hover:bg-primary-container"
               style={{ background: PRIMARY, boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
             >
-              Register Pilot Interest
+              Sign Up Now
             </a>
           </div>
 
@@ -490,14 +486,9 @@ export default function HomePage() {
             className="font-display font-extrabold tracking-tighter text-white"
             style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", lineHeight: "0.95" }}
           >
-            Start measuring.<br />
-            <span style={{ color: GOLD }}>Stop guessing.</span>
+            Stop guessing.<br />
+            <span style={{ color: GOLD }}>Start measuring.</span>
           </h2>
-
-          <p className="mx-auto mt-6 max-w-xl font-sans text-sm leading-relaxed text-white/60">
-            A focused 30-day deployment with shared KPIs and a clear ROI review.
-            Decide on the next phase with full confidence.
-          </p>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a

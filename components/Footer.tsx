@@ -27,13 +27,13 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-4 font-sans text-title-sm text-on-secondary-variant">
-            IoT + AI decision support built for South African poultry farms. Practical, resilient, and focused on measurable outcomes.
+            Practical, resilient, and focused on measurable systems built for African farms.
           </p>
         </div>
 
         <div>
           {/* ALL CAPS label — industrial serial number style */}
-          <p className="font-sans text-label-sm font-medium uppercase tracking-[0.05em] text-on-secondary-variant">
+          <p className="font-sans text-sm font-bold uppercase tracking-[0.08em] text-on-secondary">
             Explore
           </p>
           <div className="mt-4 grid gap-2.5">
@@ -50,7 +50,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="font-sans text-label-sm font-medium uppercase tracking-[0.05em] text-on-secondary-variant">
+          <p className="font-sans text-sm font-bold uppercase tracking-[0.08em] text-on-secondary">
             Contact
           </p>
           <div className="mt-4 grid gap-2.5 font-sans text-title-sm text-on-secondary-variant">
@@ -60,8 +60,12 @@ export default function Footer() {
             >
               {siteConfig.links.email}
             </a>
-            <p>{siteConfig.links.phone}</p>
-            <p>{siteConfig.links.address}</p>
+            <a
+              href={`tel:${siteConfig.links.phone}`}
+              className="transition-colors duration-150 hover:text-primary-light"
+            >
+              {siteConfig.links.phone}
+            </a>
           </div>
         </div>
       </div>
