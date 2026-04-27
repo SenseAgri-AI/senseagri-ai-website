@@ -8,7 +8,7 @@ export const siteConfig = {
   links: {
     // TODO: Replace with your active support details.
     email: "support@senseagri.ai",
-    phone: "+27 10 123 4567",
-    address: "1 AgriTech Park, Stellenbosch, South Africa"
+    phone: "+27 68 948 1905",
+    address: ""
   }
 };

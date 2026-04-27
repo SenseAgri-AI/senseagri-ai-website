@@ -66,12 +66,24 @@ export default function Navbar() {
         {/* Mobile menu button */}
         <button
           type="button"
-          className="inline-flex items-center justify-center bg-surface-container-high px-3 py-1.5 font-display text-[11px] font-bold uppercase tracking-[0.08em] text-on-surface md:hidden"
+          className="inline-flex items-center justify-center p-2 text-on-surface md:hidden"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-menu"
+          aria-label={open ? "Close menu" : "Open menu"}
         >
-          {open ? "Close" : "Menu"}
+          {open ? (
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              <line x1="4" y1="4" x2="18" y2="18" />
+              <line x1="18" y1="4" x2="4" y2="18" />
+            </svg>
+          ) : (
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              <line x1="3" y1="6" x2="19" y2="6" />
+              <line x1="3" y1="11" x2="19" y2="11" />
+              <line x1="3" y1="16" x2="19" y2="16" />
+            </svg>
+          )}
         </button>
       </div>
 

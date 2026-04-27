@@ -50,13 +50,13 @@ export default function ContactPage() {
             </div>
             <div className="card px-8 py-8">
               <h3 className="font-display text-title-md font-medium text-on-surface">Contact details</h3>
-              <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
-                Replace with your current contact details.
-              </p>
               <div className="mt-5 space-y-2.5 font-sans text-title-sm text-on-surface-variant">
-                <p>Email: {siteConfig.links.email}</p>
-                <p>Phone: {siteConfig.links.phone}</p>
-                <p>Address: {siteConfig.links.address}</p>
+                <a href={`mailto:${siteConfig.links.email}`} className="block hover:text-primary transition-colors duration-150">
+                  {siteConfig.links.email}
+                </a>
+                <a href={`tel:${siteConfig.links.phone}`} className="block hover:text-primary transition-colors duration-150">
+                  {siteConfig.links.phone}
+                </a>
               </div>
             </div>
           </div>
