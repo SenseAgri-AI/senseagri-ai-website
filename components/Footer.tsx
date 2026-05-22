@@ -4,9 +4,7 @@ import { siteConfig } from "@/lib/site";
 
 const footerLinks = [
   { label: "Solution", href: "/solution" },
-  { label: "How It Works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" }
 ];

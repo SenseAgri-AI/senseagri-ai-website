@@ -7,7 +7,7 @@ export const siteConfig = {
   ogImage: "/og.svg",
   links: {
     // TODO: Replace with your active support details.
-    email: "support@senseagri.ai",
+    email: "ryannel99@gmail.com",
     phone: "+27 68 948 1905",
     address: ""
   }

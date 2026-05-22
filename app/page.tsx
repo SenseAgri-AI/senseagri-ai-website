@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import LogoMark from "@/components/LogoMark";
 import HeroSlideshow from "@/components/HeroSlideshow";
-import { SignalIcon, BoltIcon, ChartIcon, ShieldIcon, LeafIcon } from "@/components/Icons";
+import WhatYouGet from "@/components/WhatYouGet";
+import ImpactSlider, { type ImpactStory } from "@/components/ImpactSlider";
 
 export const metadata: Metadata = {
   title: "Home",
@@ -13,48 +13,47 @@ export const metadata: Metadata = {
 // ─── Brand colours (used as inline styles where Tailwind purges) ─────────────
 const PRIMARY = "#002E35";
 const GOLD = "#D4AF37";
-const NAVY = "#0F172A";
 
-// ─── Pillar data ─────────────────────────────────────────────────────────────
-const pillars = [
-  {
-    id: "01",
-    label: "SignalGuard",
-    headline: "24-hour barn monitoring.",
-    body: "LoRaWAN sensors and cameras stream temperature, humidity, flock sound, and welfare indicators — from every house, around the clock.",
-    Icon: SignalIcon,
-    chips: ["Environmental sensors", "Vision tracking", "Sound monitoring"],
-  },
-  {
-    id: "02",
-    label: "Dashboard",
-    headline: "Have all your info at your fingertips.",
-    body: "One unified view of your entire operation. Every barn, every metric, every alert — organised and accessible wherever you are.",
-    Icon: ChartIcon,
-    chips: ["Unified data platform", "Personalised alerts", "Anywhere access"],
-  },
-  {
-    id: "03",
-    label: "LayerSense",
-    headline: "Your farming partner.",
-    body: "Our first-of-its-kind AI learns your farm's baseline and surfaces the decisions that matter — so you act before losses happen.",
-    Icon: ShieldIcon,
-    chips: ["Causal AI", "Farm-specific baseline", "Proactive insights"],
-  },
+// ─── Stats strip ───────────────────────────────────────────────────────────
+const statsStrip = [
+  { v: "−20%", l: "Loss events" },
+  { v: "Peak", l: "HPED maintained" },
+  { v: "Early", l: "Disease detection" },
+  { v: "Smarter", l: "Daily management" }
 ];
 
-// ─── Proof stats ──────────────────────────────────────────────────────────────
-const stats = [
-  { value: "+2%",  label: "FCR improvement", sub: "Pilot result" },
-  { value: "−20%", label: "Mortality reduction", sub: "Pilot result" },
-];
-
-// ─── What's included ─────────────────────────────────────────────────────────
-const included = [
-  { Icon: LeafIcon,   text: "Full environmental monitoring" },
-  { Icon: ChartIcon,  text: "Unified data platform — keeping all your data together and aligned" },
-  { Icon: BoltIcon,   text: "Personalised dashboard and alerts" },
-  { Icon: ShieldIcon, text: "Our first-of-its-kind artificial intelligence system" },
+// ─── Pilot impact stories ────────────────────────────────────────────────────
+const impactStories: ImpactStory[] = [
+  {
+    tag: "Feed Efficiency",
+    title: "Caught a 20% production dip before it happened.",
+    body: "Our AI predicted a major feed-efficiency reduction event caused by a feed change — flagged early enough to act, avoiding an estimated 20% production dip over two months."
+  },
+  {
+    tag: "HPED Stability",
+    title: "Held HPED above standard for prolonged periods.",
+    body: "AI-guided ventilation and feeding adjustments held production above industry standard across pilot houses — not just briefly, but sustained."
+  },
+  {
+    tag: "Remote Oversight",
+    title: "Peace of mind when off the farm.",
+    body: "Continuous remote tracking gives farmers complete visibility — every house, every signal, wherever they are. The farm is never out of sight."
+  },
+  {
+    tag: "Executive View",
+    title: "Quick, automated feedback for executives.",
+    body: "Weekly automated executive reports give leadership the operational truth — production, performance, and ROI — without weekly status meetings."
+  },
+  {
+    tag: "Temperature ROI",
+    title: "Caught accumulated losses from temperature drift.",
+    body: "Our AI tracked profit loss from gradual temperature changes — the small, recurring losses that compound silently month over month and never show up in spot checks."
+  },
+  {
+    tag: "Efficiency Audit",
+    title: "Exposed hidden infrastructure flaws.",
+    body: "Is your internal environment really insulated from external swings? How much energy is going into managing your flock? Our AI calculates a full poultry efficiency factor."
+  }
 ];
 
 export default function HomePage() {
@@ -64,7 +63,7 @@ export default function HomePage() {
       {/* ═══════════════════════════════════════════════════════════════════
           HERO — dark, clean, one message
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative flex min-h-[92vh] items-end overflow-hidden">
+      <section className="relative flex min-h-[85vh] items-end overflow-hidden">
 
         {/* Slideshow background */}
         <HeroSlideshow />
@@ -89,7 +88,7 @@ export default function HomePage() {
         />
 
         {/* Content — sits at the bottom for cinematic weight */}
-        <div className="relative z-10 w-full px-6 pb-16 pt-32 sm:px-10 lg:px-16">
+        <div className="relative z-10 w-full px-6 pb-14 pt-28 sm:px-10 lg:px-16">
           <div className="mx-auto max-w-6xl">
 
             {/* Eyebrow */}
@@ -99,7 +98,7 @@ export default function HomePage() {
                 style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(212,175,55,0.10)" }}
               >
                 <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-tertiary">
-                  South Africa's Poultry Intelligence Platform
+                  South Africa&apos;s Poultry Intelligence Platform
                 </span>
               </span>
             </div>
@@ -107,7 +106,7 @@ export default function HomePage() {
             {/* Headline */}
             <h1
               className="hero-reveal delay-1 font-display font-extrabold tracking-tighter text-white"
-              style={{ fontSize: "clamp(2.6rem, 5.5vw, 5.2rem)", lineHeight: "0.95", maxWidth: "14ch" }}
+              style={{ fontSize: "clamp(2.35rem, 5.5vw, 5.2rem)", lineHeight: "0.97", maxWidth: "14ch" }}
             >
               Know Your Flock.<br />
               <span style={{ color: GOLD }}>Know Your Farm.</span>
@@ -119,22 +118,22 @@ export default function HomePage() {
               style={{ fontSize: "1rem", lineHeight: "1.6", maxWidth: "46ch" }}
             >
               Continuous sensing, edge AI alerts, and weekly ROI reports —
-              engineered for South African poultry operations and resilient through load shedding.
+              engineered for South African poultry operations.
             </p>
 
             {/* CTAs */}
-            <div className="hero-reveal delay-3 mt-8 flex flex-wrap gap-3">
+            <div className="hero-reveal delay-3 mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="/contact"
-                className="inline-flex items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-primary bg-white transition-colors duration-150 hover:bg-surface-container-low"
+                className="inline-flex w-full items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-primary bg-white transition-colors duration-150 hover:bg-surface-container-low sm:w-auto"
                 style={{ boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
               >
-                Start a 30-Day Pilot
+                Sign Up For Our Free Pilot
               </a>
               <a
                 href="/solution"
-                className="inline-flex items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-white transition-colors duration-150 hover:bg-white/10"
-                style={{ border: "1.5px solid rgba(255,255,255,0.75)" }}
+                className="inline-flex w-full items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-white transition-colors duration-150 hover:bg-white/10 sm:w-auto"
+                style={{ border: "1.5px solid rgba(255,255,255,0.55)" }}
               >
                 See the Platform →
               </a>
@@ -144,304 +143,77 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats strip — below hero for readability */}
-      <div className="bg-primary px-6 py-5 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-6xl flex flex-wrap gap-x-10 gap-y-3">
-          {[
-            { v: "2-Day",   l: "Install" },
-            { v: "14 Days", l: "To First Impact" },
-            { v: "100%",    l: "Edge-Resilient" },
-            { v: "6 Months", l: "Free Pilot" },
-          ].map(({ v, l }) => (
+      {/* Stats strip — petrol band, gold values */}
+      <div className="bg-primary px-6 sm:px-10 lg:px-16" style={{ paddingTop: 18, paddingBottom: 18, borderBottom: "0.5px solid rgba(212,175,55,0.18)" }}>
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-4">
+          {statsStrip.map(({ v, l }) => (
             <div key={l} className="flex items-baseline gap-2">
-              <span className="font-display text-xl font-extrabold tracking-tight" style={{ color: GOLD }}>{v}</span>
-              <span className="font-sans text-[9px] font-bold uppercase tracking-[0.1em] text-white/50">{l}</span>
+              <span className="font-display font-extrabold tracking-tight" style={{ fontSize: "1.2rem", color: GOLD }}>{v}</span>
+              <span className="font-sans text-[9px] font-bold uppercase tracking-[0.12em] text-white/65">{l}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          PILLARS — Sense · Alert · Decide
+          INSIDE THE PLATFORM — sensing → dashboard → whatsapp → reports
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="bg-surface px-6 py-20 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-6xl">
-
-          {/* Header */}
-          <div className="mb-14 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <span
-                className="mb-5 inline-flex items-center gap-2 px-3 py-1"
-                style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
-              >
-                <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
-                  Platform
-                </span>
-              </span>
-              <h2
-                className="font-display font-extrabold tracking-tighter text-primary"
-                style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)", lineHeight: "1.05" }}
-              >
-                From sensing to decisions.<br />Three steps.
-              </h2>
-            </div>
-            <p className="max-w-sm font-sans text-sm leading-relaxed text-on-surface-variant">
-              A resilient stack designed for South African farms — capturing the right signals,
-              processing them on-site, and delivering actions you can verify.
-            </p>
-          </div>
-
-          {/* 3-column pillar grid */}
-          <div className="grid gap-px md:grid-cols-3" style={{ background: "#E6E8E8" }}>
-            {pillars.map((p) => (
-              <div
-                key={p.id}
-                className="pillar-card group flex flex-col gap-6 px-8 py-10"
-              >
-                {/* Icon + ID row */}
-                <div className="flex items-start justify-between">
-                  <span
-                    className="inline-flex h-14 w-14 items-center justify-center"
-                    style={{ background: "rgba(0,46,53,0.06)", border: `0.5px solid rgba(0,46,53,0.14)` }}
-                  >
-                    <p.Icon className="h-7 w-7 text-primary" />
-                  </span>
-                  <span
-                    className="font-sans text-[9px] font-bold uppercase tracking-[0.15em]"
-                    style={{ color: GOLD }}
-                  >
-                    {p.id} · {p.label}
-                  </span>
-                </div>
-
-                {/* Text */}
-                <div>
-                  <h3 className="font-display text-lg font-bold tracking-tight text-on-surface">
-                    {p.headline}
-                  </h3>
-                  <p className="mt-3 font-sans text-sm leading-relaxed text-on-surface-variant">
-                    {p.body}
-                  </p>
-                </div>
-
-                {/* Chips */}
-                <div className="flex flex-wrap gap-2 mt-auto pt-2">
-                  {p.chips.map((chip) => (
-                    <span
-                      key={chip}
-                      className="font-sans text-[9px] font-bold uppercase tracking-[0.08em] px-2 py-1"
-                      style={{
-                        background: "rgba(0,46,53,0.07)",
-                        color: PRIMARY,
-                        border: "0.5px solid rgba(0,46,53,0.15)"
-                      }}
-                    >
-                      {chip}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
+      <WhatYouGet />
 
       {/* ═══════════════════════════════════════════════════════════════════
-          PROOF — key metrics on dark panel
+          PILOT STORIES + IMPACT SLIDER
       ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="grain relative overflow-hidden px-6 py-20 sm:px-10 lg:px-16"
-        style={{ background: NAVY }}
+        className="relative overflow-hidden px-6 sm:px-10 lg:px-16"
+        style={{ background: "#F2F4F4", padding: "56px 24px", borderTop: "0.5px solid #BEC8CA" }}
       >
-        {/* Blueprint grid */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(42,142,154,0.06) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(42,142,154,0.06) 0.5px, transparent 0.5px)",
+              "linear-gradient(to right, rgba(0,46,53,0.04) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(0,46,53,0.04) 0.5px, transparent 0.5px)",
             backgroundSize: "24px 24px"
           }}
         />
+        <div className="relative mx-auto max-w-6xl">
 
-        <div className="relative z-10 mx-auto max-w-6xl">
-
-          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div>
-              <span
-                className="mb-5 inline-flex items-center gap-2 border-l-2 border-tertiary px-3 py-1"
-                style={{ background: "rgba(212,175,55,0.10)" }}
-              >
-                <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-tertiary">
-                  Pilot results
-                </span>
-              </span>
-              <h2
-                className="font-display font-extrabold tracking-tighter text-white"
-                style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)", lineHeight: "1.05" }}
-              >
-                Numbers from the field.
-              </h2>
-            </div>
-            <p className="max-w-xs font-sans text-sm leading-relaxed text-white/50">
-              Metrics from live pilot deployments across South African broiler and layer operations.
-            </p>
-          </div>
-
-          {/* Stats grid */}
-          <div className="grid gap-0 sm:grid-cols-2">
-            {stats.map(({ value, label, sub }) => (
-              <div
-                key={label}
-                className="flex flex-col gap-3 px-8 py-10"
-                style={{ background: NAVY }}
-              >
-                <span
-                  className="font-display font-extrabold tracking-tighter"
-                  style={{ fontSize: "clamp(2.4rem, 4vw, 3.4rem)", color: GOLD, lineHeight: 1 }}
-                >
-                  {value}
-                </span>
-                <div>
-                  <p className="font-sans text-sm font-medium text-white/80">{label}</p>
-                  <p className="mt-1 font-sans text-[10px] font-bold uppercase tracking-[0.08em] text-white/35">
-                    {sub}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Link to case studies */}
-          <div className="mt-8">
-            <Link
-              href="/case-studies"
-              className="font-sans text-sm font-medium text-primary-light transition-colors duration-150 hover:text-white"
-            >
-              Read the pilot case studies →
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          WHAT'S INCLUDED — pilot kit at a glance
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="bg-surface-container-low px-6 py-20 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-6xl grid gap-16 lg:grid-cols-[1fr_1fr] lg:items-center">
-
-          {/* Left — text */}
-          <div>
+          {/* Header (left-aligned) */}
+          <div className="mb-7 flex flex-col gap-3">
             <span
-              className="mb-6 inline-flex items-center gap-2 px-3 py-1"
+              className="inline-flex items-center gap-2 self-start px-3 py-1"
               style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
             >
               <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
-                Our Pilot Program
+                Pilot stories
               </span>
             </span>
             <h2
               className="font-display font-extrabold tracking-tighter text-primary"
-              style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)", lineHeight: "1.05" }}
+              style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)", lineHeight: "1.05", maxWidth: "20ch" }}
             >
-              Join for Free.
+              What pilot partners are seeing.
             </h2>
-            <p className="mt-5 font-sans text-sm leading-relaxed text-on-surface-variant">
-              We install, configure, and run our program on your farm, giving you full access.
-              Creating trust before needing any commitment.
+          </div>
+
+          {/* Centered quote */}
+          <div
+            className="text-center"
+            style={{ maxWidth: "56rem", margin: "0 auto 36px", padding: "26px 24px", borderTop: `0.5px solid ${GOLD}`, borderBottom: `0.5px solid ${GOLD}` }}
+          >
+            <p
+              className="font-display font-semibold tracking-tight"
+              style={{ color: "#191C1D", fontSize: "clamp(1.1rem, 2vw, 1.45rem)", lineHeight: "1.4", marginBottom: 14 }}
+            >
+              &ldquo;We finally have one source of truth for barn conditions and response actions.
+              The alerts helped us respond to ventilation drops before bird stress escalated.&rdquo;
             </p>
-            <a
-              href="/contact"
-              className="mt-8 inline-flex items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-white transition-colors duration-150 hover:bg-primary-container"
-              style={{ background: PRIMARY, boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
-            >
-              Sign Up Now
-            </a>
-          </div>
-
-          {/* Right — included list */}
-          <div className="flex flex-col gap-px" style={{ background: "#E6E8E8" }}>
-            {included.map(({ Icon, text }) => (
-              <div
-                key={text}
-                className="flex items-start gap-4 bg-surface-container-lowest px-6 py-5 transition-colors duration-150 hover:bg-white"
-              >
-                <span
-                  className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center"
-                  style={{ background: "rgba(0,46,53,0.07)", border: `0.5px solid rgba(0,46,53,0.14)` }}
-                >
-                  <Icon className="h-5 w-5 text-primary" />
-                </span>
-                <p className="font-sans text-sm leading-relaxed text-on-surface-variant">{text}</p>
-              </div>
-            ))}
-            {/* Footer row */}
-            <div className="flex items-center justify-between bg-primary px-6 py-4">
-              <span className="font-sans text-[10px] font-bold uppercase tracking-[0.1em] text-white/60">
-                Weekly performance review included
-              </span>
-              <span className="font-display text-sm font-bold text-tertiary">30 days ↗</span>
+            <div className="font-sans text-[10px] font-bold uppercase tracking-[0.14em]" style={{ color: "#6B7C80" }}>
+              Pilot Manager · Operations · Large Poultry Group
             </div>
           </div>
 
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════════════════════════════
-          TESTIMONIAL — single strong quote
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="bg-surface px-6 py-20 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-stretch">
-
-            {/* Left — label */}
-            <div className="flex flex-col justify-between gap-8">
-              <div>
-                <span
-                  className="mb-6 inline-flex items-center gap-2 px-3 py-1"
-                  style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
-                >
-                  <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
-                    Pilot stories
-                  </span>
-                </span>
-                <h2
-                  className="font-display font-extrabold tracking-tighter text-primary"
-                  style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)", lineHeight: "1.05" }}
-                >
-                  Early partners are proving impact before scaling.
-                </h2>
-              </div>
-              <Link
-                href="/case-studies"
-                className="font-sans text-sm font-medium text-primary transition-colors duration-150 hover:text-primary-light"
-              >
-                View pilot case studies →
-              </Link>
-            </div>
-
-            {/* Right — featured testimonial */}
-            <div
-              className="flex flex-col justify-between gap-8 px-8 py-8"
-              style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.03)" }}
-            >
-              <p
-                className="font-display font-semibold tracking-tight text-on-surface"
-                style={{ fontSize: "clamp(1.1rem, 2vw, 1.4rem)", lineHeight: "1.35" }}
-              >
-                "We finally have one source of truth for barn conditions and response actions.
-                The alerts helped us respond to ventilation drops before bird stress escalated."
-              </p>
-              <div style={{ borderTop: "0.5px solid #BEC8CA", paddingTop: "1rem" }}>
-                <p className="font-display text-sm font-semibold text-on-surface">Pilot Manager</p>
-                <p className="mt-1 font-sans text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface-variant">
-                  Operations · Large Poultry Group
-                </p>
-              </div>
-            </div>
-
-          </div>
+          {/* Impact slider */}
+          <ImpactSlider stories={impactStories} />
         </div>
       </section>
 
@@ -449,7 +221,7 @@ export default function HomePage() {
           FINAL CTA — dark, focused
       ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="grain relative overflow-hidden px-6 py-24 sm:px-10 lg:px-16"
+        className="grain relative overflow-hidden px-6 py-16 sm:px-10 lg:px-16"
         style={{ background: PRIMARY }}
       >
         {/* Blueprint grid */}
@@ -499,16 +271,16 @@ export default function HomePage() {
               Book a Pilot Call
             </a>
             <a
-              href="/how-it-works"
-              className="inline-flex items-center justify-center px-10 py-4 font-sans text-xs font-bold uppercase tracking-[0.12em] text-white transition-colors duration-150 hover:bg-white/5"
-              style={{ border: "0.5px solid rgba(255,255,255,0.3)" }}
+              href="/solution"
+              className="inline-flex items-center justify-center px-10 py-4 font-sans text-xs font-bold uppercase tracking-[0.12em] text-white transition-colors duration-150 hover:bg-white/10"
+              style={{ border: "1.5px solid rgba(255,255,255,0.55)" }}
             >
-              See How It Works
+              See the System
             </a>
           </div>
 
           {/* Tagline */}
-          <p className="mt-12 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white/25">
+          <p className="mt-10 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">
             Every signal. Every decision.
           </p>
         </div>
