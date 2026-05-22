@@ -8,9 +8,7 @@ import LogoMark from "@/components/LogoMark";
 
 const navLinks = [
   { label: "Solution", href: "/solution" },
-  { label: "How It Works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Case Studies", href: "/case-studies" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" }
 ];
@@ -28,7 +26,7 @@ export default function Navbar() {
           <span className="flex h-8 w-8 items-center justify-center bg-secondary">
             <LogoMark className="h-6 w-6" />
           </span>
-          <div className="flex flex-col leading-none">
+          <div className="flex flex-col items-start text-left leading-none">
             <span className="font-display text-sm font-extrabold tracking-[-0.02em] text-primary uppercase">
               SenseAgri AI
             </span>
@@ -89,22 +87,22 @@ export default function Navbar() {
 
       {open ? (
         <div id="mobile-menu" className="bg-surface hairline-t">
-          <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-5 sm:px-10">
+          <div className="mx-auto flex max-w-6xl flex-col gap-1 px-6 py-4 sm:px-10">
             {navLinks.map((link) => {
               const active = pathname === link.href;
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`font-display text-[11px] font-bold uppercase tracking-[0.08em] transition-colors duration-150
-                    ${active ? "text-primary" : "text-on-surface-variant"}`}
+                  className={`border-l-2 py-2.5 pl-3 font-display text-[13px] font-bold uppercase tracking-[0.08em] transition-colors duration-150
+                    ${active ? "border-tertiary text-primary" : "border-transparent text-on-surface-variant"}`}
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
                 </Link>
               );
             })}
-            <div className="pt-1">
+            <div className="pt-3">
               <Button href="/contact" className="w-full justify-center">
                 Book a Pilot Call
               </Button>

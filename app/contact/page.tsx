@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import SectionHeader from "@/components/SectionHeader";
+import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import { siteConfig } from "@/lib/site";
 
@@ -12,32 +12,43 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div>
-      <section className="section-padding bg-hero-glow">
-        <div className="mx-auto max-w-6xl">
-          <SectionHeader
-            eyebrow="Contact"
-            title="Book a pilot call."
-            subtitle="Tell us about your farm and we will respond within one business day."
-          />
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        headline="Book a"
+        accentLine="pilot call."
+        sub="Tell us about your farm and we will respond within one business day."
+      />
 
-      <section className="section-padding">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="card px-10 py-10">
-            <h3 className="font-display text-title-lg font-medium text-on-surface">Start the conversation</h3>
+      <section className="section-padding bg-surface">
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+
+          {/* Form card */}
+          <div
+            className="bg-surface-container-lowest px-6 py-8 sm:px-8"
+            style={{ border: "0.5px solid #BEC8CA" }}
+          >
+            <h3 className="font-display text-title-lg font-bold tracking-tight text-on-surface">
+              Start the conversation
+            </h3>
             <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
               Fields marked with * are required. We use this to scope a pilot that fits your operation.
             </p>
-            <div className="mt-8">
+            <div className="mt-7">
               <ContactForm />
             </div>
           </div>
-          <div className="space-y-6">
-            <div className="card px-8 py-8">
-              <h3 className="font-display text-title-md font-medium text-on-surface">Book a call</h3>
+
+          {/* Side cards */}
+          <div className="flex flex-col gap-6">
+            <div
+              className="bg-surface-container-lowest px-8 py-7"
+              style={{ border: "0.5px solid #BEC8CA" }}
+            >
+              <h3 className="font-display text-title-md font-bold tracking-tight text-on-surface">
+                Book a call
+              </h3>
               <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
-                Add your scheduling link below. Replace with your calendar URL.
+                Pick a time that suits you and we will walk you through a pilot.
               </p>
               <a
                 className="link-underline mt-5 inline-flex"
@@ -45,21 +56,33 @@ export default function ContactPage() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Schedule a time (placeholder)
+                Schedule a time →
               </a>
             </div>
-            <div className="card px-8 py-8">
-              <h3 className="font-display text-title-md font-medium text-on-surface">Contact details</h3>
-              <div className="mt-5 space-y-2.5 font-sans text-title-sm text-on-surface-variant">
-                <a href={`mailto:${siteConfig.links.email}`} className="block hover:text-primary transition-colors duration-150">
+            <div
+              className="bg-surface-container-lowest px-8 py-7"
+              style={{ border: "0.5px solid #BEC8CA" }}
+            >
+              <h3 className="font-display text-title-md font-bold tracking-tight text-on-surface">
+                Contact details
+              </h3>
+              <div className="mt-4 space-y-2.5 font-sans text-title-sm text-on-surface-variant">
+                <a
+                  href={`mailto:${siteConfig.links.email}`}
+                  className="block transition-colors duration-150 hover:text-primary"
+                >
                   {siteConfig.links.email}
                 </a>
-                <a href={`tel:${siteConfig.links.phone}`} className="block hover:text-primary transition-colors duration-150">
+                <a
+                  href={`tel:${siteConfig.links.phone}`}
+                  className="block transition-colors duration-150 hover:text-primary"
+                >
                   {siteConfig.links.phone}
                 </a>
               </div>
             </div>
           </div>
+
         </div>
       </section>
     </div>

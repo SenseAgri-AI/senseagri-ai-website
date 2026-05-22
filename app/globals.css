@@ -6,7 +6,7 @@
   color-scheme: light;
 }
 
-* {
+html {
   scroll-behavior: smooth;
 }
 
@@ -22,7 +22,7 @@ h1, h2, h3, h4 {
 /* ─── Layout ──────────────────────────────────────────────────────────── */
 
 .section-padding {
-  @apply px-6 py-20 sm:px-10 lg:px-16;
+  @apply px-6 py-16 sm:px-10 lg:px-16;
 }
 
 /* ─── Cards ───────────────────────────────────────────────────────────── */
@@ -101,12 +101,12 @@ h1, h2, h3, h4 {
 /* ─── Buttons ─────────────────────────────────────────────────────────── */
 /* 0px radius across all variants. Linear 150ms fades, no bounce. */
 
-/* Primary: Solid primary, 0.5px gold "Precision" bottom line */
+/* Primary: Solid primary, 2px gold "Precision" bottom line */
 .btn-primary {
   background-color: #002E35;
   color: #ffffff;
-  /* 0.5px tertiary (gold) bottom border — "Gold Precision" signature */
-  box-shadow: inset 0 -0.5px 0 0 #D4AF37;
+  /* 2px tertiary (gold) bottom accent — "Gold Precision" signature, consistent with page CTAs */
+  box-shadow: inset 0 -2px 0 0 #D4AF37;
   transition: background-color 150ms linear;
 }
 .btn-primary:hover {
@@ -376,6 +376,110 @@ h1, h2, h3, h4 {
 
 /* ─── Reduced motion ──────────────────────────────────────────────────── */
 
+/* Inside the platform (WhatYouGet) */
+
+.wyg-intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: end;
+}
+
+.wyg-block-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.wyg-stepper { display: flex; }
+.wyg-step-cell { flex: 1; }
+.wyg-step-sep { align-self: stretch; }
+
+@media (max-width: 860px) {
+  .wyg-intro-grid { grid-template-columns: 1fr; gap: 28px; align-items: start; }
+  .wyg-block-grid { grid-template-columns: 1fr; gap: 40px; }
+  .wyg-block-grid > div { order: 0 !important; }
+  .wyg-stepper { display: grid; grid-template-columns: 1fr 1fr; }
+  .wyg-step-sep { display: none; }
+}
+
+/* Dashboard mock (WhatYouGet block 02) — gauge stacks above KPIs on phones */
+.dash-grid { display: grid; grid-template-columns: 178px 1fr; }
+.dash-gauge { border-right: 0.5px solid #BEC8CA; }
+
+@media (max-width: 480px) {
+  .dash-grid { grid-template-columns: 1fr; }
+  .dash-gauge { border-right: none; border-bottom: 0.5px solid #BEC8CA; }
+}
+
+/* Solution schematic (SAFlowSchematic) */
+
+.flow-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: end;
+}
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+.flow-stage { transition: border-color 180ms ease; }
+.flow-stage:hover { border-top-color: #D4AF37; }
+
+@media (max-width: 860px) {
+  .flow-header { grid-template-columns: 1fr; gap: 24px; align-items: start; }
+  .flow-grid { grid-template-columns: 1fr; gap: 0; }
+  .flow-arrow { padding: 16px 0; }
+  .flow-arrow svg { transform: rotate(90deg); }
+}
+
+/* System architecture diagram (Solution page) */
+
+.system-diagram-frame {
+  border: 0.5px solid #BEC8CA;
+  background: #ffffff;
+}
+
+.system-diagram-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.system-diagram-img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Below this width the diagram is too dense to read scaled down — let it scroll */
+@media (max-width: 820px) {
+  .system-diagram-img { width: 820px; min-width: 820px; }
+}
+
+/* Impact slider (ImpactSlider) */
+
+.impact-slide {
+  padding: 32px 44px;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+}
+
+.impact-numeral {
+  border-right: 0.5px solid #BEC8CA;
+  padding-right: 36px;
+}
+
+@media (max-width: 640px) {
+  .impact-slide { padding: 28px 22px; grid-template-columns: 1fr; gap: 12px; }
+  .impact-numeral { border-right: none; padding-right: 0; font-size: 60px !important; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .contour-line, .hero-reveal, .tag-reveal, .data-flow path { animation: none; }
   .tag-reveal { opacity: 1; transform: translateX(0); }
@@ -387,4 +491,7 @@ h1, h2, h3, h4 {
 
   .pyramid-block-content { opacity: 1; transition: none; }
   .card, .icon-animate   { transition: none; }
+
+  .flow-stage { transition: none; }
+  .impact-track { transition: none !important; }
 }

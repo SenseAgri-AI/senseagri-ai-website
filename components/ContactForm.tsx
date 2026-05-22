@@ -85,33 +85,33 @@ export default function ContactForm() {
   return (
     <form onSubmit={handleSubmit} className="grid gap-5">
       <div className="grid gap-5 md:grid-cols-2">
-        <label className="font-label text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
+        <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
           Name *
           <input className={inputClass} value={formData.name} onChange={updateField("name")} required />
         </label>
-        <label className="font-label text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
+        <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
           Company *
           <input className={inputClass} value={formData.company} onChange={updateField("company")} required />
         </label>
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">
-        <label className="font-label text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
+        <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
           Email *
           <input className={inputClass} type="email" value={formData.email} onChange={updateField("email")} required />
         </label>
-        <label className="font-label text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
+        <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
           Phone / WhatsApp
           <input className={inputClass} value={formData.phone} onChange={updateField("phone")} />
         </label>
       </div>
 
       <div className="grid gap-5 md:grid-cols-3">
-        <label className="font-label text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
+        <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
           Province
           <input className={inputClass} value={formData.province} onChange={updateField("province")} />
         </label>
-        <label className="font-label text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
+        <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
           Farm type
           <select className={inputClass} value={formData.farmType} onChange={updateField("farmType")}>
             <option value="">Select</option>
@@ -120,7 +120,7 @@ export default function ContactForm() {
             <option value="Mixed">Mixed</option>
           </select>
         </label>
-        <label className="font-label text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
+        <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
           Bird count range
           <select className={inputClass} value={formData.birdCount} onChange={updateField("birdCount")}>
             <option value="">Select</option>
@@ -132,7 +132,7 @@ export default function ContactForm() {
         </label>
       </div>
 
-      <label className="font-label text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
+      <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
         Message *
         <textarea
           className={`${inputClass} min-h-[140px] resize-none`}
@@ -143,17 +143,25 @@ export default function ContactForm() {
       </label>
 
       {status === "error" && error ? (
-        <p className="font-sans text-title-sm text-tertiary">{error}</p>
+        <p
+          className="font-sans text-title-sm px-3 py-2"
+          style={{ color: "#B91C1C", background: "rgba(185,28,28,0.06)", borderLeft: "2px solid #B91C1C" }}
+        >
+          {error}
+        </p>
       ) : null}
       {status === "success" ? (
-        <p className="font-sans text-title-sm text-primary">
+        <p
+          className="font-sans text-title-sm px-3 py-2 text-primary"
+          style={{ background: "rgba(0,46,53,0.06)", borderLeft: "2px solid #D4AF37" }}
+        >
           Thanks, we will get back to you within one business day.
         </p>
       ) : null}
 
       <div className="flex items-center gap-4">
         <Button>{status === "loading" ? "Sending…" : "Send enquiry"}</Button>
-        <p className="font-label text-label-md text-outline-variant">
+        <p className="font-sans text-label-md text-outline-variant">
           We only use your details to respond to your request.
         </p>
       </div>
