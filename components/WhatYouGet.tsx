@@ -699,7 +699,7 @@ function Block({
           </div>
         </div>
         <div style={{ order: reverse ? 1 : 2, display: "flex", justifyContent: "center", alignItems: "center" }}>
-          {mock}
+          <div className="wyg-mock">{mock}</div>
         </div>
       </div>
     </div>
@@ -713,6 +713,7 @@ const INTEGRATIONS = ["Big Dutchman", "SKOV", "Hytek", "Vencomatic", "Munters"];
 function IntegrationStrip() {
   return (
     <div
+      className="wyg-integration"
       style={{
         background: N,
         padding: "38px 24px",
@@ -758,18 +759,93 @@ function IntegrationStrip() {
   );
 }
 
-// ── Section intro (stepper) ─────────────────────────────────────────────────────
-function Intro() {
-  const stages = [
-    { idx: "01", label: "Sensing" },
-    { idx: "02", label: "Dashboard + AI" },
-    { idx: "03", label: "WhatsApp Alerts" },
-    { idx: "04", label: "Weekly Reports" }
-  ];
+// ── Stage pipeline (signal flow) ───────────────────────────────────────────────
+function PIcon({ children }: { children: ReactNode }) {
   return (
-    <div style={{ background: "#F8FAFA", padding: "52px 24px 0", borderBottom: "0.5px solid #BEC8CA" }}>
+    <svg
+      viewBox="0 0 24 24"
+      width="22"
+      height="22"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {children}
+    </svg>
+  );
+}
+
+const PIPELINE: { idx: string; label: string; icon: ReactNode }[] = [
+  {
+    idx: "01",
+    label: "Sensing",
+    icon: (
+      <PIcon>
+        <circle cx="12" cy="12" r="2" />
+        <path d="M6.3 6.3a8 8 0 0 0 0 11.4M17.7 6.3a8 8 0 0 1 0 11.4M9.3 9.3a4 4 0 0 0 0 5.4M14.7 9.3a4 4 0 0 1 0 5.4" />
+      </PIcon>
+    )
+  },
+  {
+    idx: "02",
+    label: "Dashboard + AI",
+    icon: (
+      <PIcon>
+        <path d="M5 21V11M12 21V4M19 21v-7" />
+        <path d="M3 21h18" />
+      </PIcon>
+    )
+  },
+  {
+    idx: "03",
+    label: "WhatsApp Alerts",
+    icon: (
+      <PIcon>
+        <path d="M21 11.5a8 8 0 0 1-11.8 7L4 20l1.5-5.2A8 8 0 1 1 21 11.5z" />
+        <path d="M9 11h.01M12.5 11h.01M16 11h.01" />
+      </PIcon>
+    )
+  },
+  {
+    idx: "04",
+    label: "Weekly Reports",
+    icon: (
+      <PIcon>
+        <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
+        <path d="M14 3v6h6M8 13h8M8 17h6" />
+      </PIcon>
+    )
+  }
+];
+
+function Pipeline() {
+  return (
+    <div className="wyg-pipeline">
+      {PIPELINE.map((s, i) => (
+        <Fragment key={s.idx}>
+          <div className="wyg-pl-node">
+            <div className="wyg-pl-box">
+              <span className="wyg-pl-num">{s.idx}</span>
+              {s.icon}
+            </div>
+            <span className="wyg-pl-label">{s.label}</span>
+          </div>
+          {i < PIPELINE.length - 1 && <span className="wyg-pl-conn" aria-hidden="true" />}
+        </Fragment>
+      ))}
+    </div>
+  );
+}
+
+// ── Section intro ──────────────────────────────────────────────────────────────
+function Intro() {
+  return (
+    <div className="wyg-intro" style={{ background: "#F8FAFA", padding: "52px 24px 46px" }}>
       <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <div className="wyg-intro-grid" style={{ marginBottom: 30 }}>
+        <div className="wyg-intro-grid" style={{ marginBottom: 34 }}>
           <div>
             <Eyebrow>Inside the platform</Eyebrow>
             <h2
@@ -780,38 +856,18 @@ function Intro() {
                 fontSize: "clamp(1.85rem, 3.4vw, 2.7rem)",
                 lineHeight: 1.03,
                 letterSpacing: "-0.02em",
-                maxWidth: "18ch"
+                maxWidth: "16ch"
               }}
             >
-              Sensing, intelligence, and reports — all in your pocket.
+              From raw signal to clear decision.
             </h2>
           </div>
           <p style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: "0.9375rem", lineHeight: 1.6, color: "#3F4849", maxWidth: 480 }}>
-            One platform that watches every house around the clock, learns your farm&apos;s baseline, and tells you what to do — by dashboard, WhatsApp, and weekly report.
+            One platform that watches every house, learns its baseline, and tells you exactly what to do.
           </p>
         </div>
 
-        {/* Stage stepper */}
-        <div className="wyg-stepper" style={{ borderTop: "0.5px solid #BEC8CA", borderBottom: "0.5px solid #BEC8CA", margin: "0 -8px" }}>
-          {stages.map((s, i) => (
-            <Fragment key={s.idx}>
-              <div className="wyg-step-cell" style={{ display: "flex", alignItems: "center", gap: 12, padding: "13px 16px" }}>
-                <span style={{ fontFamily: "var(--font-manrope), sans-serif", fontWeight: 800, fontSize: 17, color: G, letterSpacing: "-0.02em" }}>{s.idx}</span>
-                <span style={{ width: 16, height: 1, background: G }} />
-                <span style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.13em", color: P }}>{s.label}</span>
-              </div>
-              {i < stages.length - 1 && <span className="wyg-step-sep" style={{ width: 1, background: "rgba(0,46,53,0.12)" }} />}
-            </Fragment>
-          ))}
-        </div>
-
-        {/* Downward connector hint into block 01 */}
-        <div style={{ display: "flex", justifyContent: "center", padding: "16px 0 0", position: "relative" }}>
-          <svg viewBox="0 0 12 24" width="12" height="22" fill="none" stroke={G} strokeWidth="1" strokeLinecap="round" aria-hidden="true">
-            <line x1="6" y1="0" x2="6" y2="18" strokeDasharray="2 3" />
-            <path d="M2 16 L6 22 L10 16" stroke={G} fill="none" />
-          </svg>
-        </div>
+        <Pipeline />
       </div>
     </div>
   );
@@ -827,7 +883,7 @@ export default function WhatYouGet() {
         idx="01"
         label="Sensing"
         title="Every signal from every house."
-        body="LoRaWAN sensors and edge cameras stream the metrics that drive welfare and yield — continuously, on every house, day and night."
+        body="Sensors and edge cameras on every house, capturing every signal around the clock."
         chips={["LoRaWAN backbone", "Edge-first", "24/7 capture"]}
         mock={<SensorWheel />}
       />
@@ -835,7 +891,7 @@ export default function WhatYouGet() {
         idx="02"
         label="Dashboard + AI"
         title="Your full operation, decoded."
-        body="Every measurement, every house, in one place. Causal AI surfaces the actions that matter — like an internal vet and operations analyst that never sleep."
+        body="Every metric in one place, with AI that flags exactly what needs action."
         chips={["Live telemetry", "Health score", "AI recommendations", "Internal vet"]}
         mock={<DashboardMock />}
         reverse
@@ -844,7 +900,7 @@ export default function WhatYouGet() {
         idx="03"
         label="WhatsApp Alerts"
         title="AI on WhatsApp. No app to learn."
-        body="Serious events, schedule deviations, and key insights pushed to the people who need them — on the messenger your team already uses."
+        body="Serious events and key insights, pushed straight to WhatsApp."
         chips={["Serious events", "Schedule changes", "Key insights"]}
         mock={<WhatsAppPhone />}
         dark
@@ -853,7 +909,7 @@ export default function WhatYouGet() {
         idx="04"
         label="Weekly Reports"
         title="Executive summaries — automatic."
-        body="Every Monday: output, performance, and ROI delivered as a clean executive report. Share with management or the bank with a single tap."
+        body="Output, performance and ROI — delivered as an automatic report every Monday."
         chips={["Output", "Performance", "Cost & ROI", "Shareable"]}
         mock={<ReportMock />}
         reverse

@@ -395,6 +395,7 @@ h1, h2, h3, h4 {
 .wyg-stepper { display: flex; }
 .wyg-step-cell { flex: 1; }
 .wyg-step-sep { align-self: stretch; }
+.wyg-mock { width: 100%; }
 
 @media (max-width: 860px) {
   .wyg-intro-grid { grid-template-columns: 1fr; gap: 28px; align-items: start; }
@@ -402,6 +403,120 @@ h1, h2, h3, h4 {
   .wyg-block-grid > div { order: 0 !important; }
   .wyg-stepper { display: grid; grid-template-columns: 1fr 1fr; }
   .wyg-step-sep { display: none; }
+}
+
+/* Phones — compact the "Inside the platform" section without dropping anything */
+@media (max-width: 640px) {
+  .wyg-intro { padding: 36px 20px 32px !important; }
+  .wyg-intro-grid { gap: 20px !important; }
+  .wyg-block { padding: 32px 20px !important; }
+  .wyg-block-grid { gap: 22px !important; }
+  .wyg-integration { padding: 30px 20px !important; }
+  /* Scale the diagrams down on phones — smaller but fully intact */
+  .wyg-mock { zoom: 0.82; }
+}
+
+/* Stage pipeline — signal flow (WhatYouGet intro) */
+.wyg-pipeline { display: flex; align-items: flex-start; }
+
+.wyg-pl-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+  width: 122px;
+}
+
+.wyg-pl-box {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  background: #ffffff;
+  border: 0.5px solid #BEC8CA;
+  color: #002E35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 46, 53, 0.07);
+}
+
+.wyg-pl-num {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  background: #002E35;
+  color: #D4AF37;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  padding: 3px 5px;
+}
+
+.wyg-pl-label {
+  font-family: var(--font-inter), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #002E35;
+  text-align: center;
+  line-height: 1.35;
+}
+
+.wyg-pl-conn {
+  flex: 1;
+  min-width: 24px;
+  height: 1.5px;
+  margin-top: 25px;
+  position: relative;
+  background-image: repeating-linear-gradient(to right, #D4AF37 0 5px, transparent 5px 13px);
+  background-size: 18px 1.5px;
+  animation: wyg-flow 0.75s linear infinite;
+}
+
+.wyg-pl-conn::after {
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-top: 3.5px solid transparent;
+  border-bottom: 3.5px solid transparent;
+  border-left: 5px solid #D4AF37;
+}
+
+@keyframes wyg-flow   { to { background-position: 18px 0; } }
+@keyframes wyg-flow-v { to { background-position: 0 18px; } }
+
+@media (max-width: 640px) {
+  .wyg-pipeline { flex-direction: column; align-items: stretch; }
+  .wyg-pl-node { flex-direction: row; align-items: center; width: auto; gap: 14px; }
+  .wyg-pl-label { text-align: left; font-size: 11px; }
+  .wyg-pl-conn {
+    flex: none;
+    width: 1.5px;
+    height: 22px;
+    min-width: 0;
+    margin-top: 0;
+    margin-left: 25px;
+    background-image: repeating-linear-gradient(to bottom, #D4AF37 0 5px, transparent 5px 13px);
+    background-size: 1.5px 18px;
+    animation: wyg-flow-v 0.75s linear infinite;
+  }
+  .wyg-pl-conn::after {
+    right: auto;
+    left: 50%;
+    top: auto;
+    bottom: -1px;
+    transform: translateX(-50%);
+    border-left: 3.5px solid transparent;
+    border-right: 3.5px solid transparent;
+    border-top: 5px solid #D4AF37;
+    border-bottom: 0;
+  }
 }
 
 /* Dashboard mock (WhatYouGet block 02) — gauge stacks above KPIs on phones */
@@ -481,7 +596,7 @@ h1, h2, h3, h4 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contour-line, .hero-reveal, .tag-reveal, .data-flow path { animation: none; }
+  .contour-line, .hero-reveal, .tag-reveal, .data-flow path, .wyg-pl-conn { animation: none; }
   .tag-reveal { opacity: 1; transform: translateX(0); }
 
   .pyramid-block, .pyramid-dot {
