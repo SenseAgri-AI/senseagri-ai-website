@@ -138,7 +138,7 @@ function SensorWheel() {
             textAlign: "center"
           }}
         >
-          Farm AI
+          Farm
         </div>
       </div>
 
@@ -234,7 +234,7 @@ function DashboardMock() {
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
           <LogoMark className="h-4 w-3" />
           <span style={{ fontSize: 9.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#fff" }}>
-            Farm Anike · House 1
+            Farm · House 1
           </span>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -427,7 +427,7 @@ function WhatsAppPhone() {
               fontWeight: 600
             }}
           >
-            <span>14:34</span>
+            <span>06:34</span>
             <span style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 8.5, opacity: 0.85 }}>
               <span>●●●●○</span>
               <span>87%</span>
@@ -469,22 +469,22 @@ function WhatsAppPhone() {
             >
               Today
             </div>
-            <Bubble kind="recv" time="14:32">
+            <Bubble kind="recv" time="06:32">
               <div style={{ fontWeight: 700, color: "#B91C1C", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Alert · House 3
               </div>
-              Temperature <b>31.2°C</b> — above threshold (28°C).
+              Air quality drifting. NH₃ up <b>38%</b> over the last 14 days. Traced to manure belt at <b>50%</b> of normal cycle.
             </Bubble>
-            <Bubble kind="recv" time="14:33">
-              Fans 2 &amp; 3 offline. Schedule deviation detected.
+            <Bubble kind="recv" time="06:33">
+              Without action: projected FCR drift <b>+0.04</b> across the cycle → ~<b>3% margin loss</b>.
             </Bubble>
-            <Bubble kind="recv" time="14:33">
+            <Bubble kind="recv" time="06:33">
               <div style={{ fontWeight: 700, color: P, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Recommendation
               </div>
-              Inspect ventilation before <b>15:00</b> to avoid heat-stress event.
+              Step ventilation up <b>1 stage</b> + restore manure belt to normal cycle. Confidence <b>91%</b>.
             </Bubble>
-            <Bubble kind="sent" time="14:34">
+            <Bubble kind="sent" time="06:34">
               On it.
             </Bubble>
           </div>
@@ -628,24 +628,103 @@ function Block({
         />
       )}
 
-      {/* Big ghost numeral */}
-      <div
-        style={{
-          position: "absolute",
-          top: 10,
-          right: 28,
-          fontFamily: "var(--font-manrope), sans-serif",
-          fontWeight: 800,
-          fontSize: 150,
-          color: dark ? "rgba(212,175,55,0.07)" : "rgba(0,46,53,0.045)",
-          letterSpacing: "-0.05em",
-          lineHeight: 0.85,
-          pointerEvents: "none",
-          userSelect: "none"
-        }}
-      >
-        {idx}
-      </div>
+      {/* Big ghost numeral — kept for non-dark blocks; on the dark block (03)
+          the PEF outcome callout below takes this slot instead. */}
+      {!dark && (
+        <div
+          style={{
+            position: "absolute",
+            top: 10,
+            right: 28,
+            fontFamily: "var(--font-manrope), sans-serif",
+            fontWeight: 800,
+            fontSize: 150,
+            color: "rgba(0,46,53,0.045)",
+            letterSpacing: "-0.05em",
+            lineHeight: 0.85,
+            pointerEvents: "none",
+            userSelect: "none"
+          }}
+        >
+          {idx}
+        </div>
+      )}
+
+      {/* PEF outcome backdrop — climbing gold trend-line ending in an arrowhead
+          that lands at the PEF number callout. Only on the dark block (Block 03).
+          Visual thesis: follow the AI recommendations on WhatsApp → poultry
+          efficiency factor climbs. */}
+      {dark && (
+        <>
+          <svg
+            viewBox="0 0 1000 500"
+            preserveAspectRatio="none"
+            style={{
+              position: "absolute",
+              inset: 0,
+              width: "100%",
+              height: "100%",
+              pointerEvents: "none"
+            }}
+            aria-hidden="true"
+          >
+            <defs>
+              {/* Arrowhead lives on the line itself via marker-end — auto-orients along
+                  the curve's tangent so the tip is always continuous with the stroke. */}
+              <marker
+                id="pefArrow"
+                viewBox="0 0 10 10"
+                refX="9"
+                refY="5"
+                markerWidth="9"
+                markerHeight="9"
+                orient="auto"
+              >
+                <path d="M 0 0 L 10 5 L 0 10 z" fill="#D4AF37" fillOpacity="0.9" />
+              </marker>
+            </defs>
+            {/* Climbs from lower-left up to the upper-right callout — natural
+                "climbing chart" direction. Arrow marker auto-orients along the tangent. */}
+            <path
+              d="M 50 460 C 240 440, 420 360, 580 240 S 800 90, 920 55"
+              fill="none"
+              stroke="#D4AF37"
+              strokeOpacity="0.42"
+              strokeWidth="1.8"
+              strokeDasharray="6 10"
+              markerEnd="url(#pefArrow)"
+            />
+          </svg>
+
+          {/* PEF callout — just the eyebrow, no number. Sits at the upper-right
+              where the line lands; small enough that it never reaches the phone. */}
+          <div
+            style={{
+              position: "absolute",
+              top: 26,
+              right: 36,
+              textAlign: "right",
+              pointerEvents: "none",
+              zIndex: 2
+            }}
+            aria-hidden="true"
+          >
+            <div
+              style={{
+                fontFamily: "var(--font-inter), sans-serif",
+                fontSize: 11,
+                fontWeight: 700,
+                letterSpacing: "0.2em",
+                color: G,
+                textTransform: "uppercase",
+                opacity: 0.9
+              }}
+            >
+              PEF · Climbing
+            </div>
+          </div>
+        </>
+      )}
 
       <div className="wyg-block-grid" style={{ maxWidth: "72rem", margin: "0 auto", position: "relative" }}>
         <div style={{ order: reverse ? 2 : 1 }}>
@@ -736,7 +815,7 @@ function IntegrationStrip() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ width: 6, height: 6, background: G, borderRadius: "50%" }} />
           <span style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.18em", color: G, textAlign: "center" }}>
-            Integrates with every major poultry platform
+            Seamlessly integrates with every major poultry platform
           </span>
           <span style={{ width: 6, height: 6, background: G, borderRadius: "50%" }} />
         </div>
@@ -759,126 +838,10 @@ function IntegrationStrip() {
   );
 }
 
-// ── Stage pipeline (signal flow) ───────────────────────────────────────────────
-function PIcon({ children }: { children: ReactNode }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      width="22"
-      height="22"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-    >
-      {children}
-    </svg>
-  );
-}
-
-const PIPELINE: { idx: string; label: string; icon: ReactNode }[] = [
-  {
-    idx: "01",
-    label: "Sensing",
-    icon: (
-      <PIcon>
-        <circle cx="12" cy="12" r="2" />
-        <path d="M6.3 6.3a8 8 0 0 0 0 11.4M17.7 6.3a8 8 0 0 1 0 11.4M9.3 9.3a4 4 0 0 0 0 5.4M14.7 9.3a4 4 0 0 1 0 5.4" />
-      </PIcon>
-    )
-  },
-  {
-    idx: "02",
-    label: "Dashboard + AI",
-    icon: (
-      <PIcon>
-        <path d="M5 21V11M12 21V4M19 21v-7" />
-        <path d="M3 21h18" />
-      </PIcon>
-    )
-  },
-  {
-    idx: "03",
-    label: "WhatsApp Alerts",
-    icon: (
-      <PIcon>
-        <path d="M21 11.5a8 8 0 0 1-11.8 7L4 20l1.5-5.2A8 8 0 1 1 21 11.5z" />
-        <path d="M9 11h.01M12.5 11h.01M16 11h.01" />
-      </PIcon>
-    )
-  },
-  {
-    idx: "04",
-    label: "Weekly Reports",
-    icon: (
-      <PIcon>
-        <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
-        <path d="M14 3v6h6M8 13h8M8 17h6" />
-      </PIcon>
-    )
-  }
-];
-
-function Pipeline() {
-  return (
-    <div className="wyg-pipeline">
-      {PIPELINE.map((s, i) => (
-        <Fragment key={s.idx}>
-          <div className="wyg-pl-node">
-            <div className="wyg-pl-box">
-              <span className="wyg-pl-num">{s.idx}</span>
-              {s.icon}
-            </div>
-            <span className="wyg-pl-label">{s.label}</span>
-          </div>
-          {i < PIPELINE.length - 1 && <span className="wyg-pl-conn" aria-hidden="true" />}
-        </Fragment>
-      ))}
-    </div>
-  );
-}
-
-// ── Section intro ──────────────────────────────────────────────────────────────
-function Intro() {
-  return (
-    <div className="wyg-intro" style={{ background: "#F8FAFA", padding: "52px 24px 46px" }}>
-      <div style={{ maxWidth: "72rem", margin: "0 auto" }}>
-        <div className="wyg-intro-grid" style={{ marginBottom: 34 }}>
-          <div>
-            <Eyebrow>Inside the platform</Eyebrow>
-            <h2
-              style={{
-                fontFamily: "var(--font-manrope), sans-serif",
-                fontWeight: 800,
-                color: P,
-                fontSize: "clamp(1.85rem, 3.4vw, 2.7rem)",
-                lineHeight: 1.03,
-                letterSpacing: "-0.02em",
-                maxWidth: "16ch"
-              }}
-            >
-              From raw signal to clear decision.
-            </h2>
-          </div>
-          <p style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: "0.9375rem", lineHeight: 1.6, color: "#3F4849", maxWidth: 480 }}>
-            One platform that watches every house, learns its baseline, and tells you exactly what to do.
-          </p>
-        </div>
-
-        <Pipeline />
-      </div>
-    </div>
-  );
-}
-
 // ── The section ──────────────────────────────────────────────────────────────
 export default function WhatYouGet() {
   return (
     <section>
-      <Intro />
-
       <Block
         idx="01"
         label="Sensing"

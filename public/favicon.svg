@@ -1,6 +1,10 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="64" height="64" rx="16" fill="#355A3A"/>
-  <path d="M20 44h24" stroke="#E06A2D" stroke-width="4" stroke-linecap="round"/>
-  <path d="M24 36h16" stroke="#E06A2D" stroke-width="4" stroke-linecap="round"/>
-  <path d="M28 28h8" stroke="#E06A2D" stroke-width="4" stroke-linecap="round"/>
+<svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="SenseAgri AI">
+  <!-- Dark navy plate — matches the navbar/footer brand chip -->
+  <rect width="64" height="64" fill="#0F172A"/>
+  <!-- Three petrol-teal pills (logo mark, scaled from the 90×112 source) -->
+  <g transform="translate(3.6 -12.2) scale(0.632)">
+    <rect x="24" y="32" width="42" height="20" rx="10" fill="#2A8E9A" opacity="0.55"/>
+    <rect x="10" y="60" width="70" height="20" rx="10" fill="#2A8E9A" opacity="0.75"/>
+    <rect x="0"  y="88" width="90" height="20" rx="10" fill="#2A8E9A"/>
+  </g>
 </svg>

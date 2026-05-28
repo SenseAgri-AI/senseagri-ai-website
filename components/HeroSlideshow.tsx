@@ -4,10 +4,6 @@ import { useEffect, useState } from "react";
 
 const slides = [
   {
-    src: "/Gemini_Generated_Image_e0s5hge0s5hge0s5 (1).png",
-    position: "60% center",
-  },
-  {
     src: "/hero_slides/53d341dc-b57d-42ac-8463-c4bc48a167de.jpg",
     position: "center 35%",
   },

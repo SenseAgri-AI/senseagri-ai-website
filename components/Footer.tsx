@@ -15,12 +15,12 @@ export default function Footer() {
     <footer className="grain bg-secondary">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:px-10 md:grid-cols-[1.3fr_1fr_1fr]">
         <div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             {/* Sharp logo container in navy context */}
-            <span className="flex h-9 w-9 items-center justify-center bg-secondary-container">
-              <LogoMark className="h-7 w-7" />
+            <span className="flex h-14 w-14 items-center justify-center bg-secondary-container">
+              <LogoMark className="h-10 w-10" />
             </span>
-            <span className="font-display text-title-sm font-extrabold uppercase tracking-[-0.02em] text-on-secondary">
+            <span className="font-display text-2xl font-extrabold uppercase tracking-[-0.02em] text-on-secondary">
               SenseAgri AI
             </span>
           </div>

@@ -30,16 +30,17 @@ export const metadata: Metadata = {
     title: "SenseAgri AI | Poultry Farm Decision Intelligence",
     description: siteConfig.description,
     type: "website",
-    url: siteConfig.url,
-    images: [{ url: siteConfig.ogImage }]
+    url: siteConfig.url
+    // Share image comes from app/opengraph-image.tsx (Next.js convention)
   },
   twitter: {
     card: "summary_large_image",
     title: "SenseAgri AI | Poultry Farm Decision Intelligence",
-    description: siteConfig.description,
-    images: [siteConfig.ogImage]
+    description: siteConfig.description
+    // Share image comes from app/opengraph-image.tsx (Next.js convention)
   },
   icons: { icon: "/favicon.svg" }
+  // Apple touch icon comes from app/apple-icon.tsx (Next.js convention)
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {

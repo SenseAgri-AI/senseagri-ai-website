@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import WhatsAppCarousel, { type WhatsAppShot } from "@/components/WhatsAppCarousel";
+
+// Source images live in /public/hero_slides — paths URL-encoded for the spaces.
+const whatsappShots: WhatsAppShot[] = [
+  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.44.jpeg", alt: "WhatsApp alert from SenseAgri Farm AI" },
+  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.45.jpeg", alt: "WhatsApp alert from SenseAgri Farm AI" },
+  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.23.19.jpeg", alt: "WhatsApp insight from SenseAgri Farm AI" },
+  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.27.38.jpeg", alt: "WhatsApp insight from SenseAgri Farm AI" }
+];
 
 export const metadata: Metadata = {
   title: "About",
@@ -151,8 +160,9 @@ export default function AboutPage() {
             backgroundSize: "24px 24px"
           }}
         />
-        <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-          <div>
+        <div className="relative z-10 mx-auto max-w-6xl">
+          {/* Heading row — full width across the top */}
+          <div className="mb-10">
             <span
               className="mb-6 inline-flex items-center gap-2 border-l-2 border-tertiary px-3 py-1"
               style={{ background: "rgba(212,175,55,0.10)" }}
@@ -168,7 +178,14 @@ export default function AboutPage() {
               How SenseAgri AI began.
             </h2>
           </div>
-          <div className="flex flex-col gap-4 font-sans text-[0.9375rem] leading-relaxed text-white/75">
+
+          {/* Body row — carousel left half, paragraphs right half */}
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-stretch">
+            {/* Carousel slot — explicit (not min) height so percentage children inside resolve */}
+            <div className="relative" style={{ height: 540 }}>
+              <WhatsAppCarousel images={whatsappShots} dark />
+            </div>
+            <div className="flex flex-col gap-4 font-sans text-[0.9375rem] leading-relaxed text-white/75">
             <p>
               SenseAgri AI started with a conversation in early 2025. Dylan and Ryan came from different
               fields — one from data science and biotech, the other from veterinary medicine and animal
@@ -187,6 +204,7 @@ export default function AboutPage() {
               understanding of cause and effect — so decisions are made early, with evidence, and with
               confidence.
             </p>
+            </div>
           </div>
         </div>
       </section>
