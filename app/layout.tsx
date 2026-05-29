@@ -5,6 +5,7 @@ import "./globals.css";
 import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import RevealController from "@/components/RevealController";
 import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
@@ -52,6 +53,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <Navbar />
           <main>{children}</main>
           <Footer />
+          <RevealController />
         </div>
       </body>
     </html>

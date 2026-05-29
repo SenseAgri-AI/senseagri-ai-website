@@ -89,8 +89,8 @@ function SensorWheel() {
         height={size}
         style={{ position: "absolute", inset: 0, pointerEvents: "none", maxWidth: "100%", height: "auto" }}
       >
-        {/* Dashed outer ring */}
-        <circle cx={cx} cy={cy} r={R} fill="none" stroke="#BEC8CA" strokeWidth="0.5" strokeDasharray="2 4" />
+        {/* Dashed outer ring — slowly rotates so the dashes appear to drift around the wheel */}
+        <circle className="sensor-wheel-ring" cx={cx} cy={cy} r={R} fill="none" stroke="#BEC8CA" strokeWidth="0.5" strokeDasharray="2 4" />
         {/* Spokes */}
         {SENSORS.map((_, i) => {
           const a = (i / NUM) * 2 * Math.PI - Math.PI / 2;
@@ -395,6 +395,8 @@ function WhatsAppPhone() {
         width: 262,
         maxWidth: "100%",
         margin: "0 auto",
+        // Small nudge right so the phone sits slightly off-centre in its column
+        transform: "translateX(24px)",
         background: "#0a0a0a",
         borderRadius: 34,
         padding: "7px 6px 9px",
@@ -583,8 +585,7 @@ function Block({
   chips,
   mock,
   reverse,
-  dark,
-  last
+  dark
 }: {
   idx: string;
   label: string;
@@ -594,7 +595,6 @@ function Block({
   mock: ReactNode;
   reverse?: boolean;
   dark?: boolean;
-  last?: boolean;
 }) {
   const blockBg = dark ? N : "#F8FAFA";
   const textColor = dark ? "#fff" : P;
@@ -602,7 +602,6 @@ function Block({
   const chipBg = dark ? "rgba(212,175,55,0.08)" : "rgba(0,46,53,0.07)";
   const chipBorder = dark ? "0.5px solid rgba(212,175,55,0.25)" : "0.5px solid rgba(0,46,53,0.15)";
   const chipColor = dark ? "rgba(255,255,255,0.92)" : P;
-  const separatorColor = dark ? "rgba(212,175,55,0.18)" : "#BEC8CA";
 
   return (
     <div
@@ -610,7 +609,6 @@ function Block({
       style={{
         background: blockBg,
         padding: "48px 24px",
-        borderBottom: last ? "none" : `0.5px solid ${separatorColor}`,
         position: "relative",
         overflow: "hidden"
       }}
@@ -628,27 +626,25 @@ function Block({
         />
       )}
 
-      {/* Big ghost numeral — kept for non-dark blocks; on the dark block (03)
-          the PEF outcome callout below takes this slot instead. */}
-      {!dark && (
-        <div
-          style={{
-            position: "absolute",
-            top: 10,
-            right: 28,
-            fontFamily: "var(--font-manrope), sans-serif",
-            fontWeight: 800,
-            fontSize: 150,
-            color: "rgba(0,46,53,0.045)",
-            letterSpacing: "-0.05em",
-            lineHeight: 0.85,
-            pointerEvents: "none",
-            userSelect: "none"
-          }}
-        >
-          {idx}
-        </div>
-      )}
+      {/* Big ghost numeral — shown on every block. On the dark block the PEF
+          callout sits in a separate spot (upper-mid), so the two don't conflict. */}
+      <div
+        style={{
+          position: "absolute",
+          top: 10,
+          right: 28,
+          fontFamily: "var(--font-manrope), sans-serif",
+          fontWeight: 800,
+          fontSize: 150,
+          color: dark ? "rgba(212,175,55,0.07)" : "rgba(0,46,53,0.045)",
+          letterSpacing: "-0.05em",
+          lineHeight: 0.85,
+          pointerEvents: "none",
+          userSelect: "none"
+        }}
+      >
+        {idx}
+      </div>
 
       {/* PEF outcome backdrop — climbing gold trend-line ending in an arrowhead
           that lands at the PEF number callout. Only on the dark block (Block 03).
@@ -683,10 +679,12 @@ function Block({
                 <path d="M 0 0 L 10 5 L 0 10 z" fill="#D4AF37" fillOpacity="0.9" />
               </marker>
             </defs>
-            {/* Climbs from lower-left up to the upper-right callout — natural
-                "climbing chart" direction. Arrow marker auto-orients along the tangent. */}
+            {/* Climbs from lower-left and stops in the upper-middle, just before
+                the phone column starts — so the line never disappears behind the phone.
+                Arrow marker auto-orients along the curve tangent. */}
             <path
-              d="M 50 460 C 240 440, 420 360, 580 240 S 800 90, 920 55"
+              className="pef-trend-line"
+              d="M 50 460 C 220 430, 380 340, 460 230 C 510 150, 480 110, 540 60"
               fill="none"
               stroke="#D4AF37"
               strokeOpacity="0.42"
@@ -696,14 +694,14 @@ function Block({
             />
           </svg>
 
-          {/* PEF callout — just the eyebrow, no number. Sits at the upper-right
-              where the line lands; small enough that it never reaches the phone. */}
+          {/* PEF callout — sits where the line ends, just to the right of the
+              arrow tip so it reads as the label the arrow is pointing at. */}
           <div
             style={{
               position: "absolute",
-              top: 26,
-              right: 36,
-              textAlign: "right",
+              top: 56,
+              left: "55%",
+              textAlign: "left",
               pointerEvents: "none",
               zIndex: 2
             }}
@@ -726,7 +724,7 @@ function Block({
         </>
       )}
 
-      <div className="wyg-block-grid" style={{ maxWidth: "72rem", margin: "0 auto", position: "relative" }}>
+      <div className="wyg-block-grid reveal" style={{ maxWidth: "72rem", margin: "0 auto", position: "relative" }}>
         <div style={{ order: reverse ? 2 : 1 }}>
           <Eyebrow dark={dark}>
             {idx} · {label}
@@ -876,7 +874,6 @@ export default function WhatYouGet() {
         chips={["Output", "Performance", "Cost & ROI", "Shareable"]}
         mock={<ReportMock />}
         reverse
-        last
       />
 
       <IntegrationStrip />

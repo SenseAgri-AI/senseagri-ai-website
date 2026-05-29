@@ -175,7 +175,7 @@ export default function HomePage() {
             backgroundSize: "24px 24px"
           }}
         />
-        <div className="relative mx-auto max-w-6xl">
+        <div className="relative mx-auto max-w-6xl reveal">
 
           {/* Header (left-aligned) */}
           <div className="mb-7 flex flex-col gap-3">
@@ -242,7 +242,7 @@ export default function HomePage() {
           }}
         />
 
-        <div className="relative z-10 mx-auto max-w-4xl text-center">
+        <div className="relative z-10 mx-auto max-w-4xl text-center reveal">
           <LogoMark className="h-14 w-14 mx-auto mb-8" />
 
           <span
