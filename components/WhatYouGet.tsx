@@ -364,11 +364,24 @@ function DashboardMock() {
 }
 
 // ── Mock 3: WhatsApp on phone ──────────────────────────────────────────────────
-function Bubble({ kind, time, children }: { kind?: "sent" | "recv"; time: string; children: ReactNode }) {
+function Bubble({
+  kind,
+  time,
+  children,
+  delay = 0
+}: {
+  kind?: "sent" | "recv";
+  time: string;
+  children: ReactNode;
+  delay?: number;
+}) {
   const recv = { background: "#fff", alignSelf: "flex-start" as const, borderRadius: "0 8px 8px 8px" };
   const sent = { background: "#D9FDD3", alignSelf: "flex-end" as const, borderRadius: "8px 0 8px 8px" };
   return (
     <div
+      // Reveals with a staggered transitionDelay so the bubbles cascade in like
+      // a live conversation when Block 03 scrolls into view.
+      className="reveal"
       style={{
         ...(kind === "sent" ? sent : recv),
         padding: "6px 8px 5px",
@@ -377,6 +390,7 @@ function Bubble({ kind, time, children }: { kind?: "sent" | "recv"; time: string
         fontSize: 11,
         lineHeight: 1.4,
         color: "#111B21",
+        transitionDelay: `${delay}ms`,
         boxShadow: "0 1px 0.5px rgba(0,0,0,0.13)"
       }}
     >
@@ -417,7 +431,7 @@ function WhatsAppPhone() {
             zIndex: 5
           }}
         />
-        <div style={{ background: "#ECE5DD", height: 452, display: "flex", flexDirection: "column" }}>
+        <div style={{ background: "#ECE5DD", height: 700, display: "flex", flexDirection: "column" }}>
           <div
             style={{
               display: "flex",
@@ -471,22 +485,61 @@ function WhatsAppPhone() {
             >
               Today
             </div>
-            <Bubble kind="recv" time="06:32">
+            {/* Scenario 1 — morning air-quality drift */}
+            <Bubble kind="recv" time="06:32" delay={200}>
               <div style={{ fontWeight: 700, color: "#B91C1C", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Alert · House 3
               </div>
               Air quality drifting. NH₃ up <b>38%</b> over the last 14 days. Traced to manure belt at <b>50%</b> of normal cycle.
             </Bubble>
-            <Bubble kind="recv" time="06:33">
+            <Bubble kind="recv" time="06:33" delay={700}>
               Without action: projected FCR drift <b>+0.04</b> across the cycle → ~<b>3% margin loss</b>.
             </Bubble>
-            <Bubble kind="recv" time="06:33">
+            <Bubble kind="recv" time="06:33" delay={1200}>
               <div style={{ fontWeight: 700, color: P, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Recommendation
               </div>
               Step ventilation up <b>1 stage</b> + restore manure belt to normal cycle. Confidence <b>91%</b>.
             </Bubble>
-            <Bubble kind="sent" time="06:34">
+            <Bubble kind="sent" time="06:34" delay={1700}>
+              On it.
+            </Bubble>
+
+            {/* Time-gap divider — subtle hint that hours have passed */}
+            <div
+              className="reveal"
+              style={{
+                alignSelf: "center",
+                background: "rgba(225, 245, 254, 0.9)",
+                padding: "3px 9px",
+                fontSize: 9,
+                color: "#3F4849",
+                borderRadius: 6,
+                fontWeight: 600,
+                margin: "2px 0",
+                transitionDelay: "2400ms"
+              }}
+            >
+              Later · 11:42
+            </div>
+
+            {/* Scenario 2 — midday heat stress with mortality forecast */}
+            <Bubble kind="recv" time="11:42" delay={2800}>
+              <div style={{ fontWeight: 700, color: "#B91C1C", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
+                Alert · House 7
+              </div>
+              Heat stress imminent. Inlet <b>33.1°C</b> and climbing <b>0.4°C/min</b> — cooling not keeping pace.
+            </Bubble>
+            <Bubble kind="recv" time="11:42" delay={3300}>
+              If unchanged in next <b>20 min</b>: heat-stress threshold crossed → expected mortality <b>+0.8%</b> in House 7.
+            </Bubble>
+            <Bubble kind="recv" time="11:43" delay={3800}>
+              <div style={{ fontWeight: 700, color: P, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
+                Recommendation
+              </div>
+              Open evaporative pads + <b>Fans 1 &amp; 4</b> to max now. Confidence <b>93%</b>.
+            </Bubble>
+            <Bubble kind="sent" time="11:43" delay={4300}>
               On it.
             </Bubble>
           </div>
