@@ -603,6 +603,15 @@ h1, h2, h3, h4 {
 }
 @keyframes wheel-spin { to { transform: rotate(360deg); } }
 
+/* Chat scroll container — keeps the container scrollable (so scrollIntoView
+   on each new bubble works) while hiding the scrollbar for a clean phone look. */
+.chat-scroll {
+  scrollbar-width: none;
+}
+.chat-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 /* Sensor cards — staggered gold radar-sweep glow that walks around the wheel.
    Each card gets `animation-delay` set inline so only one is "lit" at a time.
    90% of the cycle the card is at rest; ~7% bloom + ~3% decay = subtle pulse. */

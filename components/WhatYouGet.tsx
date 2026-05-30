@@ -371,6 +371,8 @@ function DashboardMock() {
 // ── Mock 3: WhatsApp on phone ──────────────────────────────────────────────────
 // State-driven reveal — React owns the `started` flag, so re-renders preserve
 // visibility (no more "cascade resets every 10s" bug from the global .reveal class).
+// Each bubble also scrolls itself into view once its delay elapses, so the chat
+// auto-advances inside a normal-sized phone (instead of needing a giant screen).
 function Bubble({
   kind,
   time,
@@ -384,10 +386,23 @@ function Bubble({
   delay?: number;
   started?: boolean;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
   const recv = { background: "#fff", alignSelf: "flex-start" as const, borderRadius: "0 8px 8px 8px" };
   const sent = { background: "#D9FDD3", alignSelf: "flex-end" as const, borderRadius: "8px 0 8px 8px" };
+
+  useEffect(() => {
+    if (!started) return;
+    // Wait until after the bubble has started appearing, then scroll it into view
+    // (block: "nearest" only scrolls if the bubble is outside the visible area).
+    const t = setTimeout(() => {
+      ref.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }, delay + 250);
+    return () => clearTimeout(t);
+  }, [started, delay]);
+
   return (
     <div
+      ref={ref}
       style={{
         ...(kind === "sent" ? sent : recv),
         padding: "6px 8px 5px",
@@ -466,7 +481,7 @@ function WhatsAppPhone() {
             zIndex: 5
           }}
         />
-        <div style={{ background: "#ECE5DD", height: 700, display: "flex", flexDirection: "column" }}>
+        <div style={{ background: "#ECE5DD", height: 540, display: "flex", flexDirection: "column" }}>
           <div
             style={{
               display: "flex",
@@ -506,13 +521,14 @@ function WhatsAppPhone() {
             </div>
           </div>
           <div
+            className="chat-scroll"
             style={{
               flex: 1,
               padding: "9px 8px",
               display: "flex",
               flexDirection: "column",
               gap: 6,
-              overflow: "hidden"
+              overflowY: "auto"
             }}
           >
             <div
