@@ -627,7 +627,8 @@ h1, h2, h3, h4 {
 
 /* Install photo — right-anchored 70%-wide crop, with a small top inset so
    the ghost "01" numeral can sit clearly above it on the surface.
-   Masked so the corner is solid and it feathers out toward the lower-left. */
+   Mask is a continuous radial fade (no flat-solid plateau) so it dissolves
+   into the surface without a visible "edge" line crossing the image. */
 .sensing-photo {
   position: absolute;
   top: 6%;
@@ -636,20 +637,21 @@ h1, h2, h3, h4 {
   width: 70%;
   object-fit: cover;
   object-position: 46% 24%;
-  -webkit-mask-image: radial-gradient(155% 150% at 100% 0%, #000 56%, transparent 92%);
-          mask-image: radial-gradient(155% 150% at 100% 0%, #000 56%, transparent 92%);
+  -webkit-mask-image: radial-gradient(170% 165% at 100% 0%, #000 25%, transparent 100%);
+          mask-image: radial-gradient(170% 165% at 100% 0%, #000 25%, transparent 100%);
 }
 
-/* Teal veil over the photo, same inset + mask so it feathers with the photo. */
+/* Teal veil over the photo. Same gentler mask + slightly lower opacity so the
+   tint never reads as a hard horizontal band where it terminates. */
 .sensing-veil {
   position: absolute;
   top: 6%;
   bottom: 0;
   right: 0;
   width: 70%;
-  background: rgba(0, 46, 53, 0.20);
-  -webkit-mask-image: radial-gradient(155% 150% at 100% 0%, #000 56%, transparent 92%);
-          mask-image: radial-gradient(155% 150% at 100% 0%, #000 56%, transparent 92%);
+  background: rgba(0, 46, 53, 0.14);
+  -webkit-mask-image: radial-gradient(170% 165% at 100% 0%, #000 25%, transparent 100%);
+          mask-image: radial-gradient(170% 165% at 100% 0%, #000 25%, transparent 100%);
   pointer-events: none;
 }
 
