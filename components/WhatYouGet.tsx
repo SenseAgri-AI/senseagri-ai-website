@@ -76,45 +76,63 @@ const SENSORS: { Icon: () => ReactElement; label: string }[] = [
 ];
 
 // ── Mock 1: Sensor wheel ───────────────────────────────────────────────────────
-function SensorWheel() {
+// Hub-and-spoke wheel — geometry computed (10 evenly-spaced spokes from top).
+// Per Claude Design's handover: 460-unit viewBox; ring radius 175; cards orbit
+// at 41% of the frame (slightly outside the ring so the gold ticks read as
+// where each card "plugs in"). Default render size 348 px (handover spec).
+function SensorWheel({ size = 348 }: { size?: number }) {
   const NUM = SENSORS.length;
-  const R = 150;
-  const size = 410;
-  const cx = size / 2;
-  const cy = size / 2;
+  const ringR = 175;
+  const cardFrac = 0.41;
+  const cx = 230;
+  const cy = 230;
 
   return (
-    <div style={{ position: "relative", width: size, aspectRatio: "1 / 1", margin: "0 auto", maxWidth: "100%" }}>
+    <div style={{ position: "relative", width: size, height: size, margin: "0 auto", maxWidth: "100%" }}>
       <svg
-        viewBox={`0 0 ${size} ${size}`}
+        viewBox="0 0 460 460"
         width={size}
         height={size}
         style={{ position: "absolute", inset: 0, pointerEvents: "none", maxWidth: "100%", height: "auto" }}
       >
         {/* Dashed outer ring — slowly rotates so the dashes appear to drift around the wheel */}
-        <circle className="sensor-wheel-ring" cx={cx} cy={cy} r={R} fill="none" stroke="#BEC8CA" strokeWidth="0.5" strokeDasharray="2 4" />
-        {/* Spokes */}
+        <circle className="sensor-wheel-ring" cx={cx} cy={cy} r={ringR} fill="none" stroke="#BEC8CA" strokeWidth="0.5" strokeDasharray="2 4" />
+        {/* Spokes from r=60 (just outside the hub) to r=(ringR-22) (just inside the ring) */}
         {SENSORS.map((_, i) => {
-          const a = (i / NUM) * 2 * Math.PI - Math.PI / 2;
-          const x1 = cx + Math.cos(a) * 48;
-          const y1 = cy + Math.sin(a) * 48;
-          const x2 = cx + Math.cos(a) * (R - 18);
-          const y2 = cy + Math.sin(a) * (R - 18);
-          return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="#BEC8CA" strokeWidth="0.5" />;
+          const a = ((i * 36 - 90) * Math.PI) / 180;
+          const cosA = Math.cos(a);
+          const sinA = Math.sin(a);
+          return (
+            <line
+              key={i}
+              x1={cx + cosA * 60}
+              y1={cy + sinA * 60}
+              x2={cx + cosA * (ringR - 22)}
+              y2={cy + sinA * (ringR - 22)}
+              stroke="#BEC8CA"
+              strokeWidth="0.5"
+            />
+          );
         })}
-        {/* Tick nodes where spokes meet ring */}
+        {/* Gold tick dots where spokes meet the ring */}
         {SENSORS.map((_, i) => {
-          const a = (i / NUM) * 2 * Math.PI - Math.PI / 2;
-          const tx = cx + Math.cos(a) * R;
-          const ty = cy + Math.sin(a) * R;
-          return <circle key={i} cx={tx} cy={ty} r="2" fill={G} />;
+          const a = ((i * 36 - 90) * Math.PI) / 180;
+          return (
+            <circle
+              key={i}
+              cx={cx + Math.cos(a) * ringR}
+              cy={cy + Math.sin(a) * ringR}
+              r="2"
+              fill={G}
+            />
+          );
         })}
-        {/* Center hub */}
-        <circle cx={cx} cy={cy} r="44" fill="#fff" stroke={P} strokeWidth="0.5" />
-        <circle cx={cx} cy={cy} r="38" fill={P} />
+        {/* Center hub — white outline + petrol disc */}
+        <circle cx={cx} cy={cy} r="54" fill="#fff" stroke={P} strokeWidth="0.5" />
+        <circle cx={cx} cy={cy} r="47" fill={P} />
       </svg>
 
-      {/* Hub content (logo + label) */}
+      {/* Hub content (logo + FARM label) */}
       <div
         style={{
           position: "absolute",
@@ -124,15 +142,15 @@ function SensorWheel() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          gap: 3,
+          gap: 4,
           pointerEvents: "none"
         }}
       >
-        <LogoMark className="h-5 w-4" />
+        <LogoMark className="h-[18px] w-[22px]" />
         <div
           style={{
             fontFamily: "var(--font-inter), sans-serif",
-            fontSize: 7.5,
+            fontSize: 8.5,
             fontWeight: 700,
             textTransform: "uppercase",
             letterSpacing: "0.16em",
@@ -144,22 +162,22 @@ function SensorWheel() {
         </div>
       </div>
 
-      {/* Sensor nodes */}
+      {/* Sensor cards — orbit at 41% of frame, sized as % so they scale with the wheel */}
       {SENSORS.map(({ Icon, label }, i) => {
-        const a = (i / NUM) * 2 * Math.PI - Math.PI / 2;
-        const x = cx + Math.cos(a) * R;
-        const y = cy + Math.sin(a) * R;
+        const a = ((i * 36 - 90) * Math.PI) / 180;
+        const left = 50 + cardFrac * 100 * Math.cos(a);
+        const top = 50 + cardFrac * 100 * Math.sin(a);
         return (
           <div
             key={i}
             className="sensor-card"
             style={{
               position: "absolute",
-              left: `${(x / size) * 100}%`,
-              top: `${(y / size) * 100}%`,
+              left: `${left}%`,
+              top: `${top}%`,
               transform: "translate(-50%, -50%)",
-              width: "19%",
-              padding: "7px 5px",
+              width: "16.5%",
+              padding: "6px 4px",
               background: "#fff",
               border: "0.5px solid #BEC8CA",
               display: "flex",
@@ -168,8 +186,8 @@ function SensorWheel() {
               gap: 4,
               textAlign: "center",
               boxShadow: "0 4px 14px rgba(0,46,53,0.08)",
-              // Stagger the gold radar-sweep glow around the wheel — one card lights up at a time
-              animationDelay: `${(i / NUM) * 9}s`
+              // Stagger the gold radar-sweep glow — handover spec is 0.9s per card
+              animationDelay: `${i * 0.9}s`
             }}
           >
             <span style={{ color: P }}>
@@ -181,7 +199,7 @@ function SensorWheel() {
                 fontSize: 9,
                 fontWeight: 600,
                 color: "#191C1D",
-                lineHeight: 1.2
+                lineHeight: 1.12
               }}
             >
               {label}
@@ -189,6 +207,45 @@ function SensorWheel() {
           </div>
         );
       })}
+    </div>
+  );
+}
+
+// ── Sensing panel ─────────────────────────────────────────────────────────────
+// Right-column composition for Block 01 (per Claude Design's handover):
+//   - Real install photo (engineer mounting a Milesight LoRaWAN gateway) bleeds
+//     in from the top-right and dissolves into the surface via a radial mask.
+//   - Light teal veil over the photo using the same mask so it feathers out.
+//   - Gold "Milesight gateway" callout with a slow-blinking ring pinned to the
+//     gateway in the photo, label flipped left so it stays inside the frame.
+//   - SensorWheel sits lower-left over a white radial halo, so the right-hand
+//     sensor cards read on white even where they overlap the photo edge.
+function SensingPanel() {
+  return (
+    <div className="sensing-panel">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="sensing-photo"
+        src="/install.jpeg"
+        alt="Engineer installing a Milesight LoRaWAN gateway in a poultry house"
+      />
+      <div className="sensing-veil" aria-hidden="true" />
+
+      {/* Gateway callout — ring sits on the device, label sits to its left */}
+      <div className="sensing-gw" aria-hidden="true">
+        <span className="sensing-gw-ring" />
+        <span className="sensing-gw-tick" />
+        <span className="sensing-gw-label">
+          <span className="sensing-gw-dot" />
+          Milesight gateway
+        </span>
+      </div>
+
+      {/* Wheel + white halo, anchored lower-left */}
+      <div className="sensing-wheel-offset">
+        <div className="sensing-wheel-halo" aria-hidden="true" />
+        <SensorWheel size={348} />
+      </div>
     </div>
   );
 }
@@ -884,7 +941,7 @@ export default function WhatYouGet() {
         title="Every signal from every house."
         body="Sensors and edge cameras on every house, capturing every signal around the clock."
         chips={["LoRaWAN backbone", "Edge-first", "24/7 capture"]}
-        mock={<SensorWheel />}
+        mock={<SensingPanel />}
       />
       <Block
         idx="02"
