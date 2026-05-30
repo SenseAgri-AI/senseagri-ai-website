@@ -448,15 +448,20 @@ function Bubble({
 
   useEffect(() => {
     if (!started) return;
-    // Wait until after the bubble has started appearing, then scroll the chat
-    // container — NOT the page — so the new message lands at the bottom of
-    // the phone screen. Using container.scrollTo() instead of
-    // element.scrollIntoView() because the latter walks up every scrollable
-    // ancestor (including the window) and yanks the page down to Block 03.
+    // After the bubble has started appearing, only nudge the chat down if this
+    // particular bubble would otherwise be cut off at the bottom of the phone
+    // screen. If it already fits, do nothing — that's why the chat was
+    // ping-ponging up and down before. Only ever scrolls the chat container
+    // (never the page).
     const t = setTimeout(() => {
-      const container = ref.current?.closest(".chat-scroll") as HTMLElement | null;
-      if (container) {
-        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+      const bubble = ref.current;
+      const container = bubble?.closest(".chat-scroll") as HTMLElement | null;
+      if (!bubble || !container) return;
+      const overshoot =
+        bubble.getBoundingClientRect().bottom -
+        container.getBoundingClientRect().bottom + 8;
+      if (overshoot > 0) {
+        container.scrollBy({ top: overshoot, behavior: "smooth" });
       }
     }, delay + 250);
     return () => clearTimeout(t);
