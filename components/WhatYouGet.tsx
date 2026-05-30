@@ -1,4 +1,6 @@
-import { Fragment } from "react";
+"use client";
+
+import { Fragment, useEffect, useRef, useState } from "react";
 import type { ReactNode, ReactElement } from "react";
 import LogoMark from "@/components/LogoMark";
 
@@ -150,6 +152,7 @@ function SensorWheel() {
         return (
           <div
             key={i}
+            className="sensor-card"
             style={{
               position: "absolute",
               left: `${(x / size) * 100}%`,
@@ -164,7 +167,9 @@ function SensorWheel() {
               alignItems: "center",
               gap: 4,
               textAlign: "center",
-              boxShadow: "0 4px 14px rgba(0,46,53,0.08)"
+              boxShadow: "0 4px 14px rgba(0,46,53,0.08)",
+              // Stagger the gold radar-sweep glow around the wheel — one card lights up at a time
+              animationDelay: `${(i / NUM) * 9}s`
             }}
           >
             <span style={{ color: P }}>
@@ -364,24 +369,25 @@ function DashboardMock() {
 }
 
 // ── Mock 3: WhatsApp on phone ──────────────────────────────────────────────────
+// State-driven reveal — React owns the `started` flag, so re-renders preserve
+// visibility (no more "cascade resets every 10s" bug from the global .reveal class).
 function Bubble({
   kind,
   time,
   children,
-  delay = 0
+  delay = 0,
+  started = false
 }: {
   kind?: "sent" | "recv";
   time: string;
   children: ReactNode;
   delay?: number;
+  started?: boolean;
 }) {
   const recv = { background: "#fff", alignSelf: "flex-start" as const, borderRadius: "0 8px 8px 8px" };
   const sent = { background: "#D9FDD3", alignSelf: "flex-end" as const, borderRadius: "8px 0 8px 8px" };
   return (
     <div
-      // Reveals with a staggered transitionDelay so the bubbles cascade in like
-      // a live conversation when Block 03 scrolls into view.
-      className="reveal"
       style={{
         ...(kind === "sent" ? sent : recv),
         padding: "6px 8px 5px",
@@ -390,8 +396,10 @@ function Bubble({
         fontSize: 11,
         lineHeight: 1.4,
         color: "#111B21",
-        transitionDelay: `${delay}ms`,
-        boxShadow: "0 1px 0.5px rgba(0,0,0,0.13)"
+        boxShadow: "0 1px 0.5px rgba(0,0,0,0.13)",
+        opacity: started ? 1 : 0,
+        transform: started ? "translateY(0)" : "translateY(10px)",
+        transition: `opacity 500ms ease-out ${delay}ms, transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}ms`
       }}
     >
       {children}
@@ -403,8 +411,51 @@ function Bubble({
 }
 
 function WhatsAppPhone() {
+  const phoneRef = useRef<HTMLDivElement>(null);
+  const messagesRef = useRef<HTMLDivElement>(null);
+  const [started, setStarted] = useState(false);
+
+  // Trigger the cascade once when the phone enters the viewport.
+  useEffect(() => {
+    const node = phoneRef.current;
+    if (!node) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setStarted(true);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setStarted(true);
+            observer.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  // After the cascade kicks off, scroll the chat to the bottom on every beat so
+  // the newest message stays visible — like a real live conversation.
+  useEffect(() => {
+    if (!started) return;
+    const container = messagesRef.current;
+    if (!container) return;
+    const beats = [400, 900, 1400, 1900, 2600, 3000, 3500, 4000, 4500];
+    const timers = beats.map((d) =>
+      setTimeout(() => {
+        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+      }, d)
+    );
+    return () => timers.forEach(clearTimeout);
+  }, [started]);
+
   return (
     <div
+      ref={phoneRef}
       style={{
         width: 262,
         maxWidth: "100%",
@@ -431,7 +482,7 @@ function WhatsAppPhone() {
             zIndex: 5
           }}
         />
-        <div style={{ background: "#ECE5DD", height: 700, display: "flex", flexDirection: "column" }}>
+        <div style={{ background: "#ECE5DD", height: 500, display: "flex", flexDirection: "column" }}>
           <div
             style={{
               display: "flex",
@@ -470,7 +521,18 @@ function WhatsAppPhone() {
               <div style={{ fontSize: 8.5, color: "rgba(255,255,255,0.78)" }}>online</div>
             </div>
           </div>
-          <div style={{ flex: 1, padding: "9px 8px", display: "flex", flexDirection: "column", gap: 6, overflow: "hidden" }}>
+          <div
+            ref={messagesRef}
+            className="chat-scroll"
+            style={{
+              flex: 1,
+              padding: "9px 8px",
+              display: "flex",
+              flexDirection: "column",
+              gap: 6,
+              overflowY: "auto"
+            }}
+          >
             <div
               style={{
                 alignSelf: "center",
@@ -480,34 +542,35 @@ function WhatsAppPhone() {
                 color: "#3F4849",
                 borderRadius: 6,
                 fontWeight: 600,
-                marginBottom: 1
+                marginBottom: 1,
+                opacity: started ? 1 : 0,
+                transition: "opacity 300ms ease-out"
               }}
             >
               Today
             </div>
             {/* Scenario 1 — morning air-quality drift */}
-            <Bubble kind="recv" time="06:32" delay={200}>
+            <Bubble started={started} kind="recv" time="06:32" delay={200}>
               <div style={{ fontWeight: 700, color: "#B91C1C", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Alert · House 3
               </div>
               Air quality drifting. NH₃ up <b>38%</b> over the last 14 days. Traced to manure belt at <b>50%</b> of normal cycle.
             </Bubble>
-            <Bubble kind="recv" time="06:33" delay={700}>
+            <Bubble started={started} kind="recv" time="06:33" delay={700}>
               Without action: projected FCR drift <b>+0.04</b> across the cycle → ~<b>3% margin loss</b>.
             </Bubble>
-            <Bubble kind="recv" time="06:33" delay={1200}>
+            <Bubble started={started} kind="recv" time="06:33" delay={1200}>
               <div style={{ fontWeight: 700, color: P, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Recommendation
               </div>
               Step ventilation up <b>1 stage</b> + restore manure belt to normal cycle. Confidence <b>91%</b>.
             </Bubble>
-            <Bubble kind="sent" time="06:34" delay={1700}>
+            <Bubble started={started} kind="sent" time="06:34" delay={1700}>
               On it.
             </Bubble>
 
             {/* Time-gap divider — subtle hint that hours have passed */}
             <div
-              className="reveal"
               style={{
                 alignSelf: "center",
                 background: "rgba(225, 245, 254, 0.9)",
@@ -517,29 +580,30 @@ function WhatsAppPhone() {
                 borderRadius: 6,
                 fontWeight: 600,
                 margin: "2px 0",
-                transitionDelay: "2400ms"
+                opacity: started ? 1 : 0,
+                transition: "opacity 300ms ease-out 2400ms"
               }}
             >
               Later · 11:42
             </div>
 
             {/* Scenario 2 — midday heat stress with mortality forecast */}
-            <Bubble kind="recv" time="11:42" delay={2800}>
+            <Bubble started={started} kind="recv" time="11:42" delay={2800}>
               <div style={{ fontWeight: 700, color: "#B91C1C", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Alert · House 7
               </div>
               Heat stress imminent. Inlet <b>33.1°C</b> and climbing <b>0.4°C/min</b> — cooling not keeping pace.
             </Bubble>
-            <Bubble kind="recv" time="11:42" delay={3300}>
+            <Bubble started={started} kind="recv" time="11:42" delay={3300}>
               If unchanged in next <b>20 min</b>: heat-stress threshold crossed → expected mortality <b>+0.8%</b> in House 7.
             </Bubble>
-            <Bubble kind="recv" time="11:43" delay={3800}>
+            <Bubble started={started} kind="recv" time="11:43" delay={3800}>
               <div style={{ fontWeight: 700, color: P, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Recommendation
               </div>
               Open evaporative pads + <b>Fans 1 &amp; 4</b> to max now. Confidence <b>93%</b>.
             </Bubble>
-            <Bubble kind="sent" time="11:43" delay={4300}>
+            <Bubble started={started} kind="sent" time="11:43" delay={4300}>
               On it.
             </Bubble>
           </div>
@@ -698,84 +762,6 @@ function Block({
       >
         {idx}
       </div>
-
-      {/* PEF outcome backdrop — climbing gold trend-line ending in an arrowhead
-          that lands at the PEF number callout. Only on the dark block (Block 03).
-          Visual thesis: follow the AI recommendations on WhatsApp → poultry
-          efficiency factor climbs. */}
-      {dark && (
-        <>
-          <svg
-            viewBox="0 0 1000 500"
-            preserveAspectRatio="none"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              pointerEvents: "none"
-            }}
-            aria-hidden="true"
-          >
-            <defs>
-              {/* Arrowhead lives on the line itself via marker-end — auto-orients along
-                  the curve's tangent so the tip is always continuous with the stroke. */}
-              <marker
-                id="pefArrow"
-                viewBox="0 0 10 10"
-                refX="9"
-                refY="5"
-                markerWidth="9"
-                markerHeight="9"
-                orient="auto"
-              >
-                <path d="M 0 0 L 10 5 L 0 10 z" fill="#D4AF37" fillOpacity="0.9" />
-              </marker>
-            </defs>
-            {/* Climbs from lower-left and stops in the upper-middle, just before
-                the phone column starts — so the line never disappears behind the phone.
-                Arrow marker auto-orients along the curve tangent. */}
-            <path
-              className="pef-trend-line"
-              d="M 50 460 C 220 430, 380 340, 460 230 C 510 150, 480 110, 540 60"
-              fill="none"
-              stroke="#D4AF37"
-              strokeOpacity="0.42"
-              strokeWidth="1.8"
-              strokeDasharray="6 10"
-              markerEnd="url(#pefArrow)"
-            />
-          </svg>
-
-          {/* PEF callout — sits where the line ends, just to the right of the
-              arrow tip so it reads as the label the arrow is pointing at. */}
-          <div
-            style={{
-              position: "absolute",
-              top: 56,
-              left: "55%",
-              textAlign: "left",
-              pointerEvents: "none",
-              zIndex: 2
-            }}
-            aria-hidden="true"
-          >
-            <div
-              style={{
-                fontFamily: "var(--font-inter), sans-serif",
-                fontSize: 11,
-                fontWeight: 700,
-                letterSpacing: "0.2em",
-                color: G,
-                textTransform: "uppercase",
-                opacity: 0.9
-              }}
-            >
-              PEF · Climbing
-            </div>
-          </div>
-        </>
-      )}
 
       <div className="wyg-block-grid reveal" style={{ maxWidth: "72rem", margin: "0 auto", position: "relative" }}>
         <div style={{ order: reverse ? 2 : 1 }}>
