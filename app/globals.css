@@ -806,7 +806,10 @@ h1, h2, h3, h4 {
 /* Install photo — right-anchored 70%-wide crop, with a small top inset so
    the ghost "01" numeral can sit clearly above it on the surface.
    Mask is a continuous radial fade (no flat-solid plateau) so it dissolves
-   into the surface without a visible "edge" line crossing the image. */
+   into the surface without a visible "edge" line crossing the image.
+   Filter darkens + desaturates the photo in-place — gives the atmospheric
+   feel the teal-veil layer used to provide, without being a separate
+   masked layer that draws its own visible boundary across the image. */
 .sensing-photo {
   position: absolute;
   top: 6%;
@@ -815,6 +818,7 @@ h1, h2, h3, h4 {
   width: 70%;
   object-fit: cover;
   object-position: 46% 24%;
+  filter: brightness(0.82) contrast(1.04) saturate(0.78);
   -webkit-mask-image: radial-gradient(170% 165% at 100% 0%, #000 25%, transparent 100%);
           mask-image: radial-gradient(170% 165% at 100% 0%, #000 25%, transparent 100%);
 }
