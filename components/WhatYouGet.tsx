@@ -229,7 +229,6 @@ function SensingPanel() {
         src="/install.jpeg"
         alt="Engineer installing a Milesight LoRaWAN gateway in a poultry house"
       />
-      <div className="sensing-veil" aria-hidden="true" />
 
       {/* Gateway callout — ring sits on the device, label sits to its left */}
       <div className="sensing-gw" aria-hidden="true">
