@@ -818,7 +818,7 @@ h1, h2, h3, h4 {
   width: 70%;
   object-fit: cover;
   object-position: 46% 24%;
-  filter: brightness(0.82) contrast(1.04) saturate(0.78);
+  filter: brightness(0.68) contrast(1.08) saturate(0.6);
   -webkit-mask-image: radial-gradient(170% 165% at 100% 0%, #000 25%, transparent 100%);
           mask-image: radial-gradient(170% 165% at 100% 0%, #000 25%, transparent 100%);
 }
