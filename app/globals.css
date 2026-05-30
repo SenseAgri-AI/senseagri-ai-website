@@ -612,6 +612,179 @@ h1, h2, h3, h4 {
   display: none;
 }
 
+/* ── Block 02 product dashboard (Claude Design handover) ──────────────────
+   Scoped under .sa-dash so none of these styles leak elsewhere. The dashboard
+   is authored at fixed 1680px and scaled to fit by JS (see DashboardCard.tsx). */
+
+.sa-card-shell {
+  border-radius: 11px;
+  overflow: hidden;
+  background: #fff;
+  min-width: 0;
+  max-width: 100%;
+  border: 0.5px solid rgba(0, 46, 53, 0.16);
+  box-shadow:
+    0 38px 70px -26px rgba(0, 46, 53, 0.44),
+    0 10px 26px rgba(0, 46, 53, 0.12);
+}
+.sa-card-body { overflow: hidden; position: relative; min-width: 0; max-width: 100%; width: 100%; }
+.sa-stage     { width: 100%; min-width: 0; max-width: 100%; overflow: hidden; }
+
+.sa-dash {
+  width: 1680px;
+  transform-origin: top left;
+  --sa-card: #FFFFFF;
+  --sa-ink: #16211F;
+  --sa-ink2: #5C6B6C;
+  --sa-ink3: #8A989A;
+  --sa-line: #E5EAEA;
+  --sa-teal: #1F7E8C;
+  --sa-teal-deep: #0F5663;
+  --sa-teal-line: #2C8896;
+  --sa-gold: #9A7A1C;
+  --sa-green: #3C8B5B;
+  --sa-red: #CB4434;
+  --sa-header: #08191D;
+  --sa-header-line: rgba(255, 255, 255, 0.10);
+  --sa-radius: 7px;
+}
+.sa-dash, .sa-dash *, .sa-dash *::before, .sa-dash *::after { box-sizing: border-box; }
+
+/* Top bar */
+.sa-topbar {
+  background: var(--sa-header);
+  color: #E7EEEE;
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+  height: 60px;
+  font-size: 13px;
+}
+.sa-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; padding-right: 22px; }
+.sa-mark  { width: 22px; height: auto; display: block; }
+.sa-sep   { width: 1px; height: 26px; background: var(--sa-header-line); }
+.sa-farm  { padding: 0 22px; font-weight: 600; color: #DCE7E7; }
+.sa-meta  { display: flex; align-items: center; gap: 26px; padding-left: 22px; color: #9FB0B1; }
+.sa-meta b { color: #E7EEEE; font-weight: 600; }
+.sa-right { margin-left: auto; display: flex; align-items: center; gap: 22px; color: #9FB0B1; }
+.sa-live  { display: inline-flex; align-items: center; gap: 7px; font-weight: 700; letter-spacing: 0.08em; font-size: 11px; color: #E7C24A; }
+.sa-live-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #E7C24A;
+  box-shadow: 0 0 0 0 rgba(231, 194, 74, 0.6);
+  animation: sa-blink 2.4s ease-out infinite;
+}
+@keyframes sa-blink {
+  0%        { box-shadow: 0 0 0 0   rgba(231, 194, 74, 0.55); }
+  70%, 100% { box-shadow: 0 0 0 6px rgba(231, 194, 74, 0); }
+}
+
+/* Layout */
+.sa-grid { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+.sa-card {
+  background: var(--sa-card);
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-radius);
+  box-shadow: 0 1px 2px rgba(16, 40, 45, 0.04);
+}
+.sa-row1 { display: grid; grid-template-columns: minmax(0, 1fr) 470px; gap: 16px; }
+.sa-row2 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.sa-row3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: stretch; }
+.sa-row4 { display: grid; grid-template-columns: 1.55fr 1fr; gap: 16px; align-items: stretch; }
+
+/* Hero: gauge + metrics */
+.sa-hero { display: grid; grid-template-columns: 300px minmax(0, 1fr); }
+.sa-gauge-cell {
+  padding: 14px 18px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  border-right: 1px solid var(--sa-line);
+}
+.sa-gauge-cell svg { width: 230px; height: auto; display: block; }
+.sa-gauge-status {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--sa-ink);
+}
+.sa-gauge-status .sa-sq { width: 9px; height: 9px; background: var(--sa-green); }
+
+.sa-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto 1fr 1fr;
+}
+.sa-mhead {
+  padding: 11px 16px 9px;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  border-bottom: 1px solid var(--sa-line);
+}
+.sa-prod { grid-column: 1 / span 2; color: var(--sa-teal); box-shadow: inset 0 2px 0 var(--sa-teal); }
+.sa-welf { grid-column: 3;          color: var(--sa-teal); box-shadow: inset 0 2px 0 var(--sa-teal); }
+.sa-fin  { grid-column: 4;          color: var(--sa-gold); box-shadow: inset 0 2px 0 var(--sa-gold); }
+
+.sa-cell {
+  padding: 12px 16px;
+  border-right: 1px solid var(--sa-line);
+  border-bottom: 1px solid var(--sa-line);
+}
+.sa-cell.sa-edge      { border-right: none; }
+.sa-cell.sa-nobottom  { border-bottom: none; }
+.sa-cell .sa-k        { font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; color: var(--sa-ink2); text-transform: uppercase; }
+.sa-cell .sa-v        { font-size: 28px; font-weight: 800; letter-spacing: -0.02em; margin-top: 7px; line-height: 1; }
+.sa-cell .sa-v.sa-gold  { color: var(--sa-gold); }
+.sa-cell .sa-v.sa-small { font-size: 24px; }
+.sa-cell .sa-sub      { font-size: 12px; color: var(--sa-ink2); margin-top: 8px; line-height: 1.4; }
+.sa-cell .sa-tag      { display: inline-flex; align-items: center; gap: 6px; margin-top: 9px; font-size: 11.5px; font-weight: 600; color: var(--sa-green); }
+.sa-cell .sa-tag .sa-sq { width: 8px; height: 8px; background: var(--sa-green); }
+
+/* AI alert column */
+.sa-alerts { display: flex; flex-direction: column; gap: 10px; }
+.sa-alert {
+  border: 1px solid var(--sa-line);
+  border-radius: var(--sa-radius);
+  padding: 12px 15px;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.sa-alert::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; }
+.sa-alert .sa-at  { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; margin-bottom: 5px; }
+.sa-alert .sa-am  { font-size: 12.5px; line-height: 1.45; color: var(--sa-ink); }
+.sa-alert.sa-warn { background: #FCEDEA; }
+.sa-alert.sa-warn::before { background: var(--sa-red); }
+.sa-alert.sa-warn .sa-at  { color: var(--sa-red); }
+.sa-alert.sa-ok   { background: #EAF4EC; }
+.sa-alert.sa-ok::before { background: var(--sa-green); }
+.sa-alert.sa-ok .sa-at  { color: var(--sa-green); }
+.sa-alert.sa-cau  { background: #FBF3DC; }
+.sa-alert.sa-cau::before { background: var(--sa-gold); }
+.sa-alert.sa-cau .sa-at  { color: var(--sa-gold); }
+.sa-alert.sa-neu  { background: #F3F6F6; }
+.sa-alert.sa-neu::before { background: var(--sa-ink3); }
+.sa-alert.sa-neu .sa-at  { color: var(--sa-ink2); }
+
+/* Chart cards */
+.sa-chart-card { padding: 12px 14px 9px; display: flex; flex-direction: column; }
+.sa-chart-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 6px; }
+.sa-chart-head h3 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+.sa-read  { font-size: 13px; color: var(--sa-ink2); font-weight: 500; }
+.sa-read b { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
+.sa-read b.sa-r-red  { color: var(--sa-red); }
+.sa-read b.sa-r-gold { color: var(--sa-gold); }
+.sa-read b.sa-r-teal { color: var(--sa-teal); }
+.sa-chart-svg { width: 100%; height: auto; display: block; }
+.sa-chart-foot { margin-top: 5px; font-size: 11.5px; color: var(--sa-ink3); }
+.sa-row3 .sa-chart-card .sa-chart-head { margin-bottom: 2px; }
+.sa-subhead { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--sa-ink3); margin: 2px 0 4px; }
+
+/* Legend (Hen-day production card) */
+.sa-legend { display: flex; align-items: center; gap: 16px; }
+.sa-lg { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; color: var(--sa-ink2); }
+.sa-sw { width: 14px; height: 0; border-top: 2.6px solid var(--sa-teal-line); }
+.sa-sw.sa-sw-gold { border-top: 2px dashed var(--sa-gold); }
+.sa-sw.sa-sw-band { width: 14px; height: 11px; border: none; background: rgba(44, 136, 150, 0.18); border-radius: 2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sa-live-dot { animation: none; }
+}
+
 /* ── Sensing panel (Block 01 right column) — per Claude Design handover ───
    Real install photo bleeds in from the top-right, dissolves to surface via a
    radial mask; teal veil and gold "Milesight gateway" callout sit on top; the

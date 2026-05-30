@@ -3,6 +3,7 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import type { ReactNode, ReactElement } from "react";
 import LogoMark from "@/components/LogoMark";
+import DashboardCard from "@/components/DashboardCard";
 
 // "Inside the platform" — Sensing (wheel) → Dashboard+AI → WhatsApp Alerts (dark) → Weekly Reports → Integrations
 // NOTE: the dashboard / phone / report mockups are illustrative representations of the
@@ -244,181 +245,6 @@ function SensingPanel() {
       <div className="sensing-wheel-offset">
         <div className="sensing-wheel-halo" aria-hidden="true" />
         <SensorWheel size={348} />
-      </div>
-    </div>
-  );
-}
-
-// ── Mock 2: Live operations dashboard (mirrors the SenseAgri client app) ───────
-function DashboardMock() {
-  // Semicircle health-score gauge geometry (frac 0 → left, 1 → right)
-  const polar = (r: number, f: number): [number, number] => {
-    const ang = Math.PI * (1 - f);
-    return [110 + r * Math.cos(ang), 110 - r * Math.sin(ang)];
-  };
-  const arc = (r: number, f0: number, f1: number) => {
-    const [x0, y0] = polar(r, f0);
-    const [x1, y1] = polar(r, f1);
-    return `M ${x0.toFixed(1)} ${y0.toFixed(1)} A ${r} ${r} 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`;
-  };
-  const [mx, my] = polar(82, 0.7);
-
-  const kpis = [
-    { v: "95.3%", l: "Hen-day" },
-    { v: "57.4 g", l: "Avg egg mass" },
-    { v: "1.65%", l: "Mortality" },
-    { v: "R 7.9k", l: "Revenue today" }
-  ];
-
-  return (
-    <div
-      style={{
-        background: "#fff",
-        border: "0.5px solid #BEC8CA",
-        fontFamily: "var(--font-inter), sans-serif",
-        boxShadow: "0 14px 44px rgba(0,46,53,0.12)",
-        maxWidth: 512,
-        width: "100%",
-        margin: "0 auto"
-      }}
-    >
-      {/* Header */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          padding: "9px 14px",
-          background: P
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <LogoMark className="h-4 w-3" />
-          <span style={{ fontSize: 9.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#fff" }}>
-            Farm · House 1
-          </span>
-        </div>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <span style={{ width: 6, height: 6, background: "#3FB950", borderRadius: "50%" }} />
-          <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.1em", color: G }}>LIVE · 08:55</span>
-        </div>
-      </div>
-
-      {/* Gauge + KPI tiles */}
-      <div className="dash-grid" style={{ borderBottom: "0.5px solid #BEC8CA" }}>
-        <div
-          className="dash-gauge"
-          style={{
-            padding: "14px 12px 12px",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center"
-          }}
-        >
-          <svg viewBox="0 0 220 122" width="100%" style={{ maxWidth: 154 }}>
-            <path d={arc(82, 0, 0.45)} fill="none" stroke="#B91C1C" strokeWidth="13" strokeLinecap="butt" />
-            <path d={arc(82, 0.45, 0.78)} fill="none" stroke={G} strokeWidth="13" strokeLinecap="butt" />
-            <path d={arc(82, 0.78, 1)} fill="none" stroke={TEAL} strokeWidth="13" strokeLinecap="butt" />
-            <circle cx={mx} cy={my} r="7.5" fill="#fff" stroke={P} strokeWidth="2.5" />
-            <text
-              x="110"
-              y="98"
-              textAnchor="middle"
-              style={{ fontFamily: "var(--font-manrope), sans-serif", fontWeight: 800, fontSize: "42px" }}
-              fill={P}
-            >
-              70
-            </text>
-          </svg>
-          <div style={{ fontSize: 8, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "#6B7C80", marginTop: -2 }}>
-            Health Score
-          </div>
-          <div
-            style={{
-              marginTop: 7,
-              fontSize: 8.5,
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              color: P,
-              padding: "3px 9px",
-              background: "rgba(0,46,53,0.07)"
-            }}
-          >
-            Normal
-          </div>
-        </div>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridAutoRows: "1fr", gap: 1, background: "#E6E8E8" }}>
-          {kpis.map((k, i) => (
-            <div
-              key={i}
-              style={{ background: "#fff", padding: "12px 14px", display: "flex", flexDirection: "column", justifyContent: "center" }}
-            >
-              <div
-                style={{
-                  fontFamily: "var(--font-manrope), sans-serif",
-                  fontWeight: 800,
-                  fontSize: 19,
-                  color: P,
-                  letterSpacing: "-0.01em"
-                }}
-              >
-                {k.v}
-              </div>
-              <div style={{ fontSize: 8.5, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "#6B7C80", marginTop: 3 }}>
-                {k.l}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Telemetry chart */}
-      <div style={{ padding: "12px 16px", borderBottom: "0.5px solid #BEC8CA" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: 7 }}>
-          <span style={{ fontSize: 9, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.12em", color: "#3F4849" }}>
-            Temperature · 24h
-          </span>
-          <span style={{ fontFamily: "var(--font-manrope), sans-serif", fontWeight: 800, fontSize: 13, color: TEAL }}>
-            11.7°C
-          </span>
-        </div>
-        <svg viewBox="0 0 480 66" width="100%" height="60" preserveAspectRatio="none">
-          <line x1="0" y1="24" x2="480" y2="24" stroke="#BEC8CA" strokeWidth="0.6" strokeDasharray="3 4" />
-          <path
-            d="M0 30 L60 27 L120 22 L180 32 L240 43 L300 50 L360 47 L420 43 L480 38"
-            stroke={TEAL}
-            strokeWidth="1.8"
-            fill="none"
-          />
-          <path
-            d="M0 30 L60 27 L120 22 L180 32 L240 43 L300 50 L360 47 L420 43 L480 38 L480 66 L0 66 Z"
-            fill={TEAL}
-            fillOpacity="0.1"
-          />
-          <circle cx="480" cy="38" r="3" fill={TEAL} />
-        </svg>
-      </div>
-
-      {/* AI alert */}
-      <div style={{ padding: "11px 16px", display: "flex", gap: 11, background: "#F8FAFA", borderLeft: `2px solid ${G}` }}>
-        <span
-          style={{
-            fontSize: 8.5,
-            fontWeight: 700,
-            textTransform: "uppercase",
-            letterSpacing: "0.12em",
-            color: P,
-            marginTop: 2,
-            whiteSpace: "nowrap"
-          }}
-        >
-          AI · Vet
-        </span>
-        <div style={{ fontSize: 11, color: "#3F4849", lineHeight: 1.45 }}>
-          <b style={{ color: "#191C1D" }}>Sustained cold — 11.7°C for 3+ hrs.</b> Birds are burning energy on
-          thermoregulation; expect higher feed intake today.
-        </div>
       </div>
     </div>
   );
@@ -961,7 +787,7 @@ export default function WhatYouGet() {
         title="Your full operation, decoded."
         body="Every metric in one place, with AI that flags exactly what needs action."
         chips={["Live telemetry", "Health score", "AI recommendations", "Internal vet"]}
-        mock={<DashboardMock />}
+        mock={<DashboardCard />}
         reverse
       />
       <Block
