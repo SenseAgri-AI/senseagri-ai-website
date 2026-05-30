@@ -896,24 +896,22 @@ h1, h2, h3, h4 {
   transform: translate(-50%, -50%);
   z-index: 4;
 }
-/* White wheel halo — soft surface bloom behind the wheel that fades smoothly
-   out to transparent so the right-hand sensor cards still read on white where
-   they overlap the photo edge. Without the teal veil layer in front of the
-   photo there's no opacity contrast to fight, so a smooth multi-stop gradient
-   gives the "white fading into the photo" effect without a visible edge. */
+/* White wheel halo — dense right around the wheel, then a quick drop-off
+   so it doesn't bleed deep into the install photo on the right. The
+   97% opacity is held out to ~40% of the radius (the wheel's own area),
+   then falls to 0 by ~72%. Tightened from the multi-stop spread that
+   was making the halo bleed too far. */
 .sensing-wheel-halo {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 150%;
-  height: 150%;
+  width: 145%;
+  height: 145%;
   background: radial-gradient(
     circle,
-    rgba(248, 250, 250, 0.95) 0%,
-    rgba(248, 250, 250, 0.7)  28%,
-    rgba(248, 250, 250, 0.3)  55%,
-    rgba(248, 250, 250, 0)    80%
+    rgba(248, 250, 250, 0.97) 40%,
+    rgba(248, 250, 250, 0)    72%
   );
   pointer-events: none;
   z-index: -1;
