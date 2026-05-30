@@ -374,7 +374,7 @@ function WhatsAppPhone() {
             zIndex: 5
           }}
         />
-        <div style={{ background: "#ECE5DD", height: 540, display: "flex", flexDirection: "column" }}>
+        <div style={{ background: "#ECE5DD", height: 480, display: "flex", flexDirection: "column" }}>
           <div
             style={{
               display: "flex",
