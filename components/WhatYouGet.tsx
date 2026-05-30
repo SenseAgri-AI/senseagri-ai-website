@@ -810,7 +810,8 @@ function Block({
       )}
 
       {/* Big ghost numeral — shown on every block. On the dark block the PEF
-          callout sits in a separate spot (upper-mid), so the two don't conflict. */}
+          callout sits in a separate spot (upper-mid), so the two don't conflict.
+          z-index 3 so it overlays the SensingPanel photo on Block 01. */}
       <div
         style={{
           position: "absolute",
@@ -819,11 +820,12 @@ function Block({
           fontFamily: "var(--font-manrope), sans-serif",
           fontWeight: 800,
           fontSize: 150,
-          color: dark ? "rgba(212,175,55,0.07)" : "rgba(0,46,53,0.045)",
+          color: dark ? "rgba(212,175,55,0.07)" : "rgba(0,46,53,0.075)",
           letterSpacing: "-0.05em",
           lineHeight: 0.85,
           pointerEvents: "none",
-          userSelect: "none"
+          userSelect: "none",
+          zIndex: 3
         }}
       >
         {idx}

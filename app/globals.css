@@ -625,29 +625,28 @@ h1, h2, h3, h4 {
   overflow: visible;
 }
 
-/* Install photo — right-anchored 70%-wide crop, masked so the corner is
-   solid and it feathers out into the surface toward the lower-left. */
+/* Install photo — right-anchored 70%-wide crop, with a small top inset so
+   the ghost "01" numeral can sit clearly above it on the surface.
+   Masked so the corner is solid and it feathers out toward the lower-left. */
 .sensing-photo {
   position: absolute;
-  top: 0;
+  top: 6%;
   bottom: 0;
   right: 0;
   width: 70%;
-  height: 100%;
   object-fit: cover;
   object-position: 46% 24%;
   -webkit-mask-image: radial-gradient(155% 150% at 100% 0%, #000 56%, transparent 92%);
           mask-image: radial-gradient(155% 150% at 100% 0%, #000 56%, transparent 92%);
 }
 
-/* Teal veil over the photo, same mask so it feathers with the photo. */
+/* Teal veil over the photo, same inset + mask so it feathers with the photo. */
 .sensing-veil {
   position: absolute;
-  top: 0;
+  top: 6%;
   bottom: 0;
   right: 0;
   width: 70%;
-  height: 100%;
   background: rgba(0, 46, 53, 0.20);
   -webkit-mask-image: radial-gradient(155% 150% at 100% 0%, #000 56%, transparent 92%);
           mask-image: radial-gradient(155% 150% at 100% 0%, #000 56%, transparent 92%);
