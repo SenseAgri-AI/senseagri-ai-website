@@ -81,7 +81,6 @@ const SENSORS: { Icon: () => ReactElement; label: string }[] = [
 // at 41% of the frame (slightly outside the ring so the gold ticks read as
 // where each card "plugs in"). Default render size 348 px (handover spec).
 function SensorWheel({ size = 348 }: { size?: number }) {
-  const NUM = SENSORS.length;
   const ringR = 175;
   const cardFrac = 0.41;
   const cx = 230;
@@ -449,10 +448,16 @@ function Bubble({
 
   useEffect(() => {
     if (!started) return;
-    // Wait until after the bubble has started appearing, then scroll it into view
-    // (block: "nearest" only scrolls if the bubble is outside the visible area).
+    // Wait until after the bubble has started appearing, then scroll the chat
+    // container — NOT the page — so the new message lands at the bottom of
+    // the phone screen. Using container.scrollTo() instead of
+    // element.scrollIntoView() because the latter walks up every scrollable
+    // ancestor (including the window) and yanks the page down to Block 03.
     const t = setTimeout(() => {
-      ref.current?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      const container = ref.current?.closest(".chat-scroll") as HTMLElement | null;
+      if (container) {
+        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+      }
     }, delay + 250);
     return () => clearTimeout(t);
   }, [started, delay]);
