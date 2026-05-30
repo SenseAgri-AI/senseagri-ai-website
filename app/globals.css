@@ -616,6 +616,44 @@ h1, h2, h3, h4 {
   display: none;
 }
 
+/* ── Block 04 weekly report — stacked-pages effect ────────────────────────
+   Wraps the main report card. Two pseudo-elements sit behind it, each
+   offset down + right, so the eye reads "multi-page weekly report" sitting
+   on the desk. Both stay narrower than the top card so the offset is
+   visible on the right edge as well as the bottom. */
+
+.report-stack {
+  position: relative;
+  isolation: isolate;
+  max-width: 452px;
+  width: 100%;
+  margin: 0 auto;
+}
+.report-stack::before,
+.report-stack::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #fff;
+  border: 0.5px solid #BEC8CA;
+  pointer-events: none;
+}
+.report-stack::before {
+  /* second page underneath — small offset */
+  transform: translate(6px, 8px);
+  z-index: 1;
+  box-shadow: 0 8px 28px rgba(0, 46, 53, 0.08);
+}
+.report-stack::after {
+  /* third page even further back */
+  transform: translate(12px, 16px);
+  z-index: 0;
+  box-shadow: 0 8px 28px rgba(0, 46, 53, 0.06);
+}
+
 /* ── Block 02 product dashboard (Claude Design handover) ──────────────────
    Scoped under .sa-dash so none of these styles leak elsewhere. The dashboard
    is authored at fixed 1680px and scaled to fit by JS (see DashboardCard.tsx). */

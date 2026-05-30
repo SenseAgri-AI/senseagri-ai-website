@@ -513,6 +513,7 @@ function ReportMock() {
     { v: "R 4.21", l: "Feed/kg", d: "flat", up: false }
   ];
   return (
+    <div className="report-stack">
     <div
       style={{
         background: "#fff",
@@ -522,7 +523,9 @@ function ReportMock() {
         boxShadow: "0 14px 44px rgba(0,46,53,0.12)",
         maxWidth: 452,
         width: "100%",
-        margin: "0 auto"
+        margin: "0 auto",
+        position: "relative",
+        zIndex: 2
       }}
     >
       <div
@@ -580,6 +583,7 @@ function ReportMock() {
           <li>Recommend bringing forward House 4 audit by one week.</li>
         </ul>
       </div>
+    </div>
     </div>
   );
 }
