@@ -412,7 +412,6 @@ function Bubble({
 
 function WhatsAppPhone() {
   const phoneRef = useRef<HTMLDivElement>(null);
-  const messagesRef = useRef<HTMLDivElement>(null);
   const [started, setStarted] = useState(false);
 
   // Trigger the cascade once when the phone enters the viewport.
@@ -437,21 +436,6 @@ function WhatsAppPhone() {
     observer.observe(node);
     return () => observer.disconnect();
   }, []);
-
-  // After the cascade kicks off, scroll the chat to the bottom on every beat so
-  // the newest message stays visible — like a real live conversation.
-  useEffect(() => {
-    if (!started) return;
-    const container = messagesRef.current;
-    if (!container) return;
-    const beats = [400, 900, 1400, 1900, 2600, 3000, 3500, 4000, 4500];
-    const timers = beats.map((d) =>
-      setTimeout(() => {
-        container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
-      }, d)
-    );
-    return () => timers.forEach(clearTimeout);
-  }, [started]);
 
   return (
     <div
@@ -482,7 +466,7 @@ function WhatsAppPhone() {
             zIndex: 5
           }}
         />
-        <div style={{ background: "#ECE5DD", height: 500, display: "flex", flexDirection: "column" }}>
+        <div style={{ background: "#ECE5DD", height: 700, display: "flex", flexDirection: "column" }}>
           <div
             style={{
               display: "flex",
@@ -522,15 +506,13 @@ function WhatsAppPhone() {
             </div>
           </div>
           <div
-            ref={messagesRef}
-            className="chat-scroll"
             style={{
               flex: 1,
               padding: "9px 8px",
               display: "flex",
               flexDirection: "column",
               gap: 6,
-              overflowY: "auto"
+              overflow: "hidden"
             }}
           >
             <div
@@ -549,23 +531,24 @@ function WhatsAppPhone() {
             >
               Today
             </div>
-            {/* Scenario 1 — morning air-quality drift */}
-            <Bubble started={started} kind="recv" time="06:32" delay={200}>
+            {/* Scenario 1 — morning air-quality drift. Bubble delays paced ~800ms
+                apart so each message has time to land + read before the next arrives. */}
+            <Bubble started={started} kind="recv" time="06:32" delay={500}>
               <div style={{ fontWeight: 700, color: "#B91C1C", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Alert · House 3
               </div>
               Air quality drifting. NH₃ up <b>38%</b> over the last 14 days. Traced to manure belt at <b>50%</b> of normal cycle.
             </Bubble>
-            <Bubble started={started} kind="recv" time="06:33" delay={700}>
+            <Bubble started={started} kind="recv" time="06:33" delay={1500}>
               Without action: projected FCR drift <b>+0.04</b> across the cycle → ~<b>3% margin loss</b>.
             </Bubble>
-            <Bubble started={started} kind="recv" time="06:33" delay={1200}>
+            <Bubble started={started} kind="recv" time="06:33" delay={2500}>
               <div style={{ fontWeight: 700, color: P, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Recommendation
               </div>
               Step ventilation up <b>1 stage</b> + restore manure belt to normal cycle. Confidence <b>91%</b>.
             </Bubble>
-            <Bubble started={started} kind="sent" time="06:34" delay={1700}>
+            <Bubble started={started} kind="sent" time="06:34" delay={3500}>
               On it.
             </Bubble>
 
@@ -581,29 +564,29 @@ function WhatsAppPhone() {
                 fontWeight: 600,
                 margin: "2px 0",
                 opacity: started ? 1 : 0,
-                transition: "opacity 300ms ease-out 2400ms"
+                transition: "opacity 300ms ease-out 4400ms"
               }}
             >
               Later · 11:42
             </div>
 
             {/* Scenario 2 — midday heat stress with mortality forecast */}
-            <Bubble started={started} kind="recv" time="11:42" delay={2800}>
+            <Bubble started={started} kind="recv" time="11:42" delay={5200}>
               <div style={{ fontWeight: 700, color: "#B91C1C", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Alert · House 7
               </div>
               Heat stress imminent. Inlet <b>33.1°C</b> and climbing <b>0.4°C/min</b> — cooling not keeping pace.
             </Bubble>
-            <Bubble started={started} kind="recv" time="11:42" delay={3300}>
+            <Bubble started={started} kind="recv" time="11:42" delay={6100}>
               If unchanged in next <b>20 min</b>: heat-stress threshold crossed → expected mortality <b>+0.8%</b> in House 7.
             </Bubble>
-            <Bubble started={started} kind="recv" time="11:43" delay={3800}>
+            <Bubble started={started} kind="recv" time="11:43" delay={7000}>
               <div style={{ fontWeight: 700, color: P, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Recommendation
               </div>
               Open evaporative pads + <b>Fans 1 &amp; 4</b> to max now. Confidence <b>93%</b>.
             </Bubble>
-            <Bubble started={started} kind="sent" time="11:43" delay={4300}>
+            <Bubble started={started} kind="sent" time="11:43" delay={7900}>
               On it.
             </Bubble>
           </div>
