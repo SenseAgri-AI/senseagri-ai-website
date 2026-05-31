@@ -790,7 +790,14 @@ export default function WhatYouGet() {
         title="Your full operation, decoded."
         body="Every metric in one place, with AI that flags exactly what needs action."
         chips={["Live telemetry", "Health score", "AI recommendations", "Internal vet"]}
-        mock={<DashboardCard />}
+        mock={
+          // Match Block 03's phone height so the two mocks read at the same
+          // vertical weight (the scaled dashboard is naturally short, leaving
+          // the block feeling squished against its neighbours).
+          <div style={{ minHeight: 480, width: "100%", display: "flex", alignItems: "center" }}>
+            <DashboardCard />
+          </div>
+        }
         reverse
       />
       <Block
