@@ -620,7 +620,7 @@ function Block({
       className="wyg-block"
       style={{
         background: blockBg,
-        padding: "48px 24px",
+        padding: "clamp(64px, 6vw, 104px) 24px",
         position: "relative",
         overflow: "hidden"
       }}
@@ -638,23 +638,20 @@ function Block({
         />
       )}
 
-      {/* Big ghost numeral — sits over the text column, opposite the mock,
-          so it zig-zags down the page in step with the alternating layout
-          (Block 01 left, 02 right, 03 left, 04 right). z-index 3 so it
-          overlays the SensingPanel photo on Block 01. */}
+      {/* Big ghost numeral — pinned to the top-right of every block, consistent
+          across the four-step tour regardless of which side the mock is on. */}
       <div
+        aria-hidden
         style={{
           position: "absolute",
           top: 10,
-          // reverse=true means mock is on the LEFT, so the numeral sits over
-          // the text column on the RIGHT; and vice-versa.
-          [reverse ? "right" : "left"]: 28,
+          right: 28,
           fontFamily: "var(--font-manrope), sans-serif",
           fontWeight: 800,
-          fontSize: 150,
-          color: dark ? "rgba(212,175,55,0.07)" : "rgba(0,46,53,0.075)",
+          fontSize: "clamp(82px, 9vw, 120px)",
+          color: dark ? "rgba(212,175,55,0.09)" : "rgba(0,46,53,0.07)",
           letterSpacing: "-0.05em",
-          lineHeight: 0.85,
+          lineHeight: 0.8,
           pointerEvents: "none",
           userSelect: "none",
           zIndex: 3
@@ -664,7 +661,8 @@ function Block({
       </div>
 
       <div className="wyg-block-grid reveal" style={{ maxWidth: "72rem", margin: "0 auto", position: "relative" }}>
-        <div style={{ order: reverse ? 2 : 1 }}>
+        <div style={{ order: reverse ? 2 : 1, position: "relative" }}>
+          <div style={{ position: "relative", zIndex: 1 }}>
           <Eyebrow dark={dark}>
             {idx} · {label}
           </Eyebrow>
@@ -713,6 +711,7 @@ function Block({
               </span>
             ))}
           </div>
+          </div>
         </div>
         <div style={{ order: reverse ? 1 : 2, display: "flex", justifyContent: "center", alignItems: "center" }}>
           <div className="wyg-mock">{mock}</div>
@@ -732,7 +731,7 @@ function IntegrationStrip() {
       className="wyg-integration"
       style={{
         background: N,
-        padding: "38px 24px",
+        padding: "44px 24px",
         position: "relative",
         overflow: "hidden",
         borderTop: "0.5px solid rgba(212,175,55,0.2)"
