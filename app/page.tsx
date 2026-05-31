@@ -165,7 +165,7 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         className="relative overflow-hidden px-6 sm:px-10 lg:px-16"
-        style={{ background: "#F2F4F4", padding: "56px 24px", borderTop: "0.5px solid #BEC8CA" }}
+        style={{ background: "#F2F4F4", padding: "clamp(64px, 6vw, 104px) 24px", borderTop: "0.5px solid #BEC8CA" }}
       >
         <div
           className="absolute inset-0 pointer-events-none"
@@ -221,7 +221,7 @@ export default function HomePage() {
           FINAL CTA — dark, focused
       ═══════════════════════════════════════════════════════════════════ */}
       <section
-        className="grain relative overflow-hidden px-6 py-16 sm:px-10 lg:px-16"
+        className="grain relative overflow-hidden px-6 py-20 md:py-28 sm:px-10 lg:px-16"
         style={{ background: PRIMARY }}
       >
         {/* Blueprint grid */}

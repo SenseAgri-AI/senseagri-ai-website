@@ -864,8 +864,8 @@ h1, h2, h3, h4 {
 /* Gateway callout — anchored to where the Milesight box sits in the photo. */
 .sensing-gw {
   position: absolute;
-  top: 27%;
-  left: 70%;
+  top: 34%;
+  left: 73%;
   z-index: 6;
   pointer-events: none;
 }
