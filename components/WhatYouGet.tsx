@@ -638,14 +638,17 @@ function Block({
         />
       )}
 
-      {/* Big ghost numeral — shown on every block. On the dark block the PEF
-          callout sits in a separate spot (upper-mid), so the two don't conflict.
-          z-index 3 so it overlays the SensingPanel photo on Block 01. */}
+      {/* Big ghost numeral — sits over the text column, opposite the mock,
+          so it zig-zags down the page in step with the alternating layout
+          (Block 01 left, 02 right, 03 left, 04 right). z-index 3 so it
+          overlays the SensingPanel photo on Block 01. */}
       <div
         style={{
           position: "absolute",
           top: 10,
-          right: 28,
+          // reverse=true means mock is on the LEFT, so the numeral sits over
+          // the text column on the RIGHT; and vice-versa.
+          [reverse ? "right" : "left"]: 28,
           fontFamily: "var(--font-manrope), sans-serif",
           fontWeight: 800,
           fontSize: 150,
