@@ -45,7 +45,7 @@ const founders = [
     name: "Dylan Geldenhuys",
     role: "Co-Founder & CEO",
     photo: "/dylan.png",
-    bio: "Dylan is a data scientist with over 6 years of industry experience, spanning biotech and telecommunications, with published work in leading computational biology journals."
+    bio: "Dylan is a data scientist with over 6 years of industry experience spanning biotech and telecommunications, with published work in leading computational biology journals. He focuses on making sense of complex data — building the intelligent systems that turn farm signals into insights farmers can act on."
   },
   {
     name: "Dr Ryan Nel",
