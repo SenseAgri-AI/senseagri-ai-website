@@ -45,7 +45,7 @@ const founders = [
     name: "Dylan Geldenhuys",
     role: "Co-Founder & CEO",
     photo: "/dylan.png",
-    bio: "Dylan is a data scientist with over 6 years of industry experience in tech as an AI engineer, spanning biotech and telecommunications, with published work in leading computational biology journals."
+    bio: "Dylan is a data scientist with over 6 years of industry experience, spanning biotech and telecommunications, with published work in leading computational biology journals."
   },
   {
     name: "Dr Ryan Nel",
