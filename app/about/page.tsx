@@ -45,13 +45,13 @@ const founders = [
     name: "Dylan Geldenhuys",
     role: "Co-Founder & CEO",
     photo: "/dylan.png",
-    bio: "Dylan is a data scientist with over 6 years of industry experience in biotech and data."
+    bio: "Dylan is a data scientist with over 6 years of industry experience in tech as an AI engineer, spanning biotech and telecommunications, with published work in leading computational biology journals."
   },
   {
     name: "Dr Ryan Nel",
     role: "Co-Founder & COO",
     photo: "/ryan.png",
-    bio: "Ryan is a veterinarian with extensive knowledge and experience in poultry epidemiology and animal health."
+    bio: "Ryan is a veterinarian with experience in intensive and extensive agriculture. His unique combination of clinical training and hands-on agricultural experience positions him to understand the real challenges facing African farmers — bridging veterinary science, animal production, and technology where it matters most."
   }
 ];
 
