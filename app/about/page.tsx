@@ -28,7 +28,7 @@ const values = [
   },
   {
     title: "Trust first",
-    desc: "Six months free. Full access. No commitment. We earn your trust before asking for anything."
+    desc: "Free pilot period. Full access. No commitment. We earn your trust before asking for anything."
   },
   {
     title: "African resilience",

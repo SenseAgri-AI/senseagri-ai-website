@@ -5,7 +5,7 @@ import PageHero from "@/components/PageHero";
 export const metadata: Metadata = {
   title: "Pricing",
   description:
-    "Partner with SenseAgri AI early — six months completely free. We are looking for early adopters to shape the platform before market launch."
+    "Partner with SenseAgri AI early — a free pilot period, no commitment. We are looking for early adopters to shape the platform before market launch."
 };
 
 const GOLD = "#D4AF37";
@@ -14,7 +14,7 @@ const PRIMARY = "#002E35";
 const earlyPerks = [
   "Full platform access — sensors, dashboard, and AI",
   "On-site installation and setup, fully managed",
-  "Six months completely free — no credit card required",
+  "Free pilot period — no credit card required",
   "Direct line to the founders",
   "Shape the roadmap as an early partner",
   "Locked-in founder pricing when we go to market",
@@ -29,7 +29,7 @@ export default function PricingPage() {
         eyebrow="Pilot Pricing"
         headline="Call us for a quote."
         accentLine="Join our early-partner pilot."
-        sub="Six months of full platform access. Limited slots, no commitment. Call us and we'll walk you through everything."
+        sub="Full platform access for the pilot period. Limited slots, no commitment. Call us and we'll walk you through everything."
       />
 
       {/* Early adopter offer */}
@@ -50,7 +50,7 @@ export default function PricingPage() {
               className="font-display font-extrabold tracking-tighter text-primary"
               style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)", lineHeight: "1.05" }}
             >
-              Six months free.<br />
+              Free pilot period.<br />
               <span className="text-primary-light">No strings attached.</span>
             </h2>
             <p className="mt-5 font-sans text-sm leading-relaxed text-on-surface-variant">
