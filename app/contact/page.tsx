@@ -66,6 +66,14 @@ export default function ContactPage() {
               <h3 className="font-display text-title-md font-bold tracking-tight text-on-surface">
                 Contact details
               </h3>
+              <div className="mt-4">
+                <p className="font-display text-base font-bold tracking-tight text-on-surface">
+                  Dr Ryan Nel
+                </p>
+                <p className="mt-1 font-sans text-[9px] font-bold uppercase tracking-[0.12em] text-tertiary">
+                  Co-Founder &amp; COO
+                </p>
+              </div>
               <div className="mt-4 space-y-2.5 font-sans text-title-sm text-on-surface-variant">
                 <a
                   href={`mailto:${siteConfig.links.email}`}
