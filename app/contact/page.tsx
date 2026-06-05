@@ -4,9 +4,10 @@ import ContactForm from "@/components/ContactForm";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Book a Free Poultry Pilot",
   description:
-    "Book a pilot call with SenseAgri AI. Share your farm details and we will schedule a 30-day pilot review."
+    "Book a pilot call with SenseAgri AI. Run a free poultry monitoring pilot on one house and see the ROI on your own flock.",
+  alternates: { canonical: "/contact" }
 };
 
 export default function ContactPage() {

@@ -20,34 +20,87 @@ const manrope = Manrope({
   weight: ["400", "500", "600", "700", "800"]
 });
 
+const DEFAULT_TITLE = "SenseAgri AI — Poultry Farm Intelligence for South Africa";
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "SenseAgri AI | Poultry Farm Decision Intelligence",
-    template: "%s | SenseAgri AI"
+    default: DEFAULT_TITLE,
+    template: "%s · SenseAgri AI"
   },
   description: siteConfig.description,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "SenseAgri AI | Poultry Farm Decision Intelligence",
+    title: DEFAULT_TITLE,
     description: siteConfig.description,
     type: "website",
     url: siteConfig.url
-    // Share image comes from app/opengraph-image.tsx (Next.js convention)
   },
   twitter: {
     card: "summary_large_image",
-    title: "SenseAgri AI | Poultry Farm Decision Intelligence",
+    title: DEFAULT_TITLE,
     description: siteConfig.description
-    // Share image comes from app/opengraph-image.tsx (Next.js convention)
   },
   icons: { icon: "/favicon.svg" }
-  // Apple touch icon comes from app/apple-icon.tsx (Next.js convention)
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#organization`,
+      name: "SenseAgri AI",
+      url: siteConfig.url,
+      logo: `${siteConfig.url}/logo.svg`,
+      description:
+        "AI decision-intelligence platform for commercial poultry farms. Unifies farm sensor data into welfare, production and ROI insights with edge AI alerts.",
+      slogan: "Every signal. Every decision.",
+      foundingDate: "2025",
+      areaServed: { "@type": "Country", name: "South Africa" },
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "ZA",
+        addressRegion: "Western Cape"
+      },
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        email: siteConfig.links.email,
+        telephone: "+27-68-948-1905",
+        areaServed: "ZA",
+        availableLanguage: ["en"]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteConfig.url}/#website`,
+      url: siteConfig.url,
+      name: "SenseAgri AI",
+      publisher: { "@id": `${siteConfig.url}/#organization` },
+      inLanguage: "en"
+    },
+    {
+      "@type": "SoftwareApplication",
+      name: "SenseAgri AI",
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web; WhatsApp alerts",
+      description:
+        "Continuous sensing, edge-AI anomaly detection and weekly ROI reports for poultry operations. Monitors temperature, humidity, air quality, feed, water and hen-day production; flags anomalies and recommends action.",
+      areaServed: { "@type": "Country", name: "South Africa" },
+      publisher: { "@id": `${siteConfig.url}/#organization` }
+    }
+  ]
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Analytics />
         <div className="min-h-screen bg-surface">
           <Navbar />

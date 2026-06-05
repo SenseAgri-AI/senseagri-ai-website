@@ -3,9 +3,10 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "Pricing — Poultry Monitoring Per House",
   description:
-    "Partner with SenseAgri AI early — a free pilot period, no commitment. We are looking for early adopters to shape the platform before market launch."
+    "Transparent per-house pricing for SenseAgri AI poultry monitoring. Start with a free pilot on a single house — no commitment.",
+  alternates: { canonical: "/pricing" }
 };
 
 const GOLD = "#D4AF37";

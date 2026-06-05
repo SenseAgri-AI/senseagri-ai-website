@@ -13,9 +13,10 @@ const whatsappShots: WhatsAppShot[] = [
 ];
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About — Digital Husbandry for African Farms",
   description:
-    "SenseAgri AI is on a mission to close the intelligence gap in African agriculture — empowering every farmer to make data-driven decisions, regardless of scale."
+    "SenseAgri AI turns poultry farm sensor data into action — a 'digital husbandry' platform for African operations. Meet the team and the mission.",
+  alternates: { canonical: "/about" }
 };
 
 const GOLD = "#D4AF37";

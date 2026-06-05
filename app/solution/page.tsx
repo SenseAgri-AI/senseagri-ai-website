@@ -3,9 +3,10 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Solution",
+  title: "AI Poultry Monitoring & Health Alerts",
   description:
-    "The SenseAgri AI platform, end to end — sensing in the house, AI on the farm, and decisions on your phone."
+    "Continuous LoRaWAN sensing, edge-AI anomaly detection and WhatsApp alerts for commercial poultry houses. Temperature, air quality, feed, water and hen-day production in one dashboard.",
+  alternates: { canonical: "/solution" }
 };
 
 const GOLD = "#D4AF37";

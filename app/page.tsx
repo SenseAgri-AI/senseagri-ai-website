@@ -5,9 +5,7 @@ import WhatYouGet from "@/components/WhatYouGet";
 import ImpactSlider, { type ImpactStory } from "@/components/ImpactSlider";
 
 export const metadata: Metadata = {
-  title: "Home",
-  description:
-    "SenseAgri AI delivers IoT and AI decision support for poultry farms. Monitor welfare, prevent losses, and act on ROI-focused insights."
+  alternates: { canonical: "/" }
 };
 
 // ─── Brand colours (used as inline styles where Tailwind purges) ─────────────
