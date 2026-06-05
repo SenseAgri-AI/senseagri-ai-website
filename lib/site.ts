@@ -1,12 +1,10 @@
 export const siteConfig = {
   name: "SenseAgri AI",
   description:
-    "IoT + AI decision support for poultry farms. Monitor welfare, reduce losses, and improve ROI with resilient edge analytics.",
-  // TODO: Replace with your production domain.
-  url: "https://senseagri.example.com",
+    "SenseAgri AI unifies your poultry farm's sensor data into one platform — welfare monitoring, disease early-warning and weekly ROI reports, built for South African operations.",
+  url: "https://www.senseagriai.com",
   links: {
-    // TODO: Replace with your active support details.
-    email: "ryannel99@gmail.com",
+    email: "ryan@senseagriai.com",
     phone: "+27 68 948 1905",
     address: ""
   }
