@@ -115,8 +115,8 @@ export default function HomePage() {
               className="hero-reveal delay-2 mt-6 font-sans text-white/70"
               style={{ fontSize: "1rem", lineHeight: "1.6", maxWidth: "46ch" }}
             >
-              Continuous sensing, causal AI, and weekly ROI reports — so you
-              understand why, not just what.
+              Continuous sensing and causal AI — so you understand why, not
+              just what.
             </p>
 
             {/* CTAs */}
