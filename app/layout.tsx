@@ -40,8 +40,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: siteConfig.description
-  },
-  icons: { icon: "/favicon.svg" }
+  }
+  // Browser-tab + iOS favicon come from app/icon.tsx and app/apple-icon.tsx
+  // via Next 14's file-based convention — no metadata.icons override needed.
 };
 
 const jsonLd = {
