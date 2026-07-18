@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import FAQAccordion from "@/components/FAQAccordion";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbGraph } from "@/lib/jsonLd";
+import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
@@ -57,10 +60,8 @@ const faqJsonLd = {
 export default function FAQPage() {
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
+      <JsonLd data={faqJsonLd} />
+      <JsonLd data={breadcrumbGraph([{ name: "FAQ", path: "/faq" }])} />
 
       <PageHero
         eyebrow="FAQ"
@@ -72,6 +73,10 @@ export default function FAQPage() {
       <section className="section-padding bg-surface">
         <div className="mx-auto max-w-4xl">
           <FAQAccordion items={faqs} />
+
+          <p className="mt-8 font-sans text-label-sm uppercase tracking-[0.06em] text-on-surface-variant/70">
+            Last updated: {formatDisplayDate(pageLastModified["/faq"])}
+          </p>
 
           <div className="mt-12 flex flex-col items-start gap-4">
             <p className="font-sans text-title-sm text-on-surface-variant">

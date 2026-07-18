@@ -1,15 +1,21 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
+import { pageLastModified } from "@/lib/pageMeta";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
 
-  return [
-    { url: `${baseUrl}/`, lastModified: new Date() },
-    { url: `${baseUrl}/solution`, lastModified: new Date() },
-    { url: `${baseUrl}/pricing`, lastModified: new Date() },
-    { url: `${baseUrl}/faq`, lastModified: new Date() },
-    { url: `${baseUrl}/about`, lastModified: new Date() },
-    { url: `${baseUrl}/contact`, lastModified: new Date() }
+  const routes: Array<{ path: string; url: string }> = [
+    { path: "/", url: `${baseUrl}/` },
+    { path: "/solution", url: `${baseUrl}/solution` },
+    { path: "/pricing", url: `${baseUrl}/pricing` },
+    { path: "/faq", url: `${baseUrl}/faq` },
+    { path: "/about", url: `${baseUrl}/about` },
+    { path: "/contact", url: `${baseUrl}/contact` }
   ];
+
+  return routes.map(({ path, url }) => ({
+    url,
+    lastModified: new Date(pageLastModified[path])
+  }));
 }
