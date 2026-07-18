@@ -1,6 +1,6 @@
 # SenseAgri AI
 
-> AI decision-intelligence platform for commercial poultry farms in South Africa. Unifies farm sensor data — temperature, humidity, air quality, feed, water, hen-day production — into welfare monitoring, disease early-warning and weekly ROI reports. Continuous sensing and causal AI, so operators understand *why* production changes, not just *what* changed.
+> End-to-end poultry monitoring and intelligence platform for commercial farms in South Africa. Unifies farm sensor data — temperature, humidity, air quality, feed, water, hen-day production — into welfare monitoring, disease early-warning and weekly ROI reports. Continuous sensing and causal AI, so operators understand *why* production changes, not just *what* changed.
 
 ## Key pages
 

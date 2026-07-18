@@ -145,7 +145,7 @@ export default function HomePage() {
       <div className="bg-primary px-6 sm:px-10 lg:px-16" style={{ paddingTop: 28, paddingBottom: 24 }}>
         <div className="mx-auto max-w-6xl">
           <p className="font-sans text-white/80 leading-relaxed" style={{ fontSize: "1rem", maxWidth: "68ch" }}>
-            SenseAgri AI is a poultry decision-intelligence platform for commercial farms in South Africa. Sensor data becomes causal insights, WhatsApp alerts, and weekly ROI reports — so operators understand why production changes, not just what.
+            SenseAgri AI is an end-to-end poultry monitoring and intelligence platform for commercial farms in South Africa. Sensor data becomes causal insights, WhatsApp alerts, and weekly ROI reports — so operators understand why production changes, not just what.
           </p>
         </div>
       </div>
