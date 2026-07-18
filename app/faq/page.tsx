@@ -41,6 +41,31 @@ const faqs = [
     question: "Do I need to buy or install any hardware myself?",
     answer:
       "No. Sensors, edge compute and installation are all handled by us as part of the pilot — nothing to buy up-front, nothing to install yourself."
+  },
+  {
+    question: "Does SenseAgri use computer vision for poultry monitoring?",
+    answer:
+      "Yes, and the vision layer is split by farm type. For layer and breeder houses, vision-based systems count eggs continuously. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm's own edge compute — no cloud round-trip per frame."
+  },
+  {
+    question: "How does acoustic monitoring work in a poultry house?",
+    answer:
+      "Microphones in each house pick up distinct sounds — stress vocalisations, wake-up patterns, and general activity levels — and classify them in real time. Sound is a leading indicator of welfare shifts, so combined with environmental and vision data, acoustic signals help catch issues earlier than any single sensor alone."
+  },
+  {
+    question: "Can SenseAgri detect gut problems in poultry?",
+    answer:
+      "Yes. The platform tracks the feed-to-water consumption ratio continuously — a well-documented early indicator of gut health issues in poultry. When the ratio deviates from the flock's own baseline, the system flags it, typically days before the issue shows up in production numbers or mortality."
+  },
+  {
+    question: "What welfare and production metrics does the platform track?",
+    answer:
+      "Environmental conditions (temperature, humidity, CO₂, ammonia), vision-based bird activity and movement, acoustic welfare signals including stress vocalisations, feed/water consumption patterns, egg count, hen-day production, mortality trends, and feed conversion — all in a single dashboard with weekly ROI reports summarising what changed and why."
+  },
+  {
+    question: "What kind of AI does SenseAgri use?",
+    answer:
+      "The platform combines computer vision (bird tracking, egg counting), acoustic classification (welfare and stress-signal detection), and causal AI on environmental time-series. Inference runs on the farm itself, so the platform keeps working through patchy connectivity — data syncs to the cloud when the link returns."
   }
 ];
 

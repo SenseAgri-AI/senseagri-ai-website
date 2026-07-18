@@ -6,9 +6,9 @@ import { breadcrumbGraph } from "@/lib/jsonLd";
 import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
 export const metadata: Metadata = {
-  title: "AI Poultry Monitoring & Health Alerts",
+  title: "AI Poultry Monitoring — Vision, Acoustic & Environmental",
   description:
-    "Continuous LoRaWAN sensing, edge-AI anomaly detection and WhatsApp alerts for commercial poultry houses. Temperature, air quality, feed, water and hen-day production in one dashboard.",
+    "Environmental monitoring, computer vision, and acoustic welfare signals for commercial poultry houses. Production intelligence and early disease detection delivered via WhatsApp alerts.",
   alternates: { canonical: "/solution" }
 };
 
@@ -19,12 +19,12 @@ const stages = [
   {
     n: "01",
     t: "Capture",
-    d: "LoRaWAN sensors and edge cameras read temperature, humidity, gas, CO₂, feed, water, egg count and more — on every house, around the clock. Nothing waits for someone to remember to check."
+    d: "LoRaWAN sensors, edge cameras, and acoustic monitors read temperature, humidity, gas, CO₂, feed, water, egg count, bird activity, and welfare signals — on every house, around the clock. Nothing waits for someone to remember to check."
   },
   {
     n: "02",
     t: "Interpret",
-    d: "On-farm AI learns each house's baseline and runs causal models against it — separating normal variation from the early signs of a real problem, like an internal vet that never sleeps."
+    d: "On-farm AI runs computer vision on the cameras, classifies acoustic welfare signals, and learns each house's environmental baseline — separating normal variation from the early signs of a real problem, like an internal vet that never sleeps."
   },
   {
     n: "03",
@@ -75,7 +75,7 @@ export default function SolutionPage() {
         eyebrow="Solution"
         headline="The system,"
         accentLine="end to end."
-        sub="Sensing in the house, AI on the farm, decisions on your phone."
+        sub="Environmental monitoring, computer vision, and acoustic welfare signals — production intelligence and early disease alerts, delivered on WhatsApp."
       />
 
       {/* System architecture diagram */}
@@ -92,7 +92,7 @@ export default function SolutionPage() {
               </h2>
             </div>
             <p className="font-sans text-[0.9375rem] leading-relaxed text-on-surface-variant" style={{ maxWidth: 460 }}>
-              SenseAgri AI is an end-to-end poultry monitoring platform. Sensors capture every signal in the house, on-farm AI interprets it, and the cloud delivers decisions to your phone — one continuous loop, running on every house.
+              SenseAgri AI is an end-to-end poultry monitoring and decision intelligence platform. Sensors capture every signal in the house, on-farm AI interprets it, and the cloud delivers decisions to your phone — one continuous loop, running on every house.
             </p>
           </div>
 
