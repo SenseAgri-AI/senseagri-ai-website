@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/`, lastModified: new Date() },
     { url: `${baseUrl}/solution`, lastModified: new Date() },
     { url: `${baseUrl}/pricing`, lastModified: new Date() },
+    { url: `${baseUrl}/faq`, lastModified: new Date() },
     { url: `${baseUrl}/about`, lastModified: new Date() },
     { url: `${baseUrl}/contact`, lastModified: new Date() }
   ];
