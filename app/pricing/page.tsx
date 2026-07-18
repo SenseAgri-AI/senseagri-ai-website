@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbGraph, pilotServiceGraph } from "@/lib/jsonLd";
 
 export const metadata: Metadata = {
   title: "Pilot Pricing — Poultry Monitoring",
@@ -24,6 +26,8 @@ const earlyPerks = [
 export default function PricingPage() {
   return (
     <div>
+      <JsonLd data={breadcrumbGraph([{ name: "Pricing", path: "/pricing" }])} />
+      <JsonLd data={pilotServiceGraph()} />
 
       {/* Hero — petrol + gold */}
       <PageHero

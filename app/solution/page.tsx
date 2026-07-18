@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbGraph } from "@/lib/jsonLd";
+import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
 export const metadata: Metadata = {
   title: "AI Poultry Monitoring & Health Alerts",
@@ -65,6 +68,7 @@ function Eyebrow({ children }: { children: string }) {
 export default function SolutionPage() {
   return (
     <div>
+      <JsonLd data={breadcrumbGraph([{ name: "Solution", path: "/solution" }])} />
       <PageHero
         dark
         accent="#4FB8C5"
@@ -207,6 +211,9 @@ export default function SolutionPage() {
               pricing page
             </Link>
             .
+          </p>
+          <p className="mt-12 font-sans text-label-sm uppercase tracking-[0.06em] text-white/40">
+            Last updated: {formatDisplayDate(pageLastModified["/solution"])}
           </p>
         </div>
       </section>

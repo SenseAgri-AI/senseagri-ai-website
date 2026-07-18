@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbGraph } from "@/lib/jsonLd";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -14,6 +16,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div>
+      <JsonLd data={breadcrumbGraph([{ name: "Contact", path: "/contact" }])} />
       <PageHero
         eyebrow="Contact"
         headline="Book a"

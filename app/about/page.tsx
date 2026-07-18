@@ -3,6 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import WhatsAppCarousel, { type WhatsAppShot } from "@/components/WhatsAppCarousel";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbGraph } from "@/lib/jsonLd";
+import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
 // Source images live in /public/hero_slides — paths URL-encoded for the spaces.
 const whatsappShots: WhatsAppShot[] = [
@@ -59,6 +62,7 @@ const founders = [
 export default function AboutPage() {
   return (
     <div>
+      <JsonLd data={breadcrumbGraph([{ name: "About", path: "/about" }])} />
 
       {/* Hero — dark navy + light teal accent */}
       <PageHero
@@ -265,6 +269,9 @@ export default function AboutPage() {
           >
             Get in touch
           </Link>
+          <p className="mt-10 font-sans text-label-sm uppercase tracking-[0.06em] text-on-surface-variant/70">
+            Last updated: {formatDisplayDate(pageLastModified["/about"])}
+          </p>
         </div>
       </section>
 
