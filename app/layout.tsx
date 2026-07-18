@@ -55,7 +55,7 @@ const jsonLd = {
       url: siteConfig.url,
       logo: `${siteConfig.url}/logo.svg`,
       description:
-        "End-to-end poultry monitoring and intelligence platform for commercial farms. Unifies farm sensor data into welfare, production and ROI insights with edge AI alerts.",
+        "AI decision-intelligence platform for commercial poultry farms. Unifies farm sensor data into welfare, production and ROI insights with edge AI alerts.",
       slogan: "Every signal. Every decision.",
       foundingDate: "2025",
       areaServed: { "@type": "Country", name: "South Africa" },

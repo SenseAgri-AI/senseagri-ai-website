@@ -94,7 +94,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:pt-1">
             <p className="font-sans text-base leading-relaxed text-on-surface-variant">
-              SenseAgri AI is an end-to-end poultry monitoring and intelligence platform for commercial farms across Africa. Our mission is to close the intelligence gap: generate insights and automation with real ROI, understand cause and effect, and empower every farmer to make data-driven decisions — regardless of scale.
+              SenseAgri AI is a poultry decision-intelligence platform for commercial farms across Africa. Our mission is to close the intelligence gap: generate insights and automation with real ROI, understand cause and effect, and empower every farmer to make data-driven decisions — regardless of scale.
             </p>
             <Link
               href="/solution"
