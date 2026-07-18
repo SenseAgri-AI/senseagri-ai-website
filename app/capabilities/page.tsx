@@ -79,7 +79,7 @@ export default function CapabilitiesPage() {
       <div className="bg-surface px-6 py-10 sm:px-10 lg:px-16" style={{ borderTop: "0.5px solid #BEC8CA" }}>
         <div className="mx-auto max-w-3xl text-center">
           <p className="font-sans text-title-sm leading-relaxed text-on-surface-variant">
-            Every capability below is what the SenseAgri AI platform is designed to deliver. Pilots are how we validate each one on your operation — your birds, breed, climate, and controllers — so nothing counts as production-ready until it&apos;s proven on your own houses.
+            The sensor suite — environmental monitoring, air quality, and climate alerts — is live and running on farms today. The other capabilities run in the same platform, and pilots are how we validate each one on your operation, so nothing counts as production-ready until it&apos;s proven on your own houses.
           </p>
         </div>
       </div>
