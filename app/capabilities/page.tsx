@@ -31,9 +31,9 @@ const capabilities: Capability[] = [
   },
   {
     eyebrow: "Computer vision for poultry",
-    title: "Bird tracking and vision-based welfare.",
-    body: "Edge cameras track bird activity and movement across the house, and vision-based systems count eggs continuously. Cameras integrate with the CCTV your farm already uses — nothing extra to run on-site, and the vision layer runs on the farm's own edge compute.",
-    tags: ["Bird tracking & movement", "Vision-based egg counting", "Behaviour anomaly detection", "CCTV partner integration"]
+    title: "Egg counting for layers, bird tracking for broilers.",
+    body: "For layer and breeder houses, vision-based systems count eggs continuously — no manual rounds, no spreadsheet reconciliation. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm's own edge compute — no cloud round-trip per frame.",
+    tags: ["Egg counting — layer & breeder", "Bird tracking — broiler activity", "Edge inference", "CCTV partner integration"]
   },
   {
     eyebrow: "Acoustic welfare signals",

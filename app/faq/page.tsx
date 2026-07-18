@@ -45,7 +45,7 @@ const faqs = [
   {
     question: "Does SenseAgri use computer vision for poultry monitoring?",
     answer:
-      "Yes. Edge cameras in each house track bird activity and movement, and vision-based systems count eggs continuously. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm's own edge compute — no extra hardware to install and no cloud round-trip for every frame."
+      "Yes, and the vision layer is split by farm type. For layer and breeder houses, vision-based systems count eggs continuously. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm's own edge compute — no cloud round-trip per frame."
   },
   {
     question: "How does acoustic monitoring work in a poultry house?",
