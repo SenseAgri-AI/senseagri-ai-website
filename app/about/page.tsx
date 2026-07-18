@@ -6,10 +6,10 @@ import WhatsAppCarousel, { type WhatsAppShot } from "@/components/WhatsAppCarous
 
 // Source images live in /public/hero_slides — paths URL-encoded for the spaces.
 const whatsappShots: WhatsAppShot[] = [
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.44.jpeg", alt: "WhatsApp alert from SenseAgri Farm AI" },
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.45.jpeg", alt: "WhatsApp alert from SenseAgri Farm AI" },
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.23.19.jpeg", alt: "WhatsApp insight from SenseAgri Farm AI" },
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.27.38.jpeg", alt: "WhatsApp insight from SenseAgri Farm AI" }
+  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.44.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — early welfare alert" },
+  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.45.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — recommended action" },
+  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.23.19.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — production insight" },
+  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.27.38.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — flock summary" }
 ];
 
 export const metadata: Metadata = {
@@ -88,9 +88,17 @@ export default function AboutPage() {
               Closing the intelligence gap in African agriculture.
             </h2>
           </div>
-          <p className="font-sans text-base leading-relaxed text-on-surface-variant lg:pt-1">
-            Generating insights and automation with real ROI, understanding cause and effect, empowering every farmer to make data-driven decisions — regardless of scale.
-          </p>
+          <div className="lg:pt-1">
+            <p className="font-sans text-base leading-relaxed text-on-surface-variant">
+              SenseAgri AI is a poultry decision-intelligence platform for commercial farms across Africa. Our mission is to close the intelligence gap: generate insights and automation with real ROI, understand cause and effect, and empower every farmer to make data-driven decisions — regardless of scale.
+            </p>
+            <Link
+              href="/solution"
+              className="mt-5 inline-flex font-sans text-sm font-bold text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container"
+            >
+              See how the platform works →
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -132,7 +140,7 @@ export default function AboutPage() {
                     className="shrink-0 overflow-hidden"
                     style={{ width: 72, height: 72, border: "0.5px solid #E6E8E8" }}
                   >
-                    <Image src={photo} alt={name} width={72} height={72} className="h-full w-full object-cover" />
+                    <Image src={photo} alt={`${name}, ${role} of SenseAgri AI`} width={72} height={72} className="h-full w-full object-cover" />
                   </div>
                   <div>
                     <p className="font-display text-lg font-bold tracking-tight text-on-surface">{name}</p>

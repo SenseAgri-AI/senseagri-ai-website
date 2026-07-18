@@ -3,7 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
-  title: "Pricing — Poultry Monitoring Per House",
+  title: "Pilot Pricing — Poultry Monitoring",
   description:
     "Transparent per-house pricing for SenseAgri AI poultry monitoring. Start with a free pilot on a single house — no commitment.",
   alternates: { canonical: "/pricing" }
@@ -64,6 +64,13 @@ export default function PricingPage() {
             >
               Book a Pilot Call
             </Link>
+            <p className="mt-5 font-sans text-sm text-on-surface-variant">
+              First time here? See how the{" "}
+              <Link href="/solution" className="text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container">
+                platform works end-to-end
+              </Link>
+              .
+            </p>
           </div>
 
           {/* Right — perks list */}

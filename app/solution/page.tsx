@@ -88,8 +88,7 @@ export default function SolutionPage() {
               </h2>
             </div>
             <p className="font-sans text-[0.9375rem] leading-relaxed text-on-surface-variant" style={{ maxWidth: 460 }}>
-              Sensors capture every signal in the house, on-farm AI interprets it, and the cloud delivers
-              decisions to your phone — one continuous loop, running on every house.
+              SenseAgri AI is an end-to-end poultry monitoring platform. Sensors capture every signal in the house, on-farm AI interprets it, and the cloud delivers decisions to your phone — one continuous loop, running on every house.
             </p>
           </div>
 
@@ -182,7 +181,7 @@ export default function SolutionPage() {
             style={{ background: "rgba(212,175,55,0.10)" }}
           >
             <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-tertiary">
-              30-Day Pilot Programme
+              Early Adopter Pilot
             </span>
           </span>
           <h2
@@ -202,6 +201,13 @@ export default function SolutionPage() {
           >
             Book a Pilot Call
           </Link>
+          <p className="mt-5 font-sans text-title-sm text-white/60">
+            Or first, see what the pilot includes on the{" "}
+            <Link href="/pricing" className="text-white/85 underline underline-offset-2 transition-colors duration-150 hover:text-white">
+              pricing page
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </div>
