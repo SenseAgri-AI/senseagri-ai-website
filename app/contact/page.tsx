@@ -28,9 +28,9 @@ export default function ContactPage() {
             className="bg-surface-container-lowest px-6 py-8 sm:px-8"
             style={{ border: "0.5px solid #BEC8CA" }}
           >
-            <h3 className="font-display text-title-lg font-bold tracking-tight text-on-surface">
+            <h2 className="font-display text-title-lg font-bold tracking-tight text-on-surface">
               Start the conversation
-            </h3>
+            </h2>
             <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
               Fields marked with * are required. We use this to scope a pilot that fits your operation.
             </p>
@@ -45,9 +45,9 @@ export default function ContactPage() {
               className="bg-surface-container-lowest px-8 py-7"
               style={{ border: "0.5px solid #BEC8CA" }}
             >
-              <h3 className="font-display text-title-md font-bold tracking-tight text-on-surface">
+              <h2 className="font-display text-title-md font-bold tracking-tight text-on-surface">
                 Book a call
-              </h3>
+              </h2>
               <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
                 Pick a time that suits you and we will walk you through a pilot.
               </p>
@@ -64,9 +64,9 @@ export default function ContactPage() {
               className="bg-surface-container-lowest px-8 py-7"
               style={{ border: "0.5px solid #BEC8CA" }}
             >
-              <h3 className="font-display text-title-md font-bold tracking-tight text-on-surface">
+              <h2 className="font-display text-title-md font-bold tracking-tight text-on-surface">
                 Contact details
-              </h3>
+              </h2>
               <div className="mt-4">
                 <p className="font-display text-base font-bold tracking-tight text-on-surface">
                   Dr Ryan Nel

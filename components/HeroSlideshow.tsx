@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const slides = [
   {
@@ -34,13 +35,16 @@ export default function HeroSlideshow() {
     <>
       {/* All slides stacked — crossfade via opacity */}
       {slides.map((slide, i) => (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
+        <Image
           key={slide.src}
           src={slide.src}
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
+          fill
+          sizes="100vw"
+          priority={i === 0}
+          quality={80}
+          className="object-cover"
           style={{
             objectPosition: slide.position,
             opacity: i === current ? 1 : 0,

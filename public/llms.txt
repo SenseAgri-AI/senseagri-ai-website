@@ -1,0 +1,25 @@
+# SenseAgri AI
+
+> AI decision-intelligence platform for commercial poultry farms in South Africa. Unifies farm sensor data — temperature, humidity, air quality, feed, water, hen-day production — into welfare monitoring, disease early-warning and weekly ROI reports. Continuous sensing and causal AI, so operators understand *why* production changes, not just *what* changed.
+
+## Key pages
+
+- [Home](https://www.senseagriai.com/): product overview and positioning.
+- [Solution](https://www.senseagriai.com/solution): how the platform works end-to-end — sensing in the house, edge AI on the farm, decisions on your phone.
+- [Pricing](https://www.senseagriai.com/pricing): early-adopter pilot programme (free pilot period, no commitment).
+- [About](https://www.senseagriai.com/about): the company, mission ("digital husbandry for African farms"), founders, values.
+- [Contact](https://www.senseagriai.com/contact): book a pilot call.
+
+## Facts
+
+- **Product**: SenseAgri AI (also referred to as SenseAgri Farm AI in some alerts).
+- **Category**: SaaS / decision-intelligence for commercial poultry operations.
+- **Geography**: Based in South Africa; targets African poultry operations.
+- **Delivery**: web dashboard + WhatsApp alerts.
+- **Signals monitored**: temperature, humidity, air quality (CO₂, ammonia), feed, water, hen-day production, welfare indicators.
+- **Founders**: Dylan Geldenhuys (Co-Founder & CEO, data scientist), Dr Ryan Nel (Co-Founder & COO, veterinarian).
+- **Contact**: ryan@senseagriai.com
+
+## Structured data
+
+Machine-readable metadata is provided as JSON-LD in the `<head>` of every page (`Organization`, `WebSite`, `SoftwareApplication`). Sitemap: https://www.senseagriai.com/sitemap.xml.
