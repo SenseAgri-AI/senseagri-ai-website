@@ -141,6 +141,15 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Answer-first lede — plain-language definition, dark band flows into stats strip */}
+      <div className="bg-primary px-6 sm:px-10 lg:px-16" style={{ paddingTop: 28, paddingBottom: 24 }}>
+        <div className="mx-auto max-w-6xl">
+          <p className="font-sans text-white/80 leading-relaxed" style={{ fontSize: "1rem", maxWidth: "68ch" }}>
+            SenseAgri AI is a poultry decision-intelligence platform for commercial farms in South Africa. Sensor data becomes causal insights, WhatsApp alerts, and weekly ROI reports — so operators understand why production changes, not just what.
+          </p>
+        </div>
+      </div>
+
       {/* Stats strip — petrol band, gold values */}
       <div className="bg-primary px-6 sm:px-10 lg:px-16" style={{ paddingTop: 18, paddingBottom: 18, borderBottom: "0.5px solid rgba(212,175,55,0.18)" }}>
         <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-4 sm:grid-cols-4">

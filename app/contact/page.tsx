@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
 import { siteConfig } from "@/lib/site";
@@ -92,6 +93,19 @@ export default function ContactPage() {
             </div>
           </div>
 
+        </div>
+        <div className="mx-auto mt-10 max-w-6xl text-center">
+          <p className="font-sans text-title-sm text-on-surface-variant">
+            Still deciding?{" "}
+            <Link href="/solution" className="text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container">
+              See how the platform works
+            </Link>{" "}
+            or read the{" "}
+            <Link href="/faq" className="text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container">
+              FAQ
+            </Link>
+            .
+          </p>
         </div>
       </section>
     </div>
