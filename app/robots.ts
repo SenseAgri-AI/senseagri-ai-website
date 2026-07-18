@@ -8,6 +8,8 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: [
           "Googlebot",
           "Bingbot",
+          "DuckDuckBot",
+          "YandexBot",
           "GPTBot",
           "OAI-SearchBot",
           "ChatGPT-User",
@@ -18,7 +20,10 @@ export default function robots(): MetadataRoute.Robots {
           "Perplexity-User",
           "Google-Extended",
           "Applebot",
-          "Applebot-Extended"
+          "Applebot-Extended",
+          "CCBot",
+          "Amazonbot",
+          "Meta-ExternalAgent"
         ],
         allow: "/"
       },
