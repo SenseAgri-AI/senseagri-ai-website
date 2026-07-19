@@ -30,7 +30,7 @@ export function pilotServiceGraph() {
     "@id": `${siteConfig.url}/#pilot-service`,
     name: "SenseAgri AI Early Adopter Pilot",
     description:
-      "Free early-adopter pilot of the SenseAgri AI poultry monitoring platform. Includes full platform access (LoRaWAN sensors, dashboard, and edge AI), on-site installation and setup fully managed, and a direct line to the founders. No credit card required.",
+      "Reduced-rate early-adopter pilot of the SenseAgri AI poultry monitoring platform. Includes full platform access (LoRaWAN sensors, dashboard, and edge AI), on-site installation and setup fully managed, and a direct line to the founders. Pricing scoped to farm size and integration scope.",
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },
     serviceType: "Poultry farm monitoring and decision intelligence",
