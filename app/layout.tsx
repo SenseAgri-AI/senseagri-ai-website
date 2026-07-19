@@ -6,6 +6,8 @@ import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RevealController from "@/components/RevealController";
+import JsonLd from "@/components/JsonLd";
+import { siteNavigationGraph } from "@/lib/jsonLd";
 import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
@@ -121,6 +123,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <JsonLd data={siteNavigationGraph()} />
         <Analytics />
         <div className="min-h-screen bg-surface">
           <Navbar />

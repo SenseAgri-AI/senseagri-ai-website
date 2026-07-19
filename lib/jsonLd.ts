@@ -23,6 +23,25 @@ export function breadcrumbGraph(crumbs: BreadcrumbCrumb[]) {
   };
 }
 
+export function siteNavigationGraph() {
+  const items = [
+    { name: "Home", path: "/" },
+    { name: "Solution", path: "/solution" },
+    { name: "Capabilities", path: "/capabilities" },
+    { name: "Pricing", path: "/pricing" },
+    { name: "About", path: "/about" },
+    { name: "FAQ", path: "/faq" },
+    { name: "Contact", path: "/contact" }
+  ];
+  return {
+    "@context": "https://schema.org",
+    "@type": "SiteNavigationElement",
+    "@id": `${siteConfig.url}/#navigation`,
+    name: items.map((i) => i.name),
+    url: items.map((i) => `${siteConfig.url}${i.path === "/" ? "/" : i.path}`)
+  };
+}
+
 export function pilotServiceGraph() {
   return {
     "@context": "https://schema.org",
