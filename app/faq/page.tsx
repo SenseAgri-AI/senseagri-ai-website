@@ -89,6 +89,8 @@ export default function FAQPage() {
       <JsonLd data={breadcrumbGraph([{ name: "FAQ", path: "/faq" }])} />
 
       <PageHero
+        dark
+        accent="#4FB8C5"
         eyebrow="FAQ"
         headline="Answers to the"
         accentLine="most-asked questions."

@@ -31,6 +31,8 @@ export default function PricingPage() {
 
       {/* Hero — petrol + gold */}
       <PageHero
+        dark
+        accent="#4FB8C5"
         eyebrow="Pilot Pricing"
         headline="Call us for a quote."
         accentLine="Join our early-partner pilot."

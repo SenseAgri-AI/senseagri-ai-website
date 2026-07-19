@@ -19,6 +19,9 @@
 - **Signals monitored**: temperature, humidity, air quality (CO₂, ammonia), feed, water, hen-day production, welfare indicators.
 - **Founders**: Dylan Geldenhuys (Co-Founder & CEO, data scientist), Dr Ryan Nel (Co-Founder & COO, veterinarian).
 - **Contact**: ryan@senseagriai.com
+- **LinkedIn (company)**: https://www.linkedin.com/company/senseagri-ai/
+- **LinkedIn (Dylan Geldenhuys, Co-Founder & CEO)**: https://www.linkedin.com/in/dylan-g-001480179/
+- **LinkedIn (Dr Ryan Nel, Co-Founder & COO)**: https://www.linkedin.com/in/ryan-nel-54b3932b3/
 
 ## Structured data
 
