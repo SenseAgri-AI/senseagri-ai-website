@@ -78,7 +78,10 @@ const jsonLd = {
           "@type": "Person",
           "@id": `${siteConfig.url}/#dylan-geldenhuys`,
           name: "Dylan Geldenhuys",
+          honorificSuffix: "MSc",
           jobTitle: "Co-Founder & CEO",
+          description:
+            "Data scientist with 6+ years across biotech and telecommunications; published work in computational biology.",
           worksFor: { "@id": `${siteConfig.url}/#organization` },
           sameAs: ["https://www.linkedin.com/in/dylan-g-001480179/"]
         },
@@ -86,7 +89,11 @@ const jsonLd = {
           "@type": "Person",
           "@id": `${siteConfig.url}/#ryan-nel`,
           name: "Dr Ryan Nel",
+          honorificPrefix: "Dr",
+          honorificSuffix: "BVSc",
           jobTitle: "Co-Founder & COO",
+          description:
+            "Veterinarian (BVSc) with experience in intensive and extensive poultry agriculture.",
           worksFor: { "@id": `${siteConfig.url}/#organization` },
           sameAs: ["https://www.linkedin.com/in/ryan-nel-54b3932b3/"]
         }

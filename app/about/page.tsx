@@ -48,12 +48,14 @@ const founders = [
   {
     name: "Dylan Geldenhuys",
     role: "Co-Founder & CEO",
+    credentials: "MSc Mathematics & Computer Science",
     photo: "/dylan.png",
     bio: "Dylan is a data scientist with over 6 years of industry experience spanning biotech and telecommunications, with published work in leading computational biology journals. He focuses on making sense of complex data — building the intelligent systems that turn farm signals into insights farmers can act on."
   },
   {
     name: "Dr Ryan Nel",
     role: "Co-Founder & COO",
+    credentials: "BVSc (Veterinary Medicine)",
     photo: "/ryan.png",
     bio: "Ryan is a veterinarian with experience in intensive and extensive agriculture. His unique combination of clinical training and hands-on agricultural experience positions him to understand the real challenges facing African farmers — bridging veterinary science, animal production, and technology where it matters most."
   }
@@ -136,7 +138,7 @@ export default function AboutPage() {
 
             {/* Founder cards — fill the photo height on desktop */}
             <div className="grid gap-px lg:grid-rows-2" style={{ background: "#E6E8E8" }}>
-              {founders.map(({ name, role, photo, bio }) => (
+              {founders.map(({ name, role, credentials, photo, bio }) => (
                 <div key={name} className="flex items-center gap-5 bg-surface-container-lowest px-7 py-7">
                   <div
                     className="shrink-0 overflow-hidden"
@@ -149,6 +151,11 @@ export default function AboutPage() {
                     <p className="mt-1 font-sans text-[9px] font-bold uppercase tracking-[0.12em] text-on-surface-variant">
                       {role}
                     </p>
+                    {credentials ? (
+                      <p className="mt-1 font-sans text-[11px] leading-tight text-on-surface-variant/80">
+                        {credentials}
+                      </p>
+                    ) : null}
                     <p className="mt-3 font-sans text-sm leading-relaxed text-on-surface-variant">{bio}</p>
                   </div>
                 </div>
