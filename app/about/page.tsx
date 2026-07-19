@@ -32,7 +32,7 @@ const values = [
   },
   {
     title: "Trust first",
-    desc: "Free pilot period. Full access. No commitment. We earn your trust before asking for anything."
+    desc: "Founder-rate pilot pricing. Full platform access. No long-term commitment. We prove the platform on your operation before scaling up."
   },
   {
     title: "African resilience",

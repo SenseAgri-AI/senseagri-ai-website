@@ -7,7 +7,7 @@ import { breadcrumbGraph, pilotServiceGraph } from "@/lib/jsonLd";
 export const metadata: Metadata = {
   title: "Pilot Pricing — Poultry Monitoring",
   description:
-    "Transparent per-house pricing for SenseAgri AI poultry monitoring. Start with a free pilot on a single house — no commitment.",
+    "Founder-rate pilot pricing for SenseAgri AI poultry monitoring — scoped per operation. Book a call to walk through the pilot programme for your farm.",
   alternates: { canonical: "/pricing" }
 };
 
@@ -17,7 +17,7 @@ const PRIMARY = "#002E35";
 const earlyPerks = [
   "Full platform access — sensors, dashboard, and AI",
   "On-site installation and setup, fully managed",
-  "Free pilot period — no credit card required",
+  "Reduced founder-rate pricing for pilot partners",
   "Direct line to the founders",
   "Shape the roadmap as an early partner",
   "Locked-in founder pricing when we go to market",
@@ -55,11 +55,11 @@ export default function PricingPage() {
               className="font-display font-extrabold tracking-tighter text-primary"
               style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)", lineHeight: "1.05" }}
             >
-              Free pilot period.<br />
-              <span className="text-primary-light">No strings attached.</span>
+              Founder-rate pilot.<br />
+              <span className="text-primary-light">Scoped to your operation.</span>
             </h2>
             <p className="mt-5 font-sans text-sm leading-relaxed text-on-surface-variant">
-              Early adopter partners get full platform access at no cost. You give us feedback. We give you the tools to run a smarter farm. When we launch commercially, your pricing stays locked at a founder rate.
+              Early adopter partners get full platform access at reduced founder-rate pricing — scoped to your farm's size and integration needs. You give us feedback; we prove the platform on your operation. When we go to market, pilot partners keep their locked founder rate. Get in touch and we&apos;ll walk you through the specifics for your farm.
             </p>
             <Link
               href="/contact"

@@ -35,7 +35,7 @@ const faqs = [
   {
     question: "What does the pilot cost?",
     answer:
-      "The early-adopter pilot is free. That includes full platform access — sensors, dashboard and AI — on-site installation and setup fully managed, and a direct line to the founders. No credit card required. When we launch commercially, pilot partners keep locked founder pricing."
+      "The early-adopter pilot runs at reduced founder-rate pricing, scoped per operation — cost depends on farm size, house count, and integration scope. It includes full platform access (sensors, dashboard and AI), on-site installation and setup fully managed, and a direct line to the founders. Book a pilot call and we'll walk you through the specifics for your farm."
   },
   {
     question: "Do I need to buy or install any hardware myself?",

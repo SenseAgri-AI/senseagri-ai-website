@@ -126,7 +126,7 @@ export default function HomePage() {
                 className="inline-flex w-full items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-primary bg-white transition-colors duration-150 hover:bg-surface-container-low sm:w-auto"
                 style={{ boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
               >
-                Sign Up For Our Free Pilot
+                Book a Pilot Call
               </a>
               <a
                 href="/solution"
