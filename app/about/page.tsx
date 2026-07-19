@@ -55,7 +55,7 @@ const founders = [
   {
     name: "Dr Ryan Nel",
     role: "Co-Founder & COO",
-    credentials: "Registered Veterinarian",
+    credentials: "BVSc (Veterinary Medicine)",
     photo: "/ryan.png",
     bio: "Ryan is a veterinarian with experience in intensive and extensive agriculture. His unique combination of clinical training and hands-on agricultural experience positions him to understand the real challenges facing African farmers — bridging veterinary science, animal production, and technology where it matters most."
   }

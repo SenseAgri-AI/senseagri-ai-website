@@ -90,9 +90,10 @@ const jsonLd = {
           "@id": `${siteConfig.url}/#ryan-nel`,
           name: "Dr Ryan Nel",
           honorificPrefix: "Dr",
+          honorificSuffix: "BVSc",
           jobTitle: "Co-Founder & COO",
           description:
-            "Registered veterinarian with experience in intensive and extensive agriculture.",
+            "Veterinarian (BVSc) with experience in intensive and extensive poultry agriculture.",
           worksFor: { "@id": `${siteConfig.url}/#organization` },
           sameAs: ["https://www.linkedin.com/in/ryan-nel-54b3932b3/"]
         }
