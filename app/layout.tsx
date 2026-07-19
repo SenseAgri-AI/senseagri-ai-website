@@ -71,7 +71,26 @@ const jsonLd = {
         telephone: "+27-68-948-1905",
         areaServed: "ZA",
         availableLanguage: ["en"]
-      }
+      },
+      sameAs: ["https://www.linkedin.com/company/senseagri-ai/"],
+      founder: [
+        {
+          "@type": "Person",
+          "@id": `${siteConfig.url}/#dylan-geldenhuys`,
+          name: "Dylan Geldenhuys",
+          jobTitle: "Co-Founder & CEO",
+          worksFor: { "@id": `${siteConfig.url}/#organization` },
+          sameAs: ["https://www.linkedin.com/in/dylan-g-001480179/"]
+        },
+        {
+          "@type": "Person",
+          "@id": `${siteConfig.url}/#ryan-nel`,
+          name: "Dr Ryan Nel",
+          jobTitle: "Co-Founder & COO",
+          worksFor: { "@id": `${siteConfig.url}/#organization` },
+          sameAs: ["https://www.linkedin.com/in/ryan-nel-54b3932b3/"]
+        }
+      ]
     },
     {
       "@type": "WebSite",
