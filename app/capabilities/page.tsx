@@ -6,9 +6,9 @@ import { breadcrumbGraph } from "@/lib/jsonLd";
 import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
 export const metadata: Metadata = {
-  title: "Capabilities — Vision, Acoustic & Environmental Poultry Monitoring",
+  title: "Poultry Monitoring Capabilities — Welfare, Vision & Disease Alerts",
   description:
-    "SenseAgri AI capabilities for commercial poultry houses — computer vision, acoustic welfare signals, environmental monitoring, gut-health intelligence, production reporting, and early disease detection.",
+    "Intelligent poultry farm monitoring — environmental sensors, computer vision, acoustic welfare signals, gut-health tracking, production intelligence, and early disease alerts for commercial poultry operations.",
   alternates: { canonical: "/capabilities" }
 };
 
@@ -24,7 +24,7 @@ type Capability = {
 
 const capabilities: Capability[] = [
   {
-    eyebrow: "Environmental monitoring",
+    eyebrow: "Poultry environmental monitoring",
     title: "Every reading in the house, around the clock.",
     body: "LoRaWAN sensors track temperature, humidity, gas, CO₂, ammonia, feed and water in each poultry house. Baselines are learned per house, so the platform flags anomalies against the room's own history — not a generic threshold that ignores your climate, breed, or age of flock.",
     tags: ["Temperature & humidity", "CO₂ & ammonia", "Feed & water consumption", "Per-house baselines"]
@@ -36,25 +36,25 @@ const capabilities: Capability[] = [
     tags: ["Egg counting — layer & breeder", "Bird tracking — broiler activity", "Edge inference", "CCTV partner integration"]
   },
   {
-    eyebrow: "Acoustic welfare signals",
+    eyebrow: "Acoustic poultry welfare monitoring",
     title: "What the flock is telling you.",
     body: "Microphones in each house pick up distinct sounds — stress vocalisations, wake-up patterns, general activity levels — and classify them in real time. Sound is a leading indicator of welfare shifts, and combining acoustic signals with environmental and vision data catches issues no single sensor would.",
     tags: ["Stress vocalisation detection", "Bird activity classification", "Wake-up pattern tracking", "Feeding-time optimisation"]
   },
   {
-    eyebrow: "Gut-health intelligence",
+    eyebrow: "Poultry gut-health intelligence",
     title: "Feed-to-water ratios reveal gut issues early.",
     body: "The feed-to-water consumption ratio is a well-documented early indicator of gut health issues in poultry. SenseAgri tracks the ratio continuously and flags when it deviates from the flock's own baseline — days before the problem shows up in production numbers or mortality.",
     tags: ["Feed:water ratio tracking", "Baseline deviation alerts", "Consumption pattern analysis"]
   },
   {
-    eyebrow: "Production intelligence",
+    eyebrow: "Poultry production intelligence",
     title: "Welfare and production, in one place.",
     body: "Hen-day production, mortality trends, feed conversion and welfare metrics run side by side in a single dashboard. Weekly ROI reports summarise what changed in the last seven days, why, and what to do next — no manual spreadsheet stitching.",
     tags: ["Hen-day production", "Mortality trends", "Feed conversion (FCR)", "Weekly ROI reports"]
   },
   {
-    eyebrow: "Early disease detection",
+    eyebrow: "Early poultry disease detection",
     title: "Anomalies across every signal, all at once.",
     body: "The platform correlates environmental, vision, and acoustic anomalies against each house's baseline — surfacing early signs of disease that no single sensor would catch alone. Alerts arrive on WhatsApp with the specific action to take, not just a red dot on a chart.",
     tags: ["Multi-modal signal fusion", "Behaviour anomaly detection", "Real-time WhatsApp alerts", "Baseline-relative flagging"]
@@ -70,9 +70,9 @@ export default function CapabilitiesPage() {
         dark
         accent="#4FB8C5"
         eyebrow="Capabilities"
-        headline="Every signal from the house,"
-        accentLine="on one platform."
-        sub="Environmental monitoring, computer vision, acoustic welfare signals, gut-health intelligence, production reporting, and early disease detection — running continuously in every poultry house."
+        headline="Poultry welfare & production"
+        accentLine="intelligence, on one platform."
+        sub="AI poultry monitoring for commercial farms — environmental sensors, computer vision, acoustic welfare signals, gut-health intelligence, production reporting, and early disease alerts running continuously in every house."
       />
 
       {/* Honesty strip — how we validate before something ships to production */}

@@ -6,9 +6,9 @@ import { breadcrumbGraph } from "@/lib/jsonLd";
 import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
 export const metadata: Metadata = {
-  title: "AI Poultry Monitoring — Vision, Acoustic & Environmental",
+  title: "AI Poultry Monitoring Platform — Welfare, Production & Disease Alerts",
   description:
-    "Environmental monitoring, computer vision, and acoustic welfare signals for commercial poultry houses. Production intelligence and early disease detection delivered via WhatsApp alerts.",
+    "AI poultry monitoring platform for commercial farms. Environmental sensors, computer vision, acoustic welfare signals, production intelligence, and early disease alerts on WhatsApp.",
   alternates: { canonical: "/solution" }
 };
 
@@ -73,9 +73,9 @@ export default function SolutionPage() {
         dark
         accent="#4FB8C5"
         eyebrow="Solution"
-        headline="The system,"
-        accentLine="end to end."
-        sub="Environmental monitoring, computer vision, and acoustic welfare signals — production intelligence and early disease alerts, delivered on WhatsApp."
+        headline="AI poultry monitoring &"
+        accentLine="welfare intelligence."
+        sub="Environmental sensors, computer vision, and acoustic welfare signals — poultry production intelligence and early disease alerts, delivered on WhatsApp."
       />
 
       {/* System architecture diagram */}
