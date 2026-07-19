@@ -141,10 +141,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Answer-first lede — plain-language definition, dark band flows into stats strip */}
-      <div className="bg-primary px-6 sm:px-10 lg:px-16" style={{ paddingTop: 28, paddingBottom: 24 }}>
+      {/* Answer-first lede — keyword-bearing H2 + plain-language definition, dark band flows into stats strip */}
+      <div className="bg-primary px-6 sm:px-10 lg:px-16" style={{ paddingTop: 32, paddingBottom: 28 }}>
         <div className="mx-auto max-w-6xl">
-          <p className="font-sans text-white/80 leading-relaxed" style={{ fontSize: "1rem", maxWidth: "68ch" }}>
+          <h2
+            className="font-display font-bold tracking-tight text-white/90"
+            style={{ fontSize: "1.05rem", lineHeight: 1.35, maxWidth: "60ch" }}
+          >
+            AI poultry monitoring and welfare intelligence for commercial farms.
+          </h2>
+          <p className="mt-3 font-sans text-white/70 leading-relaxed" style={{ fontSize: "0.9375rem", maxWidth: "68ch" }}>
             SenseAgri AI is a poultry decision-intelligence platform for commercial farms in South Africa. Sensor data becomes causal insights, WhatsApp alerts, and weekly ROI reports — so operators understand why production changes, not just what.
           </p>
         </div>
