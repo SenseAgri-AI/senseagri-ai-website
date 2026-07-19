@@ -5,9 +5,9 @@ import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph, pilotServiceGraph } from "@/lib/jsonLd";
 
 export const metadata: Metadata = {
-  title: "Pilot Pricing — Poultry Monitoring",
+  title: "Partner Programme — Founder Pricing for Poultry Monitoring",
   description:
-    "Founder-rate pilot pricing for SenseAgri AI poultry monitoring — scoped per operation. Book a call to walk through the pilot programme for your farm.",
+    "SenseAgri AI Partner Programme: founder pricing, hands-on onboarding, direct access to the team, and a roadmap shaped by your farm. Book a demo to scope your deployment.",
   alternates: { canonical: "/pricing" }
 };
 
@@ -17,9 +17,10 @@ const PRIMARY = "#002E35";
 const earlyPerks = [
   "Full platform access — sensors, dashboard, and AI",
   "On-site installation and setup, fully managed",
-  "Reduced founder-rate pricing for pilot partners",
-  "Direct line to the founders",
-  "Shape the roadmap as an early partner",
+  "Founder pricing for Partner Programme customers",
+  "Direct line to the team — feature requests welcome",
+  "Hands-on onboarding and training on the platform",
+  "Roadmap shaped by what you tell us your farm needs",
   "Locked-in founder pricing when we go to market",
 ];
 
@@ -33,10 +34,10 @@ export default function PricingPage() {
       <PageHero
         dark
         accent="#4FB8C5"
-        eyebrow="Pilot Pricing"
-        headline="Call us for a quote."
-        accentLine="Join our early-partner pilot."
-        sub="Full platform access for the pilot period. Limited slots, no commitment. Call us and we'll walk you through everything."
+        eyebrow="Partner Programme"
+        headline="Founder pricing —"
+        accentLine="hands-on partnership."
+        sub="More than software. Partner Programme customers get direct access to the team, hands-on onboarding, feature requests that get built, and a roadmap shaped by what you tell us you need."
       />
 
       {/* Early adopter offer */}
@@ -50,25 +51,25 @@ export default function PricingPage() {
               style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
             >
               <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-primary">
-                Early Adopter Programme
+                Partner Programme
               </span>
             </span>
             <h2
               className="font-display font-extrabold tracking-tighter text-primary"
               style={{ fontSize: "clamp(1.9rem, 3.5vw, 2.8rem)", lineHeight: "1.05" }}
             >
-              Founder-rate pilot.<br />
-              <span className="text-primary-light">Scoped to your operation.</span>
+              More than a sensor supplier.<br />
+              <span className="text-primary-light">A partner on your farm.</span>
             </h2>
             <p className="mt-5 font-sans text-sm leading-relaxed text-on-surface-variant">
-              Early adopter partners get full platform access at reduced founder-rate pricing — scoped to your farm's size and integration needs. You give us feedback; we prove the platform on your operation. When we go to market, pilot partners keep their locked founder rate. Get in touch and we&apos;ll walk you through the specifics for your farm.
+              SenseAgri AI isn&apos;t a system you install and check in on once a month. We built our sensor pack, dashboard, and AI reporting because farmers deserve a partner that&apos;s genuinely invested in outcomes, not just uptime. Partner Programme customers get direct access to our team, hands-on onboarding and training, feature requests that get built, and a roadmap shaped in part by what you tell us your farm needs. Pricing is founder-rate and scoped per operation — get in touch and we&apos;ll walk you through the specifics.
             </p>
             <Link
               href="/contact"
               className="mt-8 inline-flex items-center justify-center px-8 py-3.5 font-sans text-sm font-bold uppercase tracking-[0.08em] text-white transition-colors duration-150 hover:bg-primary-container"
               style={{ background: PRIMARY, boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
             >
-              Book a Pilot Call
+              Book a Demo
             </Link>
             <p className="mt-5 font-sans text-sm text-on-surface-variant">
               First time here? See how the{" "}
@@ -126,7 +127,7 @@ export default function PricingPage() {
             className="mt-8 inline-flex items-center justify-center px-10 py-4 font-sans text-sm font-bold uppercase tracking-[0.08em] text-white transition-colors duration-150 hover:bg-primary-container"
             style={{ background: PRIMARY, boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
           >
-            Book a Pilot Call
+            Book a Demo
           </Link>
         </div>
       </section>

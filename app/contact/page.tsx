@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Book a Free Poultry Pilot",
   description:
-    "Book a pilot call with SenseAgri AI. Run a free poultry monitoring pilot on one house and see the ROI on your own flock.",
+    "Book a demo with SenseAgri AI. Talk to our team about running the Partner Programme on your poultry operation — hands-on onboarding, founder pricing.",
   alternates: { canonical: "/contact" }
 };
 

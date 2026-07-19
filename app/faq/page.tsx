@@ -9,7 +9,7 @@ import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "How SenseAgri AI's poultry monitoring platform works — sensors, causal AI, integrations, pilot programme and hardware. Answers for commercial farms in South Africa.",
+    "How SenseAgri AI's poultry monitoring platform works — sensors, causal AI, integrations, Partner Programme and hardware. Answers for commercial poultry farms in South Africa.",
   alternates: { canonical: "/faq" }
 };
 
@@ -33,9 +33,9 @@ const faqs = [
       "Yes. SenseAgri AI integrates with the major poultry platforms already on your farm — Big Dutchman, SKOV, Hytek, Vencomatic and more. You keep the controllers and equipment you have; SenseAgri adds the layer of continuous monitoring and causal analysis on top."
   },
   {
-    question: "What does the pilot cost?",
+    question: "What does the Partner Programme cost?",
     answer:
-      "The early-adopter pilot runs at reduced founder-rate pricing, scoped per operation — cost depends on farm size, house count, and integration scope. It includes full platform access (sensors, dashboard and AI), on-site installation and setup fully managed, and a direct line to the founders. Book a pilot call and we'll walk you through the specifics for your farm."
+      "The Partner Programme runs at founder pricing, scoped per operation — cost depends on farm size, house count, and integration scope. It includes full platform access (sensors, dashboard and AI), on-site installation and setup fully managed, hands-on onboarding, direct access to the SenseAgri AI team, and a roadmap shaped in part by what you tell us your farm needs. Book a demo and we'll walk you through the specifics."
   },
   {
     question: "Do I need to buy or install any hardware myself?",

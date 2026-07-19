@@ -27,10 +27,10 @@ export function pilotServiceGraph() {
   return {
     "@context": "https://schema.org",
     "@type": "Service",
-    "@id": `${siteConfig.url}/#pilot-service`,
-    name: "SenseAgri AI Early Adopter Pilot",
+    "@id": `${siteConfig.url}/#partner-programme`,
+    name: "SenseAgri AI Partner Programme",
     description:
-      "Reduced-rate early-adopter pilot of the SenseAgri AI poultry monitoring platform. Includes full platform access (LoRaWAN sensors, dashboard, and edge AI), on-site installation and setup fully managed, and a direct line to the founders. Pricing scoped to farm size and integration scope.",
+      "SenseAgri AI Partner Programme — founder pricing for commercial poultry operations. Includes full platform access (LoRaWAN sensors, dashboard, and edge AI), on-site installation and setup fully managed, hands-on onboarding and training, direct access to the SenseAgri AI team, and a product roadmap shaped by customer feedback. Pricing scoped to farm size and integration scope.",
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },
     serviceType: "Poultry farm monitoring and decision intelligence",

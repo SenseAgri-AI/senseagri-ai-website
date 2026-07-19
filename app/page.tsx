@@ -126,7 +126,7 @@ export default function HomePage() {
                 className="inline-flex w-full items-center justify-center px-6 py-3 font-sans text-sm font-bold uppercase tracking-[0.08em] text-primary bg-white transition-colors duration-150 hover:bg-surface-container-low sm:w-auto"
                 style={{ boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
               >
-                Book a Pilot Call
+                Book a Demo
               </a>
               <a
                 href="/solution"
@@ -263,7 +263,7 @@ export default function HomePage() {
             style={{ background: "rgba(212,175,55,0.10)" }}
           >
             <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-tertiary">
-              30-Day Pilot Programme
+              Partner Programme
             </span>
           </span>
 
@@ -281,7 +281,7 @@ export default function HomePage() {
               className="inline-flex items-center justify-center px-10 py-4 font-sans text-xs font-bold uppercase tracking-[0.12em] text-primary transition-colors duration-150 hover:bg-surface-container-low bg-white"
               style={{ boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
             >
-              Book a Pilot Call
+              Book a Demo
             </a>
             <a
               href="/solution"
