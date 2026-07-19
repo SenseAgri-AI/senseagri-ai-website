@@ -67,8 +67,6 @@ export default function CapabilitiesPage() {
       <JsonLd data={breadcrumbGraph([{ name: "Capabilities", path: "/capabilities" }])} />
 
       <PageHero
-        dark
-        accent="#4FB8C5"
         eyebrow="Capabilities"
         headline="Poultry welfare & production"
         accentLine="intelligence, on one platform."

@@ -66,8 +66,6 @@ export default function AboutPage() {
 
       {/* Hero — dark navy + light teal accent */}
       <PageHero
-        dark
-        accent="#4FB8C5"
         eyebrow="About"
         headline="Building intelligence for"
         accentLine="African agriculture."
