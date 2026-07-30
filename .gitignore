@@ -5,3 +5,7 @@ node_modules/
 .DS_Store
 .mcp.json
 *.tsbuildinfo
+
+# Source materials — the shipped versions live under public/
+Senseagri flier template/
+Senseagri flier template.zip
