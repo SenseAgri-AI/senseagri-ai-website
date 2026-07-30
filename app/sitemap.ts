@@ -12,7 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/pricing", url: `${baseUrl}/pricing` },
     { path: "/faq", url: `${baseUrl}/faq` },
     { path: "/about", url: `${baseUrl}/about` },
-    { path: "/contact", url: `${baseUrl}/contact` }
+    { path: "/contact", url: `${baseUrl}/contact` },
+    { path: "/flier/", url: `${baseUrl}/flier/` }
   ];
 
   return routes.map(({ path, url }) => ({
