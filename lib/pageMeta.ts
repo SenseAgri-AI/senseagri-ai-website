@@ -17,7 +17,7 @@ export const pageLastModified: Record<string, string> = {
   "/faq": "2026-07-18",
   "/about": "2026-07-18",
   "/contact": "2026-07-18",
-  "/flier/": "2026-07-30"
+  "/automate-your-poultry-operation/": "2026-07-30"
 };
 
 export function formatDisplayDate(iso: string): string {
