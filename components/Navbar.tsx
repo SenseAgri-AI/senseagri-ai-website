@@ -60,7 +60,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex">
-          <Button href="/contact">Book a Pilot Call</Button>
+          <Button href="/contact">Book a Demo</Button>
         </div>
 
         {/* Mobile menu button */}
@@ -106,7 +106,7 @@ export default function Navbar() {
             })}
             <div className="pt-3">
               <Button href="/contact" className="w-full justify-center">
-                Book a Pilot Call
+                Book a Demo
               </Button>
             </div>
           </div>

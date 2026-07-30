@@ -185,7 +185,7 @@ export default function SolutionPage() {
             style={{ background: "rgba(212,175,55,0.10)" }}
           >
             <span className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-tertiary">
-              Early Adopter Pilot
+              Partner Programme
             </span>
           </span>
           <h2
@@ -203,7 +203,7 @@ export default function SolutionPage() {
             className="mt-8 inline-flex items-center justify-center px-8 py-3.5 font-sans text-sm font-bold uppercase tracking-[0.08em] text-primary transition-colors duration-150 hover:bg-surface-container-low bg-white"
             style={{ boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
           >
-            Book a Pilot Call
+            Book a Demo
           </Link>
           <p className="mt-5 font-sans text-title-sm text-white/60">
             Or first, see what the pilot includes on the{" "}

@@ -32,7 +32,7 @@ const values = [
   },
   {
     title: "Trust first",
-    desc: "Founder-rate pilot pricing. Full platform access. No long-term commitment. We prove the platform on your operation before scaling up."
+    desc: "Founder pricing for Partner Programme customers. Full platform access, hands-on onboarding, direct access to the team. We grow alongside your farm — not away from it."
   },
   {
     title: "African resilience",

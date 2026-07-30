@@ -6,9 +6,9 @@
 
 - [Home](https://www.senseagriai.com/): product overview and positioning.
 - [Solution](https://www.senseagriai.com/solution): how the platform works end-to-end — sensing in the house, edge AI on the farm, decisions on your phone.
-- [Pricing](https://www.senseagriai.com/pricing): early-adopter pilot programme at reduced founder-rate pricing, scoped per operation.
+- [Pricing](https://www.senseagriai.com/pricing): Partner Programme at founder pricing — hands-on partnership with direct access to the team, scoped per operation.
 - [About](https://www.senseagriai.com/about): the company, mission ("digital husbandry for African farms"), founders, values.
-- [Contact](https://www.senseagriai.com/contact): book a pilot call.
+- [Contact](https://www.senseagriai.com/contact): book a demo with the team.
 
 ## Facts
 
