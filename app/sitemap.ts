@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/faq", url: `${baseUrl}/faq` },
     { path: "/about", url: `${baseUrl}/about` },
     { path: "/contact", url: `${baseUrl}/contact` },
-    { path: "/flier/", url: `${baseUrl}/flier/` }
+    { path: "/automate-your-poultry-operation/", url: `${baseUrl}/automate-your-poultry-operation/` }
   ];
 
   return routes.map(({ path, url }) => ({
