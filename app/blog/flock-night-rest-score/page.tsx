@@ -189,7 +189,35 @@ export default function FlockNightRestScorePost() {
         accent="#4FB8C5"
         eyebrow="Blog · Poultry Welfare"
         headline="A sleep score"
-        accentLine="for the flock."
+        accentLine={
+          <>
+            for the flock.{" "}
+            <span
+              aria-hidden="true"
+              style={{
+                display: "inline-block",
+                verticalAlign: "0.05em",
+                marginLeft: "0.15em"
+              }}
+            >
+              <svg
+                viewBox="0 0 32 32"
+                width="0.7em"
+                height="0.7em"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth={1.8}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* Crescent moon */}
+                <path d="M21 21a9 9 0 1 1-9-14 7 7 0 0 0 9 14z" />
+                {/* Small z above the moon */}
+                <path d="M22.5 6h5l-5 5h5" />
+              </svg>
+            </span>
+          </>
+        }
         sub="A nightly rating (0–100) of how well laying hens actually rested — measured from the sound of the shed and the conditions inside it, and delivered to the farmer's phone by morning."
       />
 
@@ -206,14 +234,14 @@ export default function FlockNightRestScorePost() {
           </div>
 
           {/* Article hero image — resting hen */}
-          <figure className="mb-10 -mx-6 sm:-mx-10 lg:-mx-16" style={{ background: "#F2F4F4", borderTop: "0.5px solid #BEC8CA", borderBottom: "0.5px solid #BEC8CA" }}>
-            <div className="mx-auto max-w-3xl px-6 py-10 sm:px-10 lg:px-16">
+          <figure className="mb-10">
+            <div className="overflow-hidden" style={{ border: "0.5px solid #BEC8CA" }}>
               <Image
                 src="/blog/flock-night-rest-score/sleeping-hen.jpg"
-                alt="A hen resting quietly on a white background — the kind of undisturbed rest a Night-Rest Score of 100 represents."
+                alt="A hen resting quietly — the kind of undisturbed rest a Night-Rest Score of 100 represents."
                 width={612}
                 height={408}
-                className="mx-auto block h-auto w-full max-w-md"
+                className="block h-auto w-full"
                 priority
               />
             </div>
