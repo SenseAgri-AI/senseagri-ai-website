@@ -13,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/faq", url: `${baseUrl}/faq` },
     { path: "/about", url: `${baseUrl}/about` },
     { path: "/contact", url: `${baseUrl}/contact` },
+    { path: "/blog", url: `${baseUrl}/blog` },
+    { path: "/blog/flock-night-rest-score", url: `${baseUrl}/blog/flock-night-rest-score` },
     { path: "/automate-your-poultry-operation/", url: `${baseUrl}/automate-your-poultry-operation/` }
   ];
 

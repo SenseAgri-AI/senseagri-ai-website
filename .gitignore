@@ -6,6 +6,7 @@ node_modules/
 .mcp.json
 *.tsbuildinfo
 
-# Source materials — the shipped versions live under public/
+# Source materials — the shipped versions live under public/ or app/
 Senseagri flier template/
 Senseagri flier template.zip
+blogs/
