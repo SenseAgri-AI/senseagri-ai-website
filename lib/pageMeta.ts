@@ -17,6 +17,8 @@ export const pageLastModified: Record<string, string> = {
   "/faq": "2026-07-18",
   "/about": "2026-07-18",
   "/contact": "2026-07-18",
+  "/blog": "2026-08-20",
+  "/blog/flock-night-rest-score": "2026-08-20",
   "/automate-your-poultry-operation/": "2026-07-30"
 };
 
