@@ -1,0 +1,88 @@
+{
+  "entity_type": "person",
+  "canonical_name": "Dylan Geldenhuys",
+  "slug": "dylan-geldenhuys",
+  "aliases": [],
+  "definition": {
+    "category": "co-founder and CEO of SenseAgri AI",
+    "founded": "2025",
+    "function": "Dylan Geldenhuys is a data scientist who builds the systems that turn farm signals into actions farmers can take.",
+    "differentiator": "Dylan Geldenhuys has over 6 years across biotech and telecommunications, with published work in computational biology."
+  },
+  "sections": [
+    {
+      "heading": "What is Dylan Geldenhuys's background?",
+      "paragraphs": [
+        "Dylan Geldenhuys holds an MSc in Mathematics and Computer Science. [1]",
+        "Dylan Geldenhuys is a data scientist with over 6 years of industry experience spanning biotech and telecommunications, with published work in leading computational biology journals. [1]"
+      ],
+      "stats": [
+        {
+          "text": "over 6 years",
+          "citation": 1
+        }
+      ]
+    },
+    {
+      "heading": "What does Dylan Geldenhuys do at SenseAgri AI?",
+      "paragraphs": [
+        "Dylan Geldenhuys is Co-Founder and CEO of SenseAgri AI. [1]",
+        "At SenseAgri AI, Dylan Geldenhuys focuses on making sense of complex data, building the intelligent systems that turn farm signals into insights farmers can act on. [1]"
+      ],
+      "stats": []
+    },
+    {
+      "heading": "Who did Dylan Geldenhuys found SenseAgri AI with?",
+      "paragraphs": [
+        "Dylan Geldenhuys co-founded SenseAgri AI with Dr Ryan Nel. [1]",
+        "Dylan Geldenhuys is CEO; Dr Ryan Nel is COO and a veterinarian. [1]"
+      ],
+      "stats": []
+    },
+    {
+      "heading": "What is Dylan Geldenhuys not?",
+      "paragraphs": [
+        "Dylan Geldenhuys is not the farm's attending veterinarian. Clinical veterinary work at SenseAgri AI sits with Dr Ryan Nel's training, not with Dylan Geldenhuys. [1]",
+        "Dylan Geldenhuys is not listed as the public sales email for SenseAgri AI. The published sales address is ryan@senseagriai.com. [2]"
+      ],
+      "stats": []
+    }
+  ],
+  "cross_links": [
+    {
+      "target_slug": "senseagri-ai",
+      "anchor": "SenseAgri AI"
+    },
+    {
+      "target_slug": "ryan-nel",
+      "anchor": "Dr Ryan Nel"
+    }
+  ],
+  "citations": [
+    {
+      "n": 1,
+      "url": "https://www.senseagriai.com/about",
+      "title": "About \u2014 SenseAgri AI founders",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 2,
+      "url": "https://www.senseagriai.com/contact",
+      "title": "Contact SenseAgri AI",
+      "accessed": "2026-09-08"
+    }
+  ],
+  "author": {
+    "name": "SenseAgri AI",
+    "url": "https://www.senseagriai.com/about"
+  },
+  "changelog": [
+    {
+      "date": "2026-09-09",
+      "note": "Published."
+    }
+  ],
+  "same_as": [
+    "https://www.linkedin.com/in/dylan-g-001480179/"
+  ]
+}

@@ -1,11 +1,18 @@
+const path = require("path");
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  // `allowedDevOrigins` was added in Next 15; this project is on 14.2.3 where
-  // it isn't recognised and emits an invalid-config warning.
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      [path.resolve(__dirname, "node_modules/@ignite-agent/agent/dist/operator/prose.js")]:
+        path.resolve(__dirname, "lib/igniteProse.tsx")
+    };
+    return config;
+  },
   async redirects() {
     return [
-      // Old flier URL — kept in case anyone grabbed the link before the SEO-friendly slug landed
       {
         source: "/flier",
         destination: "/automate-your-poultry-operation",
@@ -15,6 +22,11 @@ const nextConfig = {
         source: "/flier/:path*",
         destination: "/automate-your-poultry-operation",
         permanent: true
+      },
+      {
+        source: "/w",
+        destination: "/wiki",
+        permanent: false
       }
     ];
   }

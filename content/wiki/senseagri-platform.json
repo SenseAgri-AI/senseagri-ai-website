@@ -1,0 +1,92 @@
+{
+  "entity_type": "product",
+  "canonical_name": "SenseAgri AI platform",
+  "slug": "senseagri-platform",
+  "aliases": [
+    "SenseAgri platform"
+  ],
+  "definition": {
+    "category": "on-farm poultry monitoring product",
+    "founded": "2025",
+    "function": "The SenseAgri AI platform captures house signals, runs inference on-site, and sends actions to a dashboard and WhatsApp.",
+    "differentiator": "The environmental sensor suite of the SenseAgri AI platform is live on farms today; other capabilities are validated in pilots on each operation."
+  },
+  "sections": [
+    {
+      "heading": "What does the SenseAgri AI platform monitor?",
+      "paragraphs": [
+        "The SenseAgri AI platform continuously monitors house conditions: temperature, humidity, gas, CO\u2082, feed, water, egg count and more, around the clock. [1]",
+        "Published SenseAgri AI platform pages also list ammonia, vision-based egg counting for layers and breeders, broiler bird tracking, acoustic welfare signals, feed-to-water ratio, hen-day production, mortality trends, and feed conversion. [2]"
+      ],
+      "stats": [
+        {
+          "text": "temperature, humidity, gas, CO\u2082, feed, water, egg count",
+          "citation": 1
+        }
+      ]
+    },
+    {
+      "heading": "Where does the SenseAgri AI platform run inference?",
+      "paragraphs": [
+        "Sensing and inference on the SenseAgri AI platform run on-site, so the SenseAgri AI platform keeps working through patchy connectivity. Data from the SenseAgri AI platform syncs to the cloud the moment the link returns. [1]",
+        "Vision inference on the SenseAgri AI platform runs on the farm's own edge compute, with no cloud round-trip per frame. Cameras on the SenseAgri AI platform integrate with the CCTV the farm already uses. [1]"
+      ],
+      "stats": []
+    },
+    {
+      "heading": "Which equipment does the SenseAgri AI platform integrate with?",
+      "paragraphs": [
+        "The SenseAgri AI platform integrates with major poultry platforms already on the farm: Big Dutchman, SKOV, Hytek, Vencomatic and more. [1]",
+        "Farms keep the controllers they have; the SenseAgri AI platform adds continuous monitoring and causal analysis on top. Alerts from the SenseAgri AI platform arrive on WhatsApp with the specific action to take. [1]"
+      ],
+      "stats": []
+    },
+    {
+      "heading": "What is not production-ready on the SenseAgri AI platform?",
+      "paragraphs": [
+        "SenseAgri AI states that the sensor suite of the SenseAgri AI platform, environmental monitoring, air quality, and climate alerts, is live and running on farms today. [2]",
+        "The SenseAgri AI platform does not count vision, acoustic, or gut-health capabilities as production-ready on a given farm until they are proven on that farm's own houses. Pilots are how SenseAgri AI validates each of those capabilities. [2]"
+      ],
+      "stats": []
+    }
+  ],
+  "cross_links": [
+    {
+      "target_slug": "senseagri-ai",
+      "anchor": "SenseAgri AI"
+    },
+    {
+      "target_slug": "partner-programme",
+      "anchor": "Partner Programme"
+    },
+    {
+      "target_slug": "flock-night-rest-score",
+      "anchor": "Flock Night-Rest Score"
+    }
+  ],
+  "citations": [
+    {
+      "n": 1,
+      "url": "https://www.senseagriai.com/faq",
+      "title": "SenseAgri AI FAQ",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 2,
+      "url": "https://www.senseagriai.com/capabilities",
+      "title": "SenseAgri AI capabilities",
+      "accessed": "2026-09-08"
+    }
+  ],
+  "author": {
+    "name": "SenseAgri AI",
+    "url": "https://www.senseagriai.com/about"
+  },
+  "changelog": [
+    {
+      "date": "2026-09-09",
+      "note": "Published."
+    }
+  ],
+  "same_as": []
+}

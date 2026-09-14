@@ -1,3 +1,5 @@
+@import "@ignite-agent/agent/styles.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -1153,4 +1155,16 @@ h1, h2, h3, h4 {
 
   .sensor-wheel-ring, .sensor-card { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Hosted wiki/blog brand tokens */
+:root {
+  --ignite-color-text: #191C1D;
+  --ignite-color-muted: #3F4849;
+  --ignite-color-primary: #002E35;
+  --ignite-color-border: #BEC8CA;
+  --ignite-font-sans: var(--font-inter), system-ui, sans-serif;
+  --ignite-font-heading: var(--font-manrope), var(--ignite-font-sans);
+  --ignite-radius: 0;
+  --ignite-prose-width: 65ch;
 }

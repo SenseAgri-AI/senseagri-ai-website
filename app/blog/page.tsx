@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { BlogIndex } from "@ignite-agent/agent/blog";
 import PageHero from "@/components/PageHero";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph } from "@/lib/jsonLd";
 import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 import { siteConfig } from "@/lib/site";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blog — Poultry Welfare, AI Monitoring & Field Notes",
@@ -61,7 +64,7 @@ const blogJsonLd = {
   }))
 };
 
-export default function BlogIndexPage() {
+export default async function BlogIndexPage() {
   return (
     <div>
       <JsonLd data={blogJsonLd} />
@@ -132,6 +135,8 @@ export default function BlogIndexPage() {
               </li>
             ))}
           </ul>
+
+          <BlogIndex />
 
           <p className="mt-12 font-sans text-label-sm uppercase tracking-[0.06em] text-on-surface-variant/70">
             Last updated: {formatDisplayDate(pageLastModified["/blog"])}

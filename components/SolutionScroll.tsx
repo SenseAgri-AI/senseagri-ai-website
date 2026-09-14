@@ -40,7 +40,7 @@ const modules = [
     bg: "#0F172A",
     accent: "#087C83",
     fromLeft: true,
-    image: "/on_this_picture_please_keep_th_Grok_Imagine_47814.jpg",
+    image: "/aios-chip.jpg",
     imageAlt: "SenseAgri AIOS chip",
   },
 ];

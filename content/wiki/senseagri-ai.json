@@ -1,0 +1,121 @@
+{
+  "entity_type": "company",
+  "canonical_name": "SenseAgri AI",
+  "slug": "senseagri-ai",
+  "aliases": [
+    "SenseAgri"
+  ],
+  "definition": {
+    "category": "poultry intelligence company",
+    "founded": "2025",
+    "function": "SenseAgri AI unifies poultry-house sensor data into welfare monitoring, disease early-warning and weekly ROI reports for South African operations.",
+    "differentiator": "Sensing and inference at SenseAgri AI run on the farm, and alerts arrive on WhatsApp."
+  },
+  "sections": [
+    {
+      "heading": "Where does SenseAgri AI operate?",
+      "paragraphs": [
+        "SenseAgri AI is built for South African poultry operations, with its published address region in the Western Cape. [1]",
+        "SenseAgri AI publishes a South African sales phone number, +27 68 948 1905, and the sales email ryan@senseagriai.com. [3]"
+      ],
+      "stats": [
+        {
+          "text": "Western Cape, South Africa",
+          "citation": 1
+        }
+      ]
+    },
+    {
+      "heading": "Who founded SenseAgri AI?",
+      "paragraphs": [
+        "SenseAgri AI has two co-founders: Dylan Geldenhuys, Co-Founder and CEO, and Dr Ryan Nel, Co-Founder and COO. [2]",
+        "Dylan Geldenhuys at SenseAgri AI is a data scientist with an MSc in Mathematics and Computer Science. Dr Ryan Nel at SenseAgri AI is a veterinarian with a BVSc and experience in intensive and extensive poultry agriculture. [2]"
+      ],
+      "stats": [
+        {
+          "text": "two co-founders",
+          "citation": 2
+        }
+      ]
+    },
+    {
+      "heading": "What does SenseAgri AI sell?",
+      "paragraphs": [
+        "SenseAgri AI sells a poultry monitoring platform plus a Partner Programme that covers sensors, dashboard, AI, on-site installation and onboarding. [4]",
+        "SenseAgri AI does not publish a public price list. Cost is founder pricing, scoped per farm size, house count and integration scope. [4]"
+      ],
+      "stats": []
+    },
+    {
+      "heading": "What can SenseAgri AI not do?",
+      "paragraphs": [
+        "SenseAgri AI does not publish a public price. A demo is how SenseAgri AI scopes cost for a given farm. [4]",
+        "SenseAgri AI does not treat vision, acoustic, or gut-health features as production-ready on a farm until those features are proven on that farm's own houses. The environmental sensor suite at SenseAgri AI is live on farms today. [5]"
+      ],
+      "stats": []
+    }
+  ],
+  "cross_links": [
+    {
+      "target_slug": "dylan-geldenhuys",
+      "anchor": "Dylan Geldenhuys"
+    },
+    {
+      "target_slug": "ryan-nel",
+      "anchor": "Dr Ryan Nel"
+    },
+    {
+      "target_slug": "senseagri-platform",
+      "anchor": "SenseAgri AI platform"
+    },
+    {
+      "target_slug": "partner-programme",
+      "anchor": "Partner Programme"
+    }
+  ],
+  "citations": [
+    {
+      "n": 1,
+      "url": "https://www.senseagriai.com/",
+      "title": "SenseAgri AI \u2014 Poultry Farm Intelligence for South Africa",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 2,
+      "url": "https://www.senseagriai.com/about",
+      "title": "About \u2014 Digital Husbandry for African Farms",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 3,
+      "url": "https://www.senseagriai.com/contact",
+      "title": "Contact SenseAgri AI",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 4,
+      "url": "https://www.senseagriai.com/faq",
+      "title": "SenseAgri AI FAQ",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 5,
+      "url": "https://www.senseagriai.com/capabilities",
+      "title": "SenseAgri AI capabilities",
+      "accessed": "2026-09-08"
+    }
+  ],
+  "author": {
+    "name": "SenseAgri AI",
+    "url": "https://www.senseagriai.com/about"
+  },
+  "changelog": [
+    {
+      "date": "2026-09-09",
+      "note": "Published."
+    }
+  ],
+  "same_as": [
+    "https://www.linkedin.com/company/senseagri-ai/"
+  ]
+}

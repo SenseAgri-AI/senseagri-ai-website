@@ -1,0 +1,118 @@
+{
+  "entity_type": "concept",
+  "canonical_name": "Flock Night-Rest Score",
+  "slug": "flock-night-rest-score",
+  "aliases": [
+    "Night-Rest Score"
+  ],
+  "definition": {
+    "category": "nightly poultry welfare score",
+    "founded": "2026",
+    "function": "The Flock Night-Rest Score rates how well a flock of laying hens rested, from 0 to 100, using shed sound and in-house conditions.",
+    "differentiator": "The Flock Night-Rest Score is delivered to the farmer's phone by morning, with a WhatsApp alert only when rest has been poor several nights running."
+  },
+  "sections": [
+    {
+      "heading": "How is the Flock Night-Rest Score measured?",
+      "paragraphs": [
+        "The Flock Night-Rest Score uses a microphone in the shed plus IoT sensors for temperature, humidity and light. SenseAgri AI describes four steps for the Flock Night-Rest Score: listen, sense, score, tell. [1]",
+        "Each Flock Night-Rest Score night is scored against six factors: noise, bouts, loudness, pre-dawn, experienced heat, and darkness. [1]"
+      ],
+      "stats": [
+        {
+          "text": "six factors",
+          "citation": 1
+        }
+      ]
+    },
+    {
+      "heading": "What do Flock Night-Rest Score bands mean?",
+      "paragraphs": [
+        "SenseAgri AI publishes three Flock Night-Rest Score bands: 85\u2013100 Restful (undisturbed rest); 60\u201385 Some disruption (worth a look); below 60 Disturbed (something needs attention). [1]",
+        "The farmer using the Flock Night-Rest Score gets last night's score, a plain-language reason (noise, heat, or not enough darkness), a WhatsApp alert only when rest has been poor several nights running, and the audio clips of the disturbance. [1]"
+      ],
+      "stats": [
+        {
+          "text": "85\u2013100 Restful; 60\u201385 Some disruption; below 60 Disturbed",
+          "citation": 1
+        }
+      ]
+    },
+    {
+      "heading": "What does published research say about hen sleep and the Flock Night-Rest Score?",
+      "paragraphs": [
+        "The Flock Night-Rest Score sits on published hen-sleep research. Putyora et al. (2023) measured laying-hen sleep with EEG: during lights-off, hens spent 60% of time in slow-wave sleep and 12% in REM sleep. Increased ambient temperature nearly eliminated REM sleep. [2]",
+        "The Flock Night-Rest Score alerts on sustained poor nights because Putyora et al. found that mild short-term disturbances (wind, noise, or light) had no carry-over into the next day or night; hens compensated the same night. [3]",
+        "The Flock Night-Rest Score treats heat as a production risk because Kim et al. (2024) reported that severe heat stress cut feed intake by 30% and egg production rate by 11% versus thermoneutral conditions, with egg quality falling as well. [4]",
+        "The Flock Night-Rest Score can flag a red-mite night because Willems et al. (2025) quantified night-time activity before and after poultry red mite infestation, and SenseAgri AI's published reading of that paper is that dark-period activity roughly doubled and stayed high all night. [5]"
+      ],
+      "stats": [
+        {
+          "text": "60% slow-wave sleep, 12% REM during lights-off",
+          "citation": 2
+        }
+      ]
+    },
+    {
+      "heading": "What can the Flock Night-Rest Score not do yet?",
+      "paragraphs": [
+        "The Flock Night-Rest Score is a welfare and early-warning signal built from sound and environment. SenseAgri AI has not yet published a validated link from the Flock Night-Rest Score to production numbers; that link is what SenseAgri AI says it is validating next, on each farm's own data. [1]",
+        "The Flock Night-Rest Score is not a veterinary diagnosis. A Disturbed Flock Night-Rest Score tells the farmer where to look (noise, heat, darkness); it does not name a disease. [1]"
+      ],
+      "stats": []
+    }
+  ],
+  "cross_links": [
+    {
+      "target_slug": "senseagri-platform",
+      "anchor": "SenseAgri AI platform"
+    },
+    {
+      "target_slug": "senseagri-ai",
+      "anchor": "SenseAgri AI"
+    }
+  ],
+  "citations": [
+    {
+      "n": 1,
+      "url": "https://www.senseagriai.com/blog/flock-night-rest-score",
+      "title": "The Flock Night-Rest Score \u2014 Measuring Poultry Sleep with AI",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 2,
+      "url": "https://doi.org/10.3390/ani13193105",
+      "title": "Putyora et al. (2023). The Effects of Commercially-Relevant Disturbances on Sleep Behaviour in Laying Hens. Animals 13(19):3105.",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 3,
+      "url": "https://doi.org/10.3390/ani13071251",
+      "title": "Putyora et al. (2023). The Effects of Mild Disturbances on Sleep Behaviour in Laying Hens. Animals 13(7):1251.",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 4,
+      "url": "https://doi.org/10.3390/ani14071076",
+      "title": "Kim et al. (2024). Effects of Heat Stress on the Laying Performance, Egg Quality, and Physiological Response of Laying Hens. Animals 14(7):1076.",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 5,
+      "url": "https://doi.org/10.3390/ani15192928",
+      "title": "Willems et al. (2025). Animals 15(19):2928.",
+      "accessed": "2026-09-08"
+    }
+  ],
+  "author": {
+    "name": "SenseAgri AI",
+    "url": "https://www.senseagriai.com/about"
+  },
+  "changelog": [
+    {
+      "date": "2026-09-09",
+      "note": "Published."
+    }
+  ],
+  "same_as": []
+}

@@ -1,0 +1,94 @@
+{
+  "entity_type": "person",
+  "canonical_name": "Dr Ryan Nel",
+  "slug": "ryan-nel",
+  "aliases": [
+    "Ryan Nel"
+  ],
+  "definition": {
+    "category": "co-founder and COO of SenseAgri AI",
+    "founded": "2025",
+    "function": "Dr Ryan Nel is a veterinarian who runs operations and ties the SenseAgri AI platform to on-farm husbandry.",
+    "differentiator": "Dr Ryan Nel holds a BVSc and has worked in both intensive and extensive poultry agriculture."
+  },
+  "sections": [
+    {
+      "heading": "What is Dr Ryan Nel's training?",
+      "paragraphs": [
+        "Dr Ryan Nel is a veterinarian with a BVSc in Veterinary Medicine. [1]",
+        "Dr Ryan Nel has experience in intensive and extensive agriculture, which SenseAgri AI publishes as the bridge between veterinary science, animal production, and technology on African farms. [1]"
+      ],
+      "stats": [
+        {
+          "text": "BVSc",
+          "citation": 1
+        }
+      ]
+    },
+    {
+      "heading": "What does Dr Ryan Nel do at SenseAgri AI?",
+      "paragraphs": [
+        "Dr Ryan Nel is Co-Founder and COO of SenseAgri AI. [1]",
+        "Dr Ryan Nel co-founded SenseAgri AI with Dylan Geldenhuys. [1]"
+      ],
+      "stats": []
+    },
+    {
+      "heading": "How do I contact Dr Ryan Nel?",
+      "paragraphs": [
+        "SenseAgri AI lists ryan@senseagriai.com as the public sales email. That address is the published contact for Dr Ryan Nel's team. [2]",
+        "SenseAgri AI publishes +27 68 948 1905 as the public phone number next to Dr Ryan Nel's sales email. [2]"
+      ],
+      "stats": []
+    },
+    {
+      "heading": "What is Dr Ryan Nel not?",
+      "paragraphs": [
+        "Dr Ryan Nel is not the farm's contracted attending veterinarian. Joining the SenseAgri AI Partner Programme does not replace the farm's own vet. [1]",
+        "Dr Ryan Nel is not the SenseAgri AI CEO. Dylan Geldenhuys is CEO; Dr Ryan Nel is COO. [1]"
+      ],
+      "stats": []
+    }
+  ],
+  "cross_links": [
+    {
+      "target_slug": "senseagri-ai",
+      "anchor": "SenseAgri AI"
+    },
+    {
+      "target_slug": "dylan-geldenhuys",
+      "anchor": "Dylan Geldenhuys"
+    },
+    {
+      "target_slug": "partner-programme",
+      "anchor": "Partner Programme"
+    }
+  ],
+  "citations": [
+    {
+      "n": 1,
+      "url": "https://www.senseagriai.com/about",
+      "title": "About \u2014 SenseAgri AI founders",
+      "accessed": "2026-09-08"
+    },
+    {
+      "n": 2,
+      "url": "https://www.senseagriai.com/contact",
+      "title": "Contact SenseAgri AI",
+      "accessed": "2026-09-08"
+    }
+  ],
+  "author": {
+    "name": "SenseAgri AI",
+    "url": "https://www.senseagriai.com/about"
+  },
+  "changelog": [
+    {
+      "date": "2026-09-09",
+      "note": "Published."
+    }
+  ],
+  "same_as": [
+    "https://www.linkedin.com/in/ryan-nel-54b3932b3/"
+  ]
+}
