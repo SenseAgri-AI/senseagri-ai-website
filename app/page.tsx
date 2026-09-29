@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LogoMark from "@/components/LogoMark";
-import HeroSlideshow from "@/components/HeroSlideshow";
+import SignalToDecision from "@/components/hero/SignalToDecision";
 import IntelligenceField from "@/components/IntelligenceField";
 import WhatYouGet from "@/components/WhatYouGet";
 import ImpactSlider, { type ImpactStory } from "@/components/ImpactSlider";
@@ -58,94 +58,8 @@ export default function HomePage() {
   return (
     <div>
 
-      {/* ═══════════════════════════════════════════════════════════════════
-          HERO — dark, clean, one message
-      ═══════════════════════════════════════════════════════════════════ */}
-      <section className="relative flex min-h-[85vh] items-end overflow-hidden">
-
-        {/* Slideshow background */}
-        <HeroSlideshow />
-
-        {/* Strong dark overlay — text always wins */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "linear-gradient(to right, rgba(0,46,53,0.97) 0%, rgba(0,46,53,0.9) 35%, rgba(0,46,53,0.55) 65%, rgba(0,46,53,0.25) 85%, transparent 100%)"
-          }}
-        />
-
-        {/* Layered teal light connects the physical photography to the intelligence field. */}
-        <div className="hero-intelligence-wash pointer-events-none absolute inset-0 z-[1]" />
-        <div className="intelligence-mist intelligence-mist-dark pointer-events-none absolute -right-[8%] top-[10%] z-[1] h-[72%] w-[58%]" />
-
-        <IntelligenceField dark className="pointer-events-none absolute inset-y-0 right-0 z-[1] h-full w-[68%] opacity-[0.28]" />
-
-        {/* Blueprint grid */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(8,124,131,0.07) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(8,124,131,0.07) 0.5px, transparent 0.5px)",
-            backgroundSize: "24px 24px"
-          }}
-        />
-
-        {/* Content — sits at the bottom for cinematic weight */}
-        <div className="relative z-10 w-full px-6 pb-14 pt-28 sm:px-10 lg:px-16">
-          <div className="mx-auto max-w-6xl">
-
-            {/* Eyebrow */}
-            <div className="hero-reveal mb-6">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(88,201,197,0.10)" }}
-              >
-                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-tertiary">
-                  South Africa&apos;s Poultry Intelligence Platform
-                </span>
-              </span>
-            </div>
-
-            {/* Headline */}
-            <h1
-              className="hero-reveal delay-1 font-display font-bold text-white"
-              style={{ fontSize: "clamp(2.35rem, 5.5vw, 5.2rem)", lineHeight: "0.98", letterSpacing: "-0.028em", maxWidth: "14ch" }}
-            >
-              Intelligence<br />
-              <span className="intelligence-text-gradient">for your farm.</span>
-            </h1>
-
-            {/* Sub */}
-            <p
-              className="hero-reveal delay-2 mt-6 font-sans text-white/70"
-              style={{ fontSize: "1rem", lineHeight: "1.6", maxWidth: "46ch" }}
-            >
-              Insight to see the problem before it costs you, and the
-              confidence to act — through precision AI farming.
-            </p>
-
-            {/* CTAs */}
-            <div className="hero-reveal delay-3 mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="/contact"
-                className="inline-flex w-full items-center justify-center px-6 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary bg-white transition-colors duration-150 hover:bg-surface-container-low sm:w-auto"
-                style={{ boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
-              >
-                Book a Demo
-              </a>
-              <a
-                href="/solution"
-                className="inline-flex w-full items-center justify-center px-6 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white transition-colors duration-150 hover:bg-white/10 sm:w-auto"
-                style={{ border: "1.5px solid rgba(255,255,255,0.55)" }}
-              >
-                See the Platform →
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </section>
+      {/* Hero — concept A, "Signal to decision" */}
+      <SignalToDecision />
 
       {/* Answer-first lede — keyword-bearing H2 + plain-language definition, dark band flows into stats strip */}
       <div className="px-6 sm:px-10 lg:px-16" style={{ paddingTop: 32, paddingBottom: 28, background: "linear-gradient(105deg, #002E35 0%, #003F4A 58%, #087C83 145%)" }}>

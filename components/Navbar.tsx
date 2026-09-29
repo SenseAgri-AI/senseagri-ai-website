@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Button from "@/components/Button";
@@ -19,9 +19,26 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+
+  // On the homepage the header sits transparent over the dark hero, then turns
+  // solid Surface with a hairline once the page scrolls.
+  const overHero = pathname === "/";
+  useEffect(() => {
+    if (!overHero) return;
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [overHero]);
+  const dark = overHero && !scrolled && !open;
 
   return (
-    <header className="sticky top-0 z-40 bg-surface/90 backdrop-blur-[20px] hairline-b">
+    <header
+      className={`top-0 z-40 transition-colors duration-200 ${overHero ? "fixed inset-x-0" : "sticky"} ${
+        dark ? "bg-transparent" : "bg-surface hairline-b"
+      }`}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3.5 sm:px-10">
 
         {/* Brand prototype — existing mark, lighter precision wordmark */}
@@ -30,12 +47,12 @@ export default function Navbar() {
             <LogoMark className="h-7 w-7 sm:h-8 sm:w-8" />
           </span>
           <div className="flex flex-col items-start text-left leading-none">
-            <span className="flex items-baseline whitespace-nowrap font-display text-[14px] font-medium uppercase tracking-[0.18em] text-primary sm:text-[15px]">
+            <span className={`flex items-baseline whitespace-nowrap font-display text-[14px] font-medium uppercase tracking-[0.18em] sm:text-[15px] ${dark ? "text-white" : "text-primary"}`}>
               <span>SENSE</span>
-              <span className="text-sensing">AGRI</span>
-              <span className="ml-[0.32em] text-[0.64em] tracking-[0.14em] text-primary/65">AI</span>
+              <span className={dark ? "text-primary-light" : "text-sensing"}>AGRI</span>
+              <span className={`ml-[0.32em] text-[0.64em] tracking-[0.14em] ${dark ? "text-white/60" : "text-primary/65"}`}>AI</span>
             </span>
-            <span className="mt-1.5 whitespace-nowrap font-sans text-[7px] font-medium uppercase tracking-[0.17em] text-tertiary sm:text-[8px]">
+            <span className={`mt-1.5 whitespace-nowrap font-sans text-[7px] font-medium uppercase tracking-[0.17em] sm:text-[8px] ${dark ? "text-on-secondary-variant" : "text-tertiary"}`}>
               Every signal. Every decision.
             </span>
           </div>
@@ -50,7 +67,7 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`relative font-sans text-[10px] font-medium uppercase tracking-[0.06em] transition-colors duration-150 py-1
-                  ${active ? "text-tertiary" : "text-on-surface-variant hover:text-primary"}`}
+                  ${active ? "text-tertiary" : dark ? "text-white/70 hover:text-white" : "text-on-surface-variant hover:text-primary"}`}
               >
                 {link.label}
                 {/* Gold 0.5px bottom line on active */}
@@ -63,13 +80,22 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex">
-          <Button href="/contact">Book a Demo</Button>
+          {dark ? (
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center bg-white px-5 py-2.5 font-sans text-title-sm font-medium text-primary transition-colors duration-150 hover:bg-surface-container-low"
+            >
+              Book a Demo
+            </Link>
+          ) : (
+            <Button href="/contact">Book a Demo</Button>
+          )}
         </div>
 
         {/* Mobile menu button */}
         <button
           type="button"
-          className="inline-flex items-center justify-center p-2 text-on-surface lg:hidden"
+          className={`inline-flex items-center justify-center p-2 lg:hidden ${dark ? "text-white" : "text-on-surface"}`}
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-menu"
