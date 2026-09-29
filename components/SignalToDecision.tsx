@@ -13,6 +13,7 @@ import { DAYS, INSIGHTS, STREAMS, type Stream } from "@/lib/signalSeries";
 // screen (pausing on hover/focus) until the visitor picks a tab themselves.
 
 const CYCLE_MS = 7000;
+const SWEEP_MS = 6500; // one pass of the recorder pen across the data
 const TIER_PULL = [0.66, 0.34, 0.12]; // share of each line's offset left at each tier
 const TIER_OPACITY = [0.55, 0.75, 1]; // the logo's three pills
 
@@ -116,10 +117,14 @@ function Diagram({
   const pct = (x: number) => `${x / 10}%`;
 
   return (
-    <div className={`relative ${className ?? ""}`} style={{ height: L.height }}>
+    <div
+      className={`relative ${className ?? ""}`}
+      style={{ height: L.height }}
+      data-diagram={L === WIDE ? "wide" : "narrow"}
+    >
       {/* Faint base lines — always present */}
       <svg
-        className="absolute inset-0 h-full w-full overflow-visible"
+        className="sd-lines absolute inset-0 h-full w-full overflow-visible"
         viewBox={`0 0 1000 ${L.height}`}
         preserveAspectRatio="none"
         aria-hidden="true"
@@ -139,7 +144,7 @@ function Diagram({
 
       {/* Full-strength lines — revealed left to right once, when the section enters view */}
       <svg
-        className="sd-draw absolute inset-0 h-full w-full"
+        className="sd-lines sd-draw absolute inset-0 h-full w-full"
         viewBox={`0 0 1000 ${L.height}`}
         preserveAspectRatio="none"
         aria-hidden="true"
@@ -172,6 +177,16 @@ function Diagram({
           </g>
         ))}
       </svg>
+
+      {/* Recorder pens — one per stream, positioned by the sweep loop */}
+      {geo.map((g) => (
+        <span
+          key={g.stream.id}
+          aria-hidden="true"
+          className="sd-pen absolute rounded-full"
+          style={{ left: -200, top: g.laneY, width: 5, height: 5, transform: "translate(-50%, -50%)", background: "#58C9C5" }}
+        />
+      ))}
 
       {/* Tiers — the logo's three pills, stood on end */}
       {L.tiers.map((x, t) => {
@@ -209,7 +224,20 @@ function Diagram({
         </span>
       ))}
 
-      {/* The node */}
+      {/* The node — a ring pulses out each time a recorder pass lands */}
+      <span
+        aria-hidden="true"
+        className="sd-pulse absolute rounded-full"
+        style={{
+          left: pct(L.node.x),
+          top: L.node.y,
+          width: 22,
+          height: 22,
+          transform: "translate(-50%, -50%) scale(1)",
+          border: "0.5px solid #D4AF37",
+          opacity: 0
+        }}
+      />
       <span
         aria-hidden="true"
         className="absolute rounded-full"
@@ -320,12 +348,15 @@ export default function SignalToDecision() {
   const ref = useRef<HTMLElement>(null);
   // Auto-advance: on until the visitor picks a tab; only while on screen
   const [cycling, setCycling] = useState(false);
+  const [motion, setMotion] = useState(false);
+  const [sweepReady, setSweepReady] = useState(false);
   const [inView, setInView] = useState(false);
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     setCycling(true);
+    setMotion(true);
     const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.5 });
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -377,6 +408,61 @@ export default function SignalToDecision() {
     setAnimate(true);
     setActive(i);
   };
+  // Recorder sweep: starts once the lines have drawn in, runs only while on screen
+  useEffect(() => {
+    if (!motion || draw === "armed") return;
+    const id = window.setTimeout(() => setSweepReady(true), draw === "drawing" ? 1700 : 0);
+    return () => window.clearTimeout(id);
+  }, [motion, draw]);
+
+  useEffect(() => {
+    const section = ref.current;
+    if (!section || !sweepReady || !inView) return;
+    const diagrams = [...section.querySelectorAll<HTMLElement>("[data-diagram]")].map((el) => {
+      const wide = el.dataset.diagram === "wide";
+      return {
+        L: wide ? WIDE : NARROW,
+        geo: wide ? WIDE_GEO : NARROW_GEO,
+        el,
+        pens: [...el.querySelectorAll<HTMLElement>(".sd-pen")],
+        pulse: el.querySelector<HTMLElement>(".sd-pulse")
+      };
+    });
+    const start = performance.now();
+    let frame = 0;
+    const tick = (now: number) => {
+      const t = ((now - start) % SWEEP_MS) / SWEEP_MS;
+      for (const { L, geo, el, pens, pulse } of diagrams) {
+        const x = t * L.dataEnd;
+        el.style.setProperty("--sx", `${x / 10 + 0.3}%`);
+        const f = t * (DAYS - 1);
+        const i0 = Math.min(DAYS - 2, Math.floor(f));
+        pens.forEach((pen, k) => {
+          const ys = geo[k].ys;
+          const y = ys[i0] + (ys[i0 + 1] - ys[i0]) * (f - i0);
+          pen.style.left = `${x / 10}%`;
+          pen.style.top = `${y}px`;
+        });
+        // Pulse for the first ~15% of each pass: the previous pass has just landed
+        if (pulse) {
+          const p = t < 0.15 ? t / 0.15 : 1;
+          pulse.style.opacity = t < 0.15 ? String(0.7 * (1 - p)) : "0";
+          pulse.style.transform = `translate(-50%, -50%) scale(${1 + p * 1.4})`;
+        }
+      }
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => {
+      cancelAnimationFrame(frame);
+      for (const { el, pens, pulse } of diagrams) {
+        el.style.removeProperty("--sx");
+        pens.forEach((pen) => (pen.style.left = "-200px"));
+        if (pulse) pulse.style.opacity = "0";
+      }
+    };
+  }, [sweepReady, inView]);
+
   const tabProps = { active, cycling, paused: paused || !inView, onSelect: select };
 
   return (

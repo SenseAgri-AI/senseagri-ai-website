@@ -1188,6 +1188,15 @@ h1, h2, h3, h4 {
 @keyframes sd-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes sd-fade { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 
+/* Recorder gap: masks the lines just ahead of the pen. --sx is set per frame
+   while sweeping; by default the gap sits off-canvas and nothing is masked. */
+.sd-lines {
+  --gap-a: var(--sx, -10%);
+  --gap-b: calc(var(--sx, -10%) + 2.6%);
+  -webkit-mask-image: linear-gradient(to right, #000 var(--gap-a), transparent var(--gap-a), transparent var(--gap-b), #000 var(--gap-b));
+  mask-image: linear-gradient(to right, #000 var(--gap-a), transparent var(--gap-a), transparent var(--gap-b), #000 var(--gap-b));
+}
+
 /* Signal tabs: gold line fills under the active tab until the next insight */
 .sd-progress {
   transform-origin: left;
