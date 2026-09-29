@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Inter, Manrope } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Manrope } from "next/font/google";
 import { IgniteJsonLd } from "@ignite-agent/agent/jsonld";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
@@ -19,6 +19,13 @@ const manrope = Manrope({
   subsets: ["latin"],
   variable: "--font-manrope",
   weight: ["400", "500", "600", "700", "800"]
+});
+
+// Data and metadata voice — labels, units, timestamps, stream names
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  variable: "--font-plex-mono",
+  weight: ["400", "500", "600"]
 });
 
 const DEFAULT_TITLE = "SenseAgri AI — Poultry Farm Intelligence for South Africa";
@@ -123,7 +130,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+    <html lang="en" className={`${inter.variable} ${manrope.variable} ${plexMono.variable}`}>
       <body>
         <IgniteJsonLd />
         <script

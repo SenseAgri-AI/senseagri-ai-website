@@ -28,6 +28,11 @@ module.exports = {
         "tertiary-container": "#A6E2DF",
         "on-tertiary": "#002E35",
 
+        // Logo-pill teal — thin data lines (hero streams)
+        pill: "#2A8E9A",
+        // Signal gold — the insight node and one accent per viewport, never decoration
+        gold: "#D4AF37",
+
         // Surface hierarchy — tonal layering, no drop shadows
         surface: "#F8FAFA",
         "surface-container-lowest": "#ffffff",
@@ -67,7 +72,9 @@ module.exports = {
         // Display & Headlines — Manrope (geometric, architectural)
         display: ["var(--font-manrope)", "system-ui", "sans-serif"],
         // Body & Labels — Inter (functional, legible)
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"]
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        // Data & metadata — IBM Plex Mono (labels, units, timestamps)
+        mono: ["var(--font-plex-mono)", "ui-monospace", "monospace"]
       },
 
       fontSize: {

@@ -25,6 +25,8 @@ All tokens are registered in `tailwind.config.js`. Use the Tailwind class names 
 | Tertiary / Intelligence | `text-tertiary` / `bg-tertiary` | `#13AAA5` | Intelligence turquoise — analysis, selected states, and signal convergence. |
 | Tertiary Container | `bg-tertiary-container` | `#A6E2DF` | Pale aqua — digital-twin and telemetry washes. |
 | Signal Wash | `bg-signal-wash` | `#E1F3F1` | Ice turquoise — localized atmospheric wash on light surfaces. |
+| Pill Teal | `text-pill` / `stroke-pill` | `#2A8E9A` | Logo-pill teal — thin data lines (hero streams). |
+| Signal Gold | `text-gold` / `bg-gold` | `#D4AF37` | Signal only, under 5% of any screen: the insight node, one CTA accent, alert markers. Never a gradient or glow. |
 
 ### Surface Hierarchy (Light Canvas)
 
@@ -122,6 +124,9 @@ Fonts are loaded via `next/font` in `app/layout.tsx`.
 |---|---|---|
 | Display & Headlines | Manrope | `--font-manrope` → `font-display` |
 | Body & Labels | Inter | `--font-inter` → `font-sans` |
+| Data & Metadata | IBM Plex Mono | `--font-plex-mono` → `font-mono` |
+
+Plex Mono is the instrument voice: labels, units, timestamps, stream names, table headers and section numbers. Uppercase, `0.08em–0.12em` tracking, tabular figures.
 
 ### Type Scale
 
