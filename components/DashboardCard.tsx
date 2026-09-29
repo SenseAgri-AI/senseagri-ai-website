@@ -456,7 +456,7 @@ export default function DashboardCard() {
                 <div className="sa-alerts">
                   <div className="sa-alert sa-warn">
                     <div className="sa-at">TEMPERATURE</div>
-                    <div className="sa-am">Cold night. 6.4°C — below 10°C threshold. Birds diverting energy to thermoregulation. Expect increased feed intake.</div>
+                    <div className="sa-am">Night-time lows 2.1°C colder than last week for 5 nights. Expect feed intake to rise about 3%. Check inlet settings before the weekend.</div>
                   </div>
                   <div className="sa-alert sa-ok">
                     <div className="sa-at">VENTILATION</div>

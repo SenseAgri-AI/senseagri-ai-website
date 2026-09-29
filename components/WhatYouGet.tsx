@@ -1,12 +1,11 @@
 "use client";
 
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode, ReactElement } from "react";
 import LogoMark from "@/components/LogoMark";
-import DashboardCard from "@/components/DashboardCard";
 import IntelligenceField from "@/components/IntelligenceField";
 
-// "Inside the platform" — Sensing (wheel) → Dashboard+AI → WhatsApp Alerts (dark) → Weekly Reports → Integrations
+// "Inside the platform" — WhatsApp Alerts (dark) → Weekly Reports. SensingPanel is exported for /sensors.
 // NOTE: the dashboard / phone / report mockups are illustrative representations of the
 // live SenseAgri client app — swap with real screenshots when available.
 
@@ -739,87 +738,13 @@ function Block({
   );
 }
 
-// ── Integrations strip ─────────────────────────────────────────────────────────
-// Kinds of sources the AI reads — never equipment brand names.
-const INTEGRATIONS = ["Climate controllers", "Feed & water meters", "Egg counters", "Bird scales", "Production records"];
-
-function IntegrationStrip() {
-  return (
-    <div
-      className="wyg-integration"
-      style={{
-        background: N,
-        padding: "44px 24px",
-        position: "relative",
-        overflow: "hidden",
-        borderTop: "0.5px solid rgba(88,201,197,0.22)"
-      }}
-    >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage:
-            "linear-gradient(to right, rgba(79,184,197,0.05) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(79,184,197,0.05) 0.5px, transparent 0.5px)",
-          backgroundSize: "24px 24px",
-          pointerEvents: "none"
-        }}
-      />
-      <div style={{ maxWidth: "72rem", margin: "0 auto", position: "relative", display: "flex", flexDirection: "column", alignItems: "center", gap: 20 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ width: 6, height: 6, background: G, borderRadius: "50%" }} />
-          <span style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.18em", color: G, textAlign: "center" }}>
-            Connects to almost every controller and on-farm device in use today
-          </span>
-          <span style={{ width: 6, height: 6, background: G, borderRadius: "50%" }} />
-        </div>
-        <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "14px 0" }}>
-          {INTEGRATIONS.map((name, i) => (
-            <Fragment key={name}>
-              <span style={{ fontFamily: "var(--font-manrope), sans-serif", fontSize: 17, fontWeight: 700, color: "rgba(255,255,255,0.88)", letterSpacing: "-0.005em", padding: "0 26px" }}>
-                {name}
-              </span>
-              {i < INTEGRATIONS.length - 1 && <span style={{ width: 1, height: 16, background: "rgba(255,255,255,0.15)" }} />}
-            </Fragment>
-          ))}
-          <span style={{ width: 1, height: 16, background: "rgba(255,255,255,0.15)" }} />
-          <span style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.14em", color: "rgba(255,255,255,0.45)", padding: "0 26px" }}>
-            + more
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 // ── The section ──────────────────────────────────────────────────────────────
+// Homepage 03 WhatsApp + 04 Weekly Reports. 01/02 now live in How the AI thinks
+// (components/home/HowTheAIThinks.tsx); the Sensing block and its SensingPanel
+// move to /sensors; the brand-name integration strip was replaced by brief 3.3.
 export default function WhatYouGet() {
   return (
     <section>
-      <Block
-        idx="01"
-        label="Sensing"
-        title="Your farm's heartbeat, measured continuously."
-        body="Environmental sensors, cameras, acoustics, ammonia and CO₂ — a full pulse read of your farm's rhythm, running around the clock. We're hardware-agnostic — bring your own sensors from any vendor, or we supply at the lowest cost possible."
-        chips={["Multi-modal", "Hardware-agnostic", "24/7 capture"]}
-        mock={<SensingPanel />}
-      />
-      <Block
-        idx="02"
-        label="Dashboard + AI"
-        title="Your full operation, decoded."
-        body="Every metric in one place, with AI that flags exactly what needs action."
-        chips={["Trend tracking", "Health score", "AI recommendations", "Internal vet"]}
-        mock={
-          // Match Block 03's phone height so the two mocks read at the same
-          // vertical weight (the scaled dashboard is naturally short, leaving
-          // the block feeling squished against its neighbours).
-          <div style={{ minHeight: 480, width: "100%", display: "flex", alignItems: "center" }}>
-            <DashboardCard />
-          </div>
-        }
-        reverse
-      />
       <Block
         idx="03"
         label="WhatsApp Alerts"
@@ -835,11 +760,18 @@ export default function WhatYouGet() {
         title="Executive summaries — automatic."
         body="Output, performance and ROI — delivered as an automatic report every Monday."
         chips={["Output", "Performance", "Cost & ROI", "Shareable"]}
-        mock={<ReportMock />}
+        mock={
+          <div style={{ width: "100%" }}>
+            <ReportMock />
+            <p className="mx-auto mt-3 max-w-[452px] font-mono text-[10px] uppercase tracking-[0.08em] text-outline">
+              Example report
+            </p>
+          </div>
+        }
         reverse
       />
-
-      <IntegrationStrip />
     </section>
   );
 }
+
+export { SensingPanel };

@@ -1,7 +1,7 @@
 "use client";
 
 import type { ChangeEvent, FormEvent } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 
 type FormState = {
@@ -34,6 +34,18 @@ export default function ContactForm() {
   const [formData, setFormData] = useState<FormState>(initialState);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+
+  // /contact?topic=poc or ?topic=sensors (from the homepage CTAs) starts the message
+  useEffect(() => {
+    const topic = new URLSearchParams(window.location.search).get("topic");
+    const starter =
+      topic === "poc"
+        ? "We'd like to become a POC farm."
+        : topic === "sensors"
+          ? "We'd like to talk about adding sensors."
+          : "";
+    if (starter) setFormData((prev) => (prev.message ? prev : { ...prev, message: starter }));
+  }, []);
 
   const updateField = (field: keyof FormState) =>
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
