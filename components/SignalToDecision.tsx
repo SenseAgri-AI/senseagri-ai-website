@@ -29,13 +29,13 @@ type Layout = {
 
 // Desktop: card sits to the right of the node
 const WIDE: Layout = {
-  height: 388,
-  laneTop: 52,
-  laneGap: 64,
-  amp: 13,
-  dataEnd: 300,
-  tiers: [352, 400, 438],
-  node: { x: 468, y: 148 }
+  height: 372,
+  laneTop: 44,
+  laneGap: 66,
+  amp: 15,
+  dataEnd: 470,
+  tiers: [530, 578, 614],
+  node: { x: 642, y: 143 }
 };
 
 // Phones and tablets: card sits below the node
@@ -471,11 +471,11 @@ export default function SignalToDecision() {
       ref={ref}
       aria-labelledby="signal-title"
       data-draw={draw}
-      className="sd-section grain relative scroll-mt-16 overflow-hidden bg-secondary px-6 py-16 sm:px-10 lg:px-16 lg:py-20"
+      className="sd-section grain relative scroll-mt-16 overflow-hidden bg-secondary px-6 py-16 sm:px-10 lg:px-16 lg:pb-16 lg:pt-20"
     >
-      <div className="relative z-10 mx-auto grid max-w-6xl gap-10 lg:grid-cols-12 lg:gap-10">
+      <div className="relative z-10 mx-auto max-w-6xl">
         {/* Copy */}
-        <div className="lg:col-span-4">
+        <div>
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-primary-light">What the AI does</p>
           <h2
             id="signal-title"
@@ -484,14 +484,14 @@ export default function SignalToDecision() {
           >
             Your data in. One clear answer out.
           </h2>
-          <p className="mt-5 max-w-[38ch] font-sans text-white/70" style={{ fontSize: "1rem", lineHeight: 1.6 }}>
+          <p className="mt-4 max-w-[62ch] font-sans text-white/70" style={{ fontSize: "1rem", lineHeight: 1.6 }}>
             It reads the records your farm already keeps, spots what&apos;s starting to drift, and tells you what to check.
           </p>
         </div>
 
         {/* Visual */}
         <figure
-          className="lg:col-span-8"
+          className="mt-10 lg:mt-12"
           aria-label="Example: four streams of farm data converge into one insight"
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
