@@ -9,7 +9,7 @@
     "category": "on-farm poultry monitoring product",
     "founded": "2025",
     "function": "The SenseAgri AI platform captures house signals, runs inference on-site, and sends actions to a dashboard and WhatsApp.",
-    "differentiator": "The environmental sensor suite of the SenseAgri AI platform is live on farms today; other capabilities are validated in pilots on each operation."
+    "differentiator": "The environmental sensor suite of the SenseAgri AI platform is live on farms today; other capabilities are validated in POCs on each operation."
   },
   "sections": [
     {
@@ -36,7 +36,7 @@
     {
       "heading": "Which equipment does the SenseAgri AI platform integrate with?",
       "paragraphs": [
-        "The SenseAgri AI platform integrates with major poultry platforms already on the farm: Big Dutchman, SKOV, Hytek, Vencomatic and more. [1]",
+        "The SenseAgri AI platform connects to almost every controller and on-farm device in use today. [1]",
         "Farms keep the controllers they have; the SenseAgri AI platform adds continuous monitoring and causal analysis on top. Alerts from the SenseAgri AI platform arrive on WhatsApp with the specific action to take. [1]"
       ],
       "stats": []
@@ -45,7 +45,7 @@
       "heading": "What is not production-ready on the SenseAgri AI platform?",
       "paragraphs": [
         "SenseAgri AI states that the sensor suite of the SenseAgri AI platform, environmental monitoring, air quality, and climate alerts, is live and running on farms today. [2]",
-        "The SenseAgri AI platform does not count vision, acoustic, or gut-health capabilities as production-ready on a given farm until they are proven on that farm's own houses. Pilots are how SenseAgri AI validates each of those capabilities. [2]"
+        "The SenseAgri AI platform does not count vision, acoustic, or gut-health capabilities as production-ready on a given farm until they are proven on that farm's own houses. POCs are how SenseAgri AI validates each of those capabilities. [2]"
       ],
       "stats": []
     }
@@ -57,7 +57,7 @@
     },
     {
       "target_slug": "partner-programme",
-      "anchor": "Partner Programme"
+      "anchor": "POC Programme"
     },
     {
       "target_slug": "flock-night-rest-score",

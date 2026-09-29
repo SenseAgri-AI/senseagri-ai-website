@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import JsonLd from "@/components/JsonLd";
-import { breadcrumbGraph, pilotServiceGraph } from "@/lib/jsonLd";
+import { breadcrumbGraph, pocServiceGraph } from "@/lib/jsonLd";
 
 export const metadata: Metadata = {
-  title: "Partner Programme — Founder Pricing for Poultry Monitoring",
+  title: "POC Programme — Founder Pricing for Poultry Monitoring",
   description:
-    "SenseAgri AI Partner Programme: founder pricing, hands-on onboarding, direct access to the team, and a roadmap shaped by your farm. Book a demo to scope your deployment.",
+    "SenseAgri AI POC Programme: founder pricing, hands-on onboarding, direct access to the team, and a roadmap shaped by your farm. Book a demo to scope your deployment.",
   alternates: { canonical: "/pricing" }
 };
 
@@ -17,7 +17,7 @@ const PRIMARY = "#002E35";
 const earlyPerks = [
   "Full platform access — sensors, dashboard, and AI",
   "On-site installation and setup, fully managed",
-  "Founder pricing for Partner Programme customers",
+  "Founder pricing for POC Programme customers",
   "Direct line to the team — feature requests welcome",
   "Hands-on onboarding and training on the platform",
   "Roadmap shaped by what you tell us your farm needs",
@@ -28,16 +28,16 @@ export default function PricingPage() {
   return (
     <div>
       <JsonLd data={breadcrumbGraph([{ name: "Pricing", path: "/pricing" }])} />
-      <JsonLd data={pilotServiceGraph()} />
+      <JsonLd data={pocServiceGraph()} />
 
       {/* Hero — petrol + gold */}
       <PageHero
         dark
         accent="#4FB8C5"
-        eyebrow="Partner Programme"
+        eyebrow="POC Programme"
         headline="Founder pricing —"
         accentLine="hands-on partnership."
-        sub="More than software. Partner Programme customers get direct access to the team, hands-on onboarding, feature requests that get built, and a roadmap shaped by what you tell us you need."
+        sub="More than software. POC Programme customers get direct access to the team, hands-on onboarding, feature requests that get built, and a roadmap shaped by what you tell us you need."
       />
 
       {/* Early adopter offer */}
@@ -51,7 +51,7 @@ export default function PricingPage() {
               style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
             >
               <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                Partner Programme
+                POC Programme
               </span>
             </span>
             <h2
@@ -62,7 +62,7 @@ export default function PricingPage() {
               <span className="text-primary-light">A partner on your farm.</span>
             </h2>
             <p className="mt-5 font-sans text-sm leading-relaxed text-on-surface-variant">
-              SenseAgri AI isn&apos;t a system you install and check in on once a month. We built our sensor pack, dashboard, and AI reporting because farmers deserve a partner that&apos;s genuinely invested in outcomes, not just uptime. Partner Programme customers get direct access to our team, hands-on onboarding and training, feature requests that get built, and a roadmap shaped in part by what you tell us your farm needs. Pricing is founder-rate and scoped per operation — get in touch and we&apos;ll walk you through the specifics.
+              SenseAgri AI isn&apos;t a system you install and check in on once a month. We built our sensor pack, dashboard, and AI reporting because farmers deserve a partner that&apos;s genuinely invested in outcomes, not just uptime. POC Programme customers get direct access to our team, hands-on onboarding and training, feature requests that get built, and a roadmap shaped in part by what you tell us your farm needs. Pricing is founder-rate and scoped per operation — get in touch and we&apos;ll walk you through the specifics.
             </p>
             <Link
               href="/contact"

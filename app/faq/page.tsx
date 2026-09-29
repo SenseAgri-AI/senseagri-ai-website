@@ -9,7 +9,7 @@ import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "How SenseAgri AI's poultry monitoring platform works — sensors, causal AI, integrations, Partner Programme and hardware. Answers for poultry farms of every size in South Africa.",
+    "How SenseAgri AI's poultry monitoring platform works — sensors, causal AI, integrations, POC Programme and hardware. Answers for poultry farms of every size in South Africa.",
   alternates: { canonical: "/faq" }
 };
 
@@ -30,17 +30,17 @@ const faqs = [
   {
     question: "Does it integrate with our existing farm equipment?",
     answer:
-      "Yes. SenseAgri AI integrates with the major poultry platforms already on your farm — Big Dutchman, SKOV, Hytek, Vencomatic and more. You keep the controllers and equipment you have; SenseAgri adds the layer of continuous monitoring and causal analysis on top."
+      "Yes. SenseAgri AI connects to almost every controller and on-farm device in use today. You keep the controllers and equipment you have; SenseAgri reads the data they collect and adds the intelligence on top. Tell us what you run and we'll confirm."
   },
   {
-    question: "What does the Partner Programme cost?",
+    question: "What does the POC Programme cost?",
     answer:
-      "The Partner Programme runs at founder pricing, scoped per operation — cost depends on farm size, house count, and integration scope. It includes full platform access (sensors, dashboard and AI), on-site installation and setup fully managed, hands-on onboarding, direct access to the SenseAgri AI team, and a roadmap shaped in part by what you tell us your farm needs. Book a demo and we'll walk you through the specifics."
+      "The POC Programme runs at founder pricing, scoped per operation — cost depends on farm size, house count, and integration scope. It includes full platform access (sensors, dashboard and AI), on-site installation and setup fully managed, hands-on onboarding, direct access to the SenseAgri AI team, and a roadmap shaped in part by what you tell us your farm needs. Book a demo and we'll walk you through the specifics."
   },
   {
     question: "Do I need to buy or install any hardware myself?",
     answer:
-      "No. Sensors, edge compute and installation are all handled by us as part of the pilot — nothing to buy up-front, nothing to install yourself."
+      "No. Sensors, edge compute and installation are all handled by us as part of the POC — nothing to buy up-front, nothing to install yourself."
   },
   {
     question: "Does SenseAgri use computer vision for poultry monitoring?",
@@ -94,7 +94,7 @@ export default function FAQPage() {
         eyebrow="FAQ"
         headline="Answers to the"
         accentLine="most-asked questions."
-        sub="How the platform works, what's in the pilot, and how it fits with the equipment you already have."
+        sub="How the platform works, what's in the POC, and how it fits with the equipment you already have."
       />
 
       <section className="section-padding bg-surface">

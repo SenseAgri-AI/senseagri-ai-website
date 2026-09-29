@@ -214,10 +214,10 @@ function SensorWheel({ size = 348 }: { size?: number }) {
 
 // ── Sensing panel ─────────────────────────────────────────────────────────────
 // Right-column composition for Block 01 (per Claude Design's handover):
-//   - Real install photo (engineer mounting a Milesight LoRaWAN gateway) bleeds
+//   - Real install photo (engineer mounting a LoRaWAN gateway) bleeds
 //     in from the top-right and dissolves into the surface via a radial mask.
 //   - Light teal veil over the photo using the same mask so it feathers out.
-//   - Gold "Milesight gateway" callout with a slow-blinking ring pinned to the
+//   - Gold "Gateway" callout with a slow-blinking ring pinned to the
 //     gateway in the photo, label flipped left so it stays inside the frame.
 //   - SensorWheel sits lower-left over a white radial halo, so the right-hand
 //     sensor cards read on white even where they overlap the photo edge.
@@ -228,7 +228,7 @@ function SensingPanel() {
       <img
         className="sensing-photo"
         src="/install.jpeg"
-        alt="Engineer installing a Milesight LoRaWAN gateway in a poultry house"
+        alt="Engineer installing a LoRaWAN gateway in a poultry house"
       />
 
       {/* Gateway callout — ring sits on the device, label sits to its left */}
@@ -237,7 +237,7 @@ function SensingPanel() {
         <span className="sensing-gw-tick" />
         <span className="sensing-gw-label">
           <span className="sensing-gw-dot" />
-          Milesight gateway
+          Gateway
         </span>
       </div>
 
@@ -455,7 +455,7 @@ function WhatsAppPhone() {
               <div style={{ fontWeight: 700, color: P, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Recommendation
               </div>
-              Step ventilation up <b>1 stage</b> + restore manure belt to normal cycle. Confidence <b>91%</b>.
+              Step ventilation up <b>1 stage</b> + restore manure belt to normal cycle.<br />Why: ammonia rise matches the belt running at half its usual cycle.
             </Bubble>
             <Bubble started={started} kind="sent" time="06:34" delay={3500}>
               On it.
@@ -479,21 +479,21 @@ function WhatsAppPhone() {
               Later · 11:42
             </div>
 
-            {/* Scenario 2 — midday heat stress with mortality forecast */}
+            {/* Scenario 2 — heat load building over the week (trend, not a live alarm) */}
             <Bubble started={started} kind="recv" time="11:42" delay={5200}>
               <div style={{ fontWeight: 700, color: "#B91C1C", fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Alert · House 7
               </div>
-              Heat stress imminent. Inlet <b>33.1°C</b> and climbing <b>0.4°C/min</b> — cooling not keeping pace.
+              Heat load building. Afternoon house temperature has run about <b>1.5°C</b> higher each day this week, while outside rose only <b>0.5°C</b>. Cooling isn&apos;t keeping up like it did last month.
             </Bubble>
             <Bubble started={started} kind="recv" time="11:42" delay={6100}>
-              If unchanged in next <b>20 min</b>: heat-stress threshold crossed → expected mortality <b>+0.8%</b> in House 7.
+              Likely cause: pads clogging or pump flow down.
             </Bubble>
             <Bubble started={started} kind="recv" time="11:43" delay={7000}>
               <div style={{ fontWeight: 700, color: P, fontSize: 9, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 3 }}>
                 Recommendation
               </div>
-              Open evaporative pads + <b>Fans 1 &amp; 4</b> to max now. Confidence <b>93%</b>.
+              Check pad flow and pump before Thursday. <b>34°C</b> is forecast.
             </Bubble>
             <Bubble started={started} kind="sent" time="11:43" delay={7900}>
               On it.
@@ -740,8 +740,8 @@ function Block({
 }
 
 // ── Integrations strip ─────────────────────────────────────────────────────────
-// Placeholder wordmarks — swap with real logos when available.
-const INTEGRATIONS = ["Big Dutchman", "SKOV", "Hytek", "Vencomatic", "Munters"];
+// Kinds of sources the AI reads — never equipment brand names.
+const INTEGRATIONS = ["Climate controllers", "Feed & water meters", "Egg counters", "Bird scales", "Production records"];
 
 function IntegrationStrip() {
   return (
@@ -769,7 +769,7 @@ function IntegrationStrip() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ width: 6, height: 6, background: G, borderRadius: "50%" }} />
           <span style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.18em", color: G, textAlign: "center" }}>
-            Seamlessly integrates with every major poultry platform
+            Connects to almost every controller and on-farm device in use today
           </span>
           <span style={{ width: 6, height: 6, background: G, borderRadius: "50%" }} />
         </div>
@@ -809,7 +809,7 @@ export default function WhatYouGet() {
         label="Dashboard + AI"
         title="Your full operation, decoded."
         body="Every metric in one place, with AI that flags exactly what needs action."
-        chips={["Live telemetry", "Health score", "AI recommendations", "Internal vet"]}
+        chips={["Trend tracking", "Health score", "AI recommendations", "Internal vet"]}
         mock={
           // Match Block 03's phone height so the two mocks read at the same
           // vertical weight (the scaled dashboard is naturally short, leaving
@@ -825,7 +825,7 @@ export default function WhatYouGet() {
         label="WhatsApp Alerts"
         title="AI on WhatsApp. No app to learn."
         body="Serious events and key insights, pushed straight to WhatsApp."
-        chips={["Serious events", "Schedule changes", "Key insights"]}
+        chips={["Early warnings", "Schedule changes", "Key insights"]}
         mock={<WhatsAppPhone />}
         dark
       />

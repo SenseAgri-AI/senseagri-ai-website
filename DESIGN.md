@@ -257,7 +257,7 @@ background: `radial-gradient(
               bg-primary font-sans text-title-sm font-medium text-white
               transition-colors duration-150 hover:bg-primary-container"
    style={{ boxShadow: "inset 0 -0.5px 0 0 #13AAA5" }}>
-  Book a Pilot Call
+  Book a Demo
 </a>
 
 // Ghost — hairline outline, no fill

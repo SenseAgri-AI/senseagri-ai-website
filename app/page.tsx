@@ -20,7 +20,7 @@ const statsStrip = [
   { v: "Smarter", l: "Daily management" }
 ];
 
-// ─── Pilot impact stories ────────────────────────────────────────────────────
+// ─── POC impact stories ────────────────────────────────────────────────────
 const impactStories: ImpactStory[] = [
   {
     tag: "Feed Efficiency",
@@ -30,12 +30,12 @@ const impactStories: ImpactStory[] = [
   {
     tag: "HPED Stability",
     title: "Held HPED above standard for prolonged periods.",
-    body: "AI-guided ventilation and feeding adjustments held production above industry standard across pilot houses — not just briefly, but sustained."
+    body: "AI-guided ventilation and feeding adjustments held production above industry standard across POC houses — not just briefly, but sustained."
   },
   {
     tag: "Remote Oversight",
     title: "Peace of mind when off the farm.",
-    body: "Continuous remote tracking gives farmers complete visibility — every house, every signal, wherever they are. The farm is never out of sight."
+    body: "Your controller handles the alarms. SenseAgri tells you how every house is trending, so you know what's coming before you're back on the farm."
   },
   {
     tag: "Executive View",
@@ -154,10 +154,10 @@ export default function HomePage() {
             className="font-display font-bold tracking-tight text-white/90"
             style={{ fontSize: "1.05rem", lineHeight: 1.35, maxWidth: "60ch" }}
           >
-            AI poultry monitoring and welfare intelligence for your farm.
+            AI poultry intelligence for your farm.
           </h2>
           <p className="mt-3 font-sans text-white/70 leading-relaxed" style={{ fontSize: "0.9375rem", maxWidth: "68ch" }}>
-            SenseAgri AI is a poultry intelligence platform for your farm. Your farm data becomes intelligence that keeps getting better — understanding what makes your farm productive, preventing losses, recording your actions, updating records, managing tasks on the farm, and tuning set points on your existing control systems (SKOV, Big Dutchman, and others). Less labour. Less expense. More time to grow your business.
+            SenseAgri AI is a poultry intelligence platform for your farm. Your farm data becomes intelligence that keeps getting better — understanding what makes your farm productive, preventing losses, recording your actions, updating records, managing tasks on the farm, and tuning set points on your existing control systems. Less labour. Less expense. More time to grow your business.
           </p>
         </div>
       </div>
@@ -180,7 +180,7 @@ export default function HomePage() {
       <WhatYouGet />
 
       {/* ═══════════════════════════════════════════════════════════════════
-          PILOT STORIES + IMPACT SLIDER
+          POC STORIES + IMPACT SLIDER
       ═══════════════════════════════════════════════════════════════════ */}
       <section
         className="relative overflow-hidden px-6 sm:px-10 lg:px-16"
@@ -209,14 +209,14 @@ export default function HomePage() {
               style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
             >
               <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                Pilot stories
+                POC stories
               </span>
             </span>
             <h2
               className="font-display font-semibold text-primary"
               style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)", lineHeight: "1.08", letterSpacing: "-0.022em", maxWidth: "20ch" }}
             >
-              What pilot partners are seeing.
+              What POC partners are seeing.
             </h2>
           </div>
 
@@ -233,7 +233,7 @@ export default function HomePage() {
               The alerts helped us respond to ventilation drops before bird stress escalated.&rdquo;
             </p>
             <div className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em]" style={{ color: "#6B7C80" }}>
-              Pilot Manager · Operations · Large Poultry Group
+              POC Manager · Operations · Large Poultry Group
             </div>
           </div>
 
@@ -277,7 +277,7 @@ export default function HomePage() {
             style={{ background: "rgba(88,201,197,0.10)" }}
           >
             <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-tertiary">
-              Partner Programme
+              POC Programme
             </span>
           </span>
 

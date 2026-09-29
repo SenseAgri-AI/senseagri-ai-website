@@ -389,7 +389,7 @@ export default function DashboardCard() {
                 <span><b>Apr 2025</b> placed</span>
               </span>
               <span className="sa-right">
-                <span className="sa-live"><span className="sa-live-dot" />LIVE</span>
+                <span className="sa-live">EXAMPLE FARM</span>
                 <span>Sat 30 May, 22:42</span>
               </span>
             </header>

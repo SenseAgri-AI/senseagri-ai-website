@@ -48,7 +48,7 @@ const pillars = [
   },
   {
     t: "Fits your existing stack",
-    d: "Integrates with the major poultry platforms already on your farm — Big Dutchman, SKOV, Hytek, Vencomatic and more."
+    d: "Connects to almost every controller and on-farm device in use today."
   }
 ];
 
@@ -185,7 +185,7 @@ export default function SolutionPage() {
             style={{ background: "rgba(19,170,165,0.10)" }}
           >
             <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-tertiary">
-              Partner Programme
+              POC Programme
             </span>
           </span>
           <h2
@@ -206,7 +206,7 @@ export default function SolutionPage() {
             Book a Demo
           </Link>
           <p className="mt-5 font-sans text-title-sm text-white/60">
-            Or first, see what the pilot includes on the{" "}
+            Or first, see what the POC includes on the{" "}
             <Link href="/pricing" className="text-white/85 underline underline-offset-2 transition-colors duration-150 hover:text-white">
               pricing page
             </Link>

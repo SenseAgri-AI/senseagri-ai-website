@@ -28,11 +28,11 @@ const PRIMARY = "#002E35";
 const values = [
   {
     title: "Measurable ROI",
-    desc: "We tie insights to quantifiable outcomes and track them from day one of your pilot."
+    desc: "We tie insights to quantifiable outcomes and track them from day one of your POC."
   },
   {
     title: "Trust first",
-    desc: "Founder pricing for Partner Programme customers. Full platform access, hands-on onboarding, direct access to the team. We grow alongside your farm — not away from it."
+    desc: "Founder pricing for POC Programme customers. Full platform access, hands-on onboarding, direct access to the team. We grow alongside your farm — not away from it."
   },
   {
     title: "African resilience",

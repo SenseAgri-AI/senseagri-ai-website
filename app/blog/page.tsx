@@ -166,7 +166,7 @@ export default async function BlogIndexPage() {
             Want to see the platform on your farm?
           </h2>
           <p className="mt-3 font-sans text-sm leading-relaxed text-white/70">
-            The Partner Programme covers sensors, dashboard, AI, and hands-on onboarding.
+            The POC Programme covers sensors, dashboard, AI, and hands-on onboarding.
           </p>
           <Link
             href="/contact"

@@ -446,7 +446,7 @@ export default function FlockNightRestScorePost() {
             style={{ background: "rgba(19,170,165,0.10)" }}
           >
             <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-tertiary">
-              Partner Programme
+              POC Programme
             </span>
           </span>
           <h2

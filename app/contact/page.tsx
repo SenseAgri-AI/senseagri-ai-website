@@ -7,9 +7,9 @@ import { breadcrumbGraph } from "@/lib/jsonLd";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Book a Free Poultry Pilot",
+  title: "Book a Free Poultry POC",
   description:
-    "Book a demo with SenseAgri AI. Talk to our team about running the Partner Programme on your poultry operation — hands-on onboarding, founder pricing.",
+    "Book a demo with SenseAgri AI. Talk to our team about running the POC Programme on your poultry operation — hands-on onboarding, founder pricing.",
   alternates: { canonical: "/contact" }
 };
 
@@ -20,7 +20,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         headline="Book a"
-        accentLine="pilot call."
+        accentLine="POC call."
         sub="Tell us about your farm and we will respond within one business day."
       />
 
@@ -36,7 +36,7 @@ export default function ContactPage() {
               Start the conversation
             </h2>
             <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
-              Fields marked with * are required. We use this to scope a pilot that fits your operation.
+              Fields marked with * are required. We use this to scope a POC that fits your operation.
             </p>
             <div className="mt-7">
               <ContactForm />
@@ -53,7 +53,7 @@ export default function ContactPage() {
                 Book a call
               </h2>
               <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
-                Pick a time that suits you and we will walk you through a pilot.
+                Pick a time that suits you and we will walk you through a POC.
               </p>
               <a
                 className="link-underline mt-5 inline-flex"

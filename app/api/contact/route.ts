@@ -67,7 +67,7 @@ export async function POST(request: Request) {
   <div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:0 auto;">
     <div style="background:#002E35;padding:18px 22px;">
       <div style="color:#13AAA5;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;">
-        New pilot enquiry
+        New POC enquiry
       </div>
       <div style="color:#ffffff;font-size:18px;font-weight:700;margin-top:4px;">
         ${esc(data.name)} · ${esc(data.company)}
@@ -102,7 +102,7 @@ export async function POST(request: Request) {
         from: "SenseAgri AI Website <onboarding@resend.dev>",
         to: [recipient],
         reply_to: data.email,
-        subject: `Pilot enquiry — ${data.name} (${data.company})`,
+        subject: `POC enquiry — ${data.name} (${data.company})`,
         html
       })
     });

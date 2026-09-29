@@ -947,7 +947,7 @@ h1, h2, h3, h4 {
 
 /* ── Sensing panel (Block 01 right column) — per Claude Design handover ───
    Real install photo bleeds in from the top-right, dissolves to surface via a
-   radial mask; teal veil and gold "Milesight gateway" callout sit on top; the
+   radial mask; teal veil and gold "gateway" callout sit on top; the
    SensorWheel anchors lower-left on a white halo. */
 
 .sensing-panel {
@@ -978,7 +978,7 @@ h1, h2, h3, h4 {
           mask-image: radial-gradient(170% 165% at 100% 0%, #000 25%, transparent 100%);
 }
 
-/* Gateway callout — anchored to where the Milesight box sits in the photo. */
+/* Gateway callout — anchored to where the gateway box sits in the photo. */
 .sensing-gw {
   position: absolute;
   top: 34%;
