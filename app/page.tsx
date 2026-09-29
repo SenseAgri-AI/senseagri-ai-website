@@ -99,18 +99,6 @@ export default function HomePage() {
         <div className="relative z-10 w-full px-6 pb-14 pt-28 sm:px-10 lg:px-16">
           <div className="mx-auto max-w-6xl">
 
-            {/* Eyebrow */}
-            <div className="hero-reveal mb-6">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(88,201,197,0.10)" }}
-              >
-                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-tertiary">
-                  South Africa&apos;s Poultry Intelligence Platform
-                </span>
-              </span>
-            </div>
-
             {/* Headline */}
             <h1
               className="hero-reveal delay-1 font-display font-bold text-white"
