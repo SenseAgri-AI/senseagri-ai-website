@@ -26,7 +26,7 @@ const capabilities: Capability[] = [
   {
     eyebrow: "Poultry environmental monitoring",
     title: "Every reading in the house, around the clock.",
-    body: "LoRaWAN sensors track temperature, humidity, gas, CO₂, ammonia, feed and water in each poultry house. Baselines are learned per house, so the platform flags anomalies against the room's own history — not a generic threshold that ignores your climate, breed, or age of flock.",
+    body: "LoRaWAN sensors track temperature, humidity, gas, CO₂, ammonia, feed and water in each poultry house. Baselines are learned per house, so the platform flags anomalies against the room's own history, taking your climate, breed and flock age into account.",
     tags: ["Temperature & humidity", "CO₂ & ammonia", "Feed & water consumption", "Per-house baselines"]
   },
   {

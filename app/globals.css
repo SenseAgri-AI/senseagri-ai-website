@@ -1212,23 +1212,26 @@ h1, h2, h3, h4 {
   outline-offset: 4px;
 }
 
-/* ── Home: controller vs trend (3.3) and How the AI thinks (3.5) ───────── */
+/* ── Home: works with your controller (3.3) and How the AI thinks (3.5) ── */
 
-@media (min-width: 768px) {
-  .ct-col-r { border-left: 0.5px solid #BEC8CA; }
+@media (min-width: 1024px) {
+  .wc-divider { border-left: 0.5px solid #BEC8CA; }
 }
 
-.ct-ticker-track {
-  animation: ct-ticker 60s linear infinite;
+@media (prefers-reduced-motion: no-preference) {
+  .wc-figure[data-draw="armed"] .wc-line { clip-path: inset(0 100% 0 0); }
+  .wc-figure[data-draw="armed"] .wc-late { opacity: 0; }
+  .wc-figure[data-draw="drawing"] .wc-line { animation: wc-draw 1.8s cubic-bezier(.2, .7, .1, 1) both; }
+  .wc-figure[data-draw="drawing"] .wc-late { animation: wc-fade 0.5s cubic-bezier(.2, .7, .1, 1) 1.4s both; }
 }
-@keyframes ct-ticker { to { transform: translateX(-50%); } }
+@keyframes wc-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes wc-fade { from { opacity: 0; } to { opacity: 1; } }
 
 .hit-step {
   transition: opacity 450ms cubic-bezier(.2, .7, .1, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ct-ticker-track { animation: none; }
   .hit-step, .hd-figure * { transition: none !important; }
 }
 

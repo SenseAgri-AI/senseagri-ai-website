@@ -5,7 +5,7 @@ import SignalToDecision from "@/components/SignalToDecision";
 import Link from "next/link";
 import IntelligenceField from "@/components/IntelligenceField";
 import WhatYouGet from "@/components/WhatYouGet";
-import ControllerVsTrend from "@/components/home/ControllerVsTrend";
+import WorksWithController from "@/components/home/WorksWithController";
 import HowTheAIThinks from "@/components/home/HowTheAIThinks";
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ const impactStories: { tag: string; title: string; body: string }[] = [
   {
     tag: "Remote Oversight",
     title: "Peace of mind when off the farm.",
-    body: "Your controller handles the alarms. SenseAgri tells you how every house is trending, so you know what's coming before you're back on the farm."
+    body: "Your controller keeps every house running. SenseAgri adds how each one is trending, so you know what's coming before you're back on the farm."
   },
   {
     tag: "Executive View",
@@ -151,8 +151,8 @@ export default function HomePage() {
       ═══════════════════════════════════════════════════════════════════ */}
       <SignalToDecision />
 
-      {/* 3.3 — Your controller watches the moment. We read the trend. */}
-      <ControllerVsTrend />
+      {/* 3.3 — Works with your controller: we get more out of its data */}
+      <WorksWithController />
 
       {/* 3.4 — Intro: answer-first definition, pillars inline (no stat banner) */}
       <section aria-labelledby="intro-title" className="bg-surface px-6 pb-20 pt-14 sm:px-10 lg:px-16 lg:pb-24 lg:pt-16">
@@ -242,7 +242,7 @@ export default function HomePage() {
               Want the AI to hear and see your birds too?
             </h2>
             <p className="mt-3 max-w-[64ch] font-sans text-[15px] leading-relaxed text-on-surface-variant">
-              Controllers record climate and production. Our microphones and cameras pick up what they can&apos;t: coughing,
+              Controllers record climate and production. Our microphones and cameras add what they don&apos;t measure: coughing,
               distress calls, changes in how birds move and bunch. These signs often show days before they reach the numbers.
               With our sensors in your houses, we monitor 24/7 as well, with the AI on top. We&apos;re hardware-agnostic. Use
               sensors from any vendor, or we supply them at the lowest cost possible.
