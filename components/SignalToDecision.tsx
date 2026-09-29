@@ -476,10 +476,9 @@ export default function SignalToDecision() {
       <div className="relative z-10 mx-auto max-w-6xl">
         {/* Copy */}
         <div>
-          <p className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-primary-light">What the AI does</p>
           <h2
             id="signal-title"
-            className="mt-4 font-display font-bold text-white"
+            className="font-display font-bold text-white"
             style={{ fontSize: "clamp(1.9rem, 3vw, 2.6rem)", lineHeight: 1.08, letterSpacing: "-0.02em", textWrap: "balance" }}
           >
             Your data in. One clear answer out.
