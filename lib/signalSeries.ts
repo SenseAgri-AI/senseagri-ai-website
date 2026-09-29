@@ -1,4 +1,4 @@
-// Deterministic example data for the homepage hero ("Signal to decision").
+// Deterministic example data for the homepage "Signal to decision" section.
 // Everything is generated from a fixed seed so the server render, the client
 // render and every screenshot show the same 30 days. Illustrative only.
 
@@ -16,7 +16,7 @@ export function seeded(seed: number) {
   };
 }
 
-export type StreamId = "water" | "feed" | "temp" | "co2" | "eggs" | "mortality";
+export type StreamId = "water" | "feed" | "temp" | "eggs";
 
 export type Stream = {
   id: StreamId;
@@ -24,8 +24,6 @@ export type Stream = {
   decimals: number;
   opacity: number;
   points: number[];
-  // Shown on phones (<lg), where only four streams fit
-  narrow: boolean;
 };
 
 type Spec = {
@@ -35,7 +33,6 @@ type Spec = {
   noise: number; // fraction of base
   decimals: number;
   opacity: number;
-  narrow: boolean;
   shape?: (day: number) => number; // multiplier on base
 };
 
@@ -47,11 +44,10 @@ const SPECS: Spec[] = [
     noise: 0.007,
     decimals: 0,
     opacity: 0.9,
-    narrow: true,
     // Last three days slide 6% while feed holds (insight 1)
     shape: (d) => (d >= 27 ? 1 - [0.022, 0.043, 0.06][d - 27] : 1)
   },
-  { id: "feed", label: "Feed · kg/day", base: 2210, noise: 0.006, decimals: 0, opacity: 0.7, narrow: true },
+  { id: "feed", label: "Feed · kg/day", base: 2210, noise: 0.006, decimals: 0, opacity: 0.7 },
   {
     id: "temp",
     label: "House temp · °C",
@@ -59,19 +55,8 @@ const SPECS: Spec[] = [
     noise: 0.012,
     decimals: 1,
     opacity: 0.55,
-    narrow: true,
     // Night-time lows pull the daily mean down over four days (insight 2)
     shape: (d) => (d >= 26 ? 1 - [0.018, 0.034, 0.05, 0.062][d - 26] : 1)
-  },
-  {
-    id: "co2",
-    label: "CO₂ · ppm",
-    base: 2150,
-    noise: 0.035,
-    decimals: 0,
-    opacity: 0.4,
-    narrow: false,
-    shape: (d) => 1 + 0.03 * Math.sin(d / 4.2)
   },
   {
     id: "eggs",
@@ -80,11 +65,9 @@ const SPECS: Spec[] = [
     noise: 0.004,
     decimals: 0,
     opacity: 0.75,
-    narrow: true,
     // Slow drift since the feed change on the 12th (insight 3)
     shape: (d) => (d >= 11 ? 1 - (d - 11) * 0.0011 : 1)
-  },
-  { id: "mortality", label: "Mortality · /day", base: 4, noise: 0.22, decimals: 0, opacity: 0.5, narrow: false }
+  }
 ];
 
 export const STREAMS: Stream[] = SPECS.map((spec, i) => {
@@ -99,12 +82,12 @@ export const STREAMS: Stream[] = SPECS.map((spec, i) => {
     label: spec.label,
     decimals: spec.decimals,
     opacity: spec.opacity,
-    points,
-    narrow: spec.narrow
+    points
   };
 });
 
 export type Insight = {
+  tab: string;
   header: string;
   lines: [string, string];
   check: string;
@@ -115,6 +98,7 @@ export type Insight = {
 // Copy is fixed by the rebuild brief (section 3.2) — do not edit.
 export const INSIGHTS: Insight[] = [
   {
+    tab: "Layers · water",
     header: "House 3 · Layers · 42 wks · 3-day trend",
     lines: [
       "Water intake down 6% over three days while feed held steady.",
@@ -125,6 +109,7 @@ export const INSIGHTS: Insight[] = [
     from: 26
   },
   {
+    tab: "Broilers · growth",
     header: "House 1 · Broilers · Day 24 · 4-day trend",
     lines: [
       "Daily gain has slipped below this flock's own curve for four days.",
@@ -135,6 +120,7 @@ export const INSIGHTS: Insight[] = [
     from: 25
   },
   {
+    tab: "Layers · egg weight",
     header: "House 2 · Layers · Since feed change on the 12th",
     lines: [
       "Egg weight drifting down 0.4 g a week.",
@@ -145,20 +131,3 @@ export const INSIGHTS: Insight[] = [
     from: 11
   }
 ];
-
-// Quiet "current value" ticks: a deterministic walk around the last reading.
-export function tickValue(stream: Stream, tick: number): number {
-  const last = stream.points[DAYS - 1];
-  if (stream.id === "mortality" || tick === 0) return last;
-  const rand = seeded(tick * 131 + stream.id.length * 7);
-  const drift = (rand() - 0.5) * (stream.decimals ? 0.008 : 0.004);
-  const v = last * (1 + drift);
-  return stream.decimals ? Number(v.toFixed(stream.decimals)) : Math.round(v);
-}
-
-export function formatValue(value: number, decimals: number): string {
-  return value.toLocaleString("en-US", {
-    minimumFractionDigits: decimals,
-    maximumFractionDigits: decimals
-  });
-}

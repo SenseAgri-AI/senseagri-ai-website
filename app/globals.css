@@ -1169,46 +1169,27 @@ h1, h2, h3, h4 {
   --ignite-prose-width: 65ch;
 }
 
-/* ── Hero: Signal to decision (components/hero/SignalToDecision.tsx) ──────
-   One easing curve for all motion. The static frame is complete; these only
-   add a draw-in pass, particles into the node and the card text fade. */
-
-.sd-draw {
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-}
-
-.sd-flow {
-  stroke-dasharray: 0.045 1;
-  stroke-dashoffset: 0.045;
-  opacity: 0;
-}
+/* ── Signal to decision (components/SignalToDecision.tsx) ─────────────────
+   The still frame is complete. With motion allowed, the lines draw in once
+   when the section scrolls into view; card text fades when a tab changes. */
 
 @media (prefers-reduced-motion: no-preference) {
-  .sd-draw {
+  .sd-section[data-draw="armed"] .sd-draw {
+    clip-path: inset(0 100% 0 0);
+  }
+  .sd-section[data-draw="drawing"] .sd-draw {
     animation: sd-draw 1.6s cubic-bezier(.2, .7, .1, 1) both;
   }
-  .sd-flow {
-    opacity: 0.85;
-    animation: sd-flow 7.8s cubic-bezier(.2, .7, .1, 1) infinite backwards;
-  }
   .sd-card-in .sd-line {
-    animation: sd-fade 0.5s cubic-bezier(.2, .7, .1, 1) both;
+    animation: sd-fade 0.45s cubic-bezier(.2, .7, .1, 1) both;
   }
 }
 
-@keyframes sd-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-@keyframes sd-flow { from { stroke-dashoffset: 0.045; } 70%, to { stroke-dashoffset: -1; } }
+@keyframes sd-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes sd-fade { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 
-/* Visual bleeds to the viewport's right edge on desktop */
-@media (min-width: 1024px) {
-  .sd-bleed { margin-right: calc(-1 * max(4rem, (100vw - 72rem) / 2)); }
-}
-
 /* Gold hairline focus ring */
-.sd-focus:focus-visible,
-.sd-select:focus-visible {
+.sd-focus:focus-visible {
   outline: 0.5px solid #D4AF37;
   outline-offset: 4px;
 }
