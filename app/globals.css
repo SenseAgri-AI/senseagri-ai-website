@@ -1188,6 +1188,15 @@ h1, h2, h3, h4 {
 @keyframes sd-draw { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes sd-fade { from { opacity: 0; transform: translateY(3px); } to { opacity: 1; transform: none; } }
 
+/* Signal tabs: gold line fills under the active tab until the next insight */
+.sd-progress {
+  transform-origin: left;
+  animation-name: sd-progress;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+@keyframes sd-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
 /* Gold hairline focus ring */
 .sd-focus:focus-visible {
   outline: 0.5px solid #D4AF37;

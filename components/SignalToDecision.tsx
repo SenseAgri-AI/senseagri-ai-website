@@ -9,8 +9,10 @@ import { DAYS, INSIGHTS, STREAMS, type Stream } from "@/lib/signalSeries";
 //
 // The server render is the complete still frame: lines drawn, card 1 showing.
 // With motion allowed, the lines are revealed once as the section scrolls into view
-// and then stay still. Visitors switch insights with the tabs; nothing cycles.
+// and then stay still. The insights advance on their own while the section is on
+// screen (pausing on hover/focus) until the visitor picks a tab themselves.
 
+const CYCLE_MS = 7000;
 const TIER_PULL = [0.66, 0.34, 0.12]; // share of each line's offset left at each tier
 const TIER_OPACITY = [0.55, 0.75, 1]; // the logo's three pills
 
@@ -261,7 +263,19 @@ function InsightCard({ id, active, animate }: { id: string; active: number; anim
   );
 }
 
-function Tabs({ panel, active, onSelect }: { panel: string; active: number; onSelect: (i: number) => void }) {
+function Tabs({
+  panel,
+  active,
+  cycling,
+  paused,
+  onSelect
+}: {
+  panel: string;
+  active: number;
+  cycling: boolean;
+  paused: boolean;
+  onSelect: (i: number) => void;
+}) {
   return (
     <div className="mt-3">
       <div role="tablist" aria-label="Example insights" className="flex flex-wrap gap-x-4 gap-y-1">
@@ -273,12 +287,20 @@ function Tabs({ panel, active, onSelect }: { panel: string; active: number; onSe
             aria-selected={i === active}
             aria-controls={panel}
             onClick={() => onSelect(i)}
-            className={`sd-focus py-1.5 font-mono text-[10px] uppercase tracking-[0.05em] transition-colors duration-200 ${
+            className={`sd-focus relative py-1.5 font-mono text-[10px] uppercase tracking-[0.05em] transition-colors duration-200 ${
               i === active ? "text-white" : "text-on-secondary-variant hover:text-white"
             }`}
-            style={{ borderBottom: `0.5px solid ${i === active ? "#D4AF37" : "transparent"}` }}
+            style={{ borderBottom: `0.5px solid ${i === active && !cycling ? "#D4AF37" : "transparent"}` }}
           >
             {ins.tab}
+            {i === active && cycling ? (
+              <span
+                key={active}
+                aria-hidden="true"
+                className="sd-progress absolute bottom-[-0.5px] left-0 h-[0.5px] w-full bg-gold"
+                style={{ animationDuration: `${CYCLE_MS}ms`, animationPlayState: paused ? "paused" : "running" }}
+              />
+            ) : null}
           </button>
         ))}
       </div>
@@ -296,6 +318,37 @@ export default function SignalToDecision() {
   // "armed"  = off-screen and waiting; "drawing" = the one-time draw-in
   const [draw, setDraw] = useState<"static" | "armed" | "drawing">("static");
   const ref = useRef<HTMLElement>(null);
+  // Auto-advance: on until the visitor picks a tab; only while on screen
+  const [cycling, setCycling] = useState(false);
+  const [inView, setInView] = useState(false);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setCycling(true);
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.5 });
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Time left on the current insight, so a pause resumes where it stopped
+  // (matching the gold progress line, which pauses with it)
+  const remaining = useRef(CYCLE_MS);
+  useEffect(() => {
+    if (!cycling || !inView || paused) return;
+    const start = Date.now();
+    let fired = false;
+    const id = window.setTimeout(() => {
+      fired = true;
+      remaining.current = CYCLE_MS;
+      setAnimate(true);
+      setActive((a) => (a + 1) % INSIGHTS.length);
+    }, remaining.current);
+    return () => {
+      window.clearTimeout(id);
+      if (!fired) remaining.current = Math.max(0, remaining.current - (Date.now() - start));
+    };
+  }, [cycling, inView, paused, active]);
 
   useEffect(() => {
     const section = ref.current;
@@ -320,9 +373,11 @@ export default function SignalToDecision() {
   }, []);
 
   const select = (i: number) => {
+    setCycling(false);
     setAnimate(true);
     setActive(i);
   };
+  const tabProps = { active, cycling, paused: paused || !inView, onSelect: select };
 
   return (
     <section
@@ -349,7 +404,16 @@ export default function SignalToDecision() {
         </div>
 
         {/* Visual */}
-        <figure className="lg:col-span-8" aria-label="Example: four streams of farm data converge into one insight">
+        <figure
+          className="lg:col-span-8"
+          aria-label="Example: four streams of farm data converge into one insight"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={(e) => {
+            if (!e.currentTarget.contains(e.relatedTarget as Node)) setPaused(false);
+          }}
+        >
           {/* Desktop */}
           <Diagram layout={WIDE} geo={WIDE_GEO} active={active} className="hidden lg:block">
             <span
@@ -362,7 +426,7 @@ export default function SignalToDecision() {
               style={{ left: `calc(${WIDE.node.x / 10}% + 33px)`, top: WIDE.node.y - 60 }}
             >
               <InsightCard id="signal-insight-wide" active={active} animate={animate} />
-              <Tabs panel="signal-insight-wide" active={active} onSelect={select} />
+              <Tabs panel="signal-insight-wide" {...tabProps} />
             </div>
           </Diagram>
 
@@ -376,7 +440,7 @@ export default function SignalToDecision() {
               />
             </Diagram>
             <InsightCard id="signal-insight-narrow" active={active} animate={animate} />
-            <Tabs panel="signal-insight-narrow" active={active} onSelect={select} />
+            <Tabs panel="signal-insight-narrow" {...tabProps} />
           </div>
         </figure>
       </div>
