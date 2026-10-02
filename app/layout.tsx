@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { Inter, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import { IgniteJsonLd } from "@ignite-agent/agent/jsonld";
 import "./globals.css";
 import { siteConfig } from "@/lib/site";
@@ -9,16 +9,18 @@ import Footer from "@/components/Footer";
 import RevealController from "@/components/RevealController";
 import { Analytics } from "@vercel/analytics/next";
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "./fonts/Inter.ttf",
+  display: "swap",
   variable: "--font-inter",
-  weight: ["300", "400", "500", "600", "700"]
+  weight: "300 700"
 });
 
-const manrope = Manrope({
-  subsets: ["latin"],
+const manrope = localFont({
+  src: "./fonts/Manrope.ttf",
+  display: "swap",
   variable: "--font-manrope",
-  weight: ["400", "500", "600", "700", "800"]
+  weight: "400 800"
 });
 
 const DEFAULT_TITLE = "SenseAgri AI — Poultry Farm Intelligence for South Africa";
