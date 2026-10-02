@@ -7,9 +7,8 @@ import Button from "@/components/Button";
 import LogoMark from "@/components/LogoMark";
 
 const navLinks = [
-  { label: "Solution", href: "/solution" },
   { label: "Capabilities", href: "/capabilities" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Offering", href: "/offering" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },
@@ -63,7 +62,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex">
-          <Button href="/contact">Book a Demo</Button>
+          <Button href="/contact">Contact us</Button>
         </div>
 
         {/* Mobile menu button */}
@@ -108,9 +107,7 @@ export default function Navbar() {
               );
             })}
             <div className="pt-3">
-              <Button href="/contact" className="w-full justify-center">
-                Book a Demo
-              </Button>
+              <Button href="/contact" className="w-full justify-center">Contact us</Button>
             </div>
           </div>
         </div>

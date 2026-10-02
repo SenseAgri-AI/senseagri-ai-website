@@ -3,6 +3,7 @@ import LogoMark from "@/components/LogoMark";
 import HeroSlideshow from "@/components/HeroSlideshow";
 import IntelligenceField from "@/components/IntelligenceField";
 import WhatYouGet from "@/components/WhatYouGet";
+import POCBadge from "@/components/POCBadge";
 import ImpactSlider, { type ImpactStory } from "@/components/ImpactSlider";
 
 export const metadata: Metadata = {
@@ -95,26 +96,17 @@ export default function HomePage() {
         <div className="relative z-10 w-full px-6 pb-14 pt-28 sm:px-10 lg:px-16">
           <div className="mx-auto max-w-6xl">
 
-            {/* Eyebrow */}
-            <div className="hero-reveal mb-6">
-              <span
-                className="inline-flex items-center gap-2 px-3 py-1"
-                style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(88,201,197,0.10)" }}
+            {/* Headline and POC invitation */}
+            <div className="relative w-fit max-w-full pr-[90px] sm:pr-[130px] lg:pr-[180px]">
+              <h1
+                className="hero-reveal delay-1 font-display font-bold text-white"
+                style={{ fontSize: "clamp(1.65rem, 5.5vw, 5.2rem)", lineHeight: "0.98", letterSpacing: "-0.028em", maxWidth: "14ch" }}
               >
-                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-tertiary">
-                  South Africa&apos;s Poultry Intelligence Platform
-                </span>
-              </span>
+                Intelligence<br />
+                <span className="intelligence-text-gradient">for your farm.</span>
+              </h1>
+              <POCBadge />
             </div>
-
-            {/* Headline */}
-            <h1
-              className="hero-reveal delay-1 font-display font-bold text-white"
-              style={{ fontSize: "clamp(2.35rem, 5.5vw, 5.2rem)", lineHeight: "0.98", letterSpacing: "-0.028em", maxWidth: "14ch" }}
-            >
-              Intelligence<br />
-              <span className="intelligence-text-gradient">for your farm.</span>
-            </h1>
 
             {/* Sub */}
             <p
@@ -124,23 +116,8 @@ export default function HomePage() {
               Insight to see the problem before it costs you, and the
               confidence to act — through precision AI farming.
             </p>
-
-            {/* CTAs */}
-            <div className="hero-reveal delay-3 mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="/contact"
-                className="inline-flex w-full items-center justify-center px-6 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary bg-white transition-colors duration-150 hover:bg-surface-container-low sm:w-auto"
-                style={{ boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
-              >
-                Book a Demo
-              </a>
-              <a
-                href="/solution"
-                className="inline-flex w-full items-center justify-center px-6 py-3 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white transition-colors duration-150 hover:bg-white/10 sm:w-auto"
-                style={{ border: "1.5px solid rgba(255,255,255,0.55)" }}
-              >
-                See the Platform →
-              </a>
+            <div className="hero-reveal delay-3">
+              <a href="/contact" className="mt-8 inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Contact us</a>
             </div>
 
           </div>
@@ -157,7 +134,9 @@ export default function HomePage() {
             AI poultry monitoring and welfare intelligence for your farm.
           </h2>
           <p className="mt-3 font-sans text-white/70 leading-relaxed" style={{ fontSize: "0.9375rem", maxWidth: "68ch" }}>
-            SenseAgri AI is a poultry intelligence platform for your farm. Your farm data becomes intelligence that keeps getting better — understanding what makes your farm productive, preventing losses, recording your actions, updating records, managing tasks on the farm, and tuning set points on your existing control systems (SKOV, Big Dutchman, and others). Less labour. Less expense. More time to grow your business.
+            Through our software, your data becomes understanding that improves production
+            and management, prevents losses, reduces risks, and optimises your farm — with
+            less room for error, less labour, and lower expenses.
           </p>
         </div>
       </div>
@@ -175,7 +154,7 @@ export default function HomePage() {
       </div>
 
       {/* ═══════════════════════════════════════════════════════════════════
-          INSIDE THE PLATFORM — sensing → dashboard → whatsapp → reports
+          INSIDE THE PLATFORM — POC → dashboard → WhatsApp → reports → sensing
       ═══════════════════════════════════════════════════════════════════ */}
       <WhatYouGet />
 
@@ -289,22 +268,7 @@ export default function HomePage() {
             <span className="intelligence-text-gradient">Start measuring.</span>
           </h2>
 
-          <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href="/contact"
-              className="inline-flex items-center justify-center px-10 py-4 font-sans text-xs font-semibold uppercase tracking-[0.10em] text-primary transition-colors duration-150 hover:bg-surface-container-low bg-white"
-              style={{ boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
-            >
-              Book a Demo
-            </a>
-            <a
-              href="/solution"
-              className="inline-flex items-center justify-center px-10 py-4 font-sans text-xs font-semibold uppercase tracking-[0.10em] text-white transition-colors duration-150 hover:bg-white/10"
-              style={{ border: "1.5px solid rgba(255,255,255,0.55)" }}
-            >
-              See the System
-            </a>
-          </div>
+          <a href="/contact" className="mt-8 inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Contact us</a>
 
           {/* Tagline */}
           <p className="mt-10 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">

@@ -3,9 +3,8 @@ import LogoMark from "@/components/LogoMark";
 import { siteConfig } from "@/lib/site";
 
 const footerLinks = [
-  { label: "Solution", href: "/solution" },
   { label: "Capabilities", href: "/capabilities" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Offering", href: "/offering" },
   { label: "About", href: "/about" },
   { label: "FAQ", href: "/faq" },
   { label: "Blog", href: "/blog" },

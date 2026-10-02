@@ -97,10 +97,10 @@ export default function AboutPage() {
               SenseAgri AI is a poultry intelligence platform for farms of every size across Africa. Our mission is to close the intelligence gap: generate insights and automation with real ROI, understand cause and effect, and empower every farmer to make data-driven decisions — regardless of scale.
             </p>
             <Link
-              href="/solution"
+              href="/capabilities"
               className="mt-5 inline-flex font-sans text-sm font-bold text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container"
             >
-              See how the platform works →
+              Explore our capabilities →
             </Link>
           </div>
         </div>

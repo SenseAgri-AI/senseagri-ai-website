@@ -7,9 +7,9 @@ import { breadcrumbGraph } from "@/lib/jsonLd";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Book a Free Poultry Pilot",
+  title: "Contact SenseAgri AI",
   description:
-    "Book a demo with SenseAgri AI. Talk to our team about running the Partner Programme on your poultry operation — hands-on onboarding, founder pricing.",
+    "Contact Dylan Geldenhuys and Dr Ryan Nel at SenseAgri AI to discuss your farm’s needs and our proof of concept program.",
   alternates: { canonical: "/contact" }
 };
 
@@ -19,8 +19,8 @@ export default function ContactPage() {
       <JsonLd data={breadcrumbGraph([{ name: "Contact", path: "/contact" }])} />
       <PageHero
         eyebrow="Contact"
-        headline="Book a"
-        accentLine="pilot call."
+        headline="Contact us."
+        accentLine="Let’s talk about your farm."
         sub="Tell us about your farm and we will respond within one business day."
       />
 
@@ -50,26 +50,7 @@ export default function ContactPage() {
               style={{ border: "0.5px solid #BEC8CA" }}
             >
               <h2 className="font-display text-title-md font-semibold tracking-[-0.02em] text-on-surface">
-                Book a call
-              </h2>
-              <p className="mt-2 font-sans text-title-sm text-on-surface-variant">
-                Pick a time that suits you and we will walk you through a pilot.
-              </p>
-              <a
-                className="link-underline mt-5 inline-flex"
-                href="https://cal.com/placeholder"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Schedule a time →
-              </a>
-            </div>
-            <div
-              className="bg-surface-container-lowest px-8 py-7"
-              style={{ border: "0.5px solid #BEC8CA" }}
-            >
-              <h2 className="font-display text-title-md font-semibold tracking-[-0.02em] text-on-surface">
-                Contact details
+                Contact Ryan
               </h2>
               <div className="mt-4">
                 <p className="font-display text-base font-bold tracking-tight text-on-surface">
@@ -94,14 +75,24 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
+
+            <div className="bg-surface-container-lowest px-8 py-7" style={{ border: "0.5px solid #BEC8CA" }}>
+              <h2 className="font-display text-title-md font-semibold tracking-tight text-on-surface">Contact Dylan</h2>
+              <p className="mt-4 font-display text-base font-bold tracking-tight text-on-surface">Dylan Geldenhuys</p>
+              <p className="mt-1 font-sans text-[9px] font-semibold uppercase tracking-[0.14em] text-tertiary">Co-Founder &amp; CEO</p>
+              <div className="mt-4 space-y-2.5 font-sans text-title-sm text-on-surface-variant">
+                <a href="mailto:dylan@senseagriai.com" className="block transition-colors hover:text-primary">dylan@senseagriai.com</a>
+                <a href="tel:+27820440320" className="block transition-colors hover:text-primary">+27 82 044 0320</a>
+              </div>
+            </div>
           </div>
 
         </div>
         <div className="mx-auto mt-10 max-w-6xl text-center">
           <p className="font-sans text-title-sm text-on-surface-variant">
             Still deciding?{" "}
-            <Link href="/solution" className="text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container">
-              See how the platform works
+            <Link href="/capabilities" className="text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container">
+              Explore our capabilities
             </Link>{" "}
             or read the{" "}
             <Link href="/faq" className="text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container">
