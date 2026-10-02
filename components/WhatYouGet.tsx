@@ -773,7 +773,6 @@ export default function WhatYouGet() {
     <section>
       <div id="poc" className="bg-surface px-6 py-16 sm:px-10 lg:px-16">
         <div className="mx-auto max-w-6xl reveal">
-          <Eyebrow>Proof of concept</Eyebrow>
           <h2 className="font-display font-semibold tracking-tight text-primary" style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", lineHeight: 1.05 }}>
             Join our POC program.
           </h2>
