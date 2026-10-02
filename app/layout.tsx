@@ -123,7 +123,9 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+    // Browser extensions and preview tools can add attributes to this element
+    // before hydration. Keep the exception at the root; children are still checked.
+    <html lang="en" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
       <body>
         <IgniteJsonLd />
         <script

@@ -4,9 +4,10 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import type { ReactNode, ReactElement } from "react";
 import LogoMark from "@/components/LogoMark";
 import DashboardCard from "@/components/DashboardCard";
+import POCDataFlow from "@/components/POCDataFlow";
 import IntelligenceField from "@/components/IntelligenceField";
 
-// "Inside the platform" — Sensing (wheel) → Dashboard+AI → WhatsApp Alerts (dark) → Weekly Reports → Integrations
+// POC invitation → Dashboard + AI → WhatsApp → Weekly Reports → Sensing → Integrations
 // NOTE: the dashboard / phone / report mockups are illustrative representations of the
 // live SenseAgri client app — swap with real screenshots when available.
 
@@ -591,7 +592,6 @@ function ReportMock() {
 
 // ── Block layout ───────────────────────────────────────────────────────────────
 function Block({
-  idx,
   label,
   title,
   body,
@@ -600,8 +600,7 @@ function Block({
   reverse,
   dark
 }: {
-  idx: string;
-  label: string;
+  label?: string;
   title: string;
   body: string;
   chips: string[];
@@ -656,34 +655,10 @@ function Block({
         />
       )}
 
-      {/* Big ghost numeral — pinned to the top-right of every block, consistent
-          across the four-step tour regardless of which side the mock is on. */}
-      <div
-        aria-hidden
-        style={{
-          position: "absolute",
-          top: 10,
-          right: 28,
-          fontFamily: "var(--font-manrope), sans-serif",
-          fontWeight: 800,
-          fontSize: "clamp(82px, 9vw, 120px)",
-          color: dark ? "rgba(88,201,197,0.09)" : "rgba(0,46,53,0.07)",
-          letterSpacing: "-0.05em",
-          lineHeight: 0.8,
-          pointerEvents: "none",
-          userSelect: "none",
-          zIndex: 3
-        }}
-      >
-        {idx}
-      </div>
-
       <div className="wyg-block-grid reveal" style={{ maxWidth: "72rem", margin: "0 auto", position: "relative" }}>
         <div style={{ order: reverse ? 2 : 1, position: "relative" }}>
           <div style={{ position: "relative", zIndex: 1 }}>
-          <Eyebrow dark={dark}>
-            {idx} · {label}
-          </Eyebrow>
+          {label && <Eyebrow dark={dark}>{label}</Eyebrow>}
           <h3
             style={{
               fontFamily: "var(--font-manrope), sans-serif",
@@ -796,22 +771,29 @@ function IntegrationStrip() {
 export default function WhatYouGet() {
   return (
     <section>
+      <div id="poc" className="bg-surface px-6 py-16 sm:px-10 lg:px-16">
+        <div className="mx-auto max-w-6xl reveal">
+          <Eyebrow>Proof of concept</Eyebrow>
+          <h2 className="font-display font-semibold tracking-tight text-primary" style={{ fontSize: "clamp(2rem, 4vw, 3.2rem)", lineHeight: 1.05 }}>
+            Join our POC program.
+          </h2>
+          <p className="mt-5 max-w-2xl font-sans text-title-sm leading-relaxed text-on-surface-variant">
+            Work with us to explore what your farm data can do. We start with your challenges
+            and build a proof of concept with you, for your operation, using data science
+            to turn your signals into practical decisions.
+          </p>
+          <a href="/offering" className="mt-8 inline-flex items-center justify-center bg-primary px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white transition-colors hover:bg-primary-container">
+            Explore our POC offering
+          </a>
+          <POCDataFlow />
+        </div>
+      </div>
       <Block
-        idx="01"
-        label="Sensing"
-        title="Your farm's heartbeat, measured continuously."
-        body="Environmental sensors, cameras, acoustics, ammonia and CO₂ — a full pulse read of your farm's rhythm, running around the clock. We're hardware-agnostic — bring your own sensors from any vendor, or we supply at the lowest cost possible."
-        chips={["Multi-modal", "Hardware-agnostic", "24/7 capture"]}
-        mock={<SensingPanel />}
-      />
-      <Block
-        idx="02"
-        label="Dashboard + AI"
         title="Your full operation, decoded."
         body="Every metric in one place, with AI that flags exactly what needs action."
         chips={["Live telemetry", "Health score", "AI recommendations", "Internal vet"]}
         mock={
-          // Match Block 03's phone height so the two mocks read at the same
+          // Match the WhatsApp phone height so the two mocks read at the same
           // vertical weight (the scaled dashboard is naturally short, leaving
           // the block feeling squished against its neighbours).
           <div style={{ minHeight: 480, width: "100%", display: "flex", alignItems: "center" }}>
@@ -821,8 +803,6 @@ export default function WhatYouGet() {
         reverse
       />
       <Block
-        idx="03"
-        label="WhatsApp Alerts"
         title="AI on WhatsApp. No app to learn."
         body="Serious events and key insights, pushed straight to WhatsApp."
         chips={["Serious events", "Schedule changes", "Key insights"]}
@@ -830,13 +810,18 @@ export default function WhatYouGet() {
         dark
       />
       <Block
-        idx="04"
-        label="Weekly Reports"
         title="Executive summaries — automatic."
         body="Output, performance and ROI — delivered as an automatic report every Monday."
         chips={["Output", "Performance", "Cost & ROI", "Shareable"]}
         mock={<ReportMock />}
         reverse
+      />
+
+      <Block
+        title="Your farm's heartbeat, measured continuously."
+        body="Environmental sensors, cameras, acoustics, ammonia and CO₂ — a full pulse read of your farm's rhythm, running around the clock. We're hardware-agnostic — bring your own sensors from any vendor, or we supply at the lowest cost possible."
+        chips={["Multi-modal", "Hardware-agnostic", "24/7 capture"]}
+        mock={<SensingPanel />}
       />
 
       <IntegrationStrip />

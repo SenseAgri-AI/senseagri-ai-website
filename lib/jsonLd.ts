@@ -30,7 +30,7 @@ export function pilotServiceGraph() {
     "@id": `${siteConfig.url}/#partner-programme`,
     name: "SenseAgri AI Partner Programme",
     description:
-      "SenseAgri AI Partner Programme — founder pricing for commercial poultry operations. Includes full platform access (LoRaWAN sensors, dashboard, and edge AI), on-site installation and setup fully managed, hands-on onboarding and training, direct access to the SenseAgri AI team, and a product roadmap shaped by customer feedback. Pricing scoped to farm size and integration scope.",
+      "Hands-on collaboration and data science solutions built around your farm’s needs. Contact SenseAgri AI to discuss your challenges and learn about an offering and pricing tailored to your operation.",
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },
     serviceType: "Poultry farm monitoring and intelligence",
@@ -38,6 +38,6 @@ export function pilotServiceGraph() {
       "@type": "BusinessAudience",
       name: "Commercial poultry operations"
     },
-    termsOfService: `${siteConfig.url}/pricing`
+    termsOfService: `${siteConfig.url}/offering`
   };
 }

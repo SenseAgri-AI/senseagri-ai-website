@@ -8,7 +8,7 @@ import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 export const metadata: Metadata = {
   title: "Poultry Monitoring Capabilities — Welfare, Vision & Disease Alerts",
   description:
-    "Intelligent poultry farm monitoring — environmental sensors, computer vision, acoustic welfare signals, gut-health tracking, production intelligence, and early disease alerts for commercial poultry operations.",
+    "Intelligent poultry farm monitoring — environmental sensors, computer vision, acoustic welfare signals, gut-health tracking, weight and HPED forecasting, disease detection, and root cause analysis for commercial poultry operations.",
   alternates: { canonical: "/capabilities" }
 };
 
@@ -42,6 +42,24 @@ const capabilities: Capability[] = [
     tags: ["Stress vocalisation detection", "Bird activity classification", "Wake-up pattern tracking", "Feeding-time optimisation"]
   },
   {
+    eyebrow: "Poultry performance forecasting",
+    title: "Forecast weight, HPED, and what comes next.",
+    body: "Use your flock’s data to forecast bird weight, hen-day egg production (HPED), feed conversion, and other performance trends. Compare expected progress with actual results, spot emerging gaps, and plan feeding, production, and daily management decisions ahead of time. Forecasts are evaluated against your farm’s own results during the proof of concept.",
+    tags: ["Bird weight forecasting", "HPED forecasting", "Feed conversion trends", "Production planning"]
+  },
+  {
+    eyebrow: "Early poultry disease detection",
+    title: "Anomalies across every signal, all at once.",
+    body: "The platform correlates environmental, vision, and acoustic anomalies against each house's baseline — surfacing early signs of disease that no single sensor would catch alone. Alerts arrive on WhatsApp with the specific action to take, not just a red dot on a chart.",
+    tags: ["Multi-modal signal fusion", "Behaviour anomaly detection", "Real-time WhatsApp alerts", "Baseline-relative flagging"]
+  },
+  {
+    eyebrow: "Root cause analysis",
+    title: "Understand why performance changed.",
+    body: "Connect changes in production and welfare with environmental conditions, feed and water patterns, and recorded management actions. Our analysis helps identify likely contributing factors, distinguish symptoms from underlying problems, and prioritise what to investigate or adjust with your team.",
+    tags: ["Likely contributing factors", "Cross-signal analysis", "Management action history", "Targeted investigation"]
+  },
+  {
     eyebrow: "Poultry gut-health intelligence",
     title: "Feed-to-water ratios reveal gut issues early.",
     body: "The feed-to-water consumption ratio is a well-documented early indicator of gut health issues in poultry. SenseAgri tracks the ratio continuously and flags when it deviates from the flock's own baseline — days before the problem shows up in production numbers or mortality.",
@@ -52,13 +70,8 @@ const capabilities: Capability[] = [
     title: "Welfare and production, in one place.",
     body: "Hen-day production, mortality trends, feed conversion and welfare metrics run side by side in a single dashboard. Weekly ROI reports summarise what changed in the last seven days, why, and what to do next — no manual spreadsheet stitching.",
     tags: ["Hen-day production", "Mortality trends", "Feed conversion (FCR)", "Weekly ROI reports"]
-  },
-  {
-    eyebrow: "Early poultry disease detection",
-    title: "Anomalies across every signal, all at once.",
-    body: "The platform correlates environmental, vision, and acoustic anomalies against each house's baseline — surfacing early signs of disease that no single sensor would catch alone. Alerts arrive on WhatsApp with the specific action to take, not just a red dot on a chart.",
-    tags: ["Multi-modal signal fusion", "Behaviour anomaly detection", "Real-time WhatsApp alerts", "Baseline-relative flagging"]
   }
+
 ];
 
 export default function CapabilitiesPage() {
@@ -70,17 +83,8 @@ export default function CapabilitiesPage() {
         eyebrow="Capabilities"
         headline="Poultry welfare & production"
         accentLine="intelligence, on one platform."
-        sub="AI poultry monitoring for your farm — environmental sensors, computer vision, acoustic welfare signals, gut-health intelligence, production reporting, and early disease alerts running continuously in every house."
+        sub="AI poultry monitoring for your farm — environmental sensors, computer vision, acoustic welfare signals, weight and HPED forecasting, disease detection, root cause analysis, and production reporting."
       />
-
-      {/* Honesty strip — how we validate before something ships to production */}
-      <div className="bg-surface px-6 py-10 sm:px-10 lg:px-16" style={{ borderTop: "0.5px solid #BEC8CA" }}>
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="font-sans text-title-sm leading-relaxed text-on-surface-variant">
-            The sensor suite — environmental monitoring, air quality, and climate alerts — is live and running on farms today. The other capabilities run in the same platform, and pilots are how we validate each one on your operation, so nothing counts as production-ready until it&apos;s proven on your own houses.
-          </p>
-        </div>
-      </div>
 
       {/* Capability sections — alternating surfaces for rhythm */}
       {capabilities.map((c, i) => (
@@ -160,17 +164,11 @@ export default function CapabilitiesPage() {
           <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-relaxed text-white/70">
             We instrument a house, set the baseline, and show you the platform working — sensing, vision, acoustic, and reports — before you commit to anything.
           </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-flex items-center justify-center px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors duration-150 hover:bg-surface-container-low bg-white"
-            style={{ boxShadow: `inset 0 -2px 0 0 ${GOLD}` }}
-          >
-            Book a Demo
-          </Link>
+          <Link href="/contact" className="mt-8 inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Contact us</Link>
           <p className="mt-5 font-sans text-title-sm text-white/60">
-            Or first, see the{" "}
-            <Link href="/solution" className="text-white/85 underline underline-offset-2 transition-colors duration-150 hover:text-white">
-              full end-to-end platform
+            Explore our{" "}
+            <Link href="/offering" className="text-white/85 underline underline-offset-2 transition-colors duration-150 hover:text-white">
+              proof of concept offering
             </Link>
             .
           </p>
