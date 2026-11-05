@@ -1,4 +1,3 @@
-import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -10,6 +9,7 @@ import {
   isoDateOrUndefined,
   type SitemapEntry
 } from "../lib/sitemapEntries";
+import { loadWikiEntities } from "../lib/wiki/load";
 import type { WikiEntity } from "../lib/wiki/schema";
 
 const baseUrl = "https://www.senseagriai.com";
@@ -27,20 +27,30 @@ function pathOf(url: string): string {
   return new URL(url).pathname;
 }
 
+function withoutErrorLog<T>(fn: () => T): T {
+  const original = console.error;
+  console.error = () => {};
+  try {
+    return fn();
+  } finally {
+    console.error = original;
+  }
+}
+
 function assertStaticShape(entries: SitemapEntry[], label: string) {
   assert(entries.length >= STATIC_SITEMAP_PATHS.length, `${label}: missing static routes`);
   const urls = entries.map((entry) => entry.url);
   assert(new Set(urls).size === urls.length, `${label}: duplicate urls`);
   for (const entry of entries) {
     assert(entry.url.startsWith(`${baseUrl}/`) || entry.url === `${baseUrl}/`, `${label}: bad origin ${entry.url}`);
-    const path = pathOf(entry.url);
-    assert(path === "/" || !path.endsWith("/"), `${label}: trailing slash ${entry.url}`);
+    const pathname = pathOf(entry.url);
+    assert(pathname === "/" || !pathname.endsWith("/"), `${label}: trailing slash ${entry.url}`);
     if (entry.lastModified) {
       assert(Boolean(isoDateOrUndefined(entry.lastModified)), `${label}: invalid lastModified ${entry.lastModified}`);
     }
   }
-  for (const path of STATIC_SITEMAP_PATHS) {
-    const expected = path === "/" ? `${baseUrl}/` : `${baseUrl}${path}`;
+  for (const route of STATIC_SITEMAP_PATHS) {
+    const expected = route === "/" ? `${baseUrl}/` : `${baseUrl}${route}`;
     assert(urls.includes(expected), `${label}: missing ${expected}`);
   }
   assert(
@@ -53,36 +63,30 @@ const flier = canonicalLoc(`${baseUrl}/automate-your-poultry-operation/`);
 assert(flier === `${baseUrl}/automate-your-poultry-operation`, `canonicalLoc kept a trailing slash: ${flier}`);
 assert(canonicalLoc(`${baseUrl}/`) === `${baseUrl}/`, "canonicalLoc stripped the root slash");
 
-for (const path of STATIC_SITEMAP_PATHS) {
-  const date = pageLastModified[path];
-  if (!isoDateOrUndefined(date)) fail(`pageLastModified missing or invalid for ${path}`);
+for (const route of STATIC_SITEMAP_PATHS) {
+  if (!isoDateOrUndefined(pageLastModified[route])) fail(`pageLastModified missing or invalid for ${route}`);
 }
 
 const healthy = buildSitemapEntries({ baseUrl });
 assertStaticShape(healthy, "healthy");
 assert(
-  healthy.some((entry) => entry.url === `${baseUrl}/wiki/senseagri-ai`),
+  healthy.some((entry) => pathOf(entry.url).startsWith("/wiki/")),
   "healthy sitemap dropped wiki entities"
 );
-const offering = healthy.find((entry) => entry.url === `${baseUrl}/offering`);
-assert(offering?.lastModified === "2026-10-02T00:00:00.000Z", "offering lastModified drifted");
-
-function withoutErrorLog<T>(fn: () => T): T {
-  const original = console.error;
-  console.error = () => {};
-  try {
-    return fn();
-  } finally {
-    console.error = original;
-  }
+for (const route of STATIC_SITEMAP_PATHS) {
+  const expectedUrl = route === "/" ? `${baseUrl}/` : `${baseUrl}${route}`;
+  const entry = healthy.find((row) => row.url === expectedUrl);
+  const expectedDate = isoDateOrUndefined(pageLastModified[route]);
+  assert(
+    entry?.lastModified === expectedDate,
+    `${route} lastModified did not follow pageLastModified`
+  );
 }
 
 const missingWiki = withoutErrorLog(() =>
   buildSitemapEntries({
     baseUrl,
-    loadWiki: () => {
-      throw new Error("Missing content/wiki directory");
-    }
+    loadWiki: () => loadWikiEntities(path.join(os.tmpdir(), `senseagri-wiki-missing-${process.pid}`))
   })
 );
 assertStaticShape(missingWiki, "missing wiki");
@@ -120,58 +124,22 @@ assert(
   "wiki index missing when an entity date fails"
 );
 
-function runIsolated(expectWiki: boolean) {
-  const result = spawnSync(
-    process.execPath,
-    [
-      "--import",
-      "tsx",
-      "--input-type=module",
-      "-e",
-      `
-      import { buildSitemapEntries } from "./lib/sitemapEntries.ts";
-      const entries = buildSitemapEntries({ baseUrl: ${JSON.stringify(baseUrl)} });
-      const wiki = entries.filter((entry) => new URL(entry.url).pathname.startsWith("/wiki"));
-      const flier = entries.find((entry) => entry.url.endsWith("/automate-your-poultry-operation"));
-      if (!flier || flier.url.endsWith("/")) {
-        console.error("static flier url missing");
-        process.exit(1);
-      }
-      if (${expectWiki ? "true" : "false"} ? wiki.length === 0 : wiki.length !== 0) {
-        console.error("wiki url mismatch", wiki.map((entry) => entry.url));
-        process.exit(1);
-      }
-      console.log("isolated-ok");
-      `
-    ],
-    { cwd: process.cwd(), encoding: "utf8" }
+const brokenDir = fs.mkdtempSync(path.join(os.tmpdir(), "senseagri-wiki-broken-"));
+try {
+  fs.writeFileSync(path.join(brokenDir, "broken.json"), "{not-json");
+  const brokenFile = withoutErrorLog(() =>
+    buildSitemapEntries({
+      baseUrl,
+      loadWiki: () => loadWikiEntities(brokenDir)
+    })
   );
-  if (result.status !== 0) {
-    if (result.stdout) console.error(result.stdout);
-    if (result.stderr) console.error(result.stderr);
-    fail(`isolated sitemap process failed (expectWiki=${expectWiki})`);
-  }
-}
-
-const wikiDir = path.join(process.cwd(), "content/wiki");
-const stash = path.join(os.tmpdir(), `senseagri-wiki-check-${process.pid}`);
-
-fs.renameSync(wikiDir, stash);
-try {
-  runIsolated(false);
+  assertStaticShape(brokenFile, "broken wiki file");
+  assert(
+    !brokenFile.some((entry) => pathOf(entry.url).startsWith("/wiki")),
+    "invalid wiki file still emitted wiki urls"
+  );
 } finally {
-  fs.renameSync(stash, wikiDir);
+  fs.rmSync(brokenDir, { recursive: true, force: true });
 }
-
-const brokenFile = path.join(wikiDir, "senseagri-ai.json");
-const original = fs.readFileSync(brokenFile, "utf8");
-fs.writeFileSync(brokenFile, "{not-json");
-try {
-  runIsolated(false);
-} finally {
-  fs.writeFileSync(brokenFile, original);
-}
-
-runIsolated(true);
 
 console.log(`ok    sitemap (${healthy.length} urls, static fallback ${missingWiki.length})`);
