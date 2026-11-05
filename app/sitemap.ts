@@ -1,53 +1,52 @@
 import type { MetadataRoute } from "next";
 import igniteSitemap, { mergeSitemap } from "@ignite-agent/agent/sitemap";
-import { siteConfig } from "@/lib/site";
-import { pageLastModified } from "@/lib/pageMeta";
-import { lastReviewed, wikiEntities, wikiUrl } from "@/lib/wiki/load";
+import {
+  localSitemapEntries,
+  sitemapBaseUrl,
+  staticSitemapEntries,
+  type SitemapEntry
+} from "@/lib/sitemapData";
 
+function toMetadata(entries: SitemapEntry[]): MetadataRoute.Sitemap {
+  return entries.map((entry) =>
+    entry.lastModified ? { url: entry.url, lastModified: entry.lastModified } : { url: entry.url }
+  );
+}
+
+// Never throw. A bad wiki file or an Ignite outage must not turn /sitemap.xml into a 500.
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl =
-    process.env.NODE_ENV === "production" ? siteConfig.url : "http://localhost:3000";
+  const baseUrl = sitemapBaseUrl();
 
-  const routes: Array<{ path: string; url: string }> = [
-    { path: "/", url: `${baseUrl}/` },
-    { path: "/offering", url: `${baseUrl}/offering` },
-    { path: "/capabilities", url: `${baseUrl}/capabilities` },
-    { path: "/faq", url: `${baseUrl}/faq` },
-    { path: "/about", url: `${baseUrl}/about` },
-    { path: "/contact", url: `${baseUrl}/contact` },
-    { path: "/blog", url: `${baseUrl}/blog` },
-    { path: "/blog/flock-night-rest-score", url: `${baseUrl}/blog/flock-night-rest-score` },
-    { path: "/automate-your-poultry-operation/", url: `${baseUrl}/automate-your-poultry-operation/` }
-  ];
+  try {
+    const local = localSitemapEntries(baseUrl);
 
-  const wiki = wikiEntities().map((entity) => ({
-    url: `${baseUrl}${wikiUrl(entity.slug)}`,
-    lastModified: `${lastReviewed(entity)}T00:00:00.000Z`
-  }));
-  const wikiIndexDate = wiki
-    .map((row) => row.lastModified)
-    .sort()
-    .at(-1);
+    if (process.env.NODE_ENV !== "production") {
+      return toMetadata(local);
+    }
 
-  const local = [
-    ...routes.map(({ path, url }) => ({
-      url,
-      lastModified: new Date(pageLastModified[path]).toISOString()
-    })),
-    { url: `${baseUrl}${wikiUrl()}`, lastModified: wikiIndexDate ?? new Date().toISOString() },
-    ...wiki
-  ];
-
-  if (process.env.NODE_ENV !== "production") {
-    return local;
+    try {
+      const ignite = (await igniteSitemap()).map(({ url, lastModified, changeFrequency, priority }) => ({
+        url,
+        ...(lastModified
+          ? {
+              lastModified: lastModified instanceof Date ? lastModified.toISOString() : String(lastModified)
+            }
+          : {}),
+        ...(changeFrequency ? { changeFrequency } : {}),
+        ...(priority !== undefined ? { priority } : {})
+      }));
+      return mergeSitemap(local, ignite);
+    } catch (error) {
+      console.error("Ignite sitemap merge failed; publishing local URLs only.", error);
+      return toMetadata(local);
+    }
+  } catch (error) {
+    console.error("Sitemap generation failed; publishing static routes only.", error);
+    try {
+      return toMetadata(staticSitemapEntries(baseUrl));
+    } catch (fallbackError) {
+      console.error("Static sitemap fallback failed; publishing the homepage only.", fallbackError);
+      return [{ url: `${baseUrl.replace(/\/+$/, "")}/` }];
+    }
   }
-
-  const ignite = (await igniteSitemap()).map(({ url, lastModified, changeFrequency, priority }) => ({
-    url,
-    lastModified: lastModified instanceof Date ? lastModified.toISOString() : lastModified,
-    changeFrequency,
-    priority
-  }));
-
-  return mergeSitemap(local, ignite);
 }

@@ -87,9 +87,14 @@ export async function POST(request: Request) {
     </div>
   </div>`;
 
-  // Where the enquiry is delivered. Falls back to the public contact address,
-  // but until a domain is verified in Resend this must be the Resend account email.
+  // Where the enquiry is delivered. Falls back to the public contact address.
   const recipient = process.env.CONTACT_FORM_TO || siteConfig.links.email;
+  // onboarding@resend.dev only delivers to the Resend account owner. Use the
+  // public mailbox unless CONTACT_FORM_FROM overrides it. The domain must be
+  // verified in Resend or the API rejects the send.
+  const from =
+    process.env.CONTACT_FORM_FROM?.trim() || `SenseAgri AI <${siteConfig.links.email}>`;
+  const sendError = `Could not send your enquiry. Please email ${siteConfig.links.email} directly.`;
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -99,7 +104,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        from: "SenseAgri AI Website <onboarding@resend.dev>",
+        from,
         to: [recipient],
         reply_to: data.email,
         subject: `Pilot enquiry — ${data.name} (${data.company})`,
@@ -108,20 +113,28 @@ export async function POST(request: Request) {
     });
 
     if (!res.ok) {
-      const detail = await res.text();
-      console.error("Resend send failed:", res.status, detail);
-      return NextResponse.json(
-        { ok: false, error: "Could not send your enquiry. Please email us directly." },
-        { status: 502 }
+      const detail = await describeResendFailure(res);
+      console.error(
+        `[contact] Resend rejected the enquiry (HTTP ${res.status}) from=${JSON.stringify(from)} to=${JSON.stringify(recipient)}: ${detail}`
       );
+      return NextResponse.json({ ok: false, error: sendError }, { status: 502 });
     }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Contact form error:", err);
-    return NextResponse.json(
-      { ok: false, error: "Could not send your enquiry. Please email us directly." },
-      { status: 502 }
-    );
+    console.error("[contact] Enquiry send failed before Resend responded.", err);
+    return NextResponse.json({ ok: false, error: sendError }, { status: 502 });
+  }
+}
+
+async function describeResendFailure(res: Response): Promise<string> {
+  const raw = await res.text();
+  try {
+    const body = JSON.parse(raw) as { name?: unknown; message?: unknown };
+    const name = typeof body.name === "string" ? body.name : "ResendError";
+    const message = typeof body.message === "string" ? body.message : raw;
+    return `${name}: ${message}`;
+  } catch {
+    return raw.slice(0, 2000) || "(empty body)";
   }
 }
