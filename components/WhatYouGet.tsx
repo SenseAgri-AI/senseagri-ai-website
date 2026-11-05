@@ -744,7 +744,7 @@ function IntegrationStrip() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ width: 6, height: 6, background: G, borderRadius: "50%" }} />
           <span style={{ fontFamily: "var(--font-inter), sans-serif", fontSize: 10, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.18em", color: G, textAlign: "center" }}>
-            Seamlessly integrates with every major poultry platform
+            Works with the house systems already on the farm
           </span>
           <span style={{ width: 6, height: 6, background: G, borderRadius: "50%" }} />
         </div>
@@ -777,19 +777,28 @@ export default function WhatYouGet() {
             Join our POC program.
           </h2>
           <p className="mt-5 max-w-2xl font-sans text-title-sm leading-relaxed text-on-surface-variant">
-            Work with us to explore what your farm data can do. We start with your challenges
-            and build a proof of concept with you, for your operation, using data science
-            to turn your signals into practical decisions.
+            A proof of concept on your houses. We connect the sensors you already run, or
+            install a Partner Programme kit — sensors, dashboard and setup — and turn them
+            into WhatsApp warnings and a weekly ROI report.{" "}
+            <a href="/offering" className="text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container">
+              See the POC offering
+            </a>
+            .
           </p>
-          <a href="/offering" className="mt-8 inline-flex items-center justify-center bg-primary px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white transition-colors hover:bg-primary-container">
-            Explore our POC offering
-          </a>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <a href="/contact" className="inline-flex items-center justify-center bg-primary px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white transition-colors hover:bg-primary-container">
+              Book a POC
+            </a>
+            <a href="/contact?intent=partner" className="inline-flex items-center justify-center px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low" style={{ border: "0.5px solid #6B7C80" }}>
+              For partners
+            </a>
+          </div>
           <POCDataFlow />
         </div>
       </div>
       <Block
         title="Your full operation, decoded."
-        body="Every metric in one place, with AI that flags exactly what needs action."
+        body="Temperature, air, feed, water and eggs in one place, with the reading that needs a decision called out."
         chips={["Live telemetry", "Health score", "AI recommendations", "Internal vet"]}
         mock={
           // Match the WhatsApp phone height so the two mocks read at the same
@@ -818,7 +827,7 @@ export default function WhatYouGet() {
 
       <Block
         title="Your farm's heartbeat, measured continuously."
-        body="Environmental sensors, cameras, acoustics, ammonia and CO₂ — a full pulse read of your farm's rhythm, running around the clock. We're hardware-agnostic — bring your own sensors from any vendor, or we supply at the lowest cost possible."
+        body="Temperature, humidity, CO₂, ammonia, feed, water and eggs, read continuously in the house. Hardware-agnostic — keep Big Dutchman, SKOV or DOL-class sensors you already have, or we supply and install them with the Partner Programme."
         chips={["Multi-modal", "Hardware-agnostic", "24/7 capture"]}
         mock={<SensingPanel />}
       />

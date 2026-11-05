@@ -8,6 +8,8 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RevealController from "@/components/RevealController";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
+import PartnerTrustBar from "@/components/PartnerTrustBar";
 
 const inter = localFont({
   src: "./fonts/Inter.ttf",
@@ -58,7 +60,7 @@ const jsonLd = {
       url: siteConfig.url,
       logo: `${siteConfig.url}/logo.svg`,
       description:
-        "AI intelligence platform for poultry farms of every size. Unifies farm sensor data into welfare, production and ROI insights with edge AI alerts.",
+        "Poultry intelligence for South African farms. Unifies house sensors into welfare and disease early warnings, WhatsApp alerts and weekly ROI reports.",
       slogan: "Every signal. Every decision.",
       foundingDate: "2025",
       areaServed: { "@type": "Country", name: "South Africa" },
@@ -116,7 +118,7 @@ const jsonLd = {
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web; WhatsApp alerts",
       description:
-        "Continuous sensing, edge-AI anomaly detection and weekly ROI reports for poultry operations. Monitors temperature, humidity, air quality, feed, water and hen-day production; flags anomalies and recommends action.",
+        "Continuous house sensing for temperature, humidity, CO₂, ammonia, feed, water and eggs. Welfare and disease early warnings on WhatsApp, and weekly ROI reports for poultry operations.",
       areaServed: { "@type": "Country", name: "South Africa" },
       publisher: { "@id": `${siteConfig.url}/#organization` }
     }
@@ -129,16 +131,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     // before hydration. Keep the exception at the root; children are still checked.
     <html lang="en" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
       <body>
+        <Script id="partner-bar-boot" strategy="beforeInteractive">
+          {`(function(){try{if(localStorage.getItem("senseagri.partnerBar.v1")!=="dismissed")return;if(document.getElementById("partner-bar-dismissed"))return;var s=document.createElement("style");s.id="partner-bar-dismissed";s.textContent=":root{--partner-bar-space:0px!important}.partner-trust-bar{display:none!important}";document.head.appendChild(s);}catch(e){}})();`}
+        </Script>
         <IgniteJsonLd />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Analytics />
-        <div className="flex min-h-screen flex-col bg-surface">
+        <div className="partner-bar-offset flex min-h-screen flex-col bg-surface">
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
+          <PartnerTrustBar />
           <RevealController />
         </div>
       </body>

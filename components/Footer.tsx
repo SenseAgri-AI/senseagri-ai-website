@@ -30,7 +30,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-4 font-sans text-title-sm text-on-secondary-variant">
-            Practical, resilient, and focused on measurable systems built for African farms.
+            Early warnings from the poultry house, for South African farms and the partners who supply them.
           </p>
         </div>
 

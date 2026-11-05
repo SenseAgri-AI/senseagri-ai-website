@@ -100,10 +100,10 @@ export default function HomePage() {
             <div className="relative w-fit max-w-full pr-[90px] sm:pr-[130px] lg:pr-[180px]">
               <h1
                 className="hero-reveal delay-1 font-display font-bold text-white"
-                style={{ fontSize: "clamp(1.65rem, 5.5vw, 5.2rem)", lineHeight: "0.98", letterSpacing: "-0.028em", maxWidth: "14ch" }}
+                style={{ fontSize: "clamp(1.65rem, 5.5vw, 5.2rem)", lineHeight: "0.98", letterSpacing: "-0.028em", maxWidth: "16ch" }}
               >
-                Intelligence<br />
-                <span className="intelligence-text-gradient">for your farm.</span>
+                Catch it early.<br />
+                <span className="intelligence-text-gradient">Act on WhatsApp.</span>
               </h1>
               <POCBadge />
             </div>
@@ -111,13 +111,14 @@ export default function HomePage() {
             {/* Sub */}
             <p
               className="hero-reveal delay-2 mt-6 font-sans text-white/70"
-              style={{ fontSize: "1rem", lineHeight: "1.6", maxWidth: "46ch" }}
+              style={{ fontSize: "1rem", lineHeight: "1.6", maxWidth: "48ch" }}
             >
-              Insight to see the problem before it costs you, and the
-              confidence to act — through precision AI farming.
+              House sensors become welfare and disease warnings on WhatsApp —
+              before a quiet problem becomes a loss.
             </p>
-            <div className="hero-reveal delay-3">
-              <a href="/contact" className="mt-8 inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Contact us</a>
+            <div className="hero-reveal delay-3 mt-8 flex flex-wrap items-center gap-3">
+              <a href="/contact" className="inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Book a POC</a>
+              <a href="/contact?intent=partner" className="inline-flex items-center justify-center px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white transition-colors hover:bg-white/10" style={{ border: "0.5px solid rgba(255,255,255,0.55)" }}>For partners</a>
             </div>
 
           </div>
@@ -134,9 +135,11 @@ export default function HomePage() {
             AI poultry monitoring and welfare intelligence for your farm.
           </h2>
           <p className="mt-3 font-sans text-white/70 leading-relaxed" style={{ fontSize: "0.9375rem", maxWidth: "68ch" }}>
-            Through our software, your data becomes understanding that improves production
-            and management, prevents losses, reduces risks, and optimises your farm — with
-            less room for error, less labour, and lower expenses.
+            SenseAgri unifies temperature, humidity, CO₂, ammonia, feed, water and egg
+            signals into welfare and disease warnings on WhatsApp, plus a weekly ROI report
+            for managers and executives. Hardware-agnostic across Big Dutchman, SKOV and
+            DOL-class sensors — for South African layer operations, and for feed, vet and
+            integrator partners.
           </p>
         </div>
       </div>
@@ -264,11 +267,19 @@ export default function HomePage() {
             className="font-display font-semibold tracking-[-0.025em] text-white"
             style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", lineHeight: "0.95" }}
           >
-            Stop guessing.<br />
-            <span className="intelligence-text-gradient">Start measuring.</span>
+            Know the house<br />
+            <span className="intelligence-text-gradient">before the loss.</span>
           </h2>
 
-          <a href="/contact" className="mt-8 inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Contact us</a>
+          <p className="mx-auto mt-6 max-w-xl font-sans text-sm leading-relaxed text-white/70">
+            Farmers book a proof of concept on their houses. Feed, vet and integrator
+            partners join the Partner Programme — sensors, dashboard and install, scoped together.
+          </p>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a href="/contact" className="inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Book a POC</a>
+            <a href="/contact?intent=partner" className="inline-flex items-center justify-center px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-white transition-colors hover:bg-white/10" style={{ border: "0.5px solid rgba(255,255,255,0.55)" }}>For partners</a>
+          </div>
 
           {/* Tagline */}
           <p className="mt-10 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-white/30">

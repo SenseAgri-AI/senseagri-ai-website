@@ -10,6 +10,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-bottom: var(--partner-bar-space);
 }
 
 body {
@@ -1155,6 +1156,178 @@ h1, h2, h3, h4 {
 
   .sensor-wheel-ring, .sensor-card { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ── Partner trust bar ──────────────────────────────────────────────────
+   Fixed to the viewport. Page padding uses the same height token so the
+   bar never covers the last CTA. A boot script zeros the token before
+   first paint when the bar was dismissed. */
+
+:root {
+  --partner-bar-h: 3.25rem;
+  --partner-bar-space: var(--partner-bar-h);
+}
+
+.partner-bar-offset {
+  padding-bottom: var(--partner-bar-space);
+}
+
+.partner-trust-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  height: var(--partner-bar-h);
+  padding-left: 1rem;
+  background: rgba(248, 250, 250, 0.94);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border-top: 0.5px solid #BEC8CA;
+  box-shadow: 0 -8px 32px rgba(0, 46, 53, 0.04);
+}
+
+.partner-trust-label {
+  flex: 0 0 auto;
+  margin: 0;
+  padding-right: 0.85rem;
+  border-right: 0.5px solid #BEC8CA;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #3F4849;
+  white-space: nowrap;
+}
+
+.partner-label-short { display: none; }
+
+.partner-marquee {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.partner-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+}
+
+.partner-list {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 0 1.35rem;
+  list-style: none;
+}
+
+.partner-list a {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.partner-list img {
+  display: block;
+  height: 26px;
+  width: auto;
+  max-width: 9.25rem;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.82;
+  transition: filter 150ms linear, opacity 150ms linear;
+}
+
+.partner-list img[data-logo="afgri"] { height: 32px; }
+.partner-list img[data-logo="annies"] { height: 36px; }
+.partner-list img[data-logo="dol"] { height: 22px; }
+.partner-list img[data-logo="lnx"] { height: 24px; }
+
+.partner-list a:hover img,
+.partner-list a:focus-visible img {
+  filter: none;
+  opacity: 1;
+}
+
+.partner-list a:focus-visible,
+.partner-dismiss:focus-visible {
+  outline: 2px solid #002E35;
+  outline-offset: 2px;
+}
+
+.partner-dismiss {
+  flex: 0 0 auto;
+  align-self: stretch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-left: 0.5px solid #BEC8CA;
+  background: transparent;
+  color: #002E35;
+  cursor: pointer;
+}
+
+.partner-dismiss:hover {
+  background: rgba(0, 46, 53, 0.06);
+}
+
+.partner-track {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+@media (max-width: 639px) {
+  :root { --partner-bar-h: 2.75rem; }
+  .partner-trust-bar { padding-left: 0.75rem; }
+  .partner-label-full { display: none; }
+  .partner-label-short { display: inline; }
+  .partner-trust-label { padding-right: 0.55rem; letter-spacing: 0.12em; }
+  .partner-list { gap: 0.7rem; padding: 0 0.45rem; }
+  .partner-list img[data-logo="afgri"] { height: 22px; }
+  .partner-list img[data-logo="annies"] { height: 28px; }
+  .partner-list img[data-logo="dol"] { height: 15px; }
+  .partner-list img[data-logo="lnx"] { height: 17px; }
+  .partner-trust-bar {
+    transition: transform 150ms linear;
+  }
+  /* Keep the enquiry button reachable while the mobile keyboard is open. */
+  body:has(input:focus, textarea:focus, select:focus) .partner-trust-bar {
+    transform: translateY(110%);
+  }
+}
+
+@media (max-width: 400px) {
+  .partner-trust-bar { padding-left: 0.55rem; }
+  .partner-trust-label {
+    font-size: 8px;
+    letter-spacing: 0.08em;
+    padding-right: 0.4rem;
+  }
+  .partner-list { gap: 0.4rem; padding: 0 0.2rem; }
+  .partner-list img[data-logo="afgri"] { height: 18px; }
+  .partner-list img[data-logo="annies"] { height: 22px; }
+  .partner-list img[data-logo="dol"] { height: 13px; }
+  .partner-list img[data-logo="lnx"] { height: 14px; }
+  .partner-dismiss { width: 2.25rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partner-list img { transition: none; }
+  .partner-trust-bar { transition: none; }
+  body:has(input:focus, textarea:focus, select:focus) .partner-trust-bar {
+    transform: none;
+    visibility: hidden;
+  }
 }
 
 /* Hosted wiki/blog brand tokens */
