@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm test && next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "node --import tsx --test lib/sitemapData.test.ts lib/contactFrom.test.ts",
     "validate:wiki": "tsx scripts/validate-wiki.ts"
   },
   "dependencies": {

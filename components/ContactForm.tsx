@@ -69,16 +69,20 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
+      const payload = (await response.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
 
-      if (!response.ok) {
-        throw new Error("Request failed.");
+      const serverError = typeof payload?.error === "string" ? payload.error : "";
+      if (!response.ok || payload?.ok !== true) {
+        setStatus("error");
+        setError(serverError || "Could not send your enquiry. Please email us directly.");
+        return;
       }
 
       setStatus("success");
       setFormData(initialState);
-    } catch (err) {
+    } catch {
       setStatus("error");
-      setError("Something went wrong. Please email us directly.");
+      setError("Could not send your enquiry. Please email us directly.");
     }
   };
 
@@ -144,6 +148,7 @@ export default function ContactForm() {
 
       {status === "error" && error ? (
         <p
+          role="alert"
           className="font-sans text-title-sm px-3 py-2"
           style={{ color: "#B91C1C", background: "rgba(185,28,28,0.06)", borderLeft: "2px solid #B91C1C" }}
         >

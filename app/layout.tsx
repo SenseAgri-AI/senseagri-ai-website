@@ -7,7 +7,10 @@ import { siteConfig } from "@/lib/site";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import RevealController from "@/components/RevealController";
+import GoogleAnalytics from "@/components/Analytics";
 import { Analytics } from "@vercel/analytics/next";
+
+const googleSiteVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim();
 
 const inter = localFont({
   src: "./fonts/Inter.ttf",
@@ -43,7 +46,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: siteConfig.description
-  }
+  },
+  ...(googleSiteVerification ? { verification: { google: googleSiteVerification } } : {})
   // Browser-tab + iOS favicon come from app/icon.tsx and app/apple-icon.tsx
   // via Next 14's file-based convention — no metadata.icons override needed.
 };
@@ -135,6 +139,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <Analytics />
+        <GoogleAnalytics />
         <div className="flex min-h-screen flex-col bg-surface">
           <Navbar />
           <main className="flex-1">{children}</main>

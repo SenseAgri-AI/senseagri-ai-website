@@ -1,25 +1,24 @@
 import Script from "next/script";
 
 export default function Analytics() {
-  const analyticsId = process.env.NEXT_PUBLIC_ANALYTICS_ID;
+  const analyticsId = process.env.NEXT_PUBLIC_ANALYTICS_ID?.trim();
 
   if (!analyticsId) {
     return null;
   }
 
-  // Replace with your preferred analytics provider and ID.
   return (
     <>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(analyticsId)}`}
         strategy="afterInteractive"
       />
       <Script id="ga-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);} 
+          function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${analyticsId}');
+          gtag('config', ${JSON.stringify(analyticsId)});
         `}
       </Script>
     </>
