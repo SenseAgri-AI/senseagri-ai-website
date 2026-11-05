@@ -1,13 +1,13 @@
 import Script from "next/script";
 
 export default function Analytics() {
-  const analyticsId = process.env.NEXT_PUBLIC_ANALYTICS_ID;
+  const analyticsId = process.env.NEXT_PUBLIC_ANALYTICS_ID?.trim();
 
-  if (!analyticsId) {
+  // GA stays off until NEXT_PUBLIC_ANALYTICS_ID is set (GA4 measurement ID, e.g. G-XXXXXXXX).
+  if (!analyticsId || !/^[A-Za-z0-9_-]+$/.test(analyticsId)) {
     return null;
   }
 
-  // Replace with your preferred analytics provider and ID.
   return (
     <>
       <Script
@@ -17,9 +17,9 @@ export default function Analytics() {
       <Script id="ga-init" strategy="afterInteractive">
         {`
           window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);} 
+          function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${analyticsId}');
+          gtag('config', ${JSON.stringify(analyticsId)});
         `}
       </Script>
     </>
