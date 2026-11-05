@@ -12,6 +12,18 @@ type Payload = {
   message?: string;
 };
 
+async function describeResendError(res: Response): Promise<string> {
+  const raw = await res.text();
+  try {
+    const parsed = JSON.parse(raw) as { message?: unknown; name?: unknown };
+    const name = typeof parsed.name === "string" ? parsed.name : "error";
+    const message = typeof parsed.message === "string" ? parsed.message : raw;
+    return `${name}: ${message}`.slice(0, 2000);
+  } catch {
+    return raw.slice(0, 2000);
+  }
+}
+
 // Escape user input before placing it inside the HTML email body.
 function esc(value: string) {
   return value
@@ -87,9 +99,12 @@ export async function POST(request: Request) {
     </div>
   </div>`;
 
-  // Where the enquiry is delivered. Falls back to the public contact address,
-  // but until a domain is verified in Resend this must be the Resend account email.
-  const recipient = process.env.CONTACT_FORM_TO || siteConfig.links.email;
+  // Where the enquiry is delivered. Falls back to the public contact address.
+  const recipient = process.env.CONTACT_FORM_TO?.trim() || siteConfig.links.email;
+  // Sandbox sender onboarding@resend.dev only delivers to the Resend account owner.
+  // Default to the site address; the domain must be verified in Resend or the send fails.
+  const from =
+    process.env.CONTACT_FORM_FROM?.trim() || `SenseAgri AI <${siteConfig.links.email}>`;
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -99,7 +114,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        from: "SenseAgri AI Website <onboarding@resend.dev>",
+        from,
         to: [recipient],
         reply_to: data.email,
         subject: `Pilot enquiry — ${data.name} (${data.company})`,
@@ -108,8 +123,10 @@ export async function POST(request: Request) {
     });
 
     if (!res.ok) {
-      const detail = await res.text();
-      console.error("Resend send failed:", res.status, detail);
+      const detail = await describeResendError(res);
+      console.error(
+        `[contact] Resend rejected the enquiry (HTTP ${res.status}). from=${from} to=${recipient}. ${detail}`
+      );
       return NextResponse.json(
         { ok: false, error: "Could not send your enquiry. Please email us directly." },
         { status: 502 }
