@@ -1,7 +1,7 @@
 "use client";
 
 import type { ChangeEvent, FormEvent } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/Button";
 
 type FormState = {
@@ -34,6 +34,12 @@ export default function ContactForm() {
   const [formData, setFormData] = useState<FormState>(initialState);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [error, setError] = useState<string | null>(null);
+  const [partnerIntent, setPartnerIntent] = useState(false);
+
+  useEffect(() => {
+    const intent = new URLSearchParams(window.location.search).get("intent");
+    if (intent === "partner") setPartnerIntent(true);
+  }, []);
 
   const updateField = (field: keyof FormState) =>
     (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -94,6 +100,11 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-5">
+      {partnerIntent ? (
+        <p className="font-sans text-title-sm text-on-surface-variant">
+          Feed, vet and integrator partners — tell us how you would like to work with SenseAgri.
+        </p>
+      ) : null}
       <div className="grid gap-5 md:grid-cols-2">
         <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
           Name *
