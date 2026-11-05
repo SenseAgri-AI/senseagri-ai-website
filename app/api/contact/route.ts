@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { contactFromAddress, isResendSandboxFrom } from "@/lib/contactFrom";
 import { siteConfig } from "@/lib/site";
 
 type Payload = {
@@ -87,9 +88,15 @@ export async function POST(request: Request) {
     </div>
   </div>`;
 
-  // Where the enquiry is delivered. Falls back to the public contact address,
-  // but until a domain is verified in Resend this must be the Resend account email.
+  // Inbox that receives the enquiry. Override with CONTACT_FORM_TO.
   const recipient = process.env.CONTACT_FORM_TO || siteConfig.links.email;
+  // Sender must belong to a domain verified in Resend. Override with CONTACT_FORM_FROM.
+  const from = contactFromAddress();
+  if (isResendSandboxFrom(from)) {
+    console.error(
+      `[contact] Sender "${from}" is a Resend sandbox address. Mail from onboarding@resend.dev is only delivered to the Resend account owner. Set CONTACT_FORM_FROM to an address on a domain verified in Resend.`
+    );
+  }
 
   try {
     const res = await fetch("https://api.resend.com/emails", {
@@ -99,7 +106,7 @@ export async function POST(request: Request) {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        from: "SenseAgri AI Website <onboarding@resend.dev>",
+        from,
         to: [recipient],
         reply_to: data.email,
         subject: `Pilot enquiry — ${data.name} (${data.company})`,
@@ -107,9 +114,12 @@ export async function POST(request: Request) {
       })
     });
 
-    if (!res.ok) {
-      const detail = await res.text();
-      console.error("Resend send failed:", res.status, detail);
+    const raw = await res.text();
+    const parsed = parseResendBody(raw);
+    if (!res.ok || !parsed.id) {
+      console.error(
+        `[contact] Resend rejected the enquiry (HTTP ${res.status}) from="${from}" to="${recipient}": ${formatResendError(parsed, raw)}`
+      );
       return NextResponse.json(
         { ok: false, error: "Could not send your enquiry. Please email us directly." },
         { status: 502 }
@@ -118,10 +128,26 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Contact form error:", err);
+    console.error("[contact] Enquiry failed before Resend accepted it:", err);
     return NextResponse.json(
       { ok: false, error: "Could not send your enquiry. Please email us directly." },
       { status: 502 }
     );
   }
+}
+
+type ResendBody = { id?: string; name?: string; message?: string };
+
+function parseResendBody(raw: string): ResendBody {
+  try {
+    const body = JSON.parse(raw) as ResendBody;
+    return body && typeof body === "object" && !Array.isArray(body) ? body : {};
+  } catch {
+    return {};
+  }
+}
+
+function formatResendError(body: ResendBody, raw: string): string {
+  const named = [body.name, body.message].filter(Boolean).join(": ");
+  return named || raw || "empty response";
 }
