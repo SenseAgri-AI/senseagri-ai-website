@@ -1,53 +1,59 @@
 import type { MetadataRoute } from "next";
 import igniteSitemap, { mergeSitemap } from "@ignite-agent/agent/sitemap";
-import { siteConfig } from "@/lib/site";
-import { pageLastModified } from "@/lib/pageMeta";
-import { lastReviewed, wikiEntities, wikiUrl } from "@/lib/wiki/load";
+import {
+  buildSitemapEntries,
+  normalizeSitemapEntries,
+  sitemapBaseUrl,
+  staticSitemapEntries,
+  type SitemapEntry
+} from "@/lib/sitemapEntries";
+
+function withIgnite(local: SitemapEntry[], ignite: MetadataRoute.Sitemap): SitemapEntry[] {
+  const extra = normalizeSitemapEntries(
+    ignite.map(({ url, lastModified, changeFrequency, priority }) => ({
+      url,
+      lastModified,
+      changeFrequency,
+      priority
+    }))
+  );
+  return normalizeSitemapEntries(mergeSitemap(local, extra));
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl =
-    process.env.NODE_ENV === "production" ? siteConfig.url : "http://localhost:3000";
+  const baseUrl = sitemapBaseUrl();
+  try {
+    const local = buildSitemapEntries({ baseUrl });
+    if (process.env.NODE_ENV !== "production") return local;
 
-  const routes: Array<{ path: string; url: string }> = [
-    { path: "/", url: `${baseUrl}/` },
-    { path: "/offering", url: `${baseUrl}/offering` },
-    { path: "/capabilities", url: `${baseUrl}/capabilities` },
-    { path: "/faq", url: `${baseUrl}/faq` },
-    { path: "/about", url: `${baseUrl}/about` },
-    { path: "/contact", url: `${baseUrl}/contact` },
-    { path: "/blog", url: `${baseUrl}/blog` },
-    { path: "/blog/flock-night-rest-score", url: `${baseUrl}/blog/flock-night-rest-score` },
-    { path: "/automate-your-poultry-operation/", url: `${baseUrl}/automate-your-poultry-operation/` }
-  ];
-
-  const wiki = wikiEntities().map((entity) => ({
-    url: `${baseUrl}${wikiUrl(entity.slug)}`,
-    lastModified: `${lastReviewed(entity)}T00:00:00.000Z`
-  }));
-  const wikiIndexDate = wiki
-    .map((row) => row.lastModified)
-    .sort()
-    .at(-1);
-
-  const local = [
-    ...routes.map(({ path, url }) => ({
-      url,
-      lastModified: new Date(pageLastModified[path]).toISOString()
-    })),
-    { url: `${baseUrl}${wikiUrl()}`, lastModified: wikiIndexDate ?? new Date().toISOString() },
-    ...wiki
-  ];
-
-  if (process.env.NODE_ENV !== "production") {
-    return local;
+    try {
+      return withIgnite(local, await igniteSitemap());
+    } catch (error) {
+      console.error("[sitemap] ignite merge skipped:", error);
+      return local;
+    }
+  } catch (error) {
+    console.error("[sitemap] generation failed; serving static routes:", error);
+    try {
+      return staticSitemapEntries(baseUrl);
+    } catch (fallbackError) {
+      console.error("[sitemap] static fallback failed:", fallbackError);
+      return emergencyStaticEntries(baseUrl);
+    }
   }
+}
 
-  const ignite = (await igniteSitemap()).map(({ url, lastModified, changeFrequency, priority }) => ({
-    url,
-    lastModified: lastModified instanceof Date ? lastModified.toISOString() : lastModified,
-    changeFrequency,
-    priority
-  }));
-
-  return mergeSitemap(local, ignite);
+function emergencyStaticEntries(baseUrl: string): MetadataRoute.Sitemap {
+  const base = baseUrl.replace(/\/+$/, "");
+  return [
+    { url: `${base}/` },
+    { url: `${base}/offering` },
+    { url: `${base}/capabilities` },
+    { url: `${base}/faq` },
+    { url: `${base}/about` },
+    { url: `${base}/contact` },
+    { url: `${base}/blog` },
+    { url: `${base}/blog/flock-night-rest-score` },
+    { url: `${base}/automate-your-poultry-operation` }
+  ];
 }

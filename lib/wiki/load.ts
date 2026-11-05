@@ -39,17 +39,17 @@ function parseEntityFile(filePath: string): WikiEntity {
   return entity;
 }
 
-export function loadWikiEntities(): WikiEntity[] {
-  if (!fs.existsSync(WIKI_DIR)) {
-    throw new WikiValidationError("Missing content/wiki directory");
+export function loadWikiEntities(wikiDir: string = WIKI_DIR): WikiEntity[] {
+  if (!fs.existsSync(wikiDir)) {
+    throw new WikiValidationError(`Missing wiki directory: ${wikiDir}`);
   }
 
   const files = fs
-    .readdirSync(WIKI_DIR)
+    .readdirSync(wikiDir)
     .filter((name) => name.endsWith(".json") && !name.startsWith("_"))
     .sort();
 
-  const entities = files.map((name) => parseEntityFile(path.join(WIKI_DIR, name)));
+  const entities = files.map((name) => parseEntityFile(path.join(wikiDir, name)));
 
   const slugs = entities.map((entity) => entity.slug);
   if (new Set(slugs).size !== slugs.length) {
