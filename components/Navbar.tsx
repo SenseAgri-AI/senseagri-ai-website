@@ -7,6 +7,9 @@ import Button from "@/components/Button";
 import LogoMark from "@/components/LogoMark";
 
 const navLinks = [
+  { label: "Vision", href: "/computer-vision" },
+  { label: "Agents", href: "/ai-farm-agents" },
+  { label: "Security", href: "/security" },
   { label: "Capabilities", href: "/capabilities" },
   { label: "Offering", href: "/offering" },
   { label: "About", href: "/about" },
@@ -41,7 +44,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop nav — quiet, precise labels */}
-        <nav className="hidden items-center gap-7 lg:flex">
+        <nav className="hidden items-center gap-4 xl:flex">
           {navLinks.map((link) => {
             const active = pathname === link.href;
             return (
@@ -61,14 +64,14 @@ export default function Navbar() {
           })}
         </nav>
 
-        <div className="hidden lg:flex">
+        <div className="hidden xl:flex">
           <Button href="/contact">Contact us</Button>
         </div>
 
         {/* Mobile menu button */}
         <button
           type="button"
-          className="inline-flex items-center justify-center p-2 text-on-surface lg:hidden"
+          className="inline-flex items-center justify-center p-2 text-on-surface xl:hidden"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-menu"

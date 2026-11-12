@@ -7,7 +7,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "SenseAgri AI — South Africa's Poultry Intelligence Platform";
+export const alt = "SenseAgri AI — computer vision and AI agents for the poultry farm";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -60,7 +60,7 @@ export default function OpenGraphImage() {
                 textTransform: "uppercase"
               }}
             >
-              South Africa's Poultry Intelligence Platform
+              Computer vision · AI farm agents
             </div>
 
             {/* Wordmark */}
@@ -86,7 +86,7 @@ export default function OpenGraphImage() {
                 marginTop: 4
               }}
             >
-              Continuous sensing, edge AI alerts, and weekly ROI reports — engineered for South African poultry operations.
+              Vision is the farm's data layer. Agents connect securely to data you still own.
             </div>
           </div>
         </div>

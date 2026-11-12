@@ -26,7 +26,7 @@ const manrope = localFont({
   weight: "400 800"
 });
 
-const DEFAULT_TITLE = "SenseAgri AI — Poultry Farm Intelligence for South Africa";
+const DEFAULT_TITLE = "SenseAgri AI — Computer vision and AI agents for the poultry farm";
 const googleSiteVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim();
 
 export const metadata: Metadata = {
@@ -63,7 +63,7 @@ const jsonLd = {
       url: siteConfig.url,
       logo: `${siteConfig.url}/logo.svg`,
       description:
-        "Poultry intelligence for South African farms. Unifies house sensors into welfare and disease early warnings, WhatsApp alerts and weekly ROI reports.",
+        "Computer vision is the poultry farm's data layer. AI agents connect securely to farm and company data the customer still owns, catch issues, build reports, and keep the operation running.",
       slogan: "Every signal. Every decision.",
       foundingDate: "2025",
       areaServed: { "@type": "Country", name: "South Africa" },
@@ -119,9 +119,9 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       name: "SenseAgri AI",
       applicationCategory: "BusinessApplication",
-      operatingSystem: "Web; WhatsApp alerts",
+      operatingSystem: "Web; on-farm edge; WhatsApp alerts",
       description:
-        "Continuous house sensing for temperature, humidity, CO₂, ammonia, feed, water and eggs. Welfare and disease early warnings on WhatsApp, and weekly ROI reports for poultry operations.",
+        "Egg-counting cameras on A-frame layer cages, broiler bird activity, and house sensing for temperature, humidity, CO₂, ammonia, feed and water. AI agents connect securely to data the farm still owns.",
       areaServed: { "@type": "Country", name: "South Africa" },
       publisher: { "@id": `${siteConfig.url}/#organization` }
     }

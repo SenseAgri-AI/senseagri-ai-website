@@ -3,6 +3,9 @@ import LogoMark from "@/components/LogoMark";
 import { siteConfig } from "@/lib/site";
 
 const footerLinks = [
+  { label: "Computer vision", href: "/computer-vision" },
+  { label: "AI farm agents", href: "/ai-farm-agents" },
+  { label: "Security & data ownership", href: "/security" },
   { label: "Capabilities", href: "/capabilities" },
   { label: "Offering", href: "/offering" },
   { label: "About", href: "/about" },
@@ -30,7 +33,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-4 font-sans text-title-sm text-on-secondary-variant">
-            Early warnings from the poultry house, for South African farms and the partners who supply them.
+            Computer vision as the farm’s data layer, and AI agents that connect securely to data you still own.
           </p>
         </div>
 

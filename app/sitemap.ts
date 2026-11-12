@@ -47,6 +47,9 @@ function emergencyStaticEntries(baseUrl: string): MetadataRoute.Sitemap {
   const base = baseUrl.replace(/\/+$/, "");
   return [
     { url: `${base}/` },
+    { url: `${base}/computer-vision` },
+    { url: `${base}/ai-farm-agents` },
+    { url: `${base}/security` },
     { url: `${base}/offering` },
     { url: `${base}/capabilities` },
     { url: `${base}/faq` },

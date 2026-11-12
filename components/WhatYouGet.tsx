@@ -777,9 +777,9 @@ export default function WhatYouGet() {
             Join our POC program.
           </h2>
           <p className="mt-5 max-w-2xl font-sans text-title-sm leading-relaxed text-on-surface-variant">
-            A proof of concept on your houses. We connect the sensors you already run, or
-            install a Partner Programme kit — sensors, dashboard and setup — and turn them
-            into WhatsApp warnings and a weekly ROI report.{" "}
+            A proof of concept on your houses. We connect the sensors and vision you already
+            run, or install a Partner Programme kit, and put agents on the data you own —
+            WhatsApp when a person needs to act, and a weekly ROI report. The data stays yours.{" "}
             <a href="/offering" className="text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container">
               See the POC offering
             </a>

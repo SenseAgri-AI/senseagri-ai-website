@@ -18,7 +18,7 @@ const whatsappShots: WhatsAppShot[] = [
 export const metadata: Metadata = {
   title: "About — Digital Husbandry for African Farms",
   description:
-    "SenseAgri AI turns poultry farm sensor data into action — a 'digital husbandry' platform for African operations. Meet the team and the mission.",
+    "SenseAgri AI builds computer vision as the farm's data layer and AI agents that connect securely to data the farm still owns. Meet the team.",
   alternates: { canonical: "/about" }
 };
 
@@ -94,7 +94,7 @@ export default function AboutPage() {
           </div>
           <div className="lg:pt-1">
             <p className="font-sans text-base leading-relaxed text-on-surface-variant">
-              SenseAgri AI is a poultry intelligence platform for farms of every size across Africa. Our mission is to close the intelligence gap: generate insights and automation with real ROI, understand cause and effect, and empower every farmer to make data-driven decisions — regardless of scale.
+              SenseAgri AI is a poultry intelligence platform for farms across Africa. Computer vision — egg-counting cameras on A-frame layer cages, bird activity in the broiler house — is the data layer. AI agents connect securely to that data and to the company records a farm chooses to open, catch issues, and keep the operation moving. The data remains the farm’s. Our mission is to close the intelligence gap without taking ownership of the record that closes it.
             </p>
             <Link
               href="/capabilities"

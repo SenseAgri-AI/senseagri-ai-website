@@ -9,7 +9,7 @@ import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "How SenseAgri AI's poultry monitoring platform works — sensors, causal AI, integrations, Partner Programme and hardware. Answers for poultry farms of every size in South Africa.",
+    "How SenseAgri AI works — computer vision on the A-frame, AI farm agents, who owns the data, sensors, integrations and the Partner Programme.",
   alternates: { canonical: "/faq" }
 };
 
@@ -45,7 +45,17 @@ const faqs = [
   {
     question: "Does SenseAgri use computer vision for poultry monitoring?",
     answer:
-      "Yes, and the vision layer is split by farm type. For layer and breeder houses, vision-based systems count eggs continuously. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm's own edge compute — no cloud round-trip per frame."
+      "Yes. Computer vision is the farm’s data layer. On layer houses, egg-counting cameras are mounted on the A-frame cages and count eggs continuously. Breeder houses use the same vision approach to count eggs. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm’s own edge compute — no cloud round-trip per frame. The environmental sensor suite is what runs on farms today; vision is proven on a farm’s own houses in the proof of concept."
+  },
+  {
+    question: "What do the AI farm agents do?",
+    answer:
+      "They connect securely to the farm’s data and the company’s data through connectors, and they are there to understand that farm. They catch issues, build reports, follow the birds, follow the work and the open issues, spot inefficiencies, and keep analysing around the clock. Following the work means the jobs and issues already in the records you connect — not cameras pointed at people. Alerts that need a person still arrive on WhatsApp with the action to take."
+  },
+  {
+    question: "Who owns the data SenseAgri connects to?",
+    answer:
+      "You do. SenseAgri connects to the farm and company data the vision layer and the agents need. That connection does not transfer ownership — we connect to the data, we do not take it. You choose what is connected. Vision inference runs on the farm’s own edge compute, and house sensing runs on-site, including when connectivity is patchy."
   },
   {
     question: "How does acoustic monitoring work in a poultry house?",
@@ -94,7 +104,7 @@ export default function FAQPage() {
         eyebrow="FAQ"
         headline="Answers to the"
         accentLine="most-asked questions."
-        sub="How the platform works, what's in the pilot, and how it fits with the equipment you already have."
+        sub="How vision, the agents and data ownership work, and how the platform fits the equipment you already have."
       />
 
       <section className="section-padding bg-surface">

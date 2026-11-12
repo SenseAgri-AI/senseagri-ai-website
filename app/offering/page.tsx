@@ -7,7 +7,7 @@ import { breadcrumbGraph } from "@/lib/jsonLd";
 export const metadata: Metadata = {
   title: "Offering — Farm Data Proof of Concept Program",
   description:
-    "Join SenseAgri AI’s proof of concept program. Work with our team to explore data science solutions for your farm, with scope and pricing tailored to your needs.",
+    "A proof of concept on your houses: computer vision as the data layer, AI agents on data you still own, scoped and priced with you.",
   alternates: { canonical: "/offering" }
 };
 
@@ -55,6 +55,13 @@ export default function OfferingPage() {
                 production and management, prevent losses, reduce risks, and optimise
                 your operation with less room for error, labour, and expense.
               </p>
+              <p>
+                That work can include the vision data layer — egg-counting cameras on
+                A-frame layer cages, bird activity where broilers are raised — and AI
+                agents that connect securely to the farm and company data you already
+                hold. The data stays yours. We agree what is connected before anything
+                is switched on.
+              </p>
             </div>
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -66,9 +73,13 @@ export default function OfferingPage() {
             ))}
           </div>
           <p className="mt-8 font-sans text-title-sm text-on-surface-variant">
-            Explore our{" "}
+            Explore{" "}
+            <Link href="/computer-vision" className="text-primary underline underline-offset-4">computer vision</Link>,{" "}
+            <Link href="/ai-farm-agents" className="text-primary underline underline-offset-4">AI farm agents</Link>,{" "}
+            <Link href="/security" className="text-primary underline underline-offset-4">security and data ownership</Link>
+            {" "}and the wider{" "}
             <Link href="/capabilities" className="text-primary underline underline-offset-4">capabilities</Link>
-            {" "}to see what we can bring to your proof of concept.
+            {" "}a proof of concept can draw on.
           </p>
         </div>
       </section>

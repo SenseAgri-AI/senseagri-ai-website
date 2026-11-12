@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "SenseAgri AI",
   description:
-    "SenseAgri AI unifies poultry-house sensors — temperature, humidity, CO₂, ammonia, feed, water and eggs — into welfare monitoring, disease early warnings on WhatsApp, and weekly ROI reports for South African operations.",
+    "Computer vision is the farm's data layer — egg-counting cameras on A-frame layer cages, bird activity in the broiler house. AI agents connect securely to the data you own, catch issues, and keep the operation running. Your data stays yours.",
   url: "https://www.senseagriai.com",
   links: {
     email: "ryan@senseagriai.com",

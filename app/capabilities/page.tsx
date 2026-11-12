@@ -6,9 +6,9 @@ import { breadcrumbGraph } from "@/lib/jsonLd";
 import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
 export const metadata: Metadata = {
-  title: "Poultry Monitoring Capabilities — Welfare, Vision & Disease Alerts",
+  title: "Poultry Monitoring Capabilities — Vision, Agents & Welfare",
   description:
-    "Intelligent poultry farm monitoring — environmental sensors, computer vision, acoustic welfare signals, gut-health tracking, weight and HPED forecasting, disease detection, and root cause analysis for commercial poultry operations.",
+    "Computer vision as the farm's data layer, AI agents on data you still own, plus environmental sensors, acoustic welfare signals, forecasting, disease detection, and root cause analysis.",
   alternates: { canonical: "/capabilities" }
 };
 
@@ -24,6 +24,12 @@ type Capability = {
 
 const capabilities: Capability[] = [
   {
+    eyebrow: "AI farm agents",
+    title: "Agents that understand the farm, on data you still own.",
+    body: "AI agents connect securely to the farm’s data and the company’s data through connectors. They catch issues, build reports, follow the birds, the work and the open issues, spot inefficiencies, and keep analysing around the clock. Following the work means jobs and issues already in your records — not cameras on people. You own the data. SenseAgri connects to it and does not take it.",
+    tags: ["Secure connectors", "Issues and reports", "Birds, work, open issues", "Your data stays yours"]
+  },
+  {
     eyebrow: "Poultry environmental monitoring",
     title: "Every reading in the house, around the clock.",
     body: "LoRaWAN sensors track temperature, humidity, gas, CO₂, ammonia, feed and water in each poultry house. Baselines are learned per house, so the platform flags anomalies against the room's own history — not a generic threshold that ignores your climate, breed, or age of flock.",
@@ -31,9 +37,9 @@ const capabilities: Capability[] = [
   },
   {
     eyebrow: "Computer vision for poultry",
-    title: "Egg counting for layers, bird tracking for broilers.",
-    body: "For layer and breeder houses, vision-based systems count eggs continuously — no manual rounds, no spreadsheet reconciliation. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm's own edge compute — no cloud round-trip per frame.",
-    tags: ["Egg counting — layer & breeder", "Bird tracking — broiler activity", "Edge inference", "CCTV partner integration"]
+    title: "The farm’s data layer — cages, birds, and a house record.",
+    body: "On layer houses, egg-counting cameras are mounted on the A-frame cages and count continuously, so production is not waiting on a manual round. Breeder houses use the same vision approach to count eggs. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm’s own edge compute — no cloud round-trip per frame. The count joins the house record. It stays your data.",
+    tags: ["A-frame egg counting", "Bird tracking — broiler activity", "Edge inference", "CCTV you already use"]
   },
   {
     eyebrow: "Acoustic poultry welfare monitoring",
@@ -83,7 +89,7 @@ export default function CapabilitiesPage() {
         eyebrow="Capabilities"
         headline="Poultry welfare & production"
         accentLine="intelligence, on one platform."
-        sub="AI poultry monitoring for your farm — environmental sensors, computer vision, acoustic welfare signals, weight and HPED forecasting, disease detection, root cause analysis, and production reporting."
+        sub="Computer vision as the data layer, AI agents on data you still own, and the sensing, acoustic, forecasting and reporting work that sits underneath."
       />
 
       {/* Capability sections — alternating surfaces for rhythm */}
@@ -166,7 +172,12 @@ export default function CapabilitiesPage() {
           </p>
           <Link href="/contact" className="mt-8 inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Contact us</Link>
           <p className="mt-5 font-sans text-title-sm text-white/60">
-            Explore our{" "}
+            <Link href="/computer-vision" className="text-white/85 underline underline-offset-2 transition-colors duration-150 hover:text-white">Computer vision</Link>
+            {" · "}
+            <Link href="/ai-farm-agents" className="text-white/85 underline underline-offset-2 transition-colors duration-150 hover:text-white">AI farm agents</Link>
+            {" · "}
+            <Link href="/security" className="text-white/85 underline underline-offset-2 transition-colors duration-150 hover:text-white">Data ownership</Link>
+            {" · "}
             <Link href="/offering" className="text-white/85 underline underline-offset-2 transition-colors duration-150 hover:text-white">
               proof of concept offering
             </Link>
