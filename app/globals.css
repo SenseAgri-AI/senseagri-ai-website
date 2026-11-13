@@ -699,24 +699,6 @@ h1, h2, h3, h4 {
   .system-diagram-img { width: 820px; min-width: 820px; }
 }
 
-/* Impact slider (ImpactSlider) */
-
-.impact-slide {
-  padding: 32px 44px;
-  grid-template-columns: auto 1fr;
-  gap: 36px;
-}
-
-.impact-numeral {
-  border-right: 0.5px solid #BEC8CA;
-  padding-right: 36px;
-}
-
-@media (max-width: 640px) {
-  .impact-slide { padding: 28px 22px; grid-template-columns: 1fr; gap: 12px; }
-  .impact-numeral { border-right: none; padding-right: 0; font-size: 60px !important; }
-}
-
 /* Sensor wheel — slow rotation of the dashed gold ring (idle ambient motion) */
 .sensor-wheel-ring {
   transform-box: fill-box;
@@ -734,11 +716,7 @@ h1, h2, h3, h4 {
   display: none;
 }
 
-/* ── Block 04 weekly report — stacked-pages effect ────────────────────────
-   Wraps the main report card. Two pseudo-elements sit behind it, each
-   offset down + right, so the eye reads "multi-page weekly report" sitting
-   on the desk. Both stay narrower than the top card so the offset is
-   visible on the right edge as well as the bottom. */
+/* Stacked pages behind a report card. */
 
 .report-stack {
   position: relative;

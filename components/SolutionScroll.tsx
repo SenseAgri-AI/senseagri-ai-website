@@ -19,23 +19,23 @@ const modules = [
   },
   {
     id: "MOD-02",
-    title: "Edge AI & Alerts",
+    title: "Alerts",
     description:
-      "Jetson-based on-device processing delivers fast anomaly detection and resilient alerts — even when connectivity drops.",
-    footer: "Edge-Resilient · Always On",
+      "The record is checked for changes a person should look at.",
+    footer: "For a person to check",
     Icon: AlertIcon,
     bg: "#002E35",
     accent: "#13AAA5",
     fromLeft: false,
     image: "/image.jpeg",
-    imageAlt: "Edge AI compute board",
+    imageAlt: "Compute board",
   },
   {
     id: "MOD-03",
     title: "AI Operating System",
     description:
       "Dashboards, benchmarking, and what-if simulations translate raw signals into the next best action for your team.",
-    footer: "Decisions · ROI-Verified",
+    footer: "For the team",
     Icon: ChartIcon,
     bg: "#0F172A",
     accent: "#087C83",

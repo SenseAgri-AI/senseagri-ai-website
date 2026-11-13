@@ -40,7 +40,7 @@ export default function ComputerVisionPage() {
         </p>
       </header>
 
-      <section className="mx-auto grid max-w-6xl grid-cols-2 gap-3 px-6 sm:gap-4 sm:px-10">
+      <section className="mx-auto grid max-w-6xl grid-cols-1 gap-6 px-6 md:grid-cols-2 md:gap-4 sm:px-10">
         <figure>
           <div className="relative aspect-[3.8/1] bg-surface-container-low" style={{ border: "0.5px solid #BEC8CA" }}>
             <Image
@@ -48,7 +48,7 @@ export default function ComputerVisionPage() {
               alt="A-frame cages from an egg-counting camera."
               fill
               priority
-              sizes="(min-width: 1152px) 560px, 50vw"
+              sizes="(min-width: 768px) 560px, 100vw"
               className="object-cover object-center"
             />
           </div>
@@ -60,7 +60,7 @@ export default function ComputerVisionPage() {
               src="/images/real/vision-aframe-detect-1.webp"
               alt="The same A-frame view with the count line and a box on each egg."
               fill
-              sizes="(min-width: 1152px) 560px, 50vw"
+              sizes="(min-width: 768px) 560px, 100vw"
               className="object-cover object-center"
             />
           </div>

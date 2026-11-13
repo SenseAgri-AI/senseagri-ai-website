@@ -23,8 +23,8 @@ const PRIMARY = "#002E35";
 
 const values = [
   {
-    title: "Measurable ROI",
-    desc: "We tie insights to quantifiable outcomes and track them from day one of your pilot."
+    title: "Clear results",
+    desc: "We tie what we show you to the work on your farm, from the first day of a pilot."
   },
   {
     title: "Trust first",

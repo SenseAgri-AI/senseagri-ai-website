@@ -45,7 +45,7 @@ const faqs = [
   {
     question: "Do I need to buy or install any hardware myself?",
     answer:
-      "No. Sensors, edge compute and installation are all handled by us as part of the pilot — nothing to buy up-front, nothing to install yourself."
+      "No. Sensors and installation are handled by us as part of the pilot. Nothing to buy up-front, and nothing to install yourself."
   },
   {
     question: "Does SenseAgri use computer vision for poultry monitoring?",

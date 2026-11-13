@@ -446,7 +446,7 @@ export default function DashboardCard() {
                       <div className="sa-sub">Since 00:00 SAST</div>
                     </div>
                     <div className="sa-cell sa-edge sa-nobottom">
-                      <div className="sa-k">Weekly revenue</div>
+                      <div className="sa-k">Revenue</div>
                       <div className="sa-v sa-gold sa-small">R 53 903,40</div>
                       <div className="sa-sub">Last 7 days</div>
                     </div>

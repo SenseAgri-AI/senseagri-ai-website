@@ -20,14 +20,14 @@
 <rect x="48" y="24" width="2" height="20" fill="#13AAA5"></rect>
 <text x="62" y="38" font-size="10" font-weight="700" fill="#002E35" letter-spacing="1.6" style="text-transform:uppercase">SenseAgri AI · System architecture</text>
 <text x="48" y="72" font-family="Manrope, 'Helvetica Neue', sans-serif" font-weight="800" font-size="22" fill="#002E35" letter-spacing="-0.45">From the house to your hand.</text>
-<text x="1152" y="46" text-anchor="end" font-size="9.5" font-weight="700" fill="#6B7C80" letter-spacing="1.6" style="text-transform:uppercase">Sensors → Edge AI → Cloud → Phone</text>
+<text x="1152" y="46" text-anchor="end" font-size="9.5" font-weight="700" fill="#6B7C80" letter-spacing="1.6" style="text-transform:uppercase">Sensors → Record → Agent → You</text>
 
 
 <line x1="48" y1="116" x2="72" y2="116" stroke="#BEC8CA" stroke-width="0.5"></line>
 <text x="80" y="119" font-size="8.5" font-weight="700" fill="#6B7C80" letter-spacing="1.4" style="text-transform:uppercase">LoRa sensors · on the house</text>
 
 <line x1="48" y1="430" x2="72" y2="430" stroke="#BEC8CA" stroke-width="0.5"></line>
-<text x="80" y="433" font-size="8.5" font-weight="700" fill="#6B7C80" letter-spacing="1.4" style="text-transform:uppercase">Vision + audio · direct to edge</text>
+<text x="80" y="433" font-size="8.5" font-weight="700" fill="#6B7C80" letter-spacing="1.4" style="text-transform:uppercase">Vision + audio · into the record</text>
 
 
 <path d="M 192 196 C 270 200, 320 220, 350 230" stroke="#4FB8C5" stroke-width="1.2" fill="none" stroke-dasharray="3 4"></path>
@@ -208,5 +208,5 @@
 
 
 <line x1="0" y1="680" x2="1200" y2="680" stroke="#BEC8CA" stroke-width="0.5"></line>
-<text x="600" y="704" text-anchor="middle" font-size="10" font-weight="700" fill="#6B7C80" letter-spacing="2.2" style="text-transform:uppercase">Sensors<tspan fill="#13AAA5"> · </tspan>Edge AI<tspan fill="#13AAA5"> · </tspan>Cloud<tspan fill="#13AAA5"> · </tspan>Your phone</text>
+<text x="600" y="704" text-anchor="middle" font-size="10" font-weight="700" fill="#6B7C80" letter-spacing="2.2" style="text-transform:uppercase">Sensors<tspan fill="#13AAA5"> · </tspan>Vision<tspan fill="#13AAA5"> · </tspan>Record<tspan fill="#13AAA5"> · </tspan>You</text>
 </svg>

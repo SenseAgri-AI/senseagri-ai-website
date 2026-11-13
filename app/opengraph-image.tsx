@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-// Social share preview (WhatsApp, Slack, LinkedIn, X, iMessage…).
+// Social share preview (Slack, LinkedIn, X, iMessage).
 // Next auto-generates the OG + Twitter meta tags from this convention file,
 // which is why the manual `openGraph.images` / `twitter.images` were dropped
 // from app/layout.tsx — those would override the convention.
