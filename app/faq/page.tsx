@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph } from "@/lib/jsonLd";
@@ -9,8 +8,14 @@ import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "How SenseAgri AI works — computer vision on the A-frame, AI farm agents, who owns the data, sensors, integrations and the Partner Programme.",
-  alternates: { canonical: "/faq" }
+    "How the cameras, agents, sensors, and data ownership work, and what a proof of concept includes.",
+  alternates: { canonical: "/faq" },
+  openGraph: {
+    title: "Frequently asked questions · SenseAgri AI",
+    description:
+      "How the cameras, agents, sensors, and data ownership work, and what a proof of concept includes.",
+    url: "/faq"
+  }
 };
 
 const GOLD = "#13AAA5";
@@ -45,17 +50,17 @@ const faqs = [
   {
     question: "Does SenseAgri use computer vision for poultry monitoring?",
     answer:
-      "Yes. Computer vision is the farm’s data layer. On layer houses, egg-counting cameras are mounted on the A-frame cages and count eggs continuously. Breeder houses use the same vision approach to count eggs. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm’s own edge compute — no cloud round-trip per frame. The environmental sensor suite is what runs on farms today; vision is proven on a farm’s own houses in the proof of concept."
+      "Yes. Cameras on the A-frame layer cages count eggs. Breeder houses use the same count. Broiler cameras follow bird movement. Counting runs on the farm’s computer, and the cameras can use the CCTV you already have. We check the count on your houses in a proof of concept. Environmental sensors are what already run on farms."
   },
   {
     question: "What do the AI farm agents do?",
     answer:
-      "They connect securely to the farm’s data and the company’s data through connectors, and they are there to understand that farm. They catch issues, build reports, follow the birds, follow the work and the open issues, spot inefficiencies, and keep analysing around the clock. Following the work means the jobs and issues already in the records you connect — not cameras pointed at people. Alerts that need a person still arrive on WhatsApp with the action to take."
+      "They read the camera counts and the records you connect. They catch issues, build reports, and follow the birds, the jobs, and the open issues. Jobs come from your records. The cameras are not pointed at people. WhatsApp is used when a person needs to act."
   },
   {
     question: "Who owns the data SenseAgri connects to?",
     answer:
-      "You do. SenseAgri connects to the farm and company data the vision layer and the agents need. That connection does not transfer ownership — we connect to the data, we do not take it. You choose what is connected. Vision inference runs on the farm’s own edge compute, and house sensing runs on-site, including when connectivity is patchy."
+      "Your data stays yours. Connector access is limited to what you approve, read-only by default. You own the data and can export or delete it. Egg counting runs on the farm’s computer. House sensors keep logging if the link drops, and sync when it returns."
   },
   {
     question: "How does acoustic monitoring work in a poultry house?",
@@ -98,14 +103,12 @@ export default function FAQPage() {
       <JsonLd data={faqJsonLd} />
       <JsonLd data={breadcrumbGraph([{ name: "FAQ", path: "/faq" }])} />
 
-      <PageHero
-        dark
-        accent="#4FB8C5"
-        eyebrow="FAQ"
-        headline="Answers to the"
-        accentLine="most-asked questions."
-        sub="How vision, the agents and data ownership work, and how the platform fits the equipment you already have."
-      />
+      <header className="mx-auto max-w-3xl px-6 pt-12 sm:px-10">
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-primary">Questions</h1>
+        <p className="mt-3 font-sans text-base text-on-surface-variant">
+          Cameras, agents, sensors, and who owns the data.
+        </p>
+      </header>
 
       <section className="section-padding bg-surface">
         <div className="mx-auto max-w-4xl">

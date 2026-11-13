@@ -1,38 +1,41 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
-import PageClose from "@/components/PageClose";
-import AFrameVision from "@/components/AFrameVision";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph, computerVisionServiceGraph } from "@/lib/jsonLd";
+import { formatDisplayDate, pageLastModified } from "@/lib/pageMeta";
 
 export const metadata: Metadata = {
-  title: "Computer vision — the farm's data layer",
+  title: "Egg counting on the A-frame",
   description:
-    "Egg-counting cameras on A-frame layer cages, and bird activity in the broiler house. Computer vision is SenseAgri's data layer, with inference on the farm's own edge compute. Your data stays yours.",
-  alternates: { canonical: "/computer-vision" }
+    "Cameras on the A-frame count eggs. Compare the clean still with the same frame showing the count, the line, and the detection boxes.",
+  alternates: { canonical: "/computer-vision" },
+  openGraph: {
+    title: "Egg counting on the A-frame · SenseAgri AI",
+    description:
+      "Cameras on the A-frame count eggs. Compare the clean still with the same frame showing the count, the line, and the detection boxes.",
+    url: "/computer-vision"
+  }
 };
 
-const points = [
+const pairs = [
   {
-    eyebrow: "Layers",
-    title: "Cameras on the A-frame, counting eggs.",
-    body: "On layer houses, egg-counting cameras are mounted on the A-frame cages. They watch the egg belt and count continuously, so production is a record from the house rather than a number from the last walk-through or a spreadsheet filled in afterwards. Breeder houses use the same vision approach to count eggs."
+    id: "cam-1",
+    still: "/images/real/vision-aframe-1.webp",
+    detect: "/images/real/vision-aframe-detect-1.webp",
+    stillAlt: "A-frame layer cages from an egg-counting camera, with no count overlay.",
+    detectAlt: "The same A-frame camera frame with the egg count, count line, zone boxes, and detection boxes.",
+    stillCaption: "Camera 1. The row, with no overlay.",
+    detectCaption: "Camera 1 at the frame’s own size, with the count, the line, and a box on each egg the model sees."
   },
   {
-    eyebrow: "Broilers",
-    title: "Bird movement, read as a welfare signal.",
-    body: "In broiler houses, cameras track how birds move and where activity sits across the floor. That activity is a welfare and behaviour signal. It sits next to temperature, air, feed and water — it does not replace them."
-  },
-  {
-    eyebrow: "The data layer",
-    title: "What happens in the house becomes data.",
-    body: "Vision is the farm's data layer. A frame becomes a count or an activity reading. That reading joins the house record the rest of the platform already keeps: environment, feed, water, production. Reports, alerts and the farm agents read from that record. They are not guessing from a note on a clipboard."
-  },
-  {
-    eyebrow: "On the farm",
-    title: "Inference stays with the house.",
-    body: "Vision inference runs on the farm's own edge compute. There is no cloud round-trip for every frame. Cameras work with the CCTV the farm already uses. Sensing keeps running when connectivity is patchy, and the record syncs when the link returns. The pictures and the counts they produce stay the farm's data. SenseAgri connects to that data. It does not take ownership of it."
+    id: "cam-2",
+    still: "/images/real/vision-aframe-2.webp",
+    detect: "/images/real/vision-aframe-detect-2.webp",
+    stillAlt: "A second A-frame camera looking down the cages, with no count overlay.",
+    detectAlt: "The second A-frame camera frame with the egg count, count line, zone boxes, and detection boxes.",
+    stillCaption: "Camera 2. A second row.",
+    detectCaption: "Camera 2 with the same overlay, at the size the camera records."
   }
 ];
 
@@ -42,85 +45,70 @@ export default function ComputerVisionPage() {
       <JsonLd data={breadcrumbGraph([{ name: "Computer vision", path: "/computer-vision" }])} />
       <JsonLd data={computerVisionServiceGraph()} />
 
-      <PageHero
-        eyebrow="Computer vision"
-        headline="The farm's"
-        accentLine="data layer."
-        sub="Egg-counting cameras on the A-frame, and bird activity in the broiler house, turn what happens on the farm into data the operation can use."
-      />
+      <header className="mx-auto max-w-6xl px-6 pb-8 pt-10 sm:px-10 sm:pt-14">
+        <h1 className="max-w-[18ch] font-display text-4xl font-semibold leading-[1.08] tracking-tight text-primary">
+          Counting eggs on the A-frame.
+        </h1>
+        <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-on-surface-variant">
+          One camera looks down the row. Beside it is the same moment with the count, the line, and the boxes the model drew.
+        </p>
+      </header>
 
-      <section className="bg-surface px-6 py-16 sm:px-10 lg:px-16">
-        <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <h2
-              className="font-display font-semibold tracking-[-0.025em] text-primary"
-              style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)", lineHeight: "1.05" }}
-            >
-              Mounted on the cage. Counted into the house record.
-            </h2>
-            <p className="mt-5 font-sans text-base leading-relaxed text-on-surface-variant">
-              The computer vision work is physical. Cameras sit on the A-frame layer cages and count eggs as the belt moves. The same discipline — see the house, write it down as data, keep the inference on the farm — is how broiler activity is read. The drawing on this page is a schematic of that path.
-            </p>
-            <p className="mt-4 font-sans text-base leading-relaxed text-on-surface-variant">
-              The environmental sensor suite is what runs on farms today. Vision is proven on a farm’s own houses in the proof of concept, not assumed from another site.
-            </p>
-          </div>
-          <AFrameVision idPrefix="vision-page" />
-        </div>
-      </section>
-
-      {points.map((point, i) => (
+      {pairs.map((pair, index) => (
         <section
-          key={point.title}
-          className="px-6 py-16 sm:px-10 lg:px-16"
-          style={{
-            background: i % 2 === 0 ? "#F2F4F4" : "#F8FAFA",
-            borderTop: "0.5px solid #BEC8CA"
-          }}
+          key={pair.id}
+          className="mx-auto max-w-6xl px-6 py-8 sm:px-10"
+          style={{ borderTop: "0.5px solid #BEC8CA" }}
         >
-          <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-            <div>
-              <span
-                className="mb-6 inline-flex items-center gap-2 px-3 py-1"
-                style={{ borderLeft: "2px solid #13AAA5", background: "rgba(0,46,53,0.06)" }}
-              >
-                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                  {point.eyebrow}
-                </span>
-              </span>
-              <h2
-                className="font-display font-semibold tracking-[-0.025em] text-primary"
-                style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)", lineHeight: "1.05" }}
-              >
-                {point.title}
-              </h2>
-            </div>
-            <p className="font-sans text-base leading-relaxed text-on-surface-variant lg:pt-1">{point.body}</p>
-          </div>
+          <figure>
+            <Image
+              src={pair.still}
+              alt={pair.stillAlt}
+              width={1600}
+              height={900}
+              priority={index === 0}
+              sizes="(min-width: 1152px) 1152px, 100vw"
+              className="h-auto w-full"
+              style={{ border: "0.5px solid #BEC8CA" }}
+            />
+            <figcaption className="mt-2 font-sans text-sm text-on-surface-variant">{pair.stillCaption}</figcaption>
+          </figure>
+          <figure className="mt-5 w-full max-w-[640px]">
+            <Image
+              src={pair.detect}
+              alt={pair.detectAlt}
+              width={640}
+              height={360}
+              sizes="(max-width: 640px) 100vw, 640px"
+              className="h-auto w-full max-w-[640px]"
+              style={{ border: "0.5px solid #BEC8CA" }}
+            />
+            <figcaption className="mt-2 font-sans text-sm text-on-surface-variant">{pair.detectCaption}</figcaption>
+          </figure>
         </section>
       ))}
 
-      <section className="bg-surface px-6 py-14 sm:px-10 lg:px-16" style={{ borderTop: "0.5px solid #BEC8CA" }}>
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-xl font-sans text-title-sm leading-relaxed text-on-surface-variant">
-            The record is only useful if something stays with it. Agents connect securely to this data — and to the company records you choose — without taking ownership.
+      <section className="mx-auto max-w-6xl px-6 py-10 sm:px-10" style={{ borderTop: "0.5px solid #BEC8CA" }}>
+        <h2 className="font-display text-2xl font-semibold text-primary">How the count is made</h2>
+        <div className="mt-4 max-w-2xl space-y-3 font-sans text-base leading-relaxed text-on-surface-variant">
+          <p>The camera stays on the A-frame and watches the egg belt.</p>
+          <p>The model marks each egg, draws the zone it is counting, and writes the running total on the frame.</p>
+          <p>That total is what the dashboard stores for the camera. Breeder houses use the same count. In a broiler house the cameras follow how the birds move.</p>
+          <p>Counting runs on the farm’s computer, so the frame is not sent away to be counted. The camera can be the CCTV already in the house.</p>
+          <p>On a new farm we check the count on that farm’s houses first. Temperature, humidity, CO₂, ammonia, feed and water sensors are what already run on farms today.</p>
+          <p>
+            Your data stays yours. Connector access is limited to the cameras you approve, read-only by default. You own the count and can export or delete it.
           </p>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/ai-farm-agents" className="font-sans text-sm font-semibold text-primary underline underline-offset-4">
-              AI farm agents
-            </Link>
-            <Link href="/security" className="font-sans text-sm font-semibold text-primary underline underline-offset-4">
-              Security and data ownership
-            </Link>
-          </div>
         </div>
+        <p className="mt-6 font-sans text-sm">
+          <Link href="/ai-farm-agents" className="font-medium text-primary underline underline-offset-4">
+            What the agents do with the count
+          </Link>
+        </p>
+        <p className="mt-10 font-sans text-label-sm uppercase tracking-[0.06em] text-on-surface-variant/70">
+          Last updated: {formatDisplayDate(pageLastModified["/computer-vision"])}
+        </p>
       </section>
-
-      <PageClose
-        updatedPath="/computer-vision"
-        title="See the data layer on your own cages."
-        body="A proof of concept puts vision on your houses, next to the sensors you already run, before you commit any further."
-      />
     </div>
   );
 }

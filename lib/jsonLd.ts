@@ -30,7 +30,7 @@ export function computerVisionServiceGraph() {
     "@id": `${siteConfig.url}/computer-vision#service`,
     name: "SenseAgri computer vision",
     description:
-      "Computer vision as the poultry farm's data layer: egg-counting cameras mounted on A-frame layer cages, egg counting for breeder houses, and bird activity tracking in broiler houses. Inference runs on the farm's own edge compute. The customer keeps ownership of the data.",
+      "Egg-counting cameras mounted on A-frame layer cages, the same count for breeder houses, and bird activity tracking in broiler houses. Counting runs on the farm's computer. The customer owns the data and can export or delete it.",
     url: `${siteConfig.url}/computer-vision`,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },
@@ -49,7 +49,7 @@ export function farmAgentsServiceGraph() {
     "@id": `${siteConfig.url}/ai-farm-agents#service`,
     name: "SenseAgri AI farm agents",
     description:
-      "AI agents that connect securely to farm and company data the customer still owns. They catch issues, build reports, follow birds, work and open issues, spot inefficiencies, and analyse around the clock.",
+      "Agents that read egg-count cameras and the farm and company records a customer approves. They catch issues, build reports, and follow birds, jobs, and open issues. Access is read-only by default.",
     url: `${siteConfig.url}/ai-farm-agents`,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },
@@ -69,7 +69,7 @@ export function securityPageGraph() {
     name: "Security and data ownership",
     url: `${siteConfig.url}/security`,
     description:
-      "Customer farm and company data remains the customer's. SenseAgri connects securely for computer vision and AI agents, runs inference on the farm where it can, and does not take ownership of the data.",
+      "The customer owns farm and company data and can export or delete it. Connector access is limited to what the customer approves and is read-only by default. Egg counting runs on the farm's computer.",
     isPartOf: { "@id": `${siteConfig.url}/#website` },
     about: { "@id": `${siteConfig.url}/#organization` }
   };

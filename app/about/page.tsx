@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
 import WhatsAppCarousel, { type WhatsAppShot } from "@/components/WhatsAppCarousel";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph } from "@/lib/jsonLd";
@@ -18,8 +17,14 @@ const whatsappShots: WhatsAppShot[] = [
 export const metadata: Metadata = {
   title: "About — Digital Husbandry for African Farms",
   description:
-    "SenseAgri AI builds computer vision as the farm's data layer and AI agents that connect securely to data the farm still owns. Meet the team.",
-  alternates: { canonical: "/about" }
+    "SenseAgri AI counts eggs on A-frame cameras and runs agents on the records a farm connects. Meet the team.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About · SenseAgri AI",
+    description:
+      "SenseAgri AI counts eggs on A-frame cameras and runs agents on the records a farm connects. Meet the team.",
+    url: "/about"
+  }
 };
 
 const GOLD = "#13AAA5";
@@ -66,45 +71,15 @@ export default function AboutPage() {
     <div>
       <JsonLd data={breadcrumbGraph([{ name: "About", path: "/about" }])} />
 
-      {/* Hero — dark navy + light teal accent */}
-      <PageHero
-        eyebrow="About"
-        headline="Building intelligence for"
-        accentLine="African agriculture."
-      />
-
-      {/* Mission */}
-      <section className="bg-surface px-6 py-16 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-          <div>
-            <span
-              className="mb-6 inline-flex items-center gap-2 px-3 py-1"
-              style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
-            >
-              <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                Mission
-              </span>
-            </span>
-            <h2
-              className="font-display font-semibold tracking-[-0.025em] text-primary"
-              style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)", lineHeight: "1.05" }}
-            >
-              Closing the intelligence gap in African agriculture.
-            </h2>
-          </div>
-          <div className="lg:pt-1">
-            <p className="font-sans text-base leading-relaxed text-on-surface-variant">
-              SenseAgri AI is a poultry intelligence platform for farms across Africa. Computer vision — egg-counting cameras on A-frame layer cages, bird activity in the broiler house — is the data layer. AI agents connect securely to that data and to the company records a farm chooses to open, catch issues, and keep the operation moving. The data remains the farm’s. Our mission is to close the intelligence gap without taking ownership of the record that closes it.
-            </p>
-            <Link
-              href="/capabilities"
-              className="mt-5 inline-flex font-sans text-sm font-bold text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container"
-            >
-              Explore our capabilities →
-            </Link>
-          </div>
-        </div>
-      </section>
+      <header className="mx-auto max-w-3xl px-6 pb-4 pt-12 sm:px-10">
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-primary">About</h1>
+        <p className="mt-4 font-sans text-base leading-relaxed text-on-surface-variant">
+          SenseAgri counts eggs on A-frame cameras and reads broiler activity, then puts agents on those counts and on the records a farm connects. The work is for poultry farms in Africa. Your data stays yours. Access is limited to what you approve, read-only by default, and you can export or delete it.
+        </p>
+        <Link href="/capabilities" className="mt-4 inline-flex font-sans text-sm font-medium text-primary underline underline-offset-4">
+          What the platform does
+        </Link>
+      </header>
 
       {/* Founders */}
       <section className="px-6 py-16 sm:px-10 lg:px-16" style={{ background: "#F2F4F4", borderTop: "0.5px solid #BEC8CA" }}>

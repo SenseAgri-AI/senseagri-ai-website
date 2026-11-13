@@ -26,7 +26,7 @@ const manrope = localFont({
   weight: "400 800"
 });
 
-const DEFAULT_TITLE = "SenseAgri AI — Computer vision and AI agents for the poultry farm";
+const DEFAULT_TITLE = "SenseAgri AI — Egg counts from A-frame cameras";
 const googleSiteVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim();
 
 export const metadata: Metadata = {
@@ -63,7 +63,7 @@ const jsonLd = {
       url: siteConfig.url,
       logo: `${siteConfig.url}/logo.svg`,
       description:
-        "Computer vision is the poultry farm's data layer. AI agents connect securely to farm and company data the customer still owns, catch issues, build reports, and keep the operation running.",
+        "Egg-counting cameras on A-frame layer cages, a dashboard of those counts, and agents that read the farm and company records a customer connects.",
       slogan: "Every signal. Every decision.",
       foundingDate: "2025",
       areaServed: { "@type": "Country", name: "South Africa" },
@@ -121,7 +121,7 @@ const jsonLd = {
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web; on-farm edge; WhatsApp alerts",
       description:
-        "Egg-counting cameras on A-frame layer cages, broiler bird activity, and house sensing for temperature, humidity, CO₂, ammonia, feed and water. AI agents connect securely to data the farm still owns.",
+        "Egg-counting cameras on A-frame layer cages, broiler bird activity, and house sensors. Agents read those counts and the records the farm connects. The customer owns the data and can export or delete it.",
       areaServed: { "@type": "Country", name: "South Africa" },
       publisher: { "@id": `${siteConfig.url}/#organization` }
     }

@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "SenseAgri AI",
   description:
-    "Computer vision is the farm's data layer — egg-counting cameras on A-frame layer cages, bird activity in the broiler house. AI agents connect securely to the data you own, catch issues, and keep the operation running. Your data stays yours.",
+    "Cameras on the A-frame count eggs and show them on a dashboard. Agents read that count and the records you connect. You own the data.",
   url: "https://www.senseagriai.com",
   links: {
     email: "ryan@senseagriai.com",

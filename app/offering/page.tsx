@@ -1,28 +1,33 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph } from "@/lib/jsonLd";
 
 export const metadata: Metadata = {
-  title: "Offering — Farm Data Proof of Concept Program",
+  title: "Proof of concept",
   description:
-    "A proof of concept on your houses: computer vision as the data layer, AI agents on data you still own, scoped and priced with you.",
-  alternates: { canonical: "/offering" }
+    "A proof of concept on your houses. We agree the problem, the cameras or sensors, and what gets connected before we start.",
+  alternates: { canonical: "/offering" },
+  openGraph: {
+    title: "Proof of concept · SenseAgri AI",
+    description:
+      "A proof of concept on your houses. We agree the problem, the cameras or sensors, and what gets connected before we start.",
+    url: "/offering"
+  }
 };
 
-const approach = [
+const steps = [
   {
-    title: "Start with your challenges.",
-    body: "Tell us where you need better visibility, what takes time, and where losses or uncertainty affect your operation. Together, we choose a focused problem to explore."
+    title: "Name the problem",
+    body: "Tell us what you cannot see, and where time or eggs are being lost. We pick one problem to start with."
   },
   {
-    title: "Build with your data.",
-    body: "We review the data and systems you already use, identify any gaps, and agree on the capabilities needed for your proof of concept. The scope follows your farm’s needs."
+    title: "Use the records you have",
+    body: "We look at the cameras, sensors, and systems already on the farm, and agree what a proof of concept needs."
   },
   {
-    title: "Turn understanding into decisions.",
-    body: "We work with you to review the insights, assess their practical value, and decide what to refine or expand. We integrate our solutions into your farm, shaped around your existing systems and the way your team works."
+    title: "Decide what stays",
+    body: "You see the count and the report on your own houses, then choose what to keep or change."
   }
 ];
 
@@ -30,72 +35,37 @@ export default function OfferingPage() {
   return (
     <div>
       <JsonLd data={breadcrumbGraph([{ name: "Offering", path: "/offering" }])} />
-      <PageHero
-        dark
-        eyebrow="Limited offer · Proof of concept"
-        headline="Join our"
-        accentLine="POC program."
-        sub="Build with us, around your farm’s needs. Our proof of concept program gives us a focused starting point to explore how your data can support better production and management decisions."
-      />
-
-      <section className="bg-surface px-6 py-16 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-16">
-            <h2 className="font-display text-display-sm font-semibold tracking-tight text-primary">
-              A practical starting point for your farm.
-            </h2>
-            <div className="space-y-4 font-sans text-title-sm leading-relaxed text-on-surface-variant">
-              <p>
-                A proof of concept is a focused project to explore a solution to a specific
-                challenge. We are hands-on: we work with you to understand your operation
-                and build data science solutions with you, for you.
-              </p>
-              <p>
-                The goal is to turn your farm data into understanding that helps improve
-                production and management, prevent losses, reduce risks, and optimise
-                your operation with less room for error, labour, and expense.
-              </p>
-              <p>
-                That work can include the vision data layer — egg-counting cameras on
-                A-frame layer cages, bird activity where broilers are raised — and AI
-                agents that connect securely to the farm and company data you already
-                hold. The data stays yours. We agree what is connected before anything
-                is switched on.
-              </p>
-            </div>
-          </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {approach.map(({ title, body }) => (
-              <article key={title} className="border-t border-tertiary bg-surface-container-low p-6" style={{ borderTopWidth: "0.5px" }}>
-                <h3 className="font-display text-title-lg font-semibold text-primary">{title}</h3>
-                <p className="mt-4 font-sans text-title-sm leading-relaxed text-on-surface-variant">{body}</p>
-              </article>
-            ))}
-          </div>
-          <p className="mt-8 font-sans text-title-sm text-on-surface-variant">
-            Explore{" "}
-            <Link href="/computer-vision" className="text-primary underline underline-offset-4">computer vision</Link>,{" "}
-            <Link href="/ai-farm-agents" className="text-primary underline underline-offset-4">AI farm agents</Link>,{" "}
-            <Link href="/security" className="text-primary underline underline-offset-4">security and data ownership</Link>
-            {" "}and the wider{" "}
-            <Link href="/capabilities" className="text-primary underline underline-offset-4">capabilities</Link>
-            {" "}a proof of concept can draw on.
-          </p>
-        </div>
-      </section>
-
-      <section className="bg-primary px-6 py-16 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="font-display text-display-sm font-semibold tracking-tight text-white">
-            Let’s turn your farm data into decision gold.
-          </h2>
-          <p className="mt-5 font-sans text-title-sm leading-relaxed text-white/75">
-            Contact us to discuss the POC program and an offering tailored to your needs.
-            We’ll agree on the scope, timeline, and pricing together before getting started.
-          </p>
-          <Link href="/contact" className="mt-8 inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Contact us</Link>
-        </div>
-      </section>
+      <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-primary">
+          A proof of concept on your houses.
+        </h1>
+        <p className="mt-4 font-sans text-base leading-relaxed text-on-surface-variant">
+          We work on one problem first. That can be egg counting on the A-frame, bird activity in a broiler house, or agents on records you already keep. Scope, time, and price are agreed before we start.
+        </p>
+        <p className="mt-4 font-sans text-base leading-relaxed text-on-surface-variant">
+          Your data stays yours. We only connect what you approve, access is read-only by default, and you can export or delete it.
+        </p>
+        <ol className="mt-8" style={{ borderTop: "0.5px solid #BEC8CA" }}>
+          {steps.map((step) => (
+            <li key={step.title} className="py-5" style={{ borderBottom: "0.5px solid #BEC8CA" }}>
+              <h2 className="font-display text-xl font-semibold text-primary">{step.title}</h2>
+              <p className="mt-2 font-sans text-sm leading-relaxed text-on-surface-variant">{step.body}</p>
+            </li>
+          ))}
+        </ol>
+        <p className="mt-8 font-sans text-sm text-on-surface-variant">
+          <Link href="/computer-vision" className="font-medium text-primary underline underline-offset-4">Cameras</Link>
+          {" · "}
+          <Link href="/ai-farm-agents" className="font-medium text-primary underline underline-offset-4">Agents</Link>
+          {" · "}
+          <Link href="/capabilities" className="font-medium text-primary underline underline-offset-4">Capabilities</Link>
+        </p>
+        <p className="mt-8">
+          <Link href="/contact" className="inline-flex items-center bg-primary px-5 py-3 font-sans text-sm font-medium text-white hover:bg-primary-container">
+            Contact us
+          </Link>
+        </p>
+      </article>
     </div>
   );
 }

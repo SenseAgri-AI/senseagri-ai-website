@@ -3,18 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Button from "@/components/Button";
 import LogoMark from "@/components/LogoMark";
 
 const navLinks = [
-  { label: "Vision", href: "/computer-vision" },
-  { label: "Agents", href: "/ai-farm-agents" },
+  { label: "Computer vision", href: "/computer-vision" },
+  { label: "AI agents", href: "/ai-farm-agents" },
   { label: "Security", href: "/security" },
-  { label: "Capabilities", href: "/capabilities" },
-  { label: "Offering", href: "/offering" },
   { label: "About", href: "/about" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" }
 ];
 
@@ -31,20 +26,15 @@ export default function Navbar() {
           <span className="flex h-9 w-9 shrink-0 items-center justify-center bg-secondary sm:h-10 sm:w-10">
             <LogoMark className="h-7 w-7 sm:h-8 sm:w-8" />
           </span>
-          <div className="flex flex-col items-start text-left leading-none">
-            <span className="flex items-baseline whitespace-nowrap font-display text-[14px] font-medium uppercase tracking-[0.18em] text-primary sm:text-[15px]">
-              <span>SENSE</span>
-              <span className="text-sensing">AGRI</span>
-              <span className="ml-[0.32em] text-[0.64em] tracking-[0.14em] text-primary/65">AI</span>
-            </span>
-            <span className="mt-1.5 whitespace-nowrap font-sans text-[7px] font-medium uppercase tracking-[0.17em] text-tertiary sm:text-[8px]">
-              Every signal. Every decision.
-            </span>
-          </div>
+          <span className="flex items-baseline whitespace-nowrap font-display text-[14px] font-medium uppercase tracking-[0.18em] text-primary sm:text-[15px]">
+            <span>SENSE</span>
+            <span className="text-sensing">AGRI</span>
+            <span className="ml-[0.32em] text-[0.64em] tracking-[0.14em] text-primary/65">AI</span>
+          </span>
         </Link>
 
         {/* Desktop nav — quiet, precise labels */}
-        <nav className="hidden items-center gap-4 xl:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
           {navLinks.map((link) => {
             const active = pathname === link.href;
             return (
@@ -64,14 +54,9 @@ export default function Navbar() {
           })}
         </nav>
 
-        <div className="hidden xl:flex">
-          <Button href="/contact">Contact us</Button>
-        </div>
-
-        {/* Mobile menu button */}
         <button
           type="button"
-          className="inline-flex items-center justify-center p-2 text-on-surface xl:hidden"
+          className="inline-flex items-center justify-center p-2 text-on-surface lg:hidden"
           onClick={() => setOpen(!open)}
           aria-expanded={open}
           aria-controls="mobile-menu"
@@ -109,9 +94,6 @@ export default function Navbar() {
                 </Link>
               );
             })}
-            <div className="pt-3">
-              <Button href="/contact" className="w-full justify-center">Contact us</Button>
-            </div>
           </div>
         </div>
       ) : null}
