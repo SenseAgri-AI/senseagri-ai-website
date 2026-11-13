@@ -510,7 +510,6 @@ h1, h2, h3, h4 {
   .pyramid-block-content { opacity: 1; transition: none; }
   .card, .icon-animate   { transition: none; }
 
-  .flow-stage { transition: none; }
   .impact-track { transition: none !important; }
 
   .reveal { opacity: 1; transform: none; transition: none; }
