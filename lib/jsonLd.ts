@@ -30,7 +30,7 @@ export function computerVisionServiceGraph() {
     "@id": `${siteConfig.url}/computer-vision#service`,
     name: "SenseAgri computer vision",
     description:
-      "Egg-counting cameras mounted on A-frame layer cages, the same count for breeder houses, and bird activity tracking in broiler houses. Counting runs on the farm's computer. The customer owns the data and can export or delete it.",
+      "Computer vision as the farm's data layer: eggs, birds, activity, and issues. Egg counting on A-frame cages is one reading. The customer owns the data and can export or delete it.",
     url: `${siteConfig.url}/computer-vision`,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },
@@ -49,7 +49,7 @@ export function farmAgentsServiceGraph() {
     "@id": `${siteConfig.url}/ai-farm-agents#service`,
     name: "SenseAgri AI farm agents",
     description:
-      "Agents that read egg-count cameras and the farm and company records a customer approves. They catch issues, build reports, and follow birds, jobs, and open issues. Access is read-only by default.",
+      "Agents that connect to the vision record and the company records a customer approves. They flag an issue, draft a report for the customer to check, and track open work. Access is read-only by default.",
     url: `${siteConfig.url}/ai-farm-agents`,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },
@@ -69,7 +69,7 @@ export function securityPageGraph() {
     name: "Security and data ownership",
     url: `${siteConfig.url}/security`,
     description:
-      "The customer owns farm and company data and can export or delete it. Connector access is limited to what the customer approves and is read-only by default. Egg counting runs on the farm's computer.",
+      "The customer owns farm and company data and can export or delete it. Connector access is limited to what the customer approves and is read-only by default.",
     isPartOf: { "@id": `${siteConfig.url}/#website` },
     about: { "@id": `${siteConfig.url}/#organization` }
   };

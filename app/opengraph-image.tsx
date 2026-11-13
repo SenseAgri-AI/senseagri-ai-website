@@ -7,7 +7,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "SenseAgri AI — egg counts from A-frame cameras";
+export const alt = "SenseAgri AI — computer vision and agents for the farm";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -60,7 +60,7 @@ export default function OpenGraphImage() {
                 textTransform: "uppercase"
               }}
             >
-              Egg counts from A-frame cameras
+              Computer vision and farm agents
             </div>
 
             {/* Wordmark */}
@@ -86,7 +86,7 @@ export default function OpenGraphImage() {
                 marginTop: 4
               }}
             >
-              Cameras on the A-frame count the eggs. Agents read the records you connect.
+              Vision is the farm data layer. Agents read the records you connect.
             </div>
           </div>
         </div>

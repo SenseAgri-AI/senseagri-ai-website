@@ -27,16 +27,8 @@ const facts = [
     detail: "An agent only reaches the systems you approve. Access is read-only by default."
   },
   {
-    term: "On the farm",
-    detail: "Egg counting runs on the farm’s computer. A frame is not sent away to be counted. House sensors keep logging if the link drops, and sync when it is back."
-  },
-  {
     term: "People",
-    detail: "Cameras count eggs and bird activity. Jobs and open issues come from records you already keep."
-  },
-  {
-    term: "Equipment you keep",
-    detail: "Big Dutchman, SKOV, Hytek, Vencomatic, DOL-class sensors, and the CCTV already in the house."
+    detail: "Cameras are for eggs, birds, and activity. Jobs and open issues come from records you already keep."
   },
   {
     term: "Before a wider install",

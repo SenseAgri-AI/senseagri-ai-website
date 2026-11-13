@@ -8,7 +8,7 @@
   "definition": {
     "category": "on-farm poultry monitoring product",
     "founded": "2025",
-    "function": "The SenseAgri AI platform captures house signals, runs inference on-site, and sends actions to a dashboard and WhatsApp.",
+    "function": "The SenseAgri AI platform captures house signals, including egg counts from A-frame cameras, and puts them in a record agents can read.",
     "differentiator": "The environmental sensor suite of the SenseAgri AI platform is live on farms today; other capabilities are validated in pilots on each operation."
   },
   "sections": [
@@ -16,7 +16,7 @@
       "heading": "What does the SenseAgri AI platform monitor?",
       "paragraphs": [
         "The SenseAgri AI platform continuously monitors house conditions: temperature, humidity, gas, CO\u2082, feed, water, egg count and more, around the clock. [1]",
-        "Published SenseAgri AI platform pages also list ammonia, vision-based egg counting for layers and breeders, broiler bird tracking, acoustic welfare signals, feed-to-water ratio, hen-day production, mortality trends, and feed conversion. [2]"
+        "Published SenseAgri AI platform pages also list ammonia, egg counting on A-frame cameras, birds, activity, issues, acoustic welfare signals, feed-to-water ratio, hen-day production, mortality trends, and feed conversion. [2]"
       ],
       "stats": [
         {
@@ -28,16 +28,16 @@
     {
       "heading": "Where does the SenseAgri AI platform run inference?",
       "paragraphs": [
-        "Sensing and inference on the SenseAgri AI platform run on-site, so the SenseAgri AI platform keeps working through patchy connectivity. Data from the SenseAgri AI platform syncs to the cloud the moment the link returns. [1]",
-        "Vision inference on the SenseAgri AI platform runs on the farm's own edge compute, with no cloud round-trip per frame. Cameras on the SenseAgri AI platform integrate with the CCTV the farm already uses. [1]"
+        "The SenseAgri AI platform reads temperature, humidity, gas, CO₂, feed, water, and egg count in the house. [1]",
+        "Egg counting on A-frame cameras is one computer-vision reading on the SenseAgri AI platform. Cameras can also record birds, activity, and issues. [1]"
       ],
       "stats": []
     },
     {
       "heading": "Which equipment does the SenseAgri AI platform integrate with?",
       "paragraphs": [
-        "The SenseAgri AI platform integrates with major poultry platforms already on the farm: Big Dutchman, SKOV, Hytek, Vencomatic and more. [1]",
-        "Farms keep the controllers they have; the SenseAgri AI platform adds continuous monitoring and causal analysis on top. Alerts from the SenseAgri AI platform arrive on WhatsApp with the specific action to take. [1]"
+        "A proof of concept on the SenseAgri AI platform starts from the cameras and records the farm chooses to connect. The scope is agreed before it is switched on. [1]",
+        "Agents on the SenseAgri AI platform flag an issue and draft a report for a person to check. The customer owns the data. [1]"
       ],
       "stats": []
     },

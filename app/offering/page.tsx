@@ -40,7 +40,7 @@ export default function OfferingPage() {
           A proof of concept on your houses.
         </h1>
         <p className="mt-4 font-sans text-base leading-relaxed text-on-surface-variant">
-          We work on one problem first. That can be egg counting on the A-frame, bird activity in a broiler house, or agents on records you already keep. Scope, time, and price are agreed before we start.
+          We work on one problem first. That can be the vision record, egg counting on the A-frame, or agents on records you already keep. Scope, time, and price are agreed before we start.
         </p>
         <p className="mt-4 font-sans text-base leading-relaxed text-on-surface-variant">
           Your data stays yours. We only connect what you approve, access is read-only by default, and you can export or delete it.

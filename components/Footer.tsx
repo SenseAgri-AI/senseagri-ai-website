@@ -33,7 +33,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-4 font-sans text-title-sm text-on-secondary-variant">
-            Egg counts from A-frame cameras, and agents that read the records you connect.
+            Computer vision for the farm, and agents that read the records you connect.
           </p>
         </div>
 

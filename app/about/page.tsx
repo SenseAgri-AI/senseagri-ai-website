@@ -1,28 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import WhatsAppCarousel, { type WhatsAppShot } from "@/components/WhatsAppCarousel";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph } from "@/lib/jsonLd";
 import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
-// Source images live in /public/hero_slides — paths URL-encoded for the spaces.
-const whatsappShots: WhatsAppShot[] = [
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.44.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — early welfare alert" },
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.45.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — recommended action" },
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.23.19.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — production insight" },
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.27.38.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — flock summary" }
-];
-
 export const metadata: Metadata = {
-  title: "About — Digital Husbandry for African Farms",
+  title: "About",
   description:
-    "SenseAgri AI counts eggs on A-frame cameras and runs agents on the records a farm connects. Meet the team.",
+    "SenseAgri builds a data layer for the farm from cameras, and agents that read the records a farm connects. Meet the team.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About · SenseAgri AI",
     description:
-      "SenseAgri AI counts eggs on A-frame cameras and runs agents on the records a farm connects. Meet the team.",
+      "SenseAgri builds a data layer for the farm from cameras, and agents that read the records a farm connects. Meet the team.",
     url: "/about"
   }
 };
@@ -74,7 +65,7 @@ export default function AboutPage() {
       <header className="mx-auto max-w-3xl px-6 pb-4 pt-12 sm:px-10">
         <h1 className="font-display text-4xl font-semibold tracking-tight text-primary">About</h1>
         <p className="mt-4 font-sans text-base leading-relaxed text-on-surface-variant">
-          SenseAgri counts eggs on A-frame cameras and reads broiler activity, then puts agents on those counts and on the records a farm connects. The work is for poultry farms in Africa. Your data stays yours. Access is limited to what you approve, read-only by default, and you can export or delete it.
+          SenseAgri builds a data layer for the farm from cameras (eggs, birds, activity, and issues) and agents that read the records a farm connects. The work is for poultry farms in Africa. Your data stays yours. Access is limited to what you approve, read-only by default, and you can export or delete it.
         </p>
         <Link href="/capabilities" className="mt-4 inline-flex font-sans text-sm font-medium text-primary underline underline-offset-4">
           What the platform does
@@ -173,11 +164,7 @@ export default function AboutPage() {
           </div>
 
           {/* Body row — carousel left half, paragraphs right half */}
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-stretch">
-            {/* Carousel slot — explicit (not min) height so percentage children inside resolve */}
-            <div className="relative" style={{ height: 540 }}>
-              <WhatsAppCarousel images={whatsappShots} dark />
-            </div>
+          <div className="max-w-3xl">
             <div className="flex flex-col gap-4 font-sans text-[0.9375rem] leading-relaxed text-white/75">
             <p>
               SenseAgri AI started with a conversation in early 2025. Dylan and Ryan came from different

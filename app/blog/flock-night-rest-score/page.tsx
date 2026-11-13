@@ -51,7 +51,7 @@ const steps = [
   {
     title: "Tell",
     body:
-      "The score, the trend, and the reason land on the farmer's phone, with a WhatsApp alert only when something needs attention."
+      "The score, the trend, and the reason are written up for the farmer when something needs attention."
   }
 ];
 
@@ -97,7 +97,7 @@ const scoreBands = [
 const farmerGets = [
   "Last night's score, clear and simple, with the trend across recent nights.",
   "A plain-language reason for it — noise, heat, or not enough darkness.",
-  "A WhatsApp alert only when rest has been poor several nights running — with the likely cause.",
+  "A note when rest has been poor several nights running, with the likely cause.",
   "The actual audio clips of the disturbance, to listen to and judge for themselves."
 ];
 
@@ -456,7 +456,7 @@ export default function FlockNightRestScorePost() {
             See how the flock is really sleeping.
           </h2>
           <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-relaxed text-white/70">
-            The Night-Rest Score runs on the same platform as everything else — environment sensing, vision, and WhatsApp alerts.
+            The Night-Rest Score sits with the rest of the platform: environment sensing and vision.
           </p>
           <Link
             href="/contact"

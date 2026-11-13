@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 const capabilities = [
   {
     title: "Egg counting and bird activity",
-    body: "Cameras on the A-frame count eggs. Breeder houses use the same count. Broiler cameras follow how the birds move. Counting runs on the farm’s computer, and the cameras can use the CCTV you already have."
+    body: "Computer vision is the farm's data layer: eggs, birds, activity, and issues. Egg counting on the A-frame is the reading we can show."
   },
   {
     title: "Agents",
-    body: "They read the counts and the records you connect. They catch issues, write reports, and follow the birds, the jobs, and the open issues. Your data stays yours. Access is limited to what you approve, read-only by default, and you can export or delete it."
+    body: "They connect to the vision record and the company records you approve. They catch issues, draft a report for you to check, and track open work. Your data stays yours. Access is limited to what you approve, read-only by default, and you can export or delete it."
   },
   {
     title: "House sensors",
@@ -40,7 +40,7 @@ const capabilities = [
   },
   {
     title: "Disease signals",
-    body: "Environmental, camera, and sound readings are read together against the house baseline. WhatsApp carries the action, not only a mark on a chart."
+    body: "Environmental, camera, and sound readings are read together against the house baseline, and a change is flagged for a person to check."
   },
   {
     title: "Why it changed",
@@ -51,8 +51,8 @@ const capabilities = [
     body: "The feed-to-water ratio is tracked against the flock’s own baseline and flagged when it moves."
   },
   {
-    title: "The weekly report",
-    body: "Hen-day production, mortality, feed conversion, and welfare sit on one dashboard. A weekly report says what changed."
+    title: "Production numbers",
+    body: "Hen-day production, mortality, feed conversion, and welfare can sit next to the camera record."
   }
 ];
 

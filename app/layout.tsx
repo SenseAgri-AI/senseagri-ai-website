@@ -26,7 +26,7 @@ const manrope = localFont({
   weight: "400 800"
 });
 
-const DEFAULT_TITLE = "SenseAgri AI — Egg counts from A-frame cameras";
+const DEFAULT_TITLE = "SenseAgri AI — Computer vision and agents for the farm";
 const googleSiteVerification = process.env.NEXT_PUBLIC_GSC_VERIFICATION?.trim();
 
 export const metadata: Metadata = {
@@ -63,7 +63,7 @@ const jsonLd = {
       url: siteConfig.url,
       logo: `${siteConfig.url}/logo.svg`,
       description:
-        "Egg-counting cameras on A-frame layer cages, a dashboard of those counts, and agents that read the farm and company records a customer connects.",
+        "Computer vision is the farm's data layer: eggs, birds, activity, and issues. Agents connect to the records a customer approves.",
       slogan: "Every signal. Every decision.",
       foundingDate: "2025",
       areaServed: { "@type": "Country", name: "South Africa" },
@@ -119,9 +119,9 @@ const jsonLd = {
       "@type": "SoftwareApplication",
       name: "SenseAgri AI",
       applicationCategory: "BusinessApplication",
-      operatingSystem: "Web; on-farm edge; WhatsApp alerts",
+      operatingSystem: "Web",
       description:
-        "Egg-counting cameras on A-frame layer cages, broiler bird activity, and house sensors. Agents read those counts and the records the farm connects. The customer owns the data and can export or delete it.",
+        "Computer vision for eggs, birds, activity, and issues, plus agents that connect to records the farm approves. The customer owns the data and can export or delete it.",
       areaServed: { "@type": "Country", name: "South Africa" },
       publisher: { "@id": `${siteConfig.url}/#organization` }
     }
