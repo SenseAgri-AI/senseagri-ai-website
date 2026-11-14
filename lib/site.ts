@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "SenseAgri AI",
   description:
-    "SenseAgri AI unifies poultry-house sensors — temperature, humidity, CO₂, ammonia, feed, water and eggs — into welfare monitoring, disease early warnings on WhatsApp, and weekly ROI reports for South African operations.",
+    "Cameras can be set up to track eggs, birds, activity, and issues, with processing on the farm. Agents can connect to your controllers and company records, send a WhatsApp alert, and draft a weekly production report.",
   url: "https://www.senseagriai.com",
   links: {
     email: "ryan@senseagriai.com",

@@ -8,8 +8,8 @@
   "definition": {
     "category": "poultry intelligence company",
     "founded": "2025",
-    "function": "SenseAgri AI unifies poultry-house sensor data into welfare monitoring, disease early-warning and weekly ROI reports for South African operations.",
-    "differentiator": "Sensing and inference at SenseAgri AI run on the farm, and alerts arrive on WhatsApp."
+    "function": "SenseAgri AI can set up cameras, WhatsApp alerts, weekly production reports, and agents for South African poultry operations.",
+    "differentiator": "SenseAgri AI can set up computer vision and agents for a farm. Egg counting on A-frame cameras is one reading already shown."
   },
   "sections": [
     {
@@ -37,6 +37,14 @@
           "citation": 2
         }
       ]
+    },
+    {
+      "heading": "What can SenseAgri AI set up?",
+      "paragraphs": [
+        "SenseAgri AI can set up cameras to track eggs, birds, activity and issues on layer, breeder and broiler houses, with processing that can run on the farm so frames can stay on site. [1]",
+        "Agents can be set up to connect to Big Dutchman, SKOV, Hytek and Vencomatic controllers and to company records the farm approves. They can send a WhatsApp alert when a reading leaves its range, and draft a weekly production report. Sensor logging can be set up to keep recording if the link drops. [1]"
+      ],
+      "stats": []
     },
     {
       "heading": "What does SenseAgri AI sell?",
@@ -113,6 +121,10 @@
     {
       "date": "2026-09-09",
       "note": "Published."
+    },
+    {
+      "date": "2026-11-14",
+      "note": "Described cameras, alerts, reports, and controller connections as setup options, not as results already in use."
     }
   ],
   "same_as": [

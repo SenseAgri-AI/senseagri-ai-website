@@ -1,182 +1,89 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph } from "@/lib/jsonLd";
 import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
 export const metadata: Metadata = {
-  title: "Poultry Monitoring Capabilities — Welfare, Vision & Disease Alerts",
+  title: "Capabilities",
   description:
-    "Intelligent poultry farm monitoring — environmental sensors, computer vision, acoustic welfare signals, gut-health tracking, weight and HPED forecasting, disease detection, and root cause analysis for commercial poultry operations.",
-  alternates: { canonical: "/capabilities" }
-};
-
-const GOLD = "#13AAA5";
-const PRIMARY = "#002E35";
-
-type Capability = {
-  eyebrow: string;
-  title: string;
-  body: string;
-  tags: string[];
-};
-
-const capabilities: Capability[] = [
-  {
-    eyebrow: "Poultry environmental monitoring",
-    title: "Every reading in the house, around the clock.",
-    body: "LoRaWAN sensors track temperature, humidity, gas, CO₂, ammonia, feed and water in each poultry house. Baselines are learned per house, so the platform flags anomalies against the room's own history — not a generic threshold that ignores your climate, breed, or age of flock.",
-    tags: ["Temperature & humidity", "CO₂ & ammonia", "Feed & water consumption", "Per-house baselines"]
-  },
-  {
-    eyebrow: "Computer vision for poultry",
-    title: "Egg counting for layers, bird tracking for broilers.",
-    body: "For layer and breeder houses, vision-based systems count eggs continuously — no manual rounds, no spreadsheet reconciliation. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm's own edge compute — no cloud round-trip per frame.",
-    tags: ["Egg counting — layer & breeder", "Bird tracking — broiler activity", "Edge inference", "CCTV partner integration"]
-  },
-  {
-    eyebrow: "Acoustic poultry welfare monitoring",
-    title: "What the flock is telling you.",
-    body: "Microphones in each house pick up distinct sounds — stress vocalisations, wake-up patterns, general activity levels — and classify them in real time. Sound is a leading indicator of welfare shifts, and combining acoustic signals with environmental and vision data catches issues no single sensor would.",
-    tags: ["Stress vocalisation detection", "Bird activity classification", "Wake-up pattern tracking", "Feeding-time optimisation"]
-  },
-  {
-    eyebrow: "Poultry performance forecasting",
-    title: "Forecast weight, HPED, and what comes next.",
-    body: "Use your flock’s data to forecast bird weight, hen-day egg production (HPED), feed conversion, and other performance trends. Compare expected progress with actual results, spot emerging gaps, and plan feeding, production, and daily management decisions ahead of time. Forecasts are evaluated against your farm’s own results during the proof of concept.",
-    tags: ["Bird weight forecasting", "HPED forecasting", "Feed conversion trends", "Production planning"]
-  },
-  {
-    eyebrow: "Early poultry disease detection",
-    title: "Anomalies across every signal, all at once.",
-    body: "The platform correlates environmental, vision, and acoustic anomalies against each house's baseline — surfacing early signs of disease that no single sensor would catch alone. Alerts arrive on WhatsApp with the specific action to take, not just a red dot on a chart.",
-    tags: ["Multi-modal signal fusion", "Behaviour anomaly detection", "Real-time WhatsApp alerts", "Baseline-relative flagging"]
-  },
-  {
-    eyebrow: "Root cause analysis",
-    title: "Understand why performance changed.",
-    body: "Connect changes in production and welfare with environmental conditions, feed and water patterns, and recorded management actions. Our analysis helps identify likely contributing factors, distinguish symptoms from underlying problems, and prioritise what to investigate or adjust with your team.",
-    tags: ["Likely contributing factors", "Cross-signal analysis", "Management action history", "Targeted investigation"]
-  },
-  {
-    eyebrow: "Poultry gut-health intelligence",
-    title: "Feed-to-water ratios reveal gut issues early.",
-    body: "The feed-to-water consumption ratio is a well-documented early indicator of gut health issues in poultry. SenseAgri tracks the ratio continuously and flags when it deviates from the flock's own baseline — days before the problem shows up in production numbers or mortality.",
-    tags: ["Feed:water ratio tracking", "Baseline deviation alerts", "Consumption pattern analysis"]
-  },
-  {
-    eyebrow: "Poultry production intelligence",
-    title: "Welfare and production, in one place.",
-    body: "Hen-day production, mortality trends, feed conversion and welfare metrics run side by side in a single dashboard. Weekly ROI reports summarise what changed in the last seven days, why, and what to do next — no manual spreadsheet stitching.",
-    tags: ["Hen-day production", "Mortality trends", "Feed conversion (FCR)", "Weekly ROI reports"]
+    "Egg counting on A-frame cameras, house sensors, acoustic welfare signals, forecasts, and agents that read the records you connect.",
+  alternates: { canonical: "/capabilities" },
+  openGraph: {
+    title: "Capabilities · SenseAgri AI",
+    description:
+      "Egg counting on A-frame cameras, house sensors, acoustic welfare signals, forecasts, and agents that read the records you connect.",
+    url: "/capabilities"
   }
+};
 
+const capabilities = [
+  {
+    title: "Egg counting and bird activity",
+    body: "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm, so frames can stay on site. Egg counting on the A-frame is the reading shown on the site."
+  },
+  {
+    title: "Agents",
+    body: "They can connect to Big Dutchman, SKOV, Hytek, Vencomatic, and the company records you approve. They can send a WhatsApp alert when a reading leaves its range, and draft a weekly production report. Your data stays yours. Access is limited to what you approve, read-only by default, and you can export or delete it."
+  },
+  {
+    title: "House sensors",
+    body: "Temperature, humidity, gas, CO₂, ammonia, feed and water, logged in each house. Alerts use that house’s own history, not one threshold for every farm."
+  },
+  {
+    title: "Sound",
+    body: "Microphones classify stress calls, wake-up, and general activity, and sit next to the environmental and camera readings."
+  },
+  {
+    title: "Forecasts",
+    body: "Weight, hen-day egg production, and feed conversion, checked against your own results during a proof of concept."
+  },
+  {
+    title: "Disease signals",
+    body: "Environmental, camera, and sound readings are read together against the house baseline, and a change is flagged for a person to check."
+  },
+  {
+    title: "Why it changed",
+    body: "Production changes are lined up with climate, feed, water, and the actions already written down, so the team knows what to check first."
+  },
+  {
+    title: "Gut health",
+    body: "The feed-to-water ratio is tracked against the flock’s own baseline and flagged when it moves."
+  },
+  {
+    title: "Production numbers",
+    body: "Hen-day production, mortality, feed conversion, and welfare can sit next to the camera record."
+  }
 ];
 
 export default function CapabilitiesPage() {
   return (
     <div>
       <JsonLd data={breadcrumbGraph([{ name: "Capabilities", path: "/capabilities" }])} />
-
-      <PageHero
-        eyebrow="Capabilities"
-        headline="Poultry welfare & production"
-        accentLine="intelligence, on one platform."
-        sub="AI poultry monitoring for your farm — environmental sensors, computer vision, acoustic welfare signals, weight and HPED forecasting, disease detection, root cause analysis, and production reporting."
-      />
-
-      {/* Capability sections — alternating surfaces for rhythm */}
-      {capabilities.map((c, i) => (
-        <section
-          key={c.eyebrow}
-          className="px-6 py-16 sm:px-10 lg:px-16"
-          style={{
-            background: i % 2 === 0 ? "#F8FAFA" : "#F2F4F4",
-            borderTop: "0.5px solid #BEC8CA"
-          }}
-        >
-          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-            <div>
-              <span
-                className="mb-6 inline-flex items-center gap-2 px-3 py-1"
-                style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
-              >
-                <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                  {c.eyebrow}
-                </span>
-              </span>
-              <h2
-                className="font-display font-semibold tracking-[-0.025em] text-primary"
-                style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)", lineHeight: "1.05" }}
-              >
-                {c.title}
-              </h2>
-            </div>
-            <div className="flex flex-col gap-6 lg:pt-1">
-              <p className="font-sans text-base leading-relaxed text-on-surface-variant">
-                {c.body}
-              </p>
-              <ul className="flex flex-wrap gap-2">
-                {c.tags.map((t) => (
-                  <li
-                    key={t}
-                    className="font-sans text-[11px] font-medium uppercase tracking-[0.06em] text-on-surface-variant"
-                    style={{ border: "0.5px solid #BEC8CA", padding: "6px 10px" }}
-                  >
-                    {t}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-      ))}
-
-      {/* Closing CTA */}
-      <section
-        className="grain relative overflow-hidden px-6 py-16 sm:px-10 lg:px-16"
-        style={{ background: PRIMARY, borderTop: "0.5px solid #BEC8CA" }}
-      >
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(8,124,131,0.08) 0.5px, transparent 0.5px), linear-gradient(to bottom, rgba(8,124,131,0.08) 0.5px, transparent 0.5px)",
-            backgroundSize: "24px 24px"
-          }}
-        />
-        <div className="relative z-10 mx-auto max-w-3xl text-center">
-          <span
-            className="mb-6 inline-flex items-center gap-2 border-l-2 border-tertiary px-3 py-1"
-            style={{ background: "rgba(19,170,165,0.10)" }}
-          >
-            <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-tertiary">
-              Partner Programme
-            </span>
-          </span>
-          <h2
-            className="font-display font-semibold tracking-[-0.025em] text-white"
-            style={{ fontSize: "clamp(1.9rem, 3.6vw, 2.9rem)", lineHeight: 1.04 }}
-          >
-            See these capabilities in your own houses.
-          </h2>
-          <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-relaxed text-white/70">
-            We instrument a house, set the baseline, and show you the platform working — sensing, vision, acoustic, and reports — before you commit to anything.
-          </p>
-          <Link href="/contact" className="mt-8 inline-flex items-center justify-center bg-white px-8 py-3.5 font-sans text-sm font-semibold uppercase tracking-[0.06em] text-primary transition-colors hover:bg-surface-container-low">Contact us</Link>
-          <p className="mt-5 font-sans text-title-sm text-white/60">
-            Explore our{" "}
-            <Link href="/offering" className="text-white/85 underline underline-offset-2 transition-colors duration-150 hover:text-white">
-              proof of concept offering
-            </Link>
-            .
-          </p>
-          <p className="mt-12 font-sans text-label-sm uppercase tracking-[0.06em] text-white/40">
-            Last updated: {formatDisplayDate(pageLastModified["/capabilities"])}
-          </p>
-        </div>
-      </section>
+      <div className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-primary">What the platform does</h1>
+        <p className="mt-3 font-sans text-base leading-relaxed text-on-surface-variant">
+          A short list. The camera work and the agents each have their own page.
+        </p>
+        <ul className="mt-8" style={{ borderTop: "0.5px solid #BEC8CA" }}>
+          {capabilities.map((item) => (
+            <li key={item.title} className="py-5" style={{ borderBottom: "0.5px solid #BEC8CA" }}>
+              <h2 className="font-display text-xl font-semibold text-primary">{item.title}</h2>
+              <p className="mt-2 font-sans text-sm leading-relaxed text-on-surface-variant">{item.body}</p>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-8 font-sans text-sm text-on-surface-variant">
+          <Link href="/computer-vision" className="font-medium text-primary underline underline-offset-4">Cameras</Link>
+          {" · "}
+          <Link href="/ai-farm-agents" className="font-medium text-primary underline underline-offset-4">Agents</Link>
+          {" · "}
+          <Link href="/offering" className="font-medium text-primary underline underline-offset-4">Proof of concept</Link>
+        </p>
+        <p className="mt-10 font-sans text-label-sm uppercase tracking-[0.06em] text-on-surface-variant/70">
+          Last updated: {formatDisplayDate(pageLastModified["/capabilities"])}
+        </p>
+      </div>
     </div>
   );
 }

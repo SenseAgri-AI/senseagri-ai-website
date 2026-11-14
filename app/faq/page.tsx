@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
 import FAQAccordion from "@/components/FAQAccordion";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph } from "@/lib/jsonLd";
@@ -9,8 +8,14 @@ import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
   description:
-    "How SenseAgri AI's poultry monitoring platform works — sensors, causal AI, integrations, Partner Programme and hardware. Answers for poultry farms of every size in South Africa.",
-  alternates: { canonical: "/faq" }
+    "How the cameras, agents, sensors, and data ownership work, and what a proof of concept includes.",
+  alternates: { canonical: "/faq" },
+  openGraph: {
+    title: "Frequently asked questions · SenseAgri AI",
+    description:
+      "How the cameras, agents, sensors, and data ownership work, and what a proof of concept includes.",
+    url: "/faq"
+  }
 };
 
 const GOLD = "#13AAA5";
@@ -20,17 +25,17 @@ const faqs = [
   {
     question: "How does SenseAgri AI detect poultry disease early?",
     answer:
-      "The platform continuously monitors house conditions — temperature, humidity, gas, CO₂, feed, water, egg count and more — around the clock. On-farm AI learns each house's baseline and runs causal models against it, separating normal variation from the early signs of a real problem. When something meaningful shifts, an alert goes to your phone via WhatsApp with the specific action to take."
+      "The platform monitors house conditions: temperature, humidity, gas, CO₂, feed, water, and egg count. It learns each house's baseline and separates normal variation from a real change. When something meaningful shifts, it is flagged for a person to check."
   },
   {
     question: "What sensors and hardware does the platform use?",
     answer:
-      "LoRaWAN sensors and edge cameras deployed inside each house. They read temperature, humidity, gas, CO₂, feed, water and egg count around the clock. Sensing and inference run on-site, so the platform keeps working through patchy connectivity — data syncs to the cloud the moment the link returns."
+      "Sensors and cameras in the house. They can read temperature, humidity, gas, CO₂, feed, water, and egg count. Sensor logging can be set up to keep recording if the link drops."
   },
   {
-    question: "Does it integrate with our existing farm equipment?",
+    question: "Does it use the equipment we already have?",
     answer:
-      "Yes. SenseAgri AI integrates with the major poultry platforms already on your farm — Big Dutchman, SKOV, Hytek, Vencomatic and more. You keep the controllers and equipment you have; SenseAgri adds the layer of continuous monitoring and causal analysis on top."
+      "Agents can be set up to connect to Big Dutchman, SKOV, Hytek, and Vencomatic controllers, and to the company records you approve. A proof of concept agrees that scope before anything is switched on."
   },
   {
     question: "What does the Partner Programme cost?",
@@ -40,12 +45,22 @@ const faqs = [
   {
     question: "Do I need to buy or install any hardware myself?",
     answer:
-      "No. Sensors, edge compute and installation are all handled by us as part of the pilot — nothing to buy up-front, nothing to install yourself."
+      "No. Sensors and installation are handled by us as part of the pilot. Nothing to buy up-front, and nothing to install yourself."
   },
   {
     question: "Does SenseAgri use computer vision for poultry monitoring?",
     answer:
-      "Yes, and the vision layer is split by farm type. For layer and breeder houses, vision-based systems count eggs continuously. For broiler operations, cameras track bird movement and activity across the house as a welfare and behaviour signal. Cameras integrate with the CCTV your farm already uses, and vision inference runs on the farm's own edge compute — no cloud round-trip per frame."
+      "Yes. Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm, so frames can stay on site. Egg counting on the A-frame is the reading shown on the site. We check the count on your houses in a proof of concept."
+  },
+  {
+    question: "What do the AI farm agents do?",
+    answer:
+      "They can be set up to connect to the vision record, to Big Dutchman, SKOV, Hytek and Vencomatic controllers, and to the company records you approve. They can send a WhatsApp alert when a reading leaves its range, draft a weekly production report, and track open work. The cameras are for eggs, birds, activity, and issues, not for watching people."
+  },
+  {
+    question: "Who owns the data SenseAgri connects to?",
+    answer:
+      "Your data stays yours. Connector access is limited to what you approve, read-only by default. You own the data and can export or delete it."
   },
   {
     question: "How does acoustic monitoring work in a poultry house?",
@@ -60,12 +75,12 @@ const faqs = [
   {
     question: "What welfare and production metrics does the platform track?",
     answer:
-      "Environmental conditions (temperature, humidity, CO₂, ammonia), vision-based bird activity and movement, acoustic welfare signals including stress vocalisations, feed/water consumption patterns, egg count, hen-day production, mortality trends, and feed conversion — all in a single dashboard with weekly ROI reports summarising what changed and why."
+      "Environmental conditions (temperature, humidity, CO₂, ammonia), bird activity, sound, feed and water, egg count, hen-day production, mortality, and feed conversion."
   },
   {
     question: "What kind of AI does SenseAgri use?",
     answer:
-      "The platform combines computer vision (bird tracking, egg counting), acoustic classification (welfare and stress-signal detection), and causal AI on environmental time-series. Inference runs on the farm itself, so the platform keeps working through patchy connectivity — data syncs to the cloud when the link returns."
+      "Computer vision for eggs, birds, activity, and issues, plus sound classification and models on the house readings."
   }
 ];
 
@@ -88,14 +103,12 @@ export default function FAQPage() {
       <JsonLd data={faqJsonLd} />
       <JsonLd data={breadcrumbGraph([{ name: "FAQ", path: "/faq" }])} />
 
-      <PageHero
-        dark
-        accent="#4FB8C5"
-        eyebrow="FAQ"
-        headline="Answers to the"
-        accentLine="most-asked questions."
-        sub="How the platform works, what's in the pilot, and how it fits with the equipment you already have."
-      />
+      <header className="mx-auto max-w-3xl px-6 pt-12 sm:px-10">
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-primary">Questions</h1>
+        <p className="mt-3 font-sans text-base text-on-surface-variant">
+          Cameras, agents, sensors, and who owns the data.
+        </p>
+      </header>
 
       <section className="section-padding bg-surface">
         <div className="mx-auto max-w-4xl">

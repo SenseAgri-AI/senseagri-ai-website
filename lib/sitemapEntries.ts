@@ -5,6 +5,9 @@ import type { WikiEntity } from "./wiki/schema";
 
 export const STATIC_SITEMAP_PATHS = [
   "/",
+  "/computer-vision",
+  "/ai-farm-agents",
+  "/security",
   "/offering",
   "/capabilities",
   "/faq",

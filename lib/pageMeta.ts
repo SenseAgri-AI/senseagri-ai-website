@@ -10,11 +10,14 @@
 // Purely cosmetic changes (typo fixes, wording tweaks) don't need a bump.
 
 export const pageLastModified: Record<string, string> = {
-  "/": "2026-11-05",
-  "/offering": "2026-10-02",
-  "/capabilities": "2026-10-02",
-  "/faq": "2026-07-18",
-  "/about": "2026-10-02",
+  "/": "2026-11-14",
+  "/computer-vision": "2026-11-14",
+  "/ai-farm-agents": "2026-11-14",
+  "/security": "2026-11-13",
+  "/offering": "2026-11-13",
+  "/capabilities": "2026-11-14",
+  "/faq": "2026-11-14",
+  "/about": "2026-11-13",
   "/contact": "2026-10-02",
   "/blog": "2026-08-20",
   "/blog/flock-night-rest-score": "2026-08-20",

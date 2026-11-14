@@ -1,22 +1,22 @@
 # SenseAgri AI
 
-> Poultry intelligence for South African operations, founded 2025. Unifies house sensors — temperature, humidity, CO₂, ammonia, feed, water and eggs — into welfare and disease early warnings on WhatsApp, and weekly ROI reports. Hardware-agnostic across Big Dutchman, SKOV and DOL-class sensors. Sells a proof of concept and a Partner Programme (sensors, dashboard and install) to farms and to feed, vet and integrator partners.
+> Poultry intelligence for South African operations, founded 2025. SenseAgri can set up cameras to track eggs, birds, activity, and issues on layer, breeder, and broiler houses, with processing that can run on the farm so frames can stay on site. Agents can be set up to connect to Big Dutchman, SKOV, Hytek, and Vencomatic controllers and to company records the farm approves. They can send a WhatsApp alert when a reading leaves its range, draft a weekly production report, and track open work. Sensor logging can be set up to keep recording if the link drops. Egg counting on A-frame cameras is one reading already shown. A proof of concept and a Partner Programme are sold to farms and to feed, vet and integrator partners. The customer owns the data. Connector access is limited to what the customer approves, read-only by default, and the customer can export or delete it.
 
 ## Key pages
 
-- [Home](https://www.senseagriai.com/): product overview and positioning.
-- [Solution](https://www.senseagriai.com/solution): how the platform works end-to-end — sensing in the house, edge AI on the farm, decisions on your phone.
-- [Pricing](https://www.senseagriai.com/pricing): Partner Programme at founder pricing — hands-on partnership with direct access to the team, scoped per operation.
-- [About](https://www.senseagriai.com/about): the company, mission ("digital husbandry for African farms"), founders, values.
-- [Contact](https://www.senseagriai.com/contact): book a demo with the team.
+- [Home](https://www.senseagriai.com/): computer vision as the farm data layer, and agents that understand the farm. Egg counting on the A-frame is the proof on the dashboard.
+- [Computer vision](https://www.senseagriai.com/computer-vision): an A-frame camera, then the same view with the count line and a box on each egg.
+- [AI farm agents](https://www.senseagriai.com/ai-farm-agents): records you connect, then an agent, then a WhatsApp alert, a weekly production report, or an issue log. The page shows example notes, not a farm's results.
+- [Security](https://www.senseagriai.com/security): the customer owns the data. Access is scoped and read-only by default.
+- [About](https://www.senseagriai.com/about): the company, founders, and values.
+- [Contact](https://www.senseagriai.com/contact): talk to the team.
 
 ## Facts
 
-- **Product**: SenseAgri AI (also referred to as SenseAgri Farm AI in some alerts).
-- **Category**: SaaS / intelligence platform for commercial poultry operations.
+- **Product**: SenseAgri AI.
+- **Category**: software for commercial poultry operations.
 - **Geography**: Based in South Africa; targets African poultry operations.
-- **Delivery**: web dashboard + WhatsApp alerts.
-- **Signals monitored**: temperature, humidity, air quality (CO₂, ammonia), feed, water, hen-day production, welfare indicators.
+- **Signals the pages describe**: eggs, birds, activity, issues, and house readings such as temperature, humidity, CO₂, ammonia, feed and water.
 - **Founders**: Dylan Geldenhuys (Co-Founder & CEO, data scientist), Dr Ryan Nel (Co-Founder & COO, veterinarian).
 - **Contact**: ryan@senseagriai.com
 - **LinkedIn (company)**: https://www.linkedin.com/company/senseagri-ai/

@@ -9,7 +9,7 @@
     "category": "nightly poultry welfare score",
     "founded": "2026",
     "function": "The Flock Night-Rest Score rates how well a flock of laying hens rested, from 0 to 100, using shed sound and in-house conditions.",
-    "differentiator": "The Flock Night-Rest Score is delivered to the farmer's phone by morning, with a WhatsApp alert only when rest has been poor several nights running."
+    "differentiator": "The Flock Night-Rest Score is written up for the farmer by morning, with a note when rest has been poor several nights running."
   },
   "sections": [
     {
@@ -29,7 +29,7 @@
       "heading": "What do Flock Night-Rest Score bands mean?",
       "paragraphs": [
         "SenseAgri AI publishes three Flock Night-Rest Score bands: 85\u2013100 Restful (undisturbed rest); 60\u201385 Some disruption (worth a look); below 60 Disturbed (something needs attention). [1]",
-        "The farmer using the Flock Night-Rest Score gets last night's score, a plain-language reason (noise, heat, or not enough darkness), a WhatsApp alert only when rest has been poor several nights running, and the audio clips of the disturbance. [1]"
+        "The farmer using the Flock Night-Rest Score gets last night's score, a plain-language reason (noise, heat, or not enough darkness), a note when rest has been poor several nights running, and the audio clips of the disturbance. [1]"
       ],
       "stats": [
         {

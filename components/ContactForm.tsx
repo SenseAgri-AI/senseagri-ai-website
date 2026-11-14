@@ -122,7 +122,7 @@ export default function ContactForm() {
           <input className={inputClass} type="email" value={formData.email} onChange={updateField("email")} required />
         </label>
         <label className="font-sans text-label-md font-medium uppercase tracking-wider text-on-surface-variant">
-          Phone / WhatsApp
+          Phone
           <input className={inputClass} value={formData.phone} onChange={updateField("phone")} />
         </label>
       </div>
