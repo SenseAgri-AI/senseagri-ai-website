@@ -30,7 +30,7 @@ export function computerVisionServiceGraph() {
     "@id": `${siteConfig.url}/computer-vision#service`,
     name: "SenseAgri computer vision",
     description:
-      "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm so frames stay on site. Egg counting on A-frame cages is one reading already shown.",
+      "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm, so frames can stay on site. Egg counting on A-frame cages is one reading already shown.",
     url: `${siteConfig.url}/computer-vision`,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },

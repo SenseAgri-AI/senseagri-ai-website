@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const capabilities = [
   {
     title: "Egg counting and bird activity",
-    body: "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm so frames stay on site. Egg counting on the A-frame is the reading shown on the site."
+    body: "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm, so frames can stay on site. Egg counting on the A-frame is the reading shown on the site."
   },
   {
     title: "Agents",

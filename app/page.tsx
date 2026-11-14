@@ -20,13 +20,13 @@ export const metadata: Metadata = {
 const points = [
   {
     title: "Computer vision",
-    body: "Can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing runs on the farm, so frames stay on site. Egg counting on the A-frame is one reading already running.",
+    body: "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm, so frames can stay on site. Egg counting on the A-frame is one reading already running.",
     href: "/computer-vision",
     label: "See the count"
   },
   {
     title: "Agents",
-    body: "Can connect to Big Dutchman, SKOV, Hytek, Vencomatic, and the company records you approve. Can send a WhatsApp alert when a reading leaves its range, and draft a weekly production report.",
+    body: "Agents can connect to Big Dutchman, SKOV, Hytek, Vencomatic, and the company records you approve. They can send a WhatsApp alert when a reading leaves its range, and draft a weekly production report.",
     href: "/ai-farm-agents",
     label: "How an agent works"
   },
@@ -46,7 +46,7 @@ export default function HomePage() {
           A data layer for the farm, and agents that understand it.
         </h1>
         <p className="mt-4 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
-          Computer vision is the farm&apos;s data layer. Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing runs on the farm, so the frames stay on site.
+          Computer vision is the farm&apos;s data layer. Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm, so the frames can stay on site.
         </p>
         <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
           Agents can connect to that record, to Big Dutchman, SKOV, Hytek and Vencomatic controllers, and to the company records you approve. They can send a WhatsApp alert when a reading leaves its range, draft a weekly production report, and track open work.
