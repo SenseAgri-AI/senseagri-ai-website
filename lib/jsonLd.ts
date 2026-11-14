@@ -30,7 +30,7 @@ export function computerVisionServiceGraph() {
     "@id": `${siteConfig.url}/computer-vision#service`,
     name: "SenseAgri computer vision",
     description:
-      "Computer vision as the farm's data layer: eggs, birds, activity, and issues. Egg counting on A-frame cages is one reading. The customer owns the data and can export or delete it.",
+      "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm so frames stay on site. Egg counting on A-frame cages is one reading already shown.",
     url: `${siteConfig.url}/computer-vision`,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },
@@ -49,7 +49,7 @@ export function farmAgentsServiceGraph() {
     "@id": `${siteConfig.url}/ai-farm-agents#service`,
     name: "SenseAgri AI farm agents",
     description:
-      "Agents that connect to the vision record and the company records a customer approves. They flag an issue, draft a report for the customer to check, and track open work. Access is read-only by default.",
+      "Agents can be set up to connect to Big Dutchman, SKOV, Hytek, Vencomatic, and company records a customer approves. They can send a WhatsApp alert when a reading leaves its range, draft a weekly production report, and track open work. Access is read-only by default.",
     url: `${siteConfig.url}/ai-farm-agents`,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },

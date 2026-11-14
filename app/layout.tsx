@@ -63,7 +63,7 @@ const jsonLd = {
       url: siteConfig.url,
       logo: `${siteConfig.url}/logo.svg`,
       description:
-        "Computer vision is the farm's data layer: eggs, birds, activity, and issues. Agents connect to the records a customer approves.",
+        "Cameras can be set up to track eggs, birds, activity, and issues, with processing on the farm. Agents can connect to approved controllers and company records.",
       slogan: "Every signal. Every decision.",
       foundingDate: "2025",
       areaServed: { "@type": "Country", name: "South Africa" },
@@ -121,7 +121,7 @@ const jsonLd = {
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web",
       description:
-        "Computer vision for eggs, birds, activity, and issues, plus agents that connect to records the farm approves. The customer owns the data and can export or delete it.",
+        "Cameras can be set up for eggs, birds, activity, and issues, with processing on the farm. Agents can connect to approved controllers and company records, send a WhatsApp alert, and draft a weekly production report. The customer owns the data and can export or delete it.",
       areaServed: { "@type": "Country", name: "South Africa" },
       publisher: { "@id": `${siteConfig.url}/#organization` }
     }

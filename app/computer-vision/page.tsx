@@ -8,12 +8,12 @@ import { formatDisplayDate, pageLastModified } from "@/lib/pageMeta";
 export const metadata: Metadata = {
   title: "Computer vision",
   description:
-    "Computer vision is the farm's data layer. An A-frame camera counts eggs: the plain frame, then the same frame with the count line and a box on each egg.",
+    "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing runs on the farm, so frames stay on site. Egg counting on the A-frame is the reading shown.",
   alternates: { canonical: "/computer-vision" },
   openGraph: {
     title: "Computer vision · SenseAgri AI",
     description:
-      "Computer vision is the farm's data layer. An A-frame camera counts eggs: the plain frame, then the same frame with the count line and a box on each egg.",
+      "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing runs on the farm, so frames stay on site. Egg counting on the A-frame is the reading shown.",
     url: "/computer-vision"
   }
 };
@@ -21,7 +21,8 @@ export const metadata: Metadata = {
 const steps = [
   "A camera on the A-frame watches the egg belt.",
   "The model marks each egg, draws the zone, and writes the running total on the frame.",
-  "That count sits in the farm's data layer with birds, activity, and issues.",
+  "The same cameras can be set up to track birds, activity, and issues on layer, breeder, and broiler houses.",
+  "Processing runs on the farm, so the frames stay on site.",
   "On a new farm we check the count on that farm's houses first."
 ];
 
@@ -36,7 +37,7 @@ export default function ComputerVisionPage() {
           The farm data layer, starting with the eggs.
         </h1>
         <p className="mt-4 max-w-xl font-sans text-base leading-relaxed text-on-surface-variant">
-          Cameras can record eggs, birds, activity, and issues. Egg counting on the A-frame is the reading below: the camera, then the same view with the count drawn on.
+          Cameras can be set up to track eggs, birds, activity, and issues. Egg counting on the A-frame is the reading below: the camera, then the same view with the count drawn on. Processing runs on the farm, so the frames stay on site.
         </p>
       </header>
 

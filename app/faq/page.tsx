@@ -30,12 +30,12 @@ const faqs = [
   {
     question: "What sensors and hardware does the platform use?",
     answer:
-      "Sensors and cameras in the house. They read temperature, humidity, gas, CO₂, feed, water, and egg count."
+      "Sensors and cameras in the house. They can read temperature, humidity, gas, CO₂, feed, water, and egg count. Sensor logging can be set up to keep recording if the link drops."
   },
   {
     question: "Does it use the equipment we already have?",
     answer:
-      "A proof of concept starts from the cameras and records you choose to connect. We agree that scope before anything is switched on."
+      "Agents can be set up to connect to Big Dutchman, SKOV, Hytek, and Vencomatic controllers, and to the company records you approve. A proof of concept agrees that scope before anything is switched on."
   },
   {
     question: "What does the Partner Programme cost?",
@@ -50,12 +50,12 @@ const faqs = [
   {
     question: "Does SenseAgri use computer vision for poultry monitoring?",
     answer:
-      "Yes. Computer vision is the farm's data layer: eggs, birds, activity, and issues. Egg counting on the A-frame is the reading we can show. We check the count on your houses in a proof of concept."
+      "Yes. Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm so frames stay on site. Egg counting on the A-frame is the reading shown on the site. We check the count on your houses in a proof of concept."
   },
   {
     question: "What do the AI farm agents do?",
     answer:
-      "They connect to the vision record and the company records you approve. They catch issues, draft a report for you to check, and track open work. Jobs come from your records. The cameras are for eggs, birds, and activity, not for watching people."
+      "They can be set up to connect to the vision record, to Big Dutchman, SKOV, Hytek and Vencomatic controllers, and to the company records you approve. They can send a WhatsApp alert when a reading leaves its range, draft a weekly production report, and track open work. The cameras are for eggs, birds, activity, and issues, not for watching people."
   },
   {
     question: "Who owns the data SenseAgri connects to?",

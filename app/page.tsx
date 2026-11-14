@@ -7,12 +7,12 @@ export const metadata: Metadata = {
     absolute: "SenseAgri AI — Computer vision and agents for the farm"
   },
   description:
-    "Computer vision is the farm's data layer: eggs, birds, activity, and issues. Agents connect to the records you approve, catch issues, draft reports, and track open work.",
+    "Cameras can be set up to track eggs, birds, activity, and issues, with processing on the farm. Agents can connect to your controllers and company records, send a WhatsApp alert, and draft a weekly production report.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "SenseAgri AI — Computer vision and agents for the farm",
     description:
-      "Computer vision is the farm's data layer: eggs, birds, activity, and issues. Agents connect to the records you approve, catch issues, draft reports, and track open work.",
+      "Cameras can be set up to track eggs, birds, activity, and issues, with processing on the farm. Agents can connect to your controllers and company records, send a WhatsApp alert, and draft a weekly production report.",
     url: "/"
   }
 };
@@ -20,13 +20,13 @@ export const metadata: Metadata = {
 const points = [
   {
     title: "Computer vision",
-    body: "Cameras turn eggs, birds, activity, and issues into a record. Egg counting on the A-frame is one reading already running.",
+    body: "Can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing runs on the farm, so frames stay on site. Egg counting on the A-frame is one reading already running.",
     href: "/computer-vision",
     label: "See the count"
   },
   {
     title: "Agents",
-    body: "They connect to the vision record and the company records you approve. They flag an issue, draft a report for you to check, and track open work.",
+    body: "Can connect to Big Dutchman, SKOV, Hytek, Vencomatic, and the company records you approve. Can send a WhatsApp alert when a reading leaves its range, and draft a weekly production report.",
     href: "/ai-farm-agents",
     label: "How an agent works"
   },
@@ -46,7 +46,10 @@ export default function HomePage() {
           A data layer for the farm, and agents that understand it.
         </h1>
         <p className="mt-4 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
-          Computer vision turns eggs, birds, activity, and issues into a record. Agents connect to that record and to the company records you approve. They catch issues, draft reports for you to check, and track open work.
+          Computer vision is the farm&apos;s data layer. Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing runs on the farm, so the frames stay on site.
+        </p>
+        <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
+          Agents can connect to that record, to Big Dutchman, SKOV, Hytek and Vencomatic controllers, and to the company records you approve. They can send a WhatsApp alert when a reading leaves its range, draft a weekly production report, and track open work.
         </p>
         <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
           Egg counting on the A-frame is one reading already on the dashboard.

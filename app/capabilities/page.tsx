@@ -20,11 +20,11 @@ export const metadata: Metadata = {
 const capabilities = [
   {
     title: "Egg counting and bird activity",
-    body: "Computer vision is the farm's data layer: eggs, birds, activity, and issues. Egg counting on the A-frame is the reading we can show."
+    body: "Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm so frames stay on site. Egg counting on the A-frame is the reading shown on the site."
   },
   {
     title: "Agents",
-    body: "They connect to the vision record and the company records you approve. They catch issues, draft a report for you to check, and track open work. Your data stays yours. Access is limited to what you approve, read-only by default, and you can export or delete it."
+    body: "They can connect to Big Dutchman, SKOV, Hytek, Vencomatic, and the company records you approve. They can send a WhatsApp alert when a reading leaves its range, and draft a weekly production report. Your data stays yours. Access is limited to what you approve, read-only by default, and you can export or delete it."
   },
   {
     title: "House sensors",

@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "SenseAgri AI",
   description:
-    "Computer vision is the farm's data layer: eggs, birds, activity, and issues. Agents connect to the records you approve, catch issues, draft reports, and track open work.",
+    "Cameras can be set up to track eggs, birds, activity, and issues, with processing on the farm. Agents can connect to your controllers and company records, send a WhatsApp alert, and draft a weekly production report.",
   url: "https://www.senseagriai.com",
   links: {
     email: "ryan@senseagriai.com",
