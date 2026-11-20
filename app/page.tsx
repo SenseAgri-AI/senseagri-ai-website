@@ -7,12 +7,12 @@ export const metadata: Metadata = {
     absolute: "SenseAgri AI — Computer vision and agents for the farm"
   },
   description:
-    "Cameras can be set up to track eggs, birds, activity, and issues, with processing on the farm. Agents can connect to your controllers and company records, send a WhatsApp alert, and draft a weekly production report.",
+    "Cameras can be set up to track eggs, birds, activity, and issues, with processing that can run on the farm. Agents can connect to your controllers and company records, send a WhatsApp alert, and draft a weekly production report.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "SenseAgri AI — Computer vision and agents for the farm",
     description:
-      "Cameras can be set up to track eggs, birds, activity, and issues, with processing on the farm. Agents can connect to your controllers and company records, send a WhatsApp alert, and draft a weekly production report.",
+      "Cameras can be set up to track eggs, birds, activity, and issues, with processing that can run on the farm. Agents can connect to your controllers and company records, send a WhatsApp alert, and draft a weekly production report.",
     url: "/"
   }
 };
@@ -26,9 +26,9 @@ const points = [
   },
   {
     title: "Agents",
-    body: "Agents can connect to Big Dutchman, SKOV, Hytek, Vencomatic, and the company records you approve. They can send a WhatsApp alert when a reading leaves its range, and draft a weekly production report.",
+    body: "Agents can connect to Big Dutchman, SKOV, Hytek, Vencomatic, and the company records you approve. The AI Farm Manager can be set up to watch every house, around the clock.",
     href: "/ai-farm-agents",
-    label: "How an agent works"
+    label: "AI Farm Manager"
   },
   {
     title: "Your records",
@@ -49,7 +49,7 @@ export default function HomePage() {
           Computer vision is the farm&apos;s data layer. Cameras can be set up to track eggs, birds, activity, and issues on layer, breeder, and broiler houses. Processing can run on the farm, so the frames can stay on site.
         </p>
         <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
-          Agents can connect to that record, to Big Dutchman, SKOV, Hytek and Vencomatic controllers, and to the company records you approve. They can send a WhatsApp alert when a reading leaves its range, draft a weekly production report, and track open work.
+          Agents can connect to that record, to Big Dutchman, SKOV, Hytek and Vencomatic controllers, and to the company records you approve. The AI Farm Manager can be set up to watch every house, around the clock, and to message you when something needs a person.
         </p>
         <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
           Egg counting on the A-frame is one reading already on the dashboard.

@@ -49,7 +49,7 @@ export function farmAgentsServiceGraph() {
     "@id": `${siteConfig.url}/ai-farm-agents#service`,
     name: "SenseAgri AI farm agents",
     description:
-      "Agents can be set up to connect to Big Dutchman, SKOV, Hytek, Vencomatic, and company records a customer approves. They can send a WhatsApp alert when a reading leaves its range, draft a weekly production report, and track open work. Access is read-only by default.",
+      "The AI Farm Manager can be set up to watch every house around the clock. Agents can connect to Big Dutchman, SKOV, Hytek, Vencomatic, and company records a customer approves, send a WhatsApp alert when a reading leaves its range, and draft a weekly production report. Access is read-only by default.",
     url: `${siteConfig.url}/ai-farm-agents`,
     provider: { "@id": `${siteConfig.url}/#organization` },
     areaServed: { "@type": "Country", name: "South Africa" },

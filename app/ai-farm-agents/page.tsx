@@ -32,6 +32,17 @@ const flow = [
   }
 ];
 
+const rhythm = [
+  ["Overnight", "Scan the houses after dark."],
+  ["Morning", "A health check to start the day."],
+  ["Water and feed", "Look for water and feed issues."],
+  ["Climate", "Heat, cold, and ventilation."],
+  ["Egg reading", "Check that the egg count is coming in."],
+  ["Tasks", "Check that scheduled tasks were logged on time."],
+  ["End of day", "A wrap-up of what still needs a person."],
+  ["Weekly", "A digest of the week."]
+];
+
 const examples = [
   {
     title: "WhatsApp alert",
@@ -80,10 +91,6 @@ export default function AiFarmAgentsPage() {
         <p className="mt-4 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
           An agent can be set up to connect to the vision record, to Big Dutchman, SKOV, Hytek and Vencomatic controllers, and to the company records you approve. It can send a WhatsApp message when a reading leaves its range, draft a weekly production report, and keep an issue log. House sensors can be set up to keep logging if the link drops.
         </p>
-        <p className="mt-3 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
-          The three notes below are examples of the shape of that work. They use a made-up house. They are not a farm&apos;s results.
-        </p>
-
         <ol className="mt-10 flex flex-col gap-2 md:flex-row md:items-stretch" aria-label="How an agent uses the records you connect">
           {flow.map((step, index) => (
             <li key={step.title} className="flex flex-1 flex-col gap-2 md:flex-row md:items-stretch">
@@ -101,7 +108,43 @@ export default function AiFarmAgentsPage() {
           ))}
         </ol>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <section className="mt-16 max-w-3xl" style={{ borderTop: "0.5px solid #BEC8CA" }}>
+          <h2 className="pt-10 font-display text-3xl font-semibold leading-tight tracking-tight text-primary">
+            AI Farm Manager: watching every house, around the clock.
+          </h2>
+          <div className="mt-4 space-y-3 font-sans text-base leading-relaxed text-on-surface-variant">
+            <p>
+              Sensors and data come in. The Farm Manager can be set up to watch every house, all day, and to notice when something is not right before it costs you.
+            </p>
+            <p>
+              It can watch the cameras and the barn sensors for water, feed, bird health, heat, cold, and ventilation, and for schedules that are slipping. A task check looks at whether scheduled work was logged on time. It does not watch people.
+            </p>
+            <p>
+              It can send a direct message when something needs a person. Hard thresholds can run around the clock.
+            </p>
+          </div>
+          <h3 className="mt-8 font-display text-xl font-semibold text-primary">A day of checks</h3>
+          <ol className="mt-3" style={{ borderTop: "0.5px solid #BEC8CA" }}>
+            {rhythm.map(([when, what]) => (
+              <li key={when} className="grid gap-1 py-3 sm:grid-cols-[9rem_1fr] sm:gap-6" style={{ borderBottom: "0.5px solid #BEC8CA" }}>
+                <span className="font-sans text-sm font-medium text-primary">{when}</span>
+                <span className="font-sans text-sm leading-relaxed text-on-surface-variant">{what}</span>
+              </li>
+            ))}
+          </ol>
+          <h3 className="mt-8 font-display text-xl font-semibold text-primary">OK, Watch, Act</h3>
+          <div className="mt-3 space-y-3 font-sans text-base leading-relaxed text-on-surface-variant">
+            <p>Each reading can be sorted OK, Watch, or Act.</p>
+            <p>Act can go out on WhatsApp straight away. Watch can go in an email brief. All of it can sit on the dashboard.</p>
+            <p>If an alert is not acknowledged, it can move up a contact list. One item stays open per issue until it is closed. Every alert can link to the evidence behind it.</p>
+            <p>People make the decisions. The owner approves any change to a threshold.</p>
+          </div>
+        </section>
+
+        <p className="mt-12 max-w-2xl font-sans text-base leading-relaxed text-on-surface-variant">
+          The three notes below are examples of the shape of that work. They use a made-up house. They are not a farm&apos;s results.
+        </p>
+        <div className="mt-6 grid gap-6 lg:grid-cols-3">
           {examples.map((example) => (
             <article key={example.title} className="bg-surface-container-lowest" style={{ border: "0.5px solid #BEC8CA" }}>
               <header className="flex items-center justify-between gap-3 px-4 py-3" style={{ borderBottom: "0.5px solid #BEC8CA" }}>
