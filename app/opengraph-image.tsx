@@ -1,13 +1,13 @@
 import { ImageResponse } from "next/og";
 
-// Social share preview (WhatsApp, Slack, LinkedIn, X, iMessage…).
+// Social share preview (Slack, LinkedIn, X, iMessage).
 // Next auto-generates the OG + Twitter meta tags from this convention file,
 // which is why the manual `openGraph.images` / `twitter.images` were dropped
 // from app/layout.tsx — those would override the convention.
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "SenseAgri AI — South Africa's Poultry Intelligence Platform";
+export const alt = "SenseAgri AI — computer vision and agents for the farm";
 
 export default function OpenGraphImage() {
   return new ImageResponse(
@@ -60,7 +60,7 @@ export default function OpenGraphImage() {
                 textTransform: "uppercase"
               }}
             >
-              South Africa's Poultry Intelligence Platform
+              Computer vision and farm agents
             </div>
 
             {/* Wordmark */}
@@ -86,7 +86,7 @@ export default function OpenGraphImage() {
                 marginTop: 4
               }}
             >
-              Continuous sensing, edge AI alerts, and weekly ROI reports — engineered for South African poultry operations.
+              Vision is the farm data layer. Agents read the records you connect.
             </div>
           </div>
         </div>

@@ -9,7 +9,6 @@ import { siteConfig } from "@/lib/site";
 
 const POST_PATH = "/blog/flock-night-rest-score";
 const POST_URL = `${siteConfig.url}${POST_PATH}`;
-const IMAGE_URL = `${siteConfig.url}/blog/flock-night-rest-score/dashboard.png`;
 const PUBLISHED = "2026-08-20";
 const MODIFIED = pageLastModified[POST_PATH];
 
@@ -24,8 +23,7 @@ export const metadata: Metadata = {
       "A nightly 0–100 sleep score for laying hens, measured from shed sound and IoT sensors.",
     type: "article",
     publishedTime: PUBLISHED,
-    modifiedTime: MODIFIED,
-    images: [{ url: IMAGE_URL, width: 3002, height: 1340 }]
+    modifiedTime: MODIFIED
   }
 };
 
@@ -51,7 +49,7 @@ const steps = [
   {
     title: "Tell",
     body:
-      "The score, the trend, and the reason land on the farmer's phone, with a WhatsApp alert only when something needs attention."
+      "The score, the trend, and the reason are written up for the farmer when something needs attention."
   }
 ];
 
@@ -97,7 +95,7 @@ const scoreBands = [
 const farmerGets = [
   "Last night's score, clear and simple, with the trend across recent nights.",
   "A plain-language reason for it — noise, heat, or not enough darkness.",
-  "A WhatsApp alert only when rest has been poor several nights running — with the likely cause.",
+  "A note when rest has been poor several nights running, with the likely cause.",
   "The actual audio clips of the disturbance, to listen to and judge for themselves."
 ];
 
@@ -155,7 +153,6 @@ const blogPostingJsonLd = {
   headline: "The Flock Night-Rest Score: A sleep score for the flock",
   description:
     "A nightly 0–100 sleep score for laying hens, measured from shed sound and IoT sensors. Peer-reviewed thresholds; delivered to the farmer's phone every morning.",
-  image: IMAGE_URL,
   datePublished: PUBLISHED,
   dateModified: MODIFIED,
   author: { "@id": `${siteConfig.url}/#organization` },
@@ -251,23 +248,6 @@ export default function FlockNightRestScorePost() {
           <p className="font-sans text-lg leading-relaxed text-on-surface-variant">
             Sleep drives health, welfare and laying, yet until now no one could see it. SenseAgri AI turns an existing shed microphone and a handful of IoT sensors into a simple, nightly window on the flock&rsquo;s night.
           </p>
-
-          {/* Dashboard screenshot */}
-          <figure className="mt-10">
-            <div className="overflow-hidden" style={{ border: "0.5px solid #BEC8CA" }}>
-              <Image
-                src="/blog/flock-night-rest-score/dashboard.png"
-                alt="The Flock Night-Rest Score on the SenseAgri dashboard — a nightly restfulness score of 89/100 with breakdown by noise, bouts, loudness, pre-dawn, heat, and darkness."
-                width={3002}
-                height={1340}
-                className="block h-auto w-full"
-                priority
-              />
-            </div>
-            <figcaption className="mt-3 font-sans text-title-sm text-on-surface-variant/70">
-              The Flock Night-Rest Score on the SenseAgri dashboard.
-            </figcaption>
-          </figure>
 
           {/* How it works */}
           <h2 className="mt-14 font-display text-2xl font-semibold tracking-[-0.02em] text-primary">
@@ -456,7 +436,7 @@ export default function FlockNightRestScorePost() {
             See how the flock is really sleeping.
           </h2>
           <p className="mx-auto mt-4 max-w-md font-sans text-sm leading-relaxed text-white/70">
-            The Night-Rest Score runs on the same platform as everything else — environment sensing, vision, and WhatsApp alerts.
+            The Night-Rest Score sits with the rest of the platform: environment sensing and vision.
           </p>
           <Link
             href="/contact"

@@ -1,25 +1,21 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import PageHero from "@/components/PageHero";
-import WhatsAppCarousel, { type WhatsAppShot } from "@/components/WhatsAppCarousel";
 import JsonLd from "@/components/JsonLd";
 import { breadcrumbGraph } from "@/lib/jsonLd";
 import { pageLastModified, formatDisplayDate } from "@/lib/pageMeta";
 
-// Source images live in /public/hero_slides — paths URL-encoded for the spaces.
-const whatsappShots: WhatsAppShot[] = [
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.44.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — early welfare alert" },
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2008.41.45.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — recommended action" },
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.23.19.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — production insight" },
-  { src: "/hero_slides/WhatsApp%20Image%202026-05-23%20at%2011.27.38.jpeg", alt: "SenseAgri Farm AI WhatsApp notification — flock summary" }
-];
-
 export const metadata: Metadata = {
-  title: "About — Digital Husbandry for African Farms",
+  title: "About",
   description:
-    "SenseAgri AI turns poultry farm sensor data into action — a 'digital husbandry' platform for African operations. Meet the team and the mission.",
-  alternates: { canonical: "/about" }
+    "SenseAgri builds a data layer for the farm from cameras, and agents that read the records a farm connects. Meet the team.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About · SenseAgri AI",
+    description:
+      "SenseAgri builds a data layer for the farm from cameras, and agents that read the records a farm connects. Meet the team.",
+    url: "/about"
+  }
 };
 
 const GOLD = "#13AAA5";
@@ -27,8 +23,8 @@ const PRIMARY = "#002E35";
 
 const values = [
   {
-    title: "Measurable ROI",
-    desc: "We tie insights to quantifiable outcomes and track them from day one of your pilot."
+    title: "Clear results",
+    desc: "We tie what we show you to the work on your farm, from the first day of a pilot."
   },
   {
     title: "Trust first",
@@ -66,45 +62,15 @@ export default function AboutPage() {
     <div>
       <JsonLd data={breadcrumbGraph([{ name: "About", path: "/about" }])} />
 
-      {/* Hero — dark navy + light teal accent */}
-      <PageHero
-        eyebrow="About"
-        headline="Building intelligence for"
-        accentLine="African agriculture."
-      />
-
-      {/* Mission */}
-      <section className="bg-surface px-6 py-16 sm:px-10 lg:px-16">
-        <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:items-start">
-          <div>
-            <span
-              className="mb-6 inline-flex items-center gap-2 px-3 py-1"
-              style={{ borderLeft: `2px solid ${GOLD}`, background: "rgba(0,46,53,0.06)" }}
-            >
-              <span className="font-sans text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                Mission
-              </span>
-            </span>
-            <h2
-              className="font-display font-semibold tracking-[-0.025em] text-primary"
-              style={{ fontSize: "clamp(1.7rem, 3vw, 2.4rem)", lineHeight: "1.05" }}
-            >
-              Closing the intelligence gap in African agriculture.
-            </h2>
-          </div>
-          <div className="lg:pt-1">
-            <p className="font-sans text-base leading-relaxed text-on-surface-variant">
-              SenseAgri AI is a poultry intelligence platform for farms of every size across Africa. Our mission is to close the intelligence gap: generate insights and automation with real ROI, understand cause and effect, and empower every farmer to make data-driven decisions — regardless of scale.
-            </p>
-            <Link
-              href="/capabilities"
-              className="mt-5 inline-flex font-sans text-sm font-bold text-primary underline underline-offset-2 transition-colors duration-150 hover:text-primary-container"
-            >
-              Explore our capabilities →
-            </Link>
-          </div>
-        </div>
-      </section>
+      <header className="mx-auto max-w-3xl px-6 pb-4 pt-12 sm:px-10">
+        <h1 className="font-display text-4xl font-semibold tracking-tight text-primary">About</h1>
+        <p className="mt-4 font-sans text-base leading-relaxed text-on-surface-variant">
+          SenseAgri builds a data layer for the farm from cameras (eggs, birds, activity, and issues) and agents that read the records a farm connects. The work is for poultry farms in Africa. Your data stays yours. Access is limited to what you approve, read-only by default, and you can export or delete it.
+        </p>
+        <Link href="/capabilities" className="mt-4 inline-flex font-sans text-sm font-medium text-primary underline underline-offset-4">
+          What the platform does
+        </Link>
+      </header>
 
       {/* Founders */}
       <section className="px-6 py-16 sm:px-10 lg:px-16" style={{ background: "#F2F4F4", borderTop: "0.5px solid #BEC8CA" }}>
@@ -198,11 +164,7 @@ export default function AboutPage() {
           </div>
 
           {/* Body row — carousel left half, paragraphs right half */}
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-stretch">
-            {/* Carousel slot — explicit (not min) height so percentage children inside resolve */}
-            <div className="relative" style={{ height: 540 }}>
-              <WhatsAppCarousel images={whatsappShots} dark />
-            </div>
+          <div className="max-w-3xl">
             <div className="flex flex-col gap-4 font-sans text-[0.9375rem] leading-relaxed text-white/75">
             <p>
               SenseAgri AI started with a conversation in early 2025. Dylan and Ryan came from different

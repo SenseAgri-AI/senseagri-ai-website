@@ -3,6 +3,9 @@ import LogoMark from "@/components/LogoMark";
 import { siteConfig } from "@/lib/site";
 
 const footerLinks = [
+  { label: "Computer vision", href: "/computer-vision" },
+  { label: "AI farm agents", href: "/ai-farm-agents" },
+  { label: "Security & data ownership", href: "/security" },
   { label: "Capabilities", href: "/capabilities" },
   { label: "Offering", href: "/offering" },
   { label: "About", href: "/about" },
@@ -30,7 +33,7 @@ export default function Footer() {
             </span>
           </div>
           <p className="mt-4 font-sans text-title-sm text-on-secondary-variant">
-            Early warnings from the poultry house, for South African farms and the partners who supply them.
+            Computer vision for the farm, and agents that read the records you connect.
           </p>
         </div>
 
@@ -87,11 +90,10 @@ export default function Footer() {
 
       {/* Bottom strip — hairline + copyright */}
       <div className="hairline-t">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-10">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-10">
           <p className="font-sans text-label-sm text-on-secondary-variant">
             © {new Date().getFullYear()} SenseAgri AI. All rights reserved.
           </p>
-          {/* Brand tagline */}
           <p className="font-sans text-label-sm font-medium uppercase tracking-[0.17em] text-tertiary">
             Every signal. Every decision.
           </p>

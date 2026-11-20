@@ -58,7 +58,7 @@ export async function POST(request: Request) {
     ["Name", data.name],
     ["Company", data.company],
     ["Email", data.email],
-    ["Phone / WhatsApp", data.phone || "—"],
+    ["Phone", data.phone || "—"],
     ["Province", data.province || "—"],
     ["Farm type", data.farmType || "—"],
     ["Bird count", data.birdCount || "—"]
